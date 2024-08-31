@@ -1,0 +1,6740 @@
+[gd_scene load_steps=21 format=4 uid="uid://l200m2x0yagx"]
+
+[ext_resource type="Texture2D" uid="uid://dqa75lqstpb0m" path="res://assets/tilesets/map2.png" id="2_7o03i"]
+[ext_resource type="Texture2D" uid="uid://c0ltjbh58tjd8" path="res://assets/tilesets/trees_others-removebg-preview.png" id="3_gcx2y"]
+[ext_resource type="Texture2D" uid="uid://dpmiknwkwl5da" path="res://assets/tilesets/rocks.png.png" id="3_gna71"]
+[ext_resource type="Texture2D" uid="uid://brfwkxmlhyu2s" path="res://assets/tilesets/tree-removebg-preview.png" id="3_qddxp"]
+[ext_resource type="Shader" uid="uid://ckp0uiettuu5r" path="res://shaders/tree_shader.tres" id="4_lk73s"]
+[ext_resource type="Texture2D" uid="uid://brt3nxndnkh3b" path="res://assets/sprites/mage_sprite.png" id="7_smiv5"]
+[ext_resource type="Texture2D" uid="uid://ds00wru0t51t0" path="res://VFX/particles/leafs.png" id="7_vbqgv"]
+[ext_resource type="Script" path="res://scripts/others/tree.gd" id="7_wgmcq"]
+[ext_resource type="PackedScene" uid="uid://drffed2tq2jus" path="res://game_scenes/player.tscn" id="8_rpp4l"]
+[ext_resource type="PackedScene" uid="uid://cdvbhhh52rcly" path="res://game_scenes/entity/enemy.tscn" id="10_rxba7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p81if"]
+shader = ExtResource("4_lk73s")
+shader_parameter/WindStrenght = 25.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m22f5"]
+radius = 68.2451
+height = 425.714
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mnu20"]
+radius = 67.2605
+height = 414.123
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0mbwg"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_lsstl"]
+offsets = PackedFloat32Array(0, 0.185567, 0.804124, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4c7v6"]
+gradient = SubResource("Gradient_lsstl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y628b"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1600, 1600, 1)
+spread = 45.92
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -55.81
+angular_velocity_max = 240.0
+gravity = Vector3(0, 50, 0)
+scale_min = 0.3
+scale_max = 0.8
+color_ramp = SubResource("GradientTexture1D_4c7v6")
+anim_speed_max = 2.07
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yq1an"]
+texture = ExtResource("3_gcx2y")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+25:0/0 = 0
+27:0/0 = 0
+28:0/0 = 0
+29:0/0 = 0
+30:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+25:1/0 = 0
+26:1/0 = 0
+27:1/0 = 0
+28:1/0 = 0
+29:1/0 = 0
+30:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+25:2/0 = 0
+26:2/0 = 0
+27:2/0 = 0
+28:2/0 = 0
+29:2/0 = 0
+30:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+23:3/0 = 0
+24:3/0 = 0
+25:3/0 = 0
+26:3/0 = 0
+27:3/0 = 0
+28:3/0 = 0
+29:3/0 = 0
+30:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+20:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+23:4/0 = 0
+24:4/0 = 0
+25:4/0 = 0
+26:4/0 = 0
+27:4/0 = 0
+28:4/0 = 0
+29:4/0 = 0
+30:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+20:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+23:5/0 = 0
+24:5/0 = 0
+25:5/0 = 0
+26:5/0 = 0
+27:5/0 = 0
+28:5/0 = 0
+29:5/0 = 0
+30:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+19:6/0 = 0
+20:6/0 = 0
+21:6/0 = 0
+22:6/0 = 0
+23:6/0 = 0
+24:6/0 = 0
+25:6/0 = 0
+27:6/0 = 0
+28:6/0 = 0
+29:6/0 = 0
+30:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+19:7/0 = 0
+20:7/0 = 0
+21:7/0 = 0
+22:7/0 = 0
+23:7/0 = 0
+24:7/0 = 0
+27:7/0 = 0
+28:7/0 = 0
+29:7/0 = 0
+30:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+2:8/0/terrain_set = 0
+3:8/0 = 0
+3:8/0/terrain_set = 0
+4:8/0 = 0
+4:8/0/terrain_set = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+21:8/0 = 0
+22:8/0 = 0
+23:8/0 = 0
+24:8/0 = 0
+26:8/0 = 0
+27:8/0 = 0
+28:8/0 = 0
+29:8/0 = 0
+30:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+2:9/0/terrain_set = 0
+3:9/0 = 0
+4:9/0 = 0
+4:9/0/terrain_set = 0
+5:9/0 = 0
+5:9/0/terrain_set = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+16:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+20:9/0 = 0
+21:9/0 = 0
+22:9/0 = 0
+23:9/0 = 0
+24:9/0 = 0
+25:9/0 = 0
+26:9/0 = 0
+27:9/0 = 0
+28:9/0 = 0
+29:9/0 = 0
+30:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+2:10/0/terrain_set = 0
+3:10/0 = 0
+3:10/0/terrain_set = 0
+4:10/0 = 0
+4:10/0/terrain_set = 0
+5:10/0 = 0
+5:10/0/terrain_set = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+20:10/0 = 0
+21:10/0 = 0
+22:10/0 = 0
+23:10/0 = 0
+24:10/0 = 0
+25:10/0 = 0
+26:10/0 = 0
+27:10/0 = 0
+28:10/0 = 0
+29:10/0 = 0
+30:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+2:11/0/terrain_set = 0
+3:11/0 = 0
+3:11/0/terrain_set = 0
+4:11/0 = 0
+4:11/0/terrain_set = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+20:11/0 = 0
+21:11/0 = 0
+22:11/0 = 0
+23:11/0 = 0
+24:11/0 = 0
+25:11/0 = 0
+26:11/0 = 0
+27:11/0 = 0
+28:11/0 = 0
+29:11/0 = 0
+30:11/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+19:12/0 = 0
+20:12/0 = 0
+21:12/0 = 0
+22:12/0 = 0
+23:12/0 = 0
+24:12/0 = 0
+25:12/0 = 0
+26:12/0 = 0
+27:12/0 = 0
+28:12/0 = 0
+29:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+19:13/0 = 0
+20:13/0 = 0
+21:13/0 = 0
+22:13/0 = 0
+23:13/0 = 0
+24:13/0 = 0
+25:13/0 = 0
+26:13/0 = 0
+27:13/0 = 0
+28:13/0 = 0
+29:13/0 = 0
+30:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+16:14/0 = 0
+18:14/0 = 0
+19:14/0 = 0
+20:14/0 = 0
+21:14/0 = 0
+22:14/0 = 0
+23:14/0 = 0
+24:14/0 = 0
+25:14/0 = 0
+26:14/0 = 0
+27:14/0 = 0
+28:14/0 = 0
+29:14/0 = 0
+30:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+16:15/0 = 0
+18:15/0 = 0
+19:15/0 = 0
+20:15/0 = 0
+21:15/0 = 0
+22:15/0 = 0
+23:15/0 = 0
+24:15/0 = 0
+25:15/0 = 0
+26:15/0 = 0
+27:15/0 = 0
+28:15/0 = 0
+29:15/0 = 0
+30:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+16:16/0 = 0
+18:16/0 = 0
+19:16/0 = 0
+20:16/0 = 0
+21:16/0 = 0
+22:16/0 = 0
+23:16/0 = 0
+24:16/0 = 0
+25:16/0 = 0
+26:16/0 = 0
+27:16/0 = 0
+28:16/0 = 0
+29:16/0 = 0
+30:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+9:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+12:17/0 = 0
+13:17/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+20:17/0 = 0
+21:17/0 = 0
+22:17/0 = 0
+23:17/0 = 0
+24:17/0 = 0
+25:17/0 = 0
+26:17/0 = 0
+27:17/0 = 0
+28:17/0 = 0
+29:17/0 = 0
+30:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+9:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+20:18/0 = 0
+21:18/0 = 0
+22:18/0 = 0
+23:18/0 = 0
+24:18/0 = 0
+25:18/0 = 0
+26:18/0 = 0
+27:18/0 = 0
+28:18/0 = 0
+29:18/0 = 0
+30:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+6:19/0 = 0
+7:19/0 = 0
+8:19/0 = 0
+9:19/0 = 0
+10:19/0 = 0
+11:19/0 = 0
+12:19/0 = 0
+13:19/0 = 0
+14:19/0 = 0
+15:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+19:19/0 = 0
+20:19/0 = 0
+21:19/0 = 0
+22:19/0 = 0
+23:19/0 = 0
+24:19/0 = 0
+25:19/0 = 0
+26:19/0 = 0
+27:19/0 = 0
+28:19/0 = 0
+29:19/0 = 0
+30:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+8:20/0 = 0
+9:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+12:20/0 = 0
+13:20/0 = 0
+14:20/0 = 0
+15:20/0 = 0
+16:20/0 = 0
+17:20/0 = 0
+18:20/0 = 0
+19:20/0 = 0
+20:20/0 = 0
+21:20/0 = 0
+22:20/0 = 0
+23:20/0 = 0
+24:20/0 = 0
+25:20/0 = 0
+26:20/0 = 0
+27:20/0 = 0
+28:20/0 = 0
+29:20/0 = 0
+30:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+8:21/0 = 0
+9:21/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+12:21/0 = 0
+13:21/0 = 0
+14:21/0 = 0
+15:21/0 = 0
+16:21/0 = 0
+17:21/0 = 0
+18:21/0 = 0
+19:21/0 = 0
+20:21/0 = 0
+21:21/0 = 0
+22:21/0 = 0
+23:21/0 = 0
+24:21/0 = 0
+25:21/0 = 0
+26:21/0 = 0
+27:21/0 = 0
+28:21/0 = 0
+29:21/0 = 0
+30:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+6:22/0 = 0
+8:22/0 = 0
+9:22/0 = 0
+10:22/0 = 0
+11:22/0 = 0
+12:22/0 = 0
+13:22/0 = 0
+14:22/0 = 0
+15:22/0 = 0
+16:22/0 = 0
+17:22/0 = 0
+18:22/0 = 0
+19:22/0 = 0
+20:22/0 = 0
+21:22/0 = 0
+22:22/0 = 0
+23:22/0 = 0
+24:22/0 = 0
+25:22/0 = 0
+26:22/0 = 0
+27:22/0 = 0
+29:22/0 = 0
+30:22/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+8:23/0 = 0
+9:23/0 = 0
+10:23/0 = 0
+11:23/0 = 0
+12:23/0 = 0
+14:23/0 = 0
+15:23/0 = 0
+16:23/0 = 0
+17:23/0 = 0
+20:23/0 = 0
+21:23/0 = 0
+22:23/0 = 0
+24:23/0 = 0
+25:23/0 = 0
+26:23/0 = 0
+27:23/0 = 0
+28:23/0 = 0
+29:23/0 = 0
+30:23/0 = 0
+0:24/0 = 0
+1:24/0 = 0
+2:24/0 = 0
+3:24/0 = 0
+4:24/0 = 0
+5:24/0 = 0
+6:24/0 = 0
+7:24/0 = 0
+9:24/0 = 0
+10:24/0 = 0
+11:24/0 = 0
+12:24/0 = 0
+13:24/0 = 0
+14:24/0 = 0
+15:24/0 = 0
+16:24/0 = 0
+17:24/0 = 0
+18:24/0 = 0
+19:24/0 = 0
+20:24/0 = 0
+21:24/0 = 0
+22:24/0 = 0
+23:24/0 = 0
+24:24/0 = 0
+25:24/0 = 0
+26:24/0 = 0
+27:24/0 = 0
+28:24/0 = 0
+29:24/0 = 0
+30:24/0 = 0
+0:25/0 = 0
+1:25/0 = 0
+2:25/0 = 0
+3:25/0 = 0
+4:25/0 = 0
+5:25/0 = 0
+6:25/0 = 0
+7:25/0 = 0
+8:25/0 = 0
+9:25/0 = 0
+10:25/0 = 0
+11:25/0 = 0
+12:25/0 = 0
+14:25/0 = 0
+15:25/0 = 0
+16:25/0 = 0
+17:25/0 = 0
+18:25/0 = 0
+19:25/0 = 0
+20:25/0 = 0
+21:25/0 = 0
+22:25/0 = 0
+23:25/0 = 0
+24:25/0 = 0
+25:25/0 = 0
+26:25/0 = 0
+27:25/0 = 0
+28:25/0 = 0
+29:25/0 = 0
+30:25/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+2:26/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+5:26/0 = 0
+6:26/0 = 0
+7:26/0 = 0
+8:26/0 = 0
+9:26/0 = 0
+10:26/0 = 0
+11:26/0 = 0
+12:26/0 = 0
+13:26/0 = 0
+14:26/0 = 0
+15:26/0 = 0
+16:26/0 = 0
+18:26/0 = 0
+19:26/0 = 0
+20:26/0 = 0
+21:26/0 = 0
+22:26/0 = 0
+23:26/0 = 0
+24:26/0 = 0
+25:26/0 = 0
+26:26/0 = 0
+28:26/0 = 0
+29:26/0 = 0
+30:26/0 = 0
+0:27/0 = 0
+1:27/0 = 0
+2:27/0 = 0
+3:27/0 = 0
+4:27/0 = 0
+5:27/0 = 0
+6:27/0 = 0
+7:27/0 = 0
+8:27/0 = 0
+9:27/0 = 0
+10:27/0 = 0
+11:27/0 = 0
+12:27/0 = 0
+13:27/0 = 0
+14:27/0 = 0
+15:27/0 = 0
+16:27/0 = 0
+18:27/0 = 0
+19:27/0 = 0
+20:27/0 = 0
+21:27/0 = 0
+22:27/0 = 0
+25:27/0 = 0
+28:27/0 = 0
+29:27/0 = 0
+30:27/0 = 0
+0:28/0 = 0
+1:28/0 = 0
+2:28/0 = 0
+3:28/0 = 0
+4:28/0 = 0
+5:28/0 = 0
+6:28/0 = 0
+7:28/0 = 0
+9:28/0 = 0
+10:28/0 = 0
+11:28/0 = 0
+12:28/0 = 0
+13:28/0 = 0
+14:28/0 = 0
+15:28/0 = 0
+16:28/0 = 0
+17:28/0 = 0
+19:28/0 = 0
+20:28/0 = 0
+21:28/0 = 0
+22:28/0 = 0
+24:28/0 = 0
+25:28/0 = 0
+26:28/0 = 0
+28:28/0 = 0
+29:28/0 = 0
+30:28/0 = 0
+1:29/0 = 0
+2:29/0 = 0
+3:29/0 = 0
+4:29/0 = 0
+5:29/0 = 0
+6:29/0 = 0
+7:29/0 = 0
+8:29/0 = 0
+9:29/0 = 0
+10:29/0 = 0
+11:29/0 = 0
+12:29/0 = 0
+13:29/0 = 0
+14:29/0 = 0
+15:29/0 = 0
+16:29/0 = 0
+17:29/0 = 0
+18:29/0 = 0
+19:29/0 = 0
+20:29/0 = 0
+21:29/0 = 0
+22:29/0 = 0
+23:29/0 = 0
+24:29/0 = 0
+25:29/0 = 0
+26:29/0 = 0
+27:29/0 = 0
+28:29/0 = 0
+29:29/0 = 0
+30:29/0 = 0
+3:30/0 = 0
+4:30/0 = 0
+5:30/0 = 0
+6:30/0 = 0
+7:30/0 = 0
+8:30/0 = 0
+9:30/0 = 0
+10:30/0 = 0
+11:30/0 = 0
+12:30/0 = 0
+13:30/0 = 0
+14:30/0 = 0
+15:30/0 = 0
+16:30/0 = 0
+17:30/0 = 0
+18:30/0 = 0
+19:30/0 = 0
+20:30/0 = 0
+21:30/0 = 0
+22:30/0 = 0
+23:30/0 = 0
+24:30/0 = 0
+25:30/0 = 0
+26:30/0 = 0
+27:30/0 = 0
+28:30/0 = 0
+29:30/0 = 0
+30:30/0 = 0
+5:8/0 = 0
+5:8/0/terrain_set = 0
+
+[sub_resource type="TileSet" id="TileSet_5xjcs"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "plants"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_yq1an")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ki0lx"]
+vertices = PackedVector2Array(872.922, 749.039, 600.102, 752.867, 596.859, 718, -547.828, 75.1094, -471.57, -85.1172, -351.047, -51.8125, 134.828, 600.008, 965.523, -688.906, 1017.35, -749.367, 1203.78, -649.133, 1199.17, -521.039, 952.859, -330.352, 704.711, -641.906, 761.727, -692.922, 869.93, -141.094, -959.008, 612, -1256.32, 614.922, -1275.99, 540.711, -1275.02, 375.188, -1080.8, 237.703, -905.219, 275.398, -591.117, 614.992, -673.719, 187.688, -286.844, -116.023, 451.602, 531.859, -597.258, -287.563, -800.547, -264, -986.969, -264, -1115.94, -388.117, -1194.76, -533.422, -1095.78, -638.992, -1042.6, -667.922, -737.133, -658, -460.711, -408.297, 1183.07, 92.0313, 1193.87, 508.602, 1068.91, 619.039, 541.609, 543.93, 238.789, -581.273, 618.289, -644.039, -240.219, -334.922, -220.328, -417.758, -36.1328, -564.859, -410.539, -660, -340.352, -471.102, -249.008, -673.789, 286.781, -636.406, 365.438, -663.273, 493.227, -684.727, 1104.14, -31.1719)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 8, 9, 10, 11), PackedInt32Array(12, 13, 7, 11, 14), PackedInt32Array(15, 16, 17, 18, 19, 20), PackedInt32Array(21, 15, 20, 22, 6), PackedInt32Array(6, 22, 3), PackedInt32Array(6, 5, 23, 24), PackedInt32Array(25, 26, 27, 28, 29, 30, 31, 32, 33), PackedInt32Array(34, 35, 36, 0, 2, 37, 38, 14), PackedInt32Array(39, 12, 14), PackedInt32Array(24, 23, 40, 41, 42, 38, 37), PackedInt32Array(33, 32, 43, 44), PackedInt32Array(44, 43, 45, 42, 41), PackedInt32Array(46, 47, 48, 39, 14, 38), PackedInt32Array(34, 14, 49)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1045, -678, -1102, -647, -1207, -535, -1124, -382, -991, -254, -800, -254, -593, -278, -455, -400, -340, -460, -232, -412, -250, -337, -296, -121, -354, -63, -477, -97, -556, 69, -679, 179, -906, 265, -1083, 227, -1285, 370, -1286, 542, -1264, 625, -959, 622, -591, 625, 136, 610, 452, 542, 534, 553, 587, 720, 591, 763, 876, 759, 1075, 627, 1204, 513, 1193, 89, 1111, -39, 883, -146, 961, -324, 1209, -516, 1214, -655, 1015, -762, 961, -699, 758, -703, 701, -652, 620, -654, 494, -695, 363, -673, 281, -645, 234, -591, -34, -575, -247, -684, -411, -670, -737, -668)])
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+
+[node name="map_01" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Map2" type="Sprite2D" parent="map_01"]
+z_index = -1
+position = Vector2(1205, 569)
+texture = ExtResource("2_7o03i")
+metadata/_edit_lock_ = true
+
+[node name="rocks" type="Node2D" parent="map_01"]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(1205, 569)
+
+[node name="Rocks_png" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1322, -660)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png33" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(666, -909)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png34" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(745, -851)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png35" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(756, -990)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png36" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(805, -909)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png37" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(868, -871)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png38" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(922, -1008)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png39" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(968, -936)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png40" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1072, -1021)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png41" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1065, -947)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png42" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1068, -887)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png510" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1047, -842)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png512" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(995, -1024)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png513" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(835, -1068)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png514" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1124, -1071)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png515" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1247, -1003)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png516" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1314, -1008)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png517" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1377, -1010)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png518" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1371, -920)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png519" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1445, -898)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png520" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1477, -967)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png521" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-20, -1083)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png522" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-20, -1083)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png511" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(968, -842)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png43" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1192, -994)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png44" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1179, -924)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png45" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1216, -847)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png46" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1160, -827)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png47" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1234, -758)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png48" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1301, -926)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png49" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1335, -827)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png50" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1344, -768)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png51" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1344, -768)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png52" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-228, -1168)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png53" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-272, -1044)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png54" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-184, -1056)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png55" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-120, -928)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png56" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-187, -921)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png160" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-140, -860)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png174" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-88, -861)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png57" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(146, -1114)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png523" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(33, -1156)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png524" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(90, -1153)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png525" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(268, -1067)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png526" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(268, -1067)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png58" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-27, -987)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png59" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-87, -1068)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png60" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(10, -879)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png61" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(6, -815)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png62" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(141, -971)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png63" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(237, -855)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png64" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(58, -1082)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png65" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(82, -942)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png66" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(241, -1009)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png67" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(297, -881)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png68" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(248, -1131)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png527" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(334, -1131)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png528" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(198, -1181)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png529" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(502, -1122)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png530" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(532, -1068)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png531" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(426, -1152)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png532" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(426, -1152)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png533" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-628, -1060)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png534" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-628, -1060)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png69" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(369, -1017)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png70" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(407, -894)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png71" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(476, -956)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png72" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(432, -1072)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png73" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(504, -1012)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png74" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(424, -976)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png75" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(480, -872)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png76" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(388, -880)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png77" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(600, -1172)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png78" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(604, -1068)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png79" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(604, -987)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png80" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(728, -1107)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png81" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(704, -1021)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png82" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(668, -909)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png83" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(604, -876)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png84" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(604, -876)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png85" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1502, -1243)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png86" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1526, -1092)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png87" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1546, -991)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png88" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1563, -879)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png89" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1517, -768)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png90" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1466, -873)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png91" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1402, -1007)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png92" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1385, -1143)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png93" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1446, -1072)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png94" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1566, -1121)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png95" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1546, -1027)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png96" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1663, -967)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png97" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1646, -1074)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png98" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1626, -1168)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png99" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1626, -1168)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png100" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1441, -866)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png101" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1465, -715)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png102" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1485, -614)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png103" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1502, -502)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png104" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1456, -391)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png105" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1405, -496)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png106" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1341, -630)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png107" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1385, -695)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png108" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1505, -744)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png109" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1485, -650)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png110" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1602, -590)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png111" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1585, -697)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png112" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1565, -791)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png113" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1565, -791)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png114" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1441, -866)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png115" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1465, -715)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png116" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1485, -614)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png117" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1502, -502)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png118" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1456, -391)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png119" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1405, -496)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png120" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1341, -630)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png121" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1385, -695)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png122" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1505, -744)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png123" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1485, -650)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png124" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1602, -590)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png125" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1585, -697)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png126" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1565, -791)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png127" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1565, -791)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png128" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1390.9, -478.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png129" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1414.9, -327.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png130" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1434.9, -226.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png131" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1451.9, -114.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png132" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1405.9, -3.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png133" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1354.9, -108.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png134" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1290.9, -242.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png135" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1334.9, -307.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png136" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1454.9, -356.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png137" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1434.9, -262.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png138" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1551.9, -202.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png139" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1534.9, -309.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png140" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1514.9, -403.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png141" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1514.9, -403.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png142" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1239.9, -1157.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png143" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1263.9, -1006.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png144" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1283.9, -905.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png145" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1300.9, -793.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png146" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1254.9, -682.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png147" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1203.9, -787.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png148" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1139.9, -921.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png149" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1183.9, -986.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png150" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1303.9, -1035.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png151" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1283.9, -941.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png152" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1400.9, -881.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png153" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1383.9, -988.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png154" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1363.9, -1082.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png155" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1363.9, -1082.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png156" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-973.904, -1211.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png157" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-997.904, -1060.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png158" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1017.9, -959.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png159" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1034.9, -847.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png161" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-937.904, -841.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png162" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-873.904, -975.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png163" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-917.904, -1040.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png164" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1037.9, -1089.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png165" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1017.9, -995.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png166" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1134.9, -935.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png167" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1117.9, -1042.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png168" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1097.9, -1136.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png169" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1097.9, -1136.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png170" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-670.904, -1278.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png171" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-694.904, -1127.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png172" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-714.904, -1026.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png173" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-731.904, -914.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png175" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-634.904, -908.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png176" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-570.904, -1042.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png177" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-614, -1184)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png535" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-699, -1223)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png536" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-585, -1243)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png537" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-374, -1206)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png538" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-374, -1206)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png178" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-734.904, -1156.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png179" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-714.904, -1062.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png180" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-831.904, -1002.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png181" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-814.904, -1109.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png182" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-794.904, -1203.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png183" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-794.904, -1203.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png184" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-292, -1192)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png539" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-440, -1256)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png540" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-673, -936)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png185" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-422.904, -1147.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png186" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-442.904, -1046.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png187" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-459.904, -934.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png188" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-389, -847)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png506" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-389, -847)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png508" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1368, -536)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png509" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1346, -436)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png507" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1402, -807)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png189" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-362.904, -928.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png190" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-298.904, -1062.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png191" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-342.904, -1127.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png192" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-462.904, -1176.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png193" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-442.904, -1082.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png194" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-559.904, -1022.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png195" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-542.904, -1129.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png196" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-522.904, -1223.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png197" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-522.904, -1223.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png198" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-852.904, -1365.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png199" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-876.904, -1214.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png200" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-896.904, -1113.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png201" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-913.904, -1001.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png202" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-867.904, -890.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png203" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-816.904, -995.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png204" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-752.904, -1129.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png205" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-796.904, -1194.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png206" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-916.904, -1243.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png207" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-896.904, -1149.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png208" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1013.9, -1089.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png209" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-996.904, -1196.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png210" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-976.904, -1290.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png211" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-976.904, -1290.9)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png212" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1531.9, -228.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png213" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1555.9, -77.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png214" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1575.9, 23.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png215" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1592.9, 135.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png216" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1546.9, 246.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png217" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1495.9, 141.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png218" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1431.9, 7.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png219" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1475.9, -57.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png220" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1595.9, -106.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png221" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1575.9, -12.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png222" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1692.9, 47.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png223" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1675.9, -59.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png224" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1655.9, -153.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png225" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1655.9, -153.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png226" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1426.9, -225.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png227" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1450.9, -74.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png228" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1470.9, 26.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png229" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1487.9, 138.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png230" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1441.9, 249.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png231" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1390.9, 144.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png232" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1326.9, 10.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png233" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1370.9, -54.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png234" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1490.9, -103.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png235" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1470.9, -9.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png236" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1587.9, 50.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png237" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1570.9, -56.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png238" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1550.9, -150.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png239" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1550.9, -150.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png240" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1365.9, -225.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png241" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1389.9, -74.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png242" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1409.9, 26.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png243" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1426.9, 138.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png244" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1380.9, 249.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png245" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1329.9, 144.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png246" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1265.9, 10.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png247" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1309.9, -54.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png248" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1429.9, -103.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png249" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1409.9, -9.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png250" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1526.9, 50.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png251" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1509.9, -56.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png252" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1489.9, -150.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png253" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1489.9, -150.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png254" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1358.9, 581.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png255" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1382.9, 732.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png256" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1402.9, 833.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png257" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1419.9, 945.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png258" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1373.9, 1056.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png259" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1322.9, 951.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png260" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1258.9, 817.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png261" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1302.9, 752.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png262" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1422.9, 703.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png263" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1402.9, 797.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png264" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1519.9, 857.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png265" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1502.9, 750.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png266" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1482.9, 656.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png267" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1482.9, 656.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png268" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(-1042.9, 736.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png269" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1066.9, 887.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png270" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1086.9, 988.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png271" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1103.9, 1100.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png272" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1057.9, 1211.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png273" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1006.9, 1106.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png274" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-942.904, 972.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png275" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-986.904, 907.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png276" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1106.9, 858.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png277" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1086.9, 952.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png278" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1203.9, 1012.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png279" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1186.9, 905.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png280" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1166.9, 811.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png281" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-1166.9, 811.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png282" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(-791.904, 677.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png283" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-815.904, 828.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png284" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-835.904, 929.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png285" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-852.904, 1041.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png286" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-806.904, 1152.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png287" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-755.904, 1047.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png288" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-691.904, 913.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png289" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-735.904, 848.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png290" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-855.904, 799.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png291" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-835.904, 893.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png292" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-952.904, 953.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png293" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(-935.904, 846.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png294" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(-915.904, 752.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png295" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(-915.904, 752.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png296" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-542.904, 774.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png297" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-566.904, 925.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png298" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-586.904, 1026.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png299" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-603.904, 1138.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png300" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-557.904, 1249.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png301" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-506.904, 1144.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png302" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-442.904, 1010.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png303" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-486.904, 945.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png304" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-606.904, 896.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png549" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-511, 849)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png550" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-437, 922)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png551" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-314, 858)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png552" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-1194, 803)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png553" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-1329, 679)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png554" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(72, 849)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png555" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(502, 810)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png305" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-586.904, 990.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png306" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-703.904, 1050.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png307" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-686.904, 943.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png308" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-666.904, 849.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png309" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-666.904, 849.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png310" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(-845.904, 727.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png311" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-869.904, 878.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png312" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-889.904, 979.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png313" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-906.904, 1091.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png314" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-860.904, 1202.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png315" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-809.904, 1097.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png316" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-745.904, 963.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png317" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-789.904, 898.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png318" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-909.904, 849.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png319" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-889.904, 943.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png320" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-1006.9, 1003.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png321" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-989.904, 896.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png322" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-969.904, 802.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png323" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-969.904, 802.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png324" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-243.904, 794.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png325" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-267.904, 945.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png326" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-287.904, 1046.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png327" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-304.904, 1158.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png328" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-258.904, 1269.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png329" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-207.904, 1164.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png330" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-143.904, 1030.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png331" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-187.904, 965.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png332" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-307.904, 916.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png333" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-287.904, 1010.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png334" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-404.904, 1070.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png335" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-387.904, 963.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png336" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-367.904, 869.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png337" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-367.904, 869.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png338" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(62.0961, 744.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png339" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(38.0961, 895.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png340" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(18.0961, 996.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png341" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1.09607, 1108.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png342" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(47.0961, 1219.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png343" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(98.0962, 1114.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png344" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(162.096, 980.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png345" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(118.096, 915.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png346" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-1.90393, 866.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png347" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(18.0961, 960.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png348" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-98.9039, 1020.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png349" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-81.9039, 913.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png350" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-61.9039, 819.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png351" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-61.9039, 819.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png352" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(-100.904, 749.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png353" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-124.904, 900.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png354" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-144.904, 1001.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png355" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-161.904, 1113.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png356" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-115.904, 1224.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png357" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-64.9038, 1119.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png358" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-0.903809, 985.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png359" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-44.9038, 920.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png360" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-164.904, 871.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png361" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-144.904, 965.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png362" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-261.904, 1025.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png363" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-244.904, 918.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png364" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-224.904, 824.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png365" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-224.904, 824.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png366" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(282.096, 725.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png367" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(258.096, 876.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png368" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(238.096, 977.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png369" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(221.096, 1089.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png370" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(267.096, 1200.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png371" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(318.096, 1095.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png372" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(382.096, 961.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png373" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(338.096, 896.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png374" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(218.096, 847.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png375" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(238.096, 941.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png376" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(121.096, 1001.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png377" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(138.096, 894.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png378" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(158.096, 800.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png379" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(158.096, 800.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png380" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(477.096, 718.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png381" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(453.096, 869.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png382" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(433.096, 970.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png383" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(416.096, 1082.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png384" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(462.096, 1193.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png385" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(513.096, 1088.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png386" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(577.096, 954.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png387" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(533.096, 889.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png388" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(413.096, 840.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png389" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(433.096, 934.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png390" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(316.096, 994.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png391" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(333.096, 887.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png392" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(353.096, 793.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png393" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(353.096, 793.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png394" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(272.096, 1344.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png395" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(248.096, 1495.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png396" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(228.096, 1596.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png397" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(211.096, 1708.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png398" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(257.096, 1819.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png399" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(308.096, 1714.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png400" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(372.096, 1580.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png401" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(328.096, 1515.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png402" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(208.096, 1466.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png403" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(228.096, 1560.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png404" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(111.096, 1620.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png405" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(128.096, 1513.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png406" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(148.096, 1419.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png407" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(148.096, 1419.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png408" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1089.1, 732.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png409" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1065.1, 883.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png410" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1045.1, 984.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png411" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1028.1, 1096.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png412" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1074.1, 1207.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png413" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1125.1, 1102.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png414" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1189.1, 968.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png415" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1145.1, 903.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png416" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1025.1, 854.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png417" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1045.1, 948.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png418" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(928.096, 1008.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png419" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(945.096, 901.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png420" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(965.096, 807.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png421" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(965.096, 807.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png422" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1365.1, 678.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png423" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1341.1, 829.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png424" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1321.1, 930.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png425" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1304.1, 1042.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png426" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1350.1, 1153.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png427" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1401.1, 1048.1)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png428" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1465.1, 914.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png429" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1421.1, 849.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png430" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1301.1, 800.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png431" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1321.1, 894.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png432" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1204.1, 954.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png433" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1221.1, 847.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png434" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1241.1, 753.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png435" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1241.1, 753.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png436" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1587.1, 315.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png437" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1563.1, 466.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png438" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1543.1, 567.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png439" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1526.1, 679.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png440" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1572.1, 790.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png441" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1623.1, 685.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png442" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1687.1, 551.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png443" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1643.1, 486.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png444" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1523.1, 437.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png445" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1543.1, 531.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png446" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1426.1, 591.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png447" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1443.1, 484.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png448" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1463.1, 390.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png449" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1463.1, 390.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png450" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1634.1, -128.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png451" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1610.1, 22.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png452" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1590.1, 123.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png453" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1573.1, 235.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png454" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1619.1, 346.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png455" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1670.1, 241.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png456" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1734.1, 107.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png457" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1690.1, 42.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png458" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1570.1, -6.90393)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png459" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1590.1, 87.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png460" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1473.1, 147.096)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png461" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1490.1, 40.0961)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png546" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1507, 307)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png547" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1504, 250)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png548" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1488, 766)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png462" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1510.1, -53.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png463" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1510.1, -53.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png464" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1594.1, -646.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png465" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1570.1, -495.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png466" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1550.1, -394.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png467" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1533.1, -282.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png541" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1533.1, -282.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png468" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1579.1, -171.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png469" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1630.1, -276.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png470" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1694.1, -410.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png471" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1650.1, -475.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png472" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1530.1, -524.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png473" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1550.1, -430.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png474" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1433.1, -370.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png475" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1450.1, -477.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png476" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1470.1, -571.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png477" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1470.1, -571.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png478" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1532.1, -881.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png479" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1508.1, -730.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png480" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1488.1, -629.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png481" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1471.1, -517.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png482" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1503, -195)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png542" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1450, -104)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png543" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1450, -104)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png483" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1568.1, -511.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png484" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1632.1, -645.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png485" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1588.1, -710.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png486" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1468.1, -759.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png487" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1488.1, -665.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png488" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1371.1, -605.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png489" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1388.1, -712.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png490" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1408.1, -806.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png491" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1408.1, -806.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png492" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1789.1, -420.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png493" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1765.1, -269.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png494" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1745.1, -168.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png495" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1728.1, -56.9039)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png496" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1774.1, 54.0962)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png497" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1825.1, -50.9038)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png498" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1889.1, -184.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png499" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1845.1, -249.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png500" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1725.1, -298.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png501" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1745.1, -204.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png502" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1628.1, -144.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png503" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1645.1, -251.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png504" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1665.1, -345.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png505" type="Sprite2D" parent="map_01/rocks"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1665.1, -345.904)
+rotation = -0.00096142
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png2" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1316, -566)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png3" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1384, -578)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png4" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1329, -460)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png5" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1398, -453)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png6" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1343, -338)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png7" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1406, -338)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png8" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1406, -338)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png9" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1362, -237)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png10" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1428, -218)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png11" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1371, -135)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png12" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1366, -33)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png13" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1472, -269)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png544" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1411, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png545" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1411, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png14" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1398, 77)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png15" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1462, 67)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png16" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1371, 177)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png17" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1444, 177)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png18" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1399, 255)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png19" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1449, 318)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png20" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1378, 356)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png21" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1378, 356)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png22" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1334, 449)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png23" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1408, 493)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png24" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1344, 549)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png25" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1446, 589)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png26" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1488, 654)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png27" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1396, 666)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png28" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1390, 774)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png29" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(1371, 860)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png30" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(939, 803)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png31" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(911, 896)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="Rocks_png32" type="Sprite2D" parent="map_01/rocks"]
+texture_filter = 1
+position = Vector2(911, 896)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gna71")
+metadata/_edit_lock_ = true
+
+[node name="trees" type="Node2D" parent="map_01"]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(1205, 569)
+
+[node name="tree" type="Sprite2D" parent="map_01/trees"]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-90, -170)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1.7887, -189.593)
+script = ExtResource("7_wgmcq")
+
+[node name="Area2D" type="Area2D" parent="map_01/trees/tree"]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map_01/trees/tree/Area2D"]
+position = Vector2(1.39276, -190)
+shape = SubResource("CapsuleShape2D_m22f5")
+
+[node name="tree2" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-183, -93)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(5.96704, -189.593)
+
+[node name="tree3" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-269, -383)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(4.57422, -193.878)
+
+[node name="tree4" type="Sprite2D" parent="map_01/trees"]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-449.465, -303.878)
+
+[node name="tree5" type="Sprite2D" parent="map_01/trees"]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-322.724, -322.45)
+
+[node name="tree6" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-324, -167)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(10.1453, -195.307)
+
+[node name="tree7" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-573, 3)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(8.7525, -192.45)
+
+[node name="tree8" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-845.008, -22.4498)
+
+[node name="tree9" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-412, 32)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(7.35986, -185.307)
+
+[node name="tree10" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-774, 106)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(7.35974, -185.307)
+
+[node name="tree11" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1357.54, 141.836)
+
+[node name="tree12" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1173.7, 66.1216)
+
+[node name="tree13" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.718, 0.7)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1123.56, 268.979)
+
+[node name="tree14" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1522, 553.564)
+
+[node name="tree15" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1789.22, 529.313)
+
+[node name="tree16" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1703.78, 644.969)
+
+[node name="tree17" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-887, 205)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(8.63501, -188.874)
+
+[node name="tree18" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2523.63, -323.184)
+
+[node name="tree19" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2592.71, -806.328)
+
+[node name="tree20" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2592.71, -806.328)
+
+[node name="tree21" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2476.37, -785.809)
+
+[node name="tree22" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2627.25, -563.823)
+
+[node name="tree23" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1755.57, -6.99191)
+
+[node name="tree24" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1763.07, 137.88)
+
+[node name="tree25" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1758.07, 268.649)
+
+[node name="tree26" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1753.07, 481.47)
+
+[node name="tree27" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1821.82, 358.393)
+
+[node name="tree28" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1803.07, 559.675)
+
+[node name="tree29" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2396.38, -233.644)
+
+[node name="tree30" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2320.03, -159.027)
+
+[node name="tree31" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2196.42, -56.429)
+
+[node name="tree32" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2025.54, 34.9767)
+
+[node name="tree33" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2143.7, 103.997)
+
+[node name="tree34" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1949.19, 143.171)
+
+[node name="tree35" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2061.9, 270.02)
+
+[node name="tree36" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2290.95, 234.577)
+
+[node name="tree37" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2400.02, 83.4776)
+
+[node name="tree38" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2398.2, 357.694)
+
+[node name="tree39" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2336.39, 519.986)
+
+[node name="tree40" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2418.2, 678.547)
+
+[node name="tree41" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2154.61, 484.543)
+
+[node name="tree42" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2150.97, 646.835)
+
+[node name="tree43" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(154, -468)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(6.81726, -192.605)
+
+[node name="tree44" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(126, -255)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(4.99939, -194.47)
+script = ExtResource("7_wgmcq")
+
+[node name="Area2D" type="Area2D" parent="map_01/trees/tree44"]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map_01/trees/tree44/Area2D"]
+position = Vector2(-1.81785, -203.331)
+shape = SubResource("CapsuleShape2D_mnu20")
+
+[node name="tree45" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(232, -370)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(10.453, -190.739)
+
+[node name="tree46" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2234.59, -1117.85)
+
+[node name="tree47" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2361.84, -1201.8)
+
+[node name="tree48" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-1138, -657)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(8.63501, -192.605)
+
+[node name="tree49" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2005.54, -1005.93)
+
+[node name="tree50" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.7, 0.683)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1472.53, -888.39)
+
+[node name="tree51" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1720.14, -1005.93)
+
+[node name="tree52" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.7, 0.683)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1251.1, -901.567)
+
+[node name="tree53" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1492.91, -1005.93)
+
+[node name="tree54" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1358.39, -1157.03)
+
+[node name="tree55" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.7, 0.683)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-961.104, -882.533)
+
+[node name="tree56" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.7, 0.683)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-833.961, -1040.66)
+
+[node name="tree57" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.7, 0.683)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-845.39, -843.002)
+
+[node name="tree58" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-898.473, -1308.13)
+
+[node name="tree59" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-963.915, -1114.12)
+
+[node name="tree60" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-809.398, -1074.95)
+
+[node name="tree61" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-536.72, -914.523)
+
+[node name="tree62" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.7, 0.683)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-532.533, -892.782)
+
+[node name="tree63" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(37.7208, -1056.29)
+
+[node name="tree64" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-78.6217, -1026.45)
+
+[node name="tree65" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(6.00002, -603)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(3.18152, -187.008)
+
+[node name="tree66" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-378.567, -1175.68)
+
+[node name="tree67" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-124.068, -899.599)
+
+[node name="tree68" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(241, -638)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1.36365, -188.874)
+
+[node name="tree69" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(537.63, -1063.76)
+
+[node name="tree70" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(675.786, -1166.35)
+
+[node name="tree71" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(343.12, -1263.36)
+
+[node name="tree72" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(361.298, -1054.43)
+
+[node name="tree73" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(815.761, -1192.47)
+
+[node name="tree74" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1292.04, -1173.82)
+
+[node name="tree75" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1482.91, -1272.68)
+
+[node name="tree76" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1482.91, -1073.08)
+
+[node name="tree77" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1132.07, -1073.08)
+
+[node name="tree78" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(953.918, -963.024)
+
+[node name="tree79" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(2091.89, -479.88)
+
+[node name="tree80" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1846.48, -405.263)
+
+[node name="tree81" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1735.59, -321.319)
+
+[node name="tree82" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(182, -241)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1662.88, -151.565)
+
+[node name="tree83" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(1020, -164)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1.36365, -187.008)
+
+[node name="tree84" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(955, -170)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(8.63513, -185.143)
+
+[node name="tree85" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(1011, 82)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(6.8175, -198.201)
+
+[node name="tree86" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1430.68, -77.5047)
+
+[node name="tree87" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1915.56, -103.064)
+
+[node name="tree88" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(1114, -86)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(10.4535, -185.143)
+
+[node name="tree89" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1988.28, 452.831)
+
+[node name="tree90" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(2168.24, 178.614)
+
+[node name="tree91" type="Sprite2D" parent="map_01/trees"]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1379.43, -22.3765)
+
+[node name="tree92" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1465.68, 307.111)
+
+[node name="tree93" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1450.68, 435.316)
+
+[node name="tree94" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(2120.98, 857.627)
+
+[node name="tree95" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1453.18, 764.803)
+
+[node name="tree96" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(1092, 430)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(4.99963, -181.412)
+
+[node name="tree97" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(2051.9, 1441.5)
+
+[node name="tree98" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1833.76, 1695.2)
+
+[node name="tree99" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1724.69, 1905.99)
+
+[node name="tree100" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1586.53, 1976.88)
+
+[node name="tree101" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1323.18, 1321.21)
+
+[node name="tree102" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(2066.44, 2055.23)
+
+[node name="tree103" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1444.43, 1166.09)
+
+[node name="tree104" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(1496.93, 1312.24)
+
+[node name="tree105" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(235.867, 1413.52)
+
+[node name="tree106" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(471, 361)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(6.81726, -196.336)
+
+[node name="tree107" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(-40.9999, 323)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(4.99939, -192.605)
+
+[node name="tree108" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-485.82, 1504.93)
+
+[node name="tree109" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-78.6217, 1730.64)
+
+[node name="tree110" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(250.682, 1340.44)
+
+[node name="tree111" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(120.682, 1209.67)
+
+[node name="tree112" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(595.801, 1512.39)
+
+[node name="tree113" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(488.548, 1618.72)
+
+[node name="tree114" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(708.508, 1730.64)
+
+[node name="tree115" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(595.801, 1948.9)
+
+[node name="tree116" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(410.682, 1340.44)
+
+[node name="tree117" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2516.36, 1667.22)
+
+[node name="tree118" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-2370.93, 1808.99)
+
+[node name="tree119" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1469.32, 1114.8)
+
+[node name="tree120" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1393.07, 1326.34)
+
+[node name="tree121" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1854.66, 1790.34)
+
+[node name="tree122" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1165.57, 1190.44)
+
+[node name="tree123" type="Sprite2D" parent="map_01/trees"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1601.98, 1948.9)
+
+[node name="tree124" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-970.568, 1305.83)
+
+[node name="tree125" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-1271.13, 1913.46)
+
+[node name="tree126" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-778.068, 1366.09)
+
+[node name="tree127" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-679.318, 1293.01)
+
+[node name="tree128" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-849.391, 1885.47)
+
+[node name="tree129" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.8, 0.78)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-458.068, 1214.8)
+
+[node name="tree130" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-485.82, 1920.92)
+
+[node name="tree131" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-345.846, 1600.06)
+
+[node name="tree132" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-278.585, 1881.74)
+
+[node name="tree133" type="Sprite2D" parent="map_01/trees"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_p81if")
+position = Vector2(140, -263)
+scale = Vector2(0.5501, 0.536072)
+texture = ExtResource("3_qddxp")
+offset = Vector2(-278.585, 1881.74)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="map_01"]
+z_index = 3
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_0mbwg")
+position = Vector2(1119, 296)
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_y628b")
+texture = ExtResource("7_vbqgv")
+visibility_rect = Rect2(-1600, -250, 3200, 800)
+
+[node name="envairoment" type="TileMapLayer" parent="map_01"]
+z_index = -1
+position = Vector2(1205, 569)
+tile_map_data = PackedByteArray("AAAIAAsAAAAGAAYAAAAIAAwAAAAGAAcAAAAJAAsAAAAHAAYAAAAJAAwAAAAHAAcAAAAWAAYAAAAGAAYAAAAWAAcAAAAGAAcAAAAXAAYAAAAHAAYAAAAXAAcAAAAHAAcAAAAQAAsAAAAGAAYAAAAQAAwAAAAGAAcAAAARAAsAAAAHAAYAAAARAAwAAAAHAAcAAAAFAA4AAAACAAgAAAAFAA8AAAACAAkAAAAFABAAAAACAAoAAAAFABEAAAACAAsAAAAGAA4AAAADAAgAAAAGAA8AAAADAAkAAAAGABAAAAADAAoAAAAGABEAAAADAAsAAAAHAA4AAAAEAAgAAAAHAA8AAAAEAAkAAAAHABAAAAAEAAoAAAAHABEAAAAEAAsAAAAIAA4AAAAFAAgAAAAIAA8AAAAFAAkAAAAIABAAAAAFAAoAAAAMAA8AAAACAAgAAAAMABAAAAACAAkAAAAMABEAAAACAAoAAAAMABIAAAACAAsAAAANAA8AAAADAAgAAAANABAAAAADAAkAAAANABEAAAADAAoAAAANABIAAAADAAsAAAAOAA8AAAAEAAgAAAAOABAAAAAEAAkAAAAOABEAAAAEAAoAAAAOABIAAAAEAAsAAAAPAA8AAAAFAAgAAAAPABAAAAAFAAkAAAAPABEAAAAFAAoAAADt//v/AAACAAgAAADt//z/AAACAAkAAADt//3/AAACAAoAAADu//v/AAADAAgAAADu//z/AAADAAkAAADu//3/AAADAAoAAADv//v/AAAEAAgAAADv//z/AAAEAAkAAADv//3/AAAEAAoAAADv//7/AAAEAAsAAADw//v/AAAFAAgAAADw//z/AAAFAAkAAADw//3/AAAFAAoAAAD7//j/AAACAAgAAAD7//n/AAACAAkAAAD7//r/AAACAAoAAAD7//v/AAACAAsAAAD8//j/AAADAAgAAAD8//n/AAADAAkAAAD8//r/AAADAAoAAAD8//v/AAADAAsAAAD9//j/AAAEAAgAAAD9//n/AAAEAAkAAAD9//r/AAAEAAoAAAD9//v/AAAEAAsAAAD+//j/AAAFAAgAAAD+//n/AAAFAAkAAAD+//r/AAAFAAoAAADx/xYAAAAGAAYAAADx/xcAAAAGAAcAAADy/xYAAAAHAAYAAADy/xcAAAAHAAcAAAD+/xoAAAAGAAYAAAD+/xsAAAAGAAcAAAD//xoAAAAHAAYAAAD//xsAAAAHAAcAAAAKABcAAAAGAAYAAAAKABgAAAAGAAcAAAALABcAAAAHAAYAAAALABgAAAAHAAcAAAAHAB4AAAAGAAYAAAAHAB8AAAAGAAcAAAAIAB4AAAAHAAYAAAAIAB8AAAAHAAcAAADh/wkAAAAIAAYAAADh/woAAAAIAAcAAADi/wkAAAAJAAYAAADi/woAAAAJAAcAAADN/x4AAAAIAAYAAADN/x8AAAAIAAcAAADO/x4AAAAJAAYAAADO/x8AAAAJAAcAAAASAAkAAAAYAB4AAAATAAsAAAAYAB4AAACw/xMAAAAIAAYAAACw/xQAAAAIAAcAAACx/xMAAAAJAAYAAACx/xQAAAAIAAYAAACy/xIAAAAIAAYAAACy/xMAAAAIAAcAAACz/xIAAAAJAAYAAACz/xMAAAAJAAcAAACx/xUAAAAIAAcAAACy/xQAAAAJAAYAAACy/xUAAAAJAAcAAAC0/yIAAAAIAAYAAAC0/yMAAAAIAAcAAAC1/yIAAAAJAAYAAAC1/yMAAAAJAAcAAAC3/yMAAAAIAAYAAAC3/yQAAAAIAAcAAAC4/yMAAAAJAAYAAAC4/yQAAAAJAAcAAAC5/yIAAAAIAAYAAAC5/yMAAAAIAAcAAAC6/yIAAAAJAAYAAAC6/yMAAAAJAAcAAAC6/ycAAAAIAAYAAAC6/ygAAAAIAAcAAAC7/ycAAAAJAAYAAAC7/ygAAAAJAAcAAADM/w0AAAAIAAYAAADM/w4AAAAIAAcAAADN/w0AAAAJAAYAAADN/w4AAAAJAAcAAADJ/w4AAAAIAAYAAADJ/w8AAAAIAAcAAADK/w4AAAAJAAYAAADK/w8AAAAJAAcAAADA/wwAAAAIAAYAAADA/w0AAAAIAAcAAADB/wwAAAAJAAYAAADB/w0AAAAJAAcAAAC3/wwAAAAIAAYAAAC3/w0AAAAIAAcAAAC4/wwAAAAJAAYAAAC4/w0AAAAJAAcAAAD7/xUAAAAIAAYAAAD7/xYAAAAIAAcAAAD8/xUAAAAJAAYAAAD8/xYAAAAIAAYAAAD8/xcAAAAIAAcAAAD9/xYAAAAJAAYAAAD9/xcAAAAJAAcAAADd/yYAAAAIAAYAAADd/ycAAAAIAAcAAADe/yYAAAAJAAYAAADe/ycAAAAJAAcAAADu/yIAAAAIAAYAAADu/yMAAAAIAAcAAADv/yIAAAAJAAYAAADv/yMAAAAJAAcAAADs/yIAAAAIAAYAAADs/yMAAAAIAAcAAADt/yIAAAAJAAYAAADt/yMAAAAJAAcAAABAABkAAAAIAAYAAABAABoAAAAIAAcAAABBABkAAAAJAAYAAABBABoAAAAJAAcAAABDAB0AAAAIAAYAAABDAB4AAAAIAAcAAABEAB0AAAAJAAYAAABEAB4AAAAJAAcAAABBAAUAAAAIAAYAAABBAAYAAAAIAAcAAABCAAUAAAAJAAYAAABCAAYAAAAJAAcAAAA+AAYAAAAIAAYAAAA+AAcAAAAIAAcAAAA/AAYAAAAJAAYAAAA/AAcAAAAJAAcAAABFAPr/AAAIAAYAAABFAPv/AAAIAAcAAABGAPr/AAAJAAYAAABGAPv/AAAJAAcAAAA4APX/AAAIAAYAAAA4APb/AAAIAAcAAAA5APX/AAAJAAYAAAA5APb/AAAJAAcAAAA5APf/AAAIAAYAAAA5APj/AAAIAAcAAAA6APf/AAAJAAYAAAA6APj/AAAJAAcAAAAmANT/AAAIAAYAAAAmANX/AAAIAAcAAAAnANT/AAAJAAYAAAAnANX/AAAJAAcAAAAkANb/AAAIAAYAAAAkANf/AAAIAAcAAAAlANb/AAAJAAYAAAAlANf/AAAJAAcAAAAsANb/AAAIAAYAAAAsANf/AAAIAAcAAAAtANb/AAAJAAYAAAAtANf/AAAJAAcAAAA9ANP/AAAIAAYAAAA9ANT/AAAIAAcAAAA+ANP/AAAJAAYAAAA+ANT/AAAJAAcAAAASANP/AAAIAAYAAAASANT/AAAIAAcAAAATANP/AAAJAAYAAAATANT/AAAJAAcAAAAPANr/AAAIAAYAAAAPANv/AAAIAAcAAAAQANr/AAAJAAYAAAAQANv/AAAJAAcAAAANAOv/AAAIAAYAAAANAOz/AAAIAAcAAAAOAOv/AAAJAAYAAAAOAOz/AAAJAAcAAAAQAOv/AAAIAAYAAAAQAOz/AAAIAAcAAAARAOv/AAAJAAYAAAARAOz/AAAJAAcAAAAQAOj/AAAIAAYAAAAQAOn/AAAIAAcAAAARAOj/AAAJAAYAAAARAOn/AAAJAAcAAADm/9T/AAAIAAYAAADm/9X/AAAIAAcAAADn/9T/AAAJAAYAAADn/9X/AAAJAAcAAADd/9T/AAAIAAYAAADd/9X/AAAIAAcAAADe/9T/AAAJAAYAAADe/9X/AAAJAAcAAADa/9D/AAAIAAYAAADa/9H/AAAIAAcAAADb/9D/AAAJAAYAAADb/9H/AAAJAAcAAADp/9H/AAAIAAYAAADp/9L/AAAIAAcAAADq/9H/AAAJAAYAAADq/9L/AAAJAAcAAAD8/9v/AAAIAAYAAAD8/9z/AAAIAAcAAAD9/9v/AAAJAAYAAAD9/9z/AAAJAAcAAAC7/9f/AAAIAAYAAAC7/9j/AAAIAAcAAAC8/9f/AAAJAAYAAAC8/9j/AAAJAAcAAAC5/9j/AAAIAAYAAAC5/9n/AAAIAAcAAAC6/9j/AAAJAAYAAAC6/9n/AAAJAAcAAADL/9X/AAAIAAYAAADL/9b/AAAIAAcAAADM/9X/AAAJAAYAAADM/9b/AAAJAAcAAAACAPH/AAAGAAYAAAACAPL/AAAGAAcAAAADAPH/AAAHAAYAAAADAPL/AAAHAAcAAAAAAOT/AAAGAAYAAAAAAOX/AAAGAAcAAAABAOT/AAAHAAYAAAABAOX/AAAHAAcAAAD4/+L/AAAGAAYAAAD4/+P/AAAGAAcAAAD5/+L/AAAHAAYAAAD5/+P/AAAHAAcAAAADAOD/AAAGAAYAAAADAOH/AAAGAAcAAAAEAOD/AAAHAAYAAAAEAOH/AAAHAAcAAAAyAAAAAAAGAAYAAAAyAAEAAAAGAAcAAAAzAAAAAAAHAAYAAAAzAAEAAAAHAAcAAAAwAAAAAAAGAAYAAAAwAAEAAAAGAAcAAAAxAAAAAAAHAAYAAAAxAAEAAAAHAAcAAAAzAPn/AAAGAAYAAAAzAPr/AAAGAAcAAAA0APn/AAAHAAYAAAA0APr/AAAHAAcAAAA3AAQAAAAGAAYAAAA3AAUAAAAGAAcAAAA4AAQAAAAHAAYAAAA4AAUAAAAHAAcAAAA3AAYAAAAGAAYAAAA3AAcAAAAGAAcAAAA4AAYAAAAHAAYAAAA4AAcAAAAHAAcAAAA3AAgAAAAGAAYAAAA3AAkAAAAGAAcAAAA4AAgAAAAHAAYAAAA4AAkAAAAHAAcAAAA1AAgAAAAEAAoAAAA1AAkAAAAEAAsAAAA2AAgAAAAFAAoAAAA2AAkAAAAHAAcAAAA5AAgAAAAGAAYAAAA5AAkAAAAGAAcAAAA6AAgAAAAHAAYAAAA6AAkAAAAHAAcAAAA5AAoAAAAGAAYAAAA5AAsAAAAGAAcAAAA6AAoAAAAHAAYAAAA6AAsAAAAHAAcAAAA3AAoAAAAGAAYAAAA3AAsAAAAGAAcAAAA4AAoAAAAHAAYAAAA4AAsAAAAHAAcAAAApABEAAAAGAAYAAAApABIAAAAGAAcAAAAqABEAAAAHAAYAAAAqABIAAAAHAAcAAABHAAQAAAAGAAYAAABHAAUAAAAGAAcAAABIAAQAAAAHAAYAAABIAAUAAAAHAAcAAABFAAYAAAAGAAYAAABFAAcAAAAGAAcAAABGAAYAAAAHAAYAAABGAAcAAAAHAAcAAABFAAoAAAAGAAYAAABFAAsAAAAGAAcAAABGAAoAAAAHAAYAAABGAAsAAAAHAAcAAABKAAwAAAAGAAYAAABKAA0AAAAGAAcAAABLAAwAAAAHAAYAAABLAA0AAAAHAAcAAAAgANH/AAAGAAYAAAAgANL/AAAGAAcAAAAhANH/AAAHAAYAAAAhANL/AAAHAAcAAAAgANP/AAAGAAYAAAAgANT/AAAGAAcAAAAhANP/AAAHAAYAAAAhANT/AAAHAAcAAAAeANP/AAAGAAYAAAAeANT/AAAGAAcAAAAfANP/AAAHAAYAAAAfANT/AAAHAAcAAAATANf/AAAGAAYAAAATANj/AAAGAAcAAAAUANf/AAAHAAYAAAAUANj/AAAHAAcAAAA2ANL/AAAGAAYAAAA2ANP/AAAGAAcAAAA3ANL/AAAHAAYAAAA3ANP/AAAHAAcAAAAyANL/AAAGAAYAAAAyANP/AAAGAAcAAAAzANL/AAAHAAYAAAAzANP/AAAHAAcAAAAyANT/AAAGAAYAAAAyANX/AAAGAAcAAAAzANT/AAAHAAYAAAAzANX/AAAHAAcAAAA6ANX/AAAGAAYAAAA6ANb/AAAGAAcAAAA7ANX/AAAHAAYAAAA7ANb/AAAHAAcAAAA2AOf/AAAGAAYAAAA2AOj/AAAGAAcAAAA3AOf/AAAHAAYAAAA3AOj/AAAHAAcAAAA6AOP/AAAGAAYAAAA6AOT/AAAGAAcAAAA7AOP/AAAHAAYAAAA7AOT/AAAHAAcAAAA4AOP/AAAGAAYAAAA4AOT/AAAGAAcAAAA5AOP/AAAHAAYAAAA5AOT/AAAHAAcAAAC8/9P/AAAGAAYAAAC8/9T/AAAGAAcAAAC9/9P/AAAHAAYAAAC9/9T/AAAHAAcAAAC+/9j/AAAGAAYAAAC+/9n/AAAGAAcAAAC//9j/AAAHAAYAAAC//9n/AAAHAAcAAADQ/9T/AAAGAAYAAADQ/9X/AAAGAAcAAADR/9T/AAAHAAYAAADR/9X/AAAHAAcAAADS/9b/AAAGAAYAAADS/9f/AAAGAAcAAADT/9b/AAAHAAYAAADT/9f/AAAHAAcAAADZ/9P/AAAGAAYAAADZ/9T/AAAGAAcAAADa/9P/AAAHAAYAAADa/9T/AAAHAAcAAADl/9//AAAGAAYAAADl/+D/AAAGAAcAAADm/9//AAAHAAYAAADm/+D/AAAHAAcAAADf/+L/AAAGAAYAAADf/+P/AAAGAAcAAADg/+L/AAAHAAYAAADg/+P/AAAHAAcAAADc/+j/AAAGAAYAAADc/+n/AAAGAAcAAADd/+j/AAAHAAYAAADd/+n/AAAHAAcAAADd/+P/AAAGAAYAAADd/+T/AAAGAAcAAADe/+P/AAAHAAYAAADe/+T/AAAHAAcAAADn/+X/AAAGAAYAAADn/+b/AAAGAAcAAADo/+X/AAAHAAYAAADo/+b/AAAHAAcAAAAjAAEAAAACAAgAAAAjAAIAAAACAAkAAAAjAAMAAAACAAoAAAAjAAQAAAACAAsAAAAkAAEAAAADAAgAAAAkAAIAAAADAAkAAAAkAAMAAAADAAoAAAAkAAQAAAADAAsAAAAlAAEAAAAEAAgAAAAlAAIAAAAEAAkAAAAlAAMAAAAEAAoAAAAlAAQAAAAEAAsAAAAmAAEAAAAFAAgAAAAmAAIAAAAFAAkAAAAmAAMAAAAFAAoAAAAzAAYAAAACAAgAAAAzAAcAAAACAAkAAAAzAAgAAAACAAoAAAAzAAkAAAACAAsAAAA0AAYAAAADAAgAAAA0AAcAAAADAAkAAAA0AAgAAAADAAoAAAA0AAkAAAADAAsAAAA1AAYAAAAEAAgAAAA1AAcAAAAEAAkAAAA2AAYAAAAFAAgAAAA2AAcAAAAFAAkAAABBAAcAAAACAAgAAABBAAgAAAACAAkAAABBAAkAAAACAAoAAABBAAoAAAACAAsAAABCAAcAAAADAAgAAABCAAgAAAADAAkAAABCAAkAAAADAAoAAABCAAoAAAADAAsAAABDAAcAAAAEAAgAAABDAAgAAAAEAAkAAABDAAkAAAAEAAoAAABDAAoAAAAEAAsAAABEAAcAAAAFAAgAAABEAAgAAAAFAAkAAABEAAkAAAAFAAoAAABEAP3/AAACAAgAAABEAP7/AAACAAkAAABEAP//AAACAAoAAABEAAAAAAACAAsAAABFAP3/AAADAAgAAABFAP7/AAADAAkAAABFAP//AAADAAoAAABFAAAAAAADAAsAAABGAP3/AAAEAAgAAABGAP7/AAAEAAkAAABGAP//AAAEAAoAAABGAAAAAAAEAAsAAABHAP3/AAAFAAgAAABHAP7/AAAFAAkAAABHAP//AAAFAAoAAAA9ABsAAAACAAgAAAA9ABwAAAACAAkAAAA9AB0AAAACAAoAAAA9AB4AAAACAAsAAAA+ABsAAAADAAgAAAA+ABwAAAADAAkAAAA+AB0AAAADAAoAAAA+AB4AAAADAAsAAAA/ABsAAAAEAAgAAAA/ABwAAAAEAAkAAAA/AB0AAAAEAAoAAAA/AB4AAAAEAAsAAABAABsAAAAFAAgAAABAABwAAAAFAAkAAABAAB0AAAAFAAoAAAAjABgAAAACAAgAAAAjABkAAAACAAkAAAAjABoAAAACAAoAAAAjABsAAAACAAsAAAAkABgAAAADAAgAAAAkABkAAAADAAkAAAAkABoAAAADAAoAAAAkABsAAAADAAsAAAAlABgAAAAEAAgAAAAlABkAAAAEAAkAAAAlABoAAAAEAAoAAAAlABsAAAAEAAsAAAAmABgAAAAFAAgAAAAmABkAAAAFAAkAAAAmABoAAAAFAAoAAAAoABcAAAACAAgAAAAoABgAAAACAAkAAAAoABkAAAACAAoAAAAoABoAAAACAAsAAAApABcAAAADAAgAAAApABgAAAADAAkAAAApABkAAAADAAoAAAApABoAAAADAAsAAAAqABcAAAAEAAgAAAAqABgAAAAEAAkAAAAqABkAAAAEAAoAAAAqABoAAAAEAAsAAAArABcAAAAFAAgAAAArABgAAAAFAAkAAAArABkAAAAFAAoAAAD//+n/AAACAAgAAAD//+r/AAACAAkAAAD//+v/AAACAAoAAAD//+z/AAACAAsAAAAAAOn/AAADAAgAAAAAAOr/AAADAAkAAAAAAOv/AAADAAoAAAAAAOz/AAADAAsAAAABAOn/AAAEAAgAAAABAOr/AAAEAAkAAAABAOv/AAAEAAoAAAABAOz/AAAEAAsAAAACAOn/AAAFAAgAAAACAOr/AAAFAAkAAAACAOv/AAAFAAoAAAD3/93/AAACAAgAAAD3/97/AAACAAkAAAD3/9//AAACAAoAAAD3/+D/AAACAAsAAAD4/93/AAADAAgAAAD4/97/AAADAAkAAAD4/9//AAADAAoAAAD4/+D/AAADAAsAAAD5/93/AAAEAAgAAAD5/97/AAAEAAkAAAD5/9//AAAEAAoAAAD5/+D/AAAEAAsAAAD6/93/AAAFAAgAAAD6/97/AAAFAAkAAAD6/9//AAAFAAoAAADD/wMAAAACAAgAAADD/wQAAAACAAkAAADD/wUAAAACAAoAAADD/wYAAAACAAsAAADE/wMAAAADAAgAAADE/wQAAAADAAkAAADE/wUAAAADAAoAAADE/wYAAAADAAsAAADF/wMAAAAEAAgAAADF/wQAAAAEAAkAAADF/wUAAAAEAAoAAADF/wYAAAAEAAsAAADG/wMAAAAFAAgAAADG/wQAAAAFAAkAAADG/wUAAAAFAAoAAADY/wEAAAACAAgAAADY/wIAAAACAAkAAADY/wMAAAACAAoAAADY/wQAAAACAAsAAADZ/wEAAAADAAgAAADZ/wIAAAADAAkAAADZ/wMAAAADAAoAAADZ/wQAAAADAAsAAADa/wEAAAAEAAgAAADa/wIAAAAEAAkAAADa/wMAAAAEAAoAAADa/wQAAAAEAAsAAADb/wEAAAAFAAgAAADb/wIAAAAFAAkAAADb/wMAAAAFAAoAAAA7ACoAAAACAAgAAAA7ACsAAAACAAkAAAA7ACwAAAACAAoAAAA7AC0AAAACAAsAAAA8ACoAAAADAAgAAAA8ACsAAAADAAkAAAA8ACwAAAADAAoAAAA8AC0AAAADAAsAAAA9ACoAAAAEAAgAAAA9ACsAAAAEAAkAAAA9ACwAAAAEAAoAAAA9AC0AAAAEAAsAAAA+ACoAAAAFAAgAAAA+ACsAAAAFAAkAAAA+ACwAAAAFAAoAAABIACEAAAACAAgAAABIACIAAAACAAkAAABIACMAAAACAAoAAABIACQAAAACAAsAAABJACEAAAADAAgAAABJACIAAAADAAkAAABJACMAAAADAAoAAABJACQAAAADAAsAAABKACEAAAAEAAgAAABKACIAAAAEAAkAAABKACMAAAAEAAoAAABKACQAAAAEAAsAAABLACEAAAAFAAgAAABLACIAAAAFAAkAAABLACMAAAAFAAoAAABJABUAAAACAAgAAABJABYAAAACAAkAAABJABcAAAACAAoAAABJABgAAAACAAsAAABKABUAAAADAAgAAABKABYAAAADAAkAAABKABcAAAADAAoAAABKABgAAAADAAsAAABLABUAAAAEAAgAAABLABYAAAAEAAkAAABLABcAAAAEAAoAAABLABgAAAAEAAsAAABMABUAAAAFAAgAAABMABYAAAAFAAkAAABMABcAAAAFAAoAAABLABkAAAACAAgAAABLABoAAAACAAkAAABLABsAAAACAAoAAABLABwAAAACAAsAAABMABkAAAADAAgAAABMABoAAAADAAkAAABMABsAAAADAAoAAABMABwAAAADAAsAAABNABkAAAAEAAgAAABNABoAAAAEAAkAAABNABsAAAAEAAoAAABNABwAAAAEAAsAAABOABkAAAAFAAgAAABOABoAAAAFAAkAAABOABsAAAAFAAoAAAAZANX/AAACAAgAAAAZANb/AAACAAkAAAAZANf/AAACAAoAAAAZANj/AAACAAsAAAAaANX/AAADAAgAAAAaANb/AAADAAkAAAAaANf/AAADAAoAAAAaANj/AAADAAsAAAAbANX/AAAEAAgAAAAbANb/AAAEAAkAAAAbANf/AAAEAAoAAAAbANj/AAAEAAsAAAAcANX/AAAFAAgAAAAcANb/AAAFAAkAAAAcANf/AAAFAAoAAAAtAOj/AAACAAgAAAAtAOn/AAACAAkAAAAtAOr/AAACAAoAAAAtAOv/AAACAAsAAAAuAOj/AAADAAgAAAAuAOn/AAADAAkAAAAuAOr/AAADAAoAAAAuAOv/AAADAAsAAAAvAOj/AAAEAAgAAAAvAOn/AAAEAAkAAAAvAOr/AAAEAAoAAAAvAOv/AAAEAAsAAAAwAOj/AAAFAAgAAAAwAOn/AAAFAAkAAAAwAOr/AAAFAAoAAADt//7/AAACAAsAAADu//7/AAADAAsAAAD2/wkAAAACAAgAAAD2/woAAAACAAkAAAD2/wsAAAACAAoAAAD2/wwAAAACAAsAAAD3/wkAAAADAAgAAAD3/woAAAADAAkAAAD3/wsAAAADAAoAAAD3/wwAAAADAAsAAAD4/wkAAAAEAAgAAAD4/woAAAAEAAkAAAD4/wsAAAAEAAoAAAD4/wwAAAAEAAsAAAD5/wkAAAAFAAgAAAD5/woAAAAFAAkAAAD5/wsAAAAFAAoAAADp/xkAAAACAAgAAADp/xoAAAACAAkAAADp/xsAAAACAAoAAADp/xwAAAACAAsAAADq/xkAAAADAAgAAADq/xoAAAADAAkAAADq/xsAAAADAAoAAADq/xwAAAADAAsAAADr/xkAAAAEAAgAAADr/xoAAAAEAAkAAADr/xsAAAAEAAoAAADr/xwAAAAEAAsAAADs/xkAAAAFAAgAAADs/xoAAAAFAAkAAADs/xsAAAAFAAoAAAA=")
+tile_set = SubResource("TileSet_5xjcs")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="map_01"]
+visible = false
+color = Color(1, 0.829319, 0.672693, 1)
+blend_mode = 1
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(1205, 569)
+navigation_polygon = SubResource("NavigationPolygon_ki0lx")
+
+[node name="Player" parent="." instance=ExtResource("8_rpp4l")]
+z_as_relative = true
+position = Vector2(1737, 128)
+
+[node name="64x128RuningFree" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(1679.72, 399.109)
+scale = Vector2(0.862813, 0.871094)
+texture = ExtResource("7_smiv5")
+hframes = 6
+vframes = 7
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 20.41
+vertices = PackedVector2Array(1294, 308, 1319, 345, 1359, 339, 1365, 297, 1343, 286, 1308, 292)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_layers = 3
+
+[node name="enemy" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(970, 704)
+
+[node name="enemy2" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1413, 642)
+
+[node name="enemy3" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(482, 19)
+
+[node name="enemy4" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1184, 34)
+
+[node name="enemy5" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1184, 34)
+
+[node name="enemy6" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1184, 34)
+
+[node name="enemy7" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1184, 34)
+
+[node name="enemy8" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1184, 34)
+
+[node name="enemy9" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1184, 34)
+
+[node name="enemy10" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1184, 34)
+
+[node name="enemy11" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1184, 34)
+
+[connection signal="body_entered" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="map_01/trees/tree44/Area2D" to="map_01/trees/tree44" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="map_01/trees/tree44/Area2D" to="map_01/trees/tree44" method="_on_area_2d_body_exited"]
