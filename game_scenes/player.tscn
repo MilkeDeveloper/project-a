@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://drffed2tq2jus"]
+[gd_scene load_steps=36 format=3 uid="uid://drffed2tq2jus"]
 
 [ext_resource type="Texture2D" uid="uid://drlupoecgqnxe" path="res://assets/sprites/64X128_Idle_Free.png" id="1_8j45f"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_35xu0"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://o1hudifiykln" path="res://scripts/player/navigation/navigation_agent_2d.tscn" id="4_st6it"]
 [ext_resource type="PackedScene" uid="uid://dbvccdfc4s5e1" path="res://game_scenes/input_component.tscn" id="5_vq3vh"]
 [ext_resource type="PackedScene" uid="uid://botwntklhi33c" path="res://game_scenes/animation_component.tscn" id="6_apn52"]
-[ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="7_27pwo"]
 [ext_resource type="Texture2D" uid="uid://b71n77jnggvq5" path="res://assets/textures/light.png" id="8_07x4o"]
 [ext_resource type="PackedScene" uid="uid://dxiasrjikt47l" path="res://ui/components/hp_bars.tscn" id="9_5hble"]
 
@@ -372,7 +371,7 @@ states/run/node = SubResource("AnimationNodeBlendTree_n6qgu")
 states/run/position = Vector2(617, 62)
 transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_r5t4p"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_1uvc8"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_sbqs2")]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_component", "input_component", "animation_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_component", "input_component", "animation_component") groups=["player"]]
 z_as_relative = false
 collision_layer = 5
 collision_mask = 0
@@ -416,6 +415,13 @@ limit_top = -450
 limit_right = 2600
 limit_bottom = 1300
 
+[node name="light" type="PointLight2D" parent="."]
+visible = false
+show_behind_parent = true
+color = Color(1, 0.851068, 0.663208, 1)
+texture = ExtResource("8_07x4o")
+texture_scale = 2.77
+
 [node name="navigation" parent="." node_paths=PackedStringArray("node") instance=ExtResource("4_st6it")]
 debug_enabled = false
 node = NodePath("..")
@@ -427,21 +433,43 @@ navigation_component = NodePath("../navigation")
 node = NodePath("..")
 _anim_tree = NodePath("../AnimationTree")
 
-[node name="shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.870588)
-show_behind_parent = true
-position = Vector2(3.55271e-15, 24)
-scale = Vector2(0.42, 0.38)
-texture = ExtResource("7_27pwo")
-
-[node name="light" type="PointLight2D" parent="."]
-visible = false
-color = Color(1, 0.851068, 0.663208, 1)
-texture = ExtResource("8_07x4o")
-texture_scale = 2.77
-
 [node name="hud_player" parent="." node_paths=PackedStringArray("node") instance=ExtResource("9_5hble")]
 node = NodePath("..")
+
+[node name="name" parent="hud_player" index="0"]
+offset_left = -13.0
+offset_top = -111.0
+offset_right = 35.0
+offset_bottom = -88.0
+
+[node name="hp_bar" parent="hud_player" index="1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -105.0
+offset_right = 51.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50.0001, 21.6667)
+
+[node name="level" parent="hud_player" index="2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -99.0
+offset_right = -22.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="destination_reached" from="navigation" to="." method="_on_destination_reached"]
 

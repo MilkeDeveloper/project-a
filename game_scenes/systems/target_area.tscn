@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp6lga5t10hc5"]
+
+[ext_resource type="Script" path="res://game_scenes/entity/target_system.gd" id="1_g2dyn"]
+[ext_resource type="Texture2D" uid="uid://bco220wncvrxm" path="res://VFX/effects/46.png" id="2_efbmr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udpya"]
+radius = 95.0003
+height = 416.671
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xqbne"]
+blend_mode = 1
+
+[node name="target_area" type="Area2D" node_paths=PackedStringArray("node", "target_sprite")]
+script = ExtResource("1_g2dyn")
+node = NodePath("")
+target_sprite = NodePath("target")
+
+[node name="target_colisor" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 6)
+scale = Vector2(0.199999, 0.119999)
+shape = SubResource("CapsuleShape2D_udpya")
+debug_color = Color(0.948914, 2.69532e-06, 0.576022, 0.42)
+
+[node name="target" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_xqbne")
+position = Vector2(0, 37)
+scale = Vector2(0.199999, 0.119999)
+texture = ExtResource("2_efbmr")
+
+[connection signal="mouse_entered" from="." to="." method="_on_target_area_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_target_area_mouse_exited"]

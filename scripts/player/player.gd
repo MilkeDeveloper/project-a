@@ -12,6 +12,9 @@ class_name Player
 func _physics_process(delta):
 	# Chama a função do nó para cehgar os inputs
 	input_component.get_input(Input)
+	if GLobals.target:
+		#print(GLobals.target.global_position)
+		pass
 
 func _on_destination_reached() -> void:
 	# Se o node cehgou ao destino, define a velocidade para 0 e define o estado para "idle"

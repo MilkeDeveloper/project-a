@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://l200m2x0yagx"]
+[gd_scene load_steps=22 format=4 uid="uid://l200m2x0yagx"]
 
 [ext_resource type="Texture2D" uid="uid://dqa75lqstpb0m" path="res://assets/tilesets/map2.png" id="2_7o03i"]
 [ext_resource type="Texture2D" uid="uid://c0ltjbh58tjd8" path="res://assets/tilesets/trees_others-removebg-preview.png" id="3_gcx2y"]
@@ -977,6 +977,13 @@ sources/0 = SubResource("TileSetAtlasSource_yq1an")
 vertices = PackedVector2Array(872.922, 749.039, 600.102, 752.867, 596.859, 718, -547.828, 75.1094, -471.57, -85.1172, -351.047, -51.8125, 134.828, 600.008, 965.523, -688.906, 1017.35, -749.367, 1203.78, -649.133, 1199.17, -521.039, 952.859, -330.352, 704.711, -641.906, 761.727, -692.922, 869.93, -141.094, -959.008, 612, -1256.32, 614.922, -1275.99, 540.711, -1275.02, 375.188, -1080.8, 237.703, -905.219, 275.398, -591.117, 614.992, -673.719, 187.688, -286.844, -116.023, 451.602, 531.859, -597.258, -287.563, -800.547, -264, -986.969, -264, -1115.94, -388.117, -1194.76, -533.422, -1095.78, -638.992, -1042.6, -667.922, -737.133, -658, -460.711, -408.297, 1183.07, 92.0313, 1193.87, 508.602, 1068.91, 619.039, 541.609, 543.93, 238.789, -581.273, 618.289, -644.039, -240.219, -334.922, -220.328, -417.758, -36.1328, -564.859, -410.539, -660, -340.352, -471.102, -249.008, -673.789, 286.781, -636.406, 365.438, -663.273, 493.227, -684.727, 1104.14, -31.1719)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 8, 9, 10, 11), PackedInt32Array(12, 13, 7, 11, 14), PackedInt32Array(15, 16, 17, 18, 19, 20), PackedInt32Array(21, 15, 20, 22, 6), PackedInt32Array(6, 22, 3), PackedInt32Array(6, 5, 23, 24), PackedInt32Array(25, 26, 27, 28, 29, 30, 31, 32, 33), PackedInt32Array(34, 35, 36, 0, 2, 37, 38, 14), PackedInt32Array(39, 12, 14), PackedInt32Array(24, 23, 40, 41, 42, 38, 37), PackedInt32Array(33, 32, 43, 44), PackedInt32Array(44, 43, 45, 42, 41), PackedInt32Array(46, 47, 48, 39, 14, 38), PackedInt32Array(34, 14, 49)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1045, -678, -1102, -647, -1207, -535, -1124, -382, -991, -254, -800, -254, -593, -278, -455, -400, -340, -460, -232, -412, -250, -337, -296, -121, -354, -63, -477, -97, -556, 69, -679, 179, -906, 265, -1083, 227, -1285, 370, -1286, 542, -1264, 625, -959, 622, -591, 625, 136, 610, 452, 542, 534, 553, 587, 720, 591, 763, 876, 759, 1075, 627, 1204, 513, 1193, 89, 1111, -39, 883, -146, 961, -324, 1209, -516, 1214, -655, 1015, -762, 961, -699, 758, -703, 701, -652, 620, -654, 494, -695, 363, -673, 281, -645, 234, -591, -34, -575, -247, -684, -411, -670, -737, -668)])
+
+[sub_resource type="Environment" id="Environment_fxajy"]
+background_mode = 3
+tonemap_white = 3.8
+adjustment_enabled = true
+adjustment_contrast = 1.1
+adjustment_saturation = 1.1
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -6676,14 +6683,23 @@ tile_set = SubResource("TileSet_5xjcs")
 visible = false
 color = Color(1, 0.829319, 0.672693, 1)
 blend_mode = 1
+shadow_color = Color(0, 0, 0, 0.952941)
+
+[node name="DirectionalLight2D2" type="DirectionalLight2D" parent="map_01"]
+visible = false
+color = Color(1, 0.398667, 0.18, 0.968627)
+energy = 0.45
+blend_mode = 2
+shadow_color = Color(0, 0, 0, 0.952941)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(1205, 569)
 navigation_polygon = SubResource("NavigationPolygon_ki0lx")
 
 [node name="Player" parent="." instance=ExtResource("8_rpp4l")]
 z_as_relative = true
-position = Vector2(1737, 128)
+position = Vector2(1733, 129)
 
 [node name="64x128RuningFree" type="Sprite2D" parent="."]
 visible = false
@@ -6731,10 +6747,13 @@ position = Vector2(1184, 34)
 [node name="enemy10" parent="." instance=ExtResource("10_rxba7")]
 position = Vector2(1184, 34)
 
-[node name="enemy11" parent="." instance=ExtResource("10_rxba7")]
-position = Vector2(1184, 34)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fxajy")
 
 [connection signal="body_entered" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="map_01/trees/tree44/Area2D" to="map_01/trees/tree44" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="map_01/trees/tree44/Area2D" to="map_01/trees/tree44" method="_on_area_2d_body_exited"]
+
+[editable path="Player"]
+[editable path="Player/hud_player"]
