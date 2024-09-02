@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://drffed2tq2jus"]
+[gd_scene load_steps=37 format=3 uid="uid://drffed2tq2jus"]
 
 [ext_resource type="Texture2D" uid="uid://drlupoecgqnxe" path="res://assets/sprites/64X128_Idle_Free.png" id="1_8j45f"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_35xu0"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dbvccdfc4s5e1" path="res://game_scenes/input_component.tscn" id="5_vq3vh"]
 [ext_resource type="PackedScene" uid="uid://botwntklhi33c" path="res://game_scenes/animation_component.tscn" id="6_apn52"]
 [ext_resource type="Texture2D" uid="uid://b71n77jnggvq5" path="res://assets/textures/light.png" id="8_07x4o"]
+[ext_resource type="Script" path="res://scripts/player/dash_component.gd" id="8_xhm7m"]
 [ext_resource type="PackedScene" uid="uid://dxiasrjikt47l" path="res://ui/components/hp_bars.tscn" id="9_5hble"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yqhx"]
@@ -371,7 +372,7 @@ states/run/node = SubResource("AnimationNodeBlendTree_n6qgu")
 states/run/position = Vector2(617, 62)
 transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_r5t4p"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_1uvc8"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_sbqs2")]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_component", "input_component", "animation_component") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_component", "input_component", "animation_component", "dash_component") groups=["player"]]
 z_as_relative = false
 collision_layer = 5
 collision_mask = 0
@@ -379,6 +380,7 @@ script = ExtResource("1_35xu0")
 navigation_component = NodePath("navigation")
 input_component = NodePath("input_component")
 animation_component = NodePath("animation_component")
+dash_component = NodePath("dash_component")
 SPEED = 650.0
 hp = 150
 
@@ -426,12 +428,21 @@ texture_scale = 2.77
 debug_enabled = false
 node = NodePath("..")
 
-[node name="input_component" parent="." node_paths=PackedStringArray("navigation_component") instance=ExtResource("5_vq3vh")]
+[node name="input_component" parent="." node_paths=PackedStringArray("navigation_component", "dash_component") instance=ExtResource("5_vq3vh")]
 navigation_component = NodePath("../navigation")
+dash_component = NodePath("../dash_component")
 
 [node name="animation_component" parent="." node_paths=PackedStringArray("node", "_anim_tree") instance=ExtResource("6_apn52")]
 node = NodePath("..")
 _anim_tree = NodePath("../AnimationTree")
+
+[node name="dash_component" type="Node2D" parent="." node_paths=PackedStringArray("node", "navigation_component")]
+script = ExtResource("8_xhm7m")
+node = NodePath("..")
+navigation_component = NodePath("../navigation")
+dash_distance = 250.0
+dash_speed = 2500.0
+dash_modifier = 2.0
 
 [node name="hud_player" parent="." node_paths=PackedStringArray("node") instance=ExtResource("9_5hble")]
 node = NodePath("..")
