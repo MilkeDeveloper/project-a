@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://m8yvvkr3bf4c"]
+
+[ext_resource type="Script" path="res://scripts/player/dash_component.gd" id="1_y4ayn"]
+
+[node name="dash_component" type="Node2D"]
+script = ExtResource("1_y4ayn")
+dash_distance = 250.0
+dash_speed = 2500.0
+dash_modifier = 2.0
+
+[node name="ghost_timer" type="Timer" parent="."]
+wait_time = 0.031
+
+[connection signal="timeout" from="ghost_timer" to="." method="_on_ghost_timer_timeout"]

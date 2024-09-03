@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://biiqhpu4a8iqn"]
+
+[ext_resource type="Shader" path="res://shaders/ghost.gdshader" id="1_q5fab"]
+[ext_resource type="Texture2D" uid="uid://2o56tprdnb0j" path="res://icon.svg" id="2_s75sl"]
+[ext_resource type="Script" path="res://game_scenes/ghost_sprite.gd" id="3_4in5s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyq5w"]
+shader = ExtResource("1_q5fab")
+shader_parameter/shading = true
+shader_parameter/texture_color = Color(0.536554, 0.109049, 0.895493, 1)
+shader_parameter/alpha = 1.0
+
+[node name="ghost_effect" type="Node2D"]
+
+[node name="ghost_sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.551)
+material = SubResource("ShaderMaterial_nyq5w")
+texture = ExtResource("2_s75sl")
+script = ExtResource("3_4in5s")

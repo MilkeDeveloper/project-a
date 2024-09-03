@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://drffed2tq2jus"]
+[gd_scene load_steps=38 format=3 uid="uid://drffed2tq2jus"]
 
 [ext_resource type="Texture2D" uid="uid://drlupoecgqnxe" path="res://assets/sprites/64X128_Idle_Free.png" id="1_8j45f"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_35xu0"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dbvccdfc4s5e1" path="res://game_scenes/input_component.tscn" id="5_vq3vh"]
 [ext_resource type="PackedScene" uid="uid://botwntklhi33c" path="res://game_scenes/animation_component.tscn" id="6_apn52"]
 [ext_resource type="Texture2D" uid="uid://b71n77jnggvq5" path="res://assets/textures/light.png" id="8_07x4o"]
-[ext_resource type="Script" path="res://scripts/player/dash_component.gd" id="8_xhm7m"]
+[ext_resource type="PackedScene" uid="uid://m8yvvkr3bf4c" path="res://game_scenes/dash_component.tscn" id="8_f5wbr"]
 [ext_resource type="PackedScene" uid="uid://dxiasrjikt47l" path="res://ui/components/hp_bars.tscn" id="9_5hble"]
+[ext_resource type="PackedScene" uid="uid://biiqhpu4a8iqn" path="res://game_scenes/ghotst_effect.tscn" id="9_66ca6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yqhx"]
 radius = 15.0
@@ -436,13 +437,11 @@ dash_component = NodePath("../dash_component")
 node = NodePath("..")
 _anim_tree = NodePath("../AnimationTree")
 
-[node name="dash_component" type="Node2D" parent="." node_paths=PackedStringArray("node", "navigation_component")]
-script = ExtResource("8_xhm7m")
+[node name="dash_component" parent="." node_paths=PackedStringArray("node", "navigation_component", "node_texture") instance=ExtResource("8_f5wbr")]
 node = NodePath("..")
 navigation_component = NodePath("../navigation")
-dash_distance = 250.0
-dash_speed = 2500.0
-dash_modifier = 2.0
+ghost_effect = ExtResource("9_66ca6")
+node_texture = NodePath("../sprite")
 
 [node name="hud_player" parent="." node_paths=PackedStringArray("node") instance=ExtResource("9_5hble")]
 node = NodePath("..")
