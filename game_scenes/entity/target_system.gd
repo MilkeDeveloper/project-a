@@ -15,13 +15,14 @@ func _process(delta: float) -> void:
 	if GLobals.targets.size() > 0:
 		array_target = GLobals.targets[0]
 	
-	if node.mouse_over and Input.is_action_just_pressed("mouse_right"):
+	if node.mouse_over and Input.is_action_just_pressed("mouse_left"):
 		_set_target()
 
-	elif not node.mouse_over and Input.is_action_just_pressed("mouse_right"):
+	elif not node.mouse_over and Input.is_action_just_pressed("mouse_left"):
 		_clear_target()
 
 func _set_target():
+	
 	my_target = node
 	GLobals.targets.clear()
 	GLobals.targets.append(my_target)
@@ -30,6 +31,7 @@ func _set_target():
 	await get_tree().create_timer(0.1).timeout
 	if array_target != null:
 		array_target.hud_entity.find_child("HUD_HP").show()
+		GLobals.target = array_target
 	
 func _clear_target():
 	target_sprite.hide()
@@ -39,6 +41,7 @@ func _clear_target():
 	if array_target != null and not array_target.mouse_over:
 		GLobals.targets.clear()
 		array_target = null
+		GLobals.target = null
 		print("limpei")
 		
 func _on_target_area_mouse_entered() -> void:

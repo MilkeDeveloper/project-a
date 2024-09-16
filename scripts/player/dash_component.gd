@@ -8,6 +8,7 @@ extends Node2D
 @export var dash_modifier: float
 @export var ghost_effect:  PackedScene
 @export var node_texture:  Sprite2D
+@export var animation_component:  Node2D
 
 @onready var ghost_timer: Timer = $ghost_timer
 
@@ -28,6 +29,10 @@ func dash():
 
 func set_dash_speed():
 	node.SPEED = dash_speed * dash_modifier
+
+func set_dash_anim():
+	animation_component.state_machine.dispatch(&"to_dash")
+	
 	
 func end_dash():
 	node.SPEED = 650
@@ -43,7 +48,6 @@ func _dash_effect():
 	ghost.vframes = node_texture.vframes
 	ghost.frame = node_texture.frame
 	ghost_instance.global_position = node.global_position
-	
 	
 	ghost_timer.start()
 	

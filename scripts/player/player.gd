@@ -9,14 +9,17 @@ class_name Player
 @export var SPEED = 300.0
 @export var hp: int
 
+func _ready() -> void:
+	$sprite2.hide()
+	pass
 
 func _physics_process(delta):
-	# Chama a função do nó para cehgar os inputs
+	# Chama a função do nó para checar os inputs
 	input_component.get_input(Input)
 	if GLobals.target:
 		#print(GLobals.target.global_position)
 		pass
-
+	
 func _on_destination_reached() -> void:
 	# Se o node cehgou ao destino, define a velocidade para 0 e define o estado para "idle"
 	if dash_component.is_dashing:

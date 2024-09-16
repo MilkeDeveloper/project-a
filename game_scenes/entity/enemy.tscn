@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/entity/enemy.gd" id="1_c1oxh"]
 [ext_resource type="Texture2D" uid="uid://hfl3wyri0liy" path="res://assets/sprites/piglet01.png" id="1_d8qkr"]
 [ext_resource type="PackedScene" uid="uid://bp6lga5t10hc5" path="res://game_scenes/systems/target_area.tscn" id="2_4m157"]
-[ext_resource type="PackedScene" uid="uid://o1hudifiykln" path="res://scripts/player/navigation/navigation_agent_2d.tscn" id="3_jett1"]
+[ext_resource type="PackedScene" uid="uid://f8scmapl2tk6" path="res://scripts/player/navigation/navigation_agent_2d.tscn" id="3_jett1"]
 [ext_resource type="PackedScene" uid="uid://botwntklhi33c" path="res://game_scenes/animation_component.tscn" id="4_1rmbi"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="5_ojcum"]
 [ext_resource type="PackedScene" uid="uid://dxiasrjikt47l" path="res://ui/components/hp_bars.tscn" id="6_ah2fn"]
@@ -351,9 +351,10 @@ position = Vector2(0, 30)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_ojcum")
 
-[node name="navigation" parent="." node_paths=PackedStringArray("node") instance=ExtResource("3_jett1")]
+[node name="navigation" parent="." node_paths=PackedStringArray("node", "anim_component") instance=ExtResource("3_jett1")]
 debug_enabled = false
 node = NodePath("..")
+anim_component = NodePath("../animation_component")
 
 [node name="animation_component" parent="." node_paths=PackedStringArray("node", "_anim_tree") instance=ExtResource("4_1rmbi")]
 node = NodePath("..")
@@ -385,7 +386,6 @@ pivot_offset = Vector2(23.7025, 12.8426)
 text = "piglet"
 
 [node name="hp_bar" parent="hud_entity" index="1"]
-layout_mode = 0
 offset_left = -50.0
 offset_top = -103.0
 offset_right = 50.0

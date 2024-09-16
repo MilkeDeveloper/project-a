@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nyq5w"]
 shader = ExtResource("1_q5fab")
 shader_parameter/shading = true
-shader_parameter/texture_color = Color(0.536554, 0.109049, 0.895493, 1)
+shader_parameter/texture_color = Color(0.019425, 0.000533499, 0.0586471, 1)
 shader_parameter/alpha = 1.0
 
 [node name="ghost_effect" type="Node2D"]

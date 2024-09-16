@@ -19,9 +19,9 @@ void fragment() {
     float mask = (1.0 - smoothstep(radius - feather, radius, length(dist_center))) * smoothstep(radius - width - feather, radius - width, length(dist_center));
     vec2 offset = normalize(dist_center) * strength * mask;
     vec2 biased_st = scaled_st - offset;
-    
+
     vec2 abber_vec = offset * aberration * mask;
-    
+
     vec2 final_st = st * (1.0 - mask) + biased_st * mask;
 
     vec4 red = texture(SCREEN_TEXTURE, final_st + abber_vec);
