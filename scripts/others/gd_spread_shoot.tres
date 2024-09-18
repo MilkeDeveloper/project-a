@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GDSkilLData" load_steps=3 format=3 uid="uid://bsew48tfej13r"]
+
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_cgvw4"]
+[ext_resource type="PackedScene" uid="uid://ltjdh404tmpc" path="res://game_scenes/skills/disparo_espalhado.tscn" id="2_snemx"]
+
+[resource]
+script = ExtResource("1_cgvw4")
+id = 1
+skill_name = "Disparo Espalhado"
+skill_description = "Skill forte"
+mana_cost = 10
+cooldown = 1.8
+damage = 25
+skill_effect = ExtResource("2_snemx")

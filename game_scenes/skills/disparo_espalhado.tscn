@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ltjdh404tmpc"]
+
+[ext_resource type="Script" path="res://scripts/player/projectile_compoenent.gd" id="1_rl2pr"]
+[ext_resource type="PackedScene" uid="uid://c364u20x2uojc" path="res://game_scenes/projectile.tscn" id="3_vntvr"]
+
+[node name="projectile_component" type="Node2D" node_paths=PackedStringArray("SkillColdown")]
+script = ExtResource("1_rl2pr")
+Projectile = ExtResource("3_vntvr")
+SkillColdown = NodePath("skill_coldown")
+
+[node name="skill_coldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="skill_coldown" to="." method="_on_skill_coldown_timeout"]

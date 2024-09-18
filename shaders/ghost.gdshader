@@ -13,7 +13,7 @@ void fragment() {
 	} else {
 		COLOR = color;
 	}
-	
+
 }
 
 //void light() {

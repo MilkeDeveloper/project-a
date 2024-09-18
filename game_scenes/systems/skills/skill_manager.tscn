@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://4igtmvdmdtyf"]
+
+[ext_resource type="Script" path="res://core/skills/SkillManager.cs" id="1_n6cgg"]
+[ext_resource type="Resource" uid="uid://b3k42oek75dfx" path="res://scripts/others/disparo_espalhado_grimoire.tres" id="2_f0mjt"]
+
+[node name="SkillManager" type="Node"]
+script = ExtResource("1_n6cgg")
+acquired_grimoires = Array[Resource]([ExtResource("2_f0mjt")])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cxratcdwl604u"]
+
+[ext_resource type="Script" path="res://core/data/WeaponData.cs" id="1_0a7np"]
+
+[resource]
+script = ExtResource("1_0a7np")
+weapon_name = "Basic Crossbow"
+weapon_description = "Uma arma ágil de médio alcance."
+damage = 15
+range = 300
+attack_speed = 0.7
+weapon_type = "Crossbow"
+melee = false
+ranged = true
+is_shield = false

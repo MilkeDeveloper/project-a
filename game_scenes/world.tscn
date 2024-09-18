@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://l200m2x0yagx"]
+[gd_scene load_steps=65 format=4 uid="uid://l200m2x0yagx"]
 
 [ext_resource type="Texture2D" uid="uid://dqa75lqstpb0m" path="res://assets/tilesets/map2.png" id="2_7o03i"]
 [ext_resource type="Texture2D" uid="uid://c0ltjbh58tjd8" path="res://assets/tilesets/trees_others-removebg-preview.png" id="3_gcx2y"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://ds00wru0t51t0" path="res://VFX/particles/leafs.png" id="7_vbqgv"]
 [ext_resource type="Script" path="res://scripts/others/tree.gd" id="7_wgmcq"]
 [ext_resource type="PackedScene" uid="uid://drffed2tq2jus" path="res://game_scenes/player.tscn" id="8_rpp4l"]
-[ext_resource type="Texture2D" uid="uid://dxwsilp1bxe28" path="res://assets/sprites/Sprite-0003.png" id="9_do0aa"]
 [ext_resource type="PackedScene" uid="uid://cdvbhhh52rcly" path="res://game_scenes/entity/enemy.tscn" id="10_rxba7"]
 [ext_resource type="Texture2D" uid="uid://ph4ghgxattpv" path="res://assets/sprites/image1.png" id="11_2mp4m"]
 [ext_resource type="Script" path="res://game_scenes/systems/teste.gd" id="12_bipia"]
@@ -6984,9 +6983,6 @@ navigation_polygon = SubResource("NavigationPolygon_ki0lx")
 [node name="Player" parent="." instance=ExtResource("8_rpp4l")]
 z_as_relative = true
 position = Vector2(1733, 129)
-
-[node name="sprite" parent="Player" index="2"]
-texture = ExtResource("9_do0aa")
 
 [node name="AnimationTree" parent="Player" index="5"]
 parameters/dash/directions2/blend_position = Vector2(0, 0)

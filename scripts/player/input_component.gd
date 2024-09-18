@@ -7,7 +7,9 @@ extends Node2D
 @export var anim_component: Node2D
 @export var cam: Camera2D
 @export var node: CharacterBody2D
+@export var skill_mananager: Node
 
+var can_shoot: bool = true
 
 # Checa os inputs do player
 func get_input(event):
@@ -17,9 +19,13 @@ func get_input(event):
 
 	if event.is_action_just_pressed("dash"):
 		dash_component.dash()
-
-	if projectile_component.can_shoot and GLobals.target != null and event.is_action_just_pressed("shoot"):
-		projectile_component.shoot_spreading_projectiles(GLobals.target)
+	
+	
+	if GLobals.target != null and event.is_action_just_pressed("shoot"):
+		skill_mananager.activate_skill("Disparo Espalhado", node, anim_component, GLobals.target)
+		print("A skill precisa de um alvo")
+	
+		#projectile_component.use_skill(GLobals.target)
 
 	if event.is_action_just_pressed("skill"):
 		cam.apply_shake(0.3, 1.5)

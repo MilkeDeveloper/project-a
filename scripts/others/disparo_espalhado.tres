@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://vjmt650uyaxy"]
+
+[ext_resource type="Script" path="res://core/data/SkillData.cs" id="1_jwwi6"]
+[ext_resource type="PackedScene" uid="uid://ltjdh404tmpc" path="res://game_scenes/skills/disparo_espalhado.tscn" id="2_yin4b"]
+
+[resource]
+script = ExtResource("1_jwwi6")
+id = 1
+skill_name = "Disparo Espalhado"
+skill_description = "Uma skill poderosa"
+mana_cost = 10
+cooldown = 3.0
+damage = 15
+skill_effect = ExtResource("2_yin4b")
