@@ -15,6 +15,7 @@ extends Node2D
 var is_dashing: bool = false
 var ghost_instance
 var ghost
+var final_dash_speed: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -28,7 +29,7 @@ func dash():
 	navigation_component.set_destination(target_position)
 
 func set_dash_speed():
-	node.SPEED = dash_speed * dash_modifier
+	final_dash_speed = dash_speed * dash_modifier
 
 func set_dash_anim():
 	animation_component.state_machine.dispatch(&"to_dash")

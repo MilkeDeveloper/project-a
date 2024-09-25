@@ -1,14 +1,80 @@
-[gd_scene load_steps=3 format=3 uid="uid://c364u20x2uojc"]
+[gd_scene load_steps=12 format=3 uid="uid://c364u20x2uojc"]
 
 [ext_resource type="Script" path="res://assets/projectiles/Projectile.gd" id="1_emjut"]
 [ext_resource type="Texture2D" uid="uid://crs4cut67td74" path="res://assets/projectiles/arrow2.png" id="2_jmjce"]
+[ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="3_eiai5"]
+[ext_resource type="AudioStream" uid="uid://diup1hfgrm6d0" path="res://SFX/shoot_arrow.wav" id="4_avvy1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqu0d"]
+radius = 5.0
+height = 44.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a6bix"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_rfohb"]
+colors = PackedColorArray(0.151, 8.648, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pyn1a"]
+gradient = SubResource("Gradient_rfohb")
+
+[sub_resource type="Curve" id="Curve_4xy2w"]
+_data = [Vector2(0.896396, 0.032967), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5pt43"]
+curve = SubResource("Curve_4xy2w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v71wy"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 0.38, 0)
+direction = Vector3(-1, 0, 0)
+spread = 0.36
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 100.0
+scale_min = 0.2
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_5pt43")
+color = Color(0.448103, 0.995828, 0.899393, 1)
+color_ramp = SubResource("GradientTexture1D_pyn1a")
 
 [node name="Projectile" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 8
 script = ExtResource("1_emjut")
 
 [node name="colisor" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jqu0d")
 
 [node name="arrow" type="Sprite2D" parent="."]
 position = Vector2(0, -9.53674e-07)
 scale = Vector2(0.609375, 0.65625)
 texture = ExtResource("2_jmjce")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_a6bix")
+position = Vector2(17, 0)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_v71wy")
+texture = ExtResource("3_eiai5")
+lifetime = 0.5
+speed_scale = 2.0
+fixed_fps = 60
+
+[node name="PointLight2D" type="PointLight2D" parent="GPUParticles2D"]
+scale = Vector2(1, 0.3)
+color = Color(0.57561, 1, 0.648133, 1)
+energy = 0.4
+texture = ExtResource("3_eiai5")
+texture_scale = 1.01
+
+[node name="shoot_arrow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_avvy1")
+volume_db = -5.163
+max_distance = 500.0
+max_polyphony = 20
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

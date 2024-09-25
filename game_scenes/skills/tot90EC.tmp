@@ -1,0 +1,128 @@
+[gd_scene load_steps=19 format=3 uid="uid://cuw1ymtd6iocu"]
+
+[ext_resource type="Script" path="res://scripts/skills/totem.gd" id="1_bfx4c"]
+[ext_resource type="Texture2D" uid="uid://cgqauibxomnmx" path="res://assets/misc/totem.png" id="2_0kkw6"]
+[ext_resource type="PackedScene" uid="uid://bglf2lqqth734" path="res://game_scenes/skills/corrent_root.tscn" id="2_022s1"]
+[ext_resource type="Shader" path="res://shaders/achatar.gdshader" id="3_ciu6w"]
+[ext_resource type="Texture2D" uid="uid://ciosdkeo161s" path="res://VFX/Color/energyball/energyball_10.png" id="3_melay"]
+[ext_resource type="Texture2D" uid="uid://mhvg558t6cdg" path="res://VFX/Complex/smoke/smoke2_4.png" id="4_dk5tp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qeuv4"]
+radius = 200.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jpfgu"]
+shader = ExtResource("3_ciu6w")
+shader_parameter/rotation_speed = 6.64
+shader_parameter/flatten_factor = 0.49
+shader_parameter/color_ramp = Color(0.00158166, 7.78835e-07, 0.00310558, 1)
+shader_parameter/alpha = 0.9
+
+[sub_resource type="Gradient" id="Gradient_rwoko"]
+colors = PackedColorArray(0, 0, 0, 1, 0.670391, 0.283128, 0.971848, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bxlid"]
+gradient = SubResource("Gradient_rwoko")
+
+[sub_resource type="Curve" id="Curve_pjxta"]
+_data = [Vector2(0.472973, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a2hhi"]
+curve = SubResource("Curve_pjxta")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1aogp"]
+particle_flag_disable_z = true
+radial_velocity_min = -775.19
+radial_velocity_max = -527.13
+gravity = Vector3(0, 98, 0)
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_a2hhi")
+color_ramp = SubResource("GradientTexture1D_bxlid")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k0e33"]
+radius = 275.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j1y6h"]
+
+[sub_resource type="Gradient" id="Gradient_4dre4"]
+offsets = PackedFloat32Array(0, 0.360825, 0.871134)
+colors = PackedColorArray(0, 0, 0, 0, 0.442, 0.003, 0.87, 0.616, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_24ugy"]
+gradient = SubResource("Gradient_4dre4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tw5da"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+flatness = 1.0
+initial_velocity_max = 220.93
+gravity = Vector3(0, -50, 0)
+scale_min = 0.02
+scale_max = 0.1
+color_ramp = SubResource("GradientTexture1D_24ugy")
+turbulence_enabled = true
+turbulence_noise_scale = 3.427
+
+[node name="Totem" type="Area2D"]
+scale = Vector2(1, 0.84)
+collision_mask = 32
+script = ExtResource("1_bfx4c")
+max_enemies = 8
+pull_radius = 50
+corrent_scene = ExtResource("2_022s1")
+
+[node name="colision" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(1, 0.88)
+shape = SubResource("CircleShape2D_qeuv4")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+material = SubResource("ShaderMaterial_jpfgu")
+position = Vector2(0, 79.7619)
+scale = Vector2(1, 1.20959)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_1aogp")
+texture = ExtResource("3_melay")
+fixed_fps = 60
+
+[node name="Totem" type="Sprite2D" parent="."]
+position = Vector2(0, 26)
+scale = Vector2(0.7, 0.652381)
+texture = ExtResource("2_0kkw6")
+
+[node name="TotemDurationTimer" type="Timer" parent="."]
+
+[node name="DamageTimer" type="Timer" parent="."]
+
+[node name="ExplosionArea" type="Area2D" parent="."]
+visible = false
+collision_mask = 16
+
+[node name="explosion_colision" type="CollisionShape2D" parent="ExplosionArea"]
+scale = Vector2(1, 0.880001)
+shape = SubResource("CircleShape2D_k0e33")
+debug_color = Color(0.946036, 5.87195e-06, 0.589682, 0.42)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.541)
+material = SubResource("CanvasItemMaterial_j1y6h")
+position = Vector2(0, 58)
+scale = Vector2(-0.765579, 1.19299)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_tw5da")
+texture = ExtResource("4_dk5tp")
+local_coords = true
+
+[node name="Energyball10" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-467, 2.38095)
+scale = Vector2(1, 0.857143)
+texture = ExtResource("3_melay")
+
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="TotemDurationTimer" to="." method="_on_TotemDurationTimer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]

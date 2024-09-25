@@ -11,20 +11,26 @@ class_name Player
 
 func _ready() -> void:
 	$sprite2.hide()
-	pass
+	GLobals.connect("cam_shake", _on_cam_shake)
 
 func _physics_process(delta):
 	# Chama a função do nó para checar os inputs
 	input_component.get_input(Input)
-	if GLobals.target:
-		#print(GLobals.target.global_position)
-		pass
+	if not GLobals.target:
+		get_node("basic_attack").is_attacking = false
+		SPEED = 650
+		return
 	
 func _on_destination_reached() -> void:
 	# Se o node cehgou ao destino, define a velocidade para 0 e define o estado para "idle"
 	if dash_component.is_dashing:
 		dash_component.end_dash()
-		
-		
+
 	velocity = Vector2.ZERO
-	animation_component.state_machine.dispatch(&"to_idle")
+	#animation_component.state_machine.dispatch(&"to_idle")
+	
+
+func _on_cam_shake(intensity, duration):
+	$cam.apply_shake(duration, intensity)
+	
+	

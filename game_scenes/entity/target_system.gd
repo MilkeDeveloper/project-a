@@ -21,8 +21,8 @@ func _process(delta: float) -> void:
 	elif not node.mouse_over and Input.is_action_just_pressed("mouse_left"):
 		_clear_target()
 
+# Mostra a hud do imigo clicado
 func _set_target():
-	
 	my_target = node
 	GLobals.targets.clear()
 	GLobals.targets.append(my_target)
@@ -32,7 +32,27 @@ func _set_target():
 	if array_target != null:
 		array_target.hud_entity.find_child("HUD_HP").show()
 		GLobals.target = array_target
-	
+
+# Mostra a hud do alvo atual
+func set_hud_target():
+	# Se o alvo não for nulo, itera sobre os inimigos no grupo para saber qual é o algo atual
+	# Limpa a hud dos inimigos restantes garantindo que apenas a hud do alvo atual seja mostrada
+	if GLobals.target != null: 
+		for enemy in get_tree().get_nodes_in_group("entity"):
+			# Se o inimigo no grupo não for o alvo atual, chama a função para limpar os inimigos
+			if  enemy != GLobals.target:
+				_clear_targets(enemy)
+		await get_tree().create_timer(0.1).timeout
+		if GLobals.target != null: # Se o alvo não for nulo, mostre a hud dele
+			GLobals.target.hud_entity.find_child("HUD_HP").show()
+			GLobals.target.get_node("target_area").target_sprite.show()
+
+# Limpa a hud dos inimigos que não são o alvo atual
+func _clear_targets(target_to_clear):
+	target_to_clear.hud_entity.find_child("HUD_HP").hide()
+	target_to_clear.get_node("target_area").target_sprite.hide()
+
+# Limpa a hud dos inimigos
 func _clear_target():
 	target_sprite.hide()
 	hud_hp.hide()
@@ -42,11 +62,11 @@ func _clear_target():
 		GLobals.targets.clear()
 		array_target = null
 		GLobals.target = null
-		print("limpei")
+		
 		
 func _on_target_area_mouse_entered() -> void:
 	print(GLobals.targets)
-	print(array_target)
+	
 	if get_parent() == array_target:
 		array_target.hud_entity.show()
 		node.mouse_over = true
@@ -55,7 +75,7 @@ func _on_target_area_mouse_entered() -> void:
 		node.mouse_over = true
 		
 	node.mouse_over = true
-	print(node.targeted)
+	
 	
 func _on_target_area_mouse_exited() -> void:
 	if get_parent() == array_target:

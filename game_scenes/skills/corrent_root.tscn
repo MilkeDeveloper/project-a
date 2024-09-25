@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://bglf2lqqth734"]
+
+[ext_resource type="Script" path="res://scripts/skills/corrent.gd" id="1_4s6mi"]
+[ext_resource type="Texture2D" uid="uid://qfh7k37rdaop" path="res://assets/misc/corrent.png" id="2_8hp3e"]
+[ext_resource type="Texture2D" uid="uid://mhvg558t6cdg" path="res://VFX/Complex/smoke/smoke2_4.png" id="3_mqwco"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6puy0"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_7y06q"]
+offsets = PackedFloat32Array(0.423423, 1)
+colors = PackedColorArray(0.47451, 0.2, 0.768627, 1, 1, 1, 1, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k86w8"]
+
+[sub_resource type="Gradient" id="Gradient_b5la2"]
+offsets = PackedFloat32Array(0, 0.360825, 0.871134)
+colors = PackedColorArray(0, 0, 0, 0, 0.442, 0.003, 0.87, 0.616, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_twl13"]
+gradient = SubResource("Gradient_b5la2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ge8oc"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+flatness = 1.0
+initial_velocity_max = 220.93
+gravity = Vector3(0, -50, 0)
+scale_min = 0.02
+scale_max = 0.1
+color_ramp = SubResource("GradientTexture1D_twl13")
+turbulence_enabled = true
+turbulence_noise_scale = 3.427
+
+[node name="corrent_root" type="Node2D"]
+script = ExtResource("1_4s6mi")
+
+[node name="corrente" type="Line2D" parent="."]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_6puy0")
+scale = Vector2(1.02429, 1.04583)
+width = 20.0
+gradient = SubResource("Gradient_7y06q")
+texture = ExtResource("2_8hp3e")
+texture_mode = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="corrente"]
+visible = false
+modulate = Color(1, 1, 1, 0.541)
+material = SubResource("CanvasItemMaterial_k86w8")
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_ge8oc")
+texture = ExtResource("3_mqwco")
+local_coords = true

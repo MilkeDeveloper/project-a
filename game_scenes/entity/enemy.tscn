@@ -1,17 +1,68 @@
-[gd_scene load_steps=33 format=3 uid="uid://cdvbhhh52rcly"]
+[gd_scene load_steps=55 format=3 uid="uid://cdvbhhh52rcly"]
 
 [ext_resource type="Script" path="res://scripts/entity/enemy.gd" id="1_c1oxh"]
 [ext_resource type="Texture2D" uid="uid://hfl3wyri0liy" path="res://assets/sprites/piglet01.png" id="1_d8qkr"]
 [ext_resource type="PackedScene" uid="uid://bp6lga5t10hc5" path="res://game_scenes/systems/target_area.tscn" id="2_4m157"]
+[ext_resource type="PackedScene" uid="uid://beleyacui46l8" path="res://game_scenes/systems/dmg_popup.tscn" id="2_ve010"]
+[ext_resource type="PackedScene" uid="uid://ckb82lnqnsxv" path="res://game_scenes/magic_hit.tscn" id="3_iqlnw"]
 [ext_resource type="PackedScene" uid="uid://f8scmapl2tk6" path="res://scripts/player/navigation/navigation_agent_2d.tscn" id="3_jett1"]
 [ext_resource type="PackedScene" uid="uid://botwntklhi33c" path="res://game_scenes/animation_component.tscn" id="4_1rmbi"]
+[ext_resource type="Shader" path="res://shaders/ghost.gdshader" id="5_madwu"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="5_ojcum"]
 [ext_resource type="PackedScene" uid="uid://dxiasrjikt47l" path="res://ui/components/hp_bars.tscn" id="6_ah2fn"]
 [ext_resource type="PackedScene" uid="uid://dv7xd2bi0m2th" path="res://game_scenes/entity/movement.tscn" id="7_ylgb4"]
 [ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="9_2ocw4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mca3"]
-radius = 32.0
+radius = 17.2627
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hxii1"]
+animation = &"hurt _BotLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kyqto"]
+animation = &"hurt_TopRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1tsd7"]
+animation = &"hurt_BotRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c6edt"]
+animation = &"hurt _BotLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t5w8r"]
+animation = &"hurt _BotLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6xpjh"]
+animation = &"hurt_TopLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_24b2u"]
+animation = &"hurt_BotRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vcdh5"]
+animation = &"hurt_TopRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jqa07"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_hxii1")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_kyqto")
+blend_point_1/pos = Vector2(0, -0.9)
+blend_point_2/node = SubResource("AnimationNodeAnimation_1tsd7")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_c6edt")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_t5w8r")
+blend_point_4/pos = Vector2(-0.4, 0.6)
+blend_point_5/node = SubResource("AnimationNodeAnimation_6xpjh")
+blend_point_5/pos = Vector2(-0.4, -0.5)
+blend_point_6/node = SubResource("AnimationNodeAnimation_24b2u")
+blend_point_6/pos = Vector2(0.4, 0.6)
+blend_point_7/node = SubResource("AnimationNodeAnimation_vcdh5")
+blend_point_7/pos = Vector2(0.4, -0.5)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_n5u6d"]
+nodes/hurt_direction/node = SubResource("AnimationNodeBlendSpace2D_jqa07")
+nodes/hurt_direction/position = Vector2(240, 80)
+nodes/output/position = Vector2(600, 100)
+node_connections = [&"output", 0, &"hurt_direction"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7jv04"]
 animation = &"idle_S"
@@ -83,13 +134,32 @@ advance_condition = &"is_running"
 advance_mode = 2
 advance_condition = &"idle"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kujk7"]
+advance_mode = 2
+advance_condition = &"hurted"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lks8r"]
+advance_mode = 2
+advance_condition = &"hurted"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_utbvb"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c4skw"]
+advance_mode = 2
+advance_condition = &"is_running"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gjk74"]
 states/Start/position = Vector2(231, 139)
+states/hurt/node = SubResource("AnimationNodeBlendTree_n5u6d")
+states/hurt/position = Vector2(577, 160)
 states/idle/node = SubResource("AnimationNodeBlendTree_m3wec")
-states/idle/position = Vector2(456, 58)
+states/idle/position = Vector2(447, 58)
 states/run/node = SubResource("AnimationNodeBlendTree_msold")
 states/run/position = Vector2(692, 58)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_j7syl"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_36j3l"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_dhop4")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_j7syl"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_36j3l"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_dhop4"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_kujk7"), "run", "hurt", SubResource("AnimationNodeStateMachineTransition_lks8r"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_utbvb"), "hurt", "run", SubResource("AnimationNodeStateMachineTransition_c4skw")]
 
 [sub_resource type="Animation" id="Animation_dnceg"]
 length = 0.001
@@ -128,6 +198,356 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [28]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite:material")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite:material:shader_parameter/shading")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sprite:material:shader_parameter/alpha")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.7]
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lebp"]
+shader = ExtResource("5_madwu")
+shader_parameter/shading = true
+shader_parameter/texture_color = Color(1, 1, 1, 1)
+shader_parameter/alpha = 0.7
+
+[sub_resource type="Animation" id="Animation_evchk"]
+resource_name = "hurt _BotLeft"
+length = 0.187506
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_d8qkr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [44, 44, 44]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite:material")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_8lebp")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite:material:shader_parameter/shading")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sprite:material:shader_parameter/alpha")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.7, " 0.7", 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0mtxs"]
+resource_name = "hurt_BotRight"
+length = 0.187506
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_d8qkr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [44, 44, 44]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite:material")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_8lebp")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite:material:shader_parameter/shading")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sprite:material:shader_parameter/alpha")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.7, " 0.7", 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qfb0s"]
+resource_name = "hurt_TopLeft"
+length = 0.187506
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_d8qkr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [45]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite:material")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_8lebp")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite:material:shader_parameter/shading")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sprite:material:shader_parameter/alpha")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.7, " 0.7", 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ydfch"]
+resource_name = "hurt_TopRight"
+length = 0.187506
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_d8qkr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [45]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite:material")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_8lebp")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite:material:shader_parameter/shading")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sprite:material:shader_parameter/alpha")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.7, " 0.7", 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_tcejx"]
@@ -301,6 +721,10 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3wjj"]
 _data = {
 "RESET": SubResource("Animation_dnceg"),
+"hurt _BotLeft": SubResource("Animation_evchk"),
+"hurt_BotRight": SubResource("Animation_0mtxs"),
+"hurt_TopLeft": SubResource("Animation_qfb0s"),
+"hurt_TopRight": SubResource("Animation_ydfch"),
 "idle_L": SubResource("Animation_tcejx"),
 "idle_N": SubResource("Animation_ddebb"),
 "idle_R": SubResource("Animation_6h7eb"),
@@ -308,18 +732,21 @@ _data = {
 }
 
 [node name="enemy" type="CharacterBody2D" groups=["entity"]]
-collision_mask = 0
+z_index = 1
+collision_layer = 57
+collision_mask = 8
 input_pickable = true
 script = ExtResource("1_c1oxh")
 _name = "Piglet"
-hp = 425
+max_hp = 100000
 level = 25
+popup_instance = ExtResource("2_ve010")
+dmg_effect = ExtResource("3_iqlnw")
 
 [node name="target_area" parent="." node_paths=PackedStringArray("node") instance=ExtResource("2_4m157")]
 node = NodePath("..")
 
 [node name="colision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_5mca3")
 
@@ -334,8 +761,10 @@ frame = 28
 [node name="anim_tree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_gjk74")
 anim_player = NodePath("../anim")
+parameters/conditions/hurted = false
 parameters/conditions/idle = false
 parameters/conditions/is_running = false
+parameters/hurt/hurt_direction/blend_position = Vector2(0.266442, 0.306122)
 parameters/idle/direction/blend_position = Vector2(-0.00674534, -0.584071)
 parameters/run/directions/blend_position = Vector2(0, 0.115044)
 

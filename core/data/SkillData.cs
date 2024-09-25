@@ -15,6 +15,10 @@ public partial class SkillData : Resource
     public float cooldown;
     [Export]
     public int damage;
+    [Export] 
+    public bool is_aim_skill;
     [Export]
     public PackedScene skill_effect;
+    public float cooldown_left;
+
 }

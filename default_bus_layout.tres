@@ -1,0 +1,23 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cq2apgoso1ho6"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_scxa6"]
+resource_name = "Compressor"
+threshold = -50.6
+gain = 10.1
+mix = 0.5
+
+[sub_resource type="AudioEffectHardLimiter" id="AudioEffectHardLimiter_fpdth"]
+resource_name = "HardLimiter"
+
+[resource]
+bus/0/volume_db = -0.130497
+bus/1/name = &"SFX"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectCompressor_scxa6")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectHardLimiter_fpdth")
+bus/1/effect/1/enabled = false

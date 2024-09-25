@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4w1mreo76kwe"]
+
+[ext_resource type="Resource" uid="uid://br8a3qgwe0nab" path="res://resources/skills/soul_chain.tres" id="1_0i31u"]
+[ext_resource type="Script" path="res://core/data/GrimoireData.cs" id="2_4gcas"]
+
+[resource]
+script = ExtResource("2_4gcas")
+grimoire_name = "Grimoire of Despair"
+grimoire_description = "Um grimorio raro que emana uma energia sombria "
+grimoire_skill = ExtResource("1_0i31u")
+required_weapon_type = PackedStringArray("Staff")
+is_shield = false

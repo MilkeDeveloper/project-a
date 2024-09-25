@@ -1,0 +1,156 @@
+[gd_scene load_steps=17 format=3 uid="uid://ckb82lnqnsxv"]
+
+[ext_resource type="Texture2D" uid="uid://dinhbanhcgaj6" path="res://VFX/effects/9.png" id="1_n3ykp"]
+[ext_resource type="Script" path="res://scripts/others/magic_hit.gd" id="2_m71j0"]
+[ext_resource type="Texture2D" uid="uid://ddbe4g52amggs" path="res://VFX/Color/burst/color_burst_4.png" id="3_mjmww"]
+[ext_resource type="AudioStream" uid="uid://ba2bver8sc0ll" path="res://SFX/hit_arrow.wav" id="4_kf10p"]
+[ext_resource type="AudioStream" uid="uid://cmmx34y87bcay" path="res://SFX/hit_arrow3.wav" id="5_dr3cb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_clbon"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_ulsep"]
+colors = PackedColorArray(0.970951, 0.957722, 0.847682, 1, 1, 0.8, 0.5, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1745w"]
+gradient = SubResource("Gradient_ulsep")
+
+[sub_resource type="Curve" id="Curve_yaxvk"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_pjroa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_kcmyg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_mpy1a"]
+curve_x = SubResource("Curve_yaxvk")
+curve_y = SubResource("Curve_pjroa")
+curve_z = SubResource("Curve_kcmyg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_meg2b"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, -50, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_max = 42.64
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.2
+scale_curve = SubResource("CurveXYZTexture_mpy1a")
+color_ramp = SubResource("GradientTexture1D_1745w")
+
+[sub_resource type="Animation" id="Animation_c7w6h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("burst:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gcvk4"]
+resource_name = "magic_hit"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("burst:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.1, 0.1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_motvg"]
+_data = {
+"RESET": SubResource("Animation_c7w6h"),
+"magic_hit": SubResource("Animation_gcvk4")
+}
+
+[node name="magic_hit" type="GPUParticles2D"]
+z_index = 1
+material = SubResource("CanvasItemMaterial_clbon")
+position = Vector2(0, 1.45322e-06)
+scale = Vector2(1.64103, 1.52381)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_meg2b")
+texture = ExtResource("1_n3ykp")
+lifetime = 0.5
+preprocess = 10.0
+speed_scale = 2.8
+explosiveness = 1.0
+fixed_fps = 60
+script = ExtResource("2_m71j0")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_motvg")
+}
+
+[node name="burst" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.816)
+position = Vector2(0, -3.28125)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_mjmww")
+
+[node name="hit_arrow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kf10p")
+volume_db = 2.95
+max_distance = 500.0
+max_polyphony = 20
+
+[node name="hit_arrow2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 0.656249)
+stream = ExtResource("5_dr3cb")
+volume_db = -0.738
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="SFXTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SFXTimer" to="." method="_on_sfx_timer_timeout"]

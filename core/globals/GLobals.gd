@@ -1,6 +1,9 @@
 extends Node
 
 signal target_found(node)
+signal on_click
+signal cam_shake(intesity, duration)
+signal start_anim
 
 var target: Node2D = null
 var mouse_over: bool = false

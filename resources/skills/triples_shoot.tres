@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://caxg1teeawlse"]
+
+[ext_resource type="Script" path="res://core/data/SkillData.cs" id="1_7w5ah"]
+[ext_resource type="PackedScene" uid="uid://yaj61l6t65v1" path="res://game_scenes/skills/triple_shoot.tscn" id="2_l0kuk"]
+
+[resource]
+script = ExtResource("1_7w5ah")
+id = 2
+skill_name = "Triple Shoot"
+skill_description = "Dispara uma rajada de flechas no local marcado"
+mana_cost = 15
+cooldown = 2.5
+damage = 45
+is_aim_skill = true
+skill_effect = ExtResource("2_l0kuk")

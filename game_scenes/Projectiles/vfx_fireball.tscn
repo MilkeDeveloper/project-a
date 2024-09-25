@@ -1,0 +1,190 @@
+[gd_scene load_steps=29 format=3 uid="uid://pr8claufjmgg"]
+
+[ext_resource type="Shader" uid="uid://c4qtynpca43ib" path="res://shaders/firebal_shader.tres" id="1_nyeao"]
+[ext_resource type="Script" path="res://scripts/Projectiles/fireball_projectile.gd" id="1_wu4rg"]
+[ext_resource type="Texture2D" uid="uid://l6qh58x0rc51" path="res://assets/textures/NoiseTextures/Milky/Milky_07-512x512.png" id="2_6decw"]
+[ext_resource type="Texture2D" uid="uid://dxrh7tm3a5ehw" path="res://assets/textures/head.png" id="2_mrvxa"]
+[ext_resource type="Texture2D" uid="uid://dccomjx72hqfw" path="res://VFX/effects/energyball_4.png" id="4_83akh"]
+[ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="7_mta6i"]
+[ext_resource type="PackedScene" uid="uid://c74rasfa8qw8u" path="res://game_scenes/Projectiles/vfx_fireball_explosion.tscn" id="7_qjrcw"]
+[ext_resource type="Texture2D" uid="uid://d3vlxiga07ha4" path="res://VFX/effects/50.png" id="7_vidji"]
+[ext_resource type="Script" path="res://game_scenes/Projectiles/animate_fireball.gd" id="9_ahhgo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw506"]
+height = 21.9994
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hsjxb"]
+shader = ExtResource("1_nyeao")
+shader_parameter/ColorParameter = Color(1, 0.698039, 0.211765, 1)
+shader_parameter/Vector2Parameter = Vector2(-0.385, 1.5)
+shader_parameter/Texture2DParameter = ExtResource("2_6decw")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ylwr0"]
+radius = 15.828
+height = 50.634
+
+[sub_resource type="Curve" id="Curve_mbdku"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rchif"]
+curve = SubResource("Curve_mbdku")
+
+[sub_resource type="Curve" id="Curve_rwftu"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_icyks"]
+curve = SubResource("Curve_rwftu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oxx2w"]
+particle_flag_disable_z = true
+spread = 57.6
+angular_velocity_min = 413.03
+angular_velocity_max = 413.03
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_rchif")
+scale_over_velocity_curve = SubResource("CurveTexture_icyks")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gfhy4"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_6xjha"]
+offsets = PackedFloat32Array(0, 0.00515464, 0.0876289, 0.159794, 0.278351)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 0.266667, 0.701961, 1, 0.458824, 0.282353, 1, 0.945098, 0.117647, 0, 0.619608, 0, 0, 0, 0.254902)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lvjw1"]
+gradient = SubResource("Gradient_6xjha")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_iirgl"]
+_data = [Vector2(0, 0.89011), 0.0, 0.0, 0, 0, Vector2(0.581081, 0.747253), -0.659341, -0.659341, 0, 0, Vector2(1, 0.43956), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_jfsjo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6svog"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_o3qps"]
+curve_x = SubResource("Curve_iirgl")
+curve_y = SubResource("Curve_jfsjo")
+curve_z = SubResource("Curve_6svog")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p62c2"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-1, 0, 0)
+spread = 3.0
+flatness = 1.0
+initial_velocity_min = 310.08
+initial_velocity_max = 465.12
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveXYZTexture_o3qps")
+color = Color(1, 1, 1, 0.113725)
+color_ramp = SubResource("GradientTexture1D_lvjw1")
+
+[sub_resource type="Animation" id="Animation_54y7n"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_3m8oc"]
+resource_name = "fire_ball_anim"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0666667, -82.5, -0.5, -0.0666667, -84, 0.25, 0),
+"times": PackedFloat32Array(0, 0.433333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnxya"]
+_data = {
+"RESET": SubResource("Animation_54y7n"),
+"fire_ball_anim": SubResource("Animation_3m8oc")
+}
+
+[node name="VFX Fireball" type="Area2D"]
+position = Vector2(85, 0)
+scale = Vector2(2, 2)
+script = ExtResource("1_wu4rg")
+explosion_scene = ExtResource("7_qjrcw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(14, 0)
+rotation = 1.57023
+shape = SubResource("CapsuleShape2D_uw506")
+
+[node name="fireball" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_hsjxb")
+rotation = 1.57044
+scale = Vector2(0.598528, 1.00065)
+mesh = SubResource("CapsuleMesh_ylwr0")
+texture = ExtResource("2_mrvxa")
+
+[node name="ball" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.231373)
+position = Vector2(16, 0)
+scale = Vector2(0.05, 0.05)
+process_material = SubResource("ParticleProcessMaterial_oxx2w")
+texture = ExtResource("4_83akh")
+local_coords = true
+
+[node name="PointLight2D" type="PointLight2D" parent="ball"]
+position = Vector2(-154.5, 0)
+scale = Vector2(1.28558, 0.7)
+color = Color(1, 0.517647, 0, 0.329412)
+energy = 2.75
+range_z_max = 2000
+texture = ExtResource("7_mta6i")
+texture_scale = 3.64
+
+[node name="Trail" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_gfhy4")
+position = Vector2(18, 0)
+scale = Vector2(0.05, 0.05)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_p62c2")
+texture = ExtResource("7_vidji")
+lifetime = 2.0
+speed_scale = 3.0
+fixed_fps = 60
+
+[node name="animation" type="Node2D" parent="."]
+script = ExtResource("9_ahhgo")
+
+[node name="anim" type="AnimationPlayer" parent="animation"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_nnxya")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
