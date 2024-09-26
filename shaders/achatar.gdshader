@@ -15,7 +15,7 @@ void fragment() {
     float angle = TIME * rotation_speed;
     float cos_angle = cos(angle);
     float sin_angle = sin(angle);
-    
+
     // Transladar para o centro da textura
     uv -= vec2(0.5);
 	uv += vec2(0.0);
@@ -28,12 +28,12 @@ void fragment() {
 
     // Transladar de volta para a posição original
     uv += vec2(0.5);
-	
+
 	vec4 color = texture(TEXTURE, uv);
 	// Mantém o gradiente de cor ao longo do eixo Y
 	color.rgb = mix(color.rgb, color_ramp, alpha);
-	
+
 	COLOR = vec4(color.rgb, color.a);
     // Aplicar a textura
-   
+
 }

@@ -186,5 +186,3 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_nnxya")
 }
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

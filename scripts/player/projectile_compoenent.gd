@@ -10,6 +10,8 @@ var curve_speed: float = 2.0  # Velocidade com que os projéteis se alinham à d
 var skill_manager : Node # Gerenciador de skills
 var cooldown_left: float # Tempo restate de cooldown da skill
 var skill_dmg: int
+var mouse_position: Vector2
+var player: Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,11 +22,12 @@ func _process(delta: float) -> void:
 # Função que contem a lógica principal da skill
 func use_skill(node, damage, _cooldown, anim_component, _target = null):
 	# Posição do player
+	player = node
 	var position = node.global_position
 	# Obtém a posição do mouse e calcula a direção base
 	var mouse_position = node.get_global_mouse_position()
 	var base_direction = (mouse_position - position).normalized()
-	anim_component.update_blend_position(mouse_position)
+
 	
 	for i in range(num_arrows):
 		# Instancia o projétil
@@ -41,3 +44,6 @@ func use_skill(node, damage, _cooldown, anim_component, _target = null):
 		await get_tree().create_timer(0.1).timeout
 		node.get_parent().get_parent().add_child(projectile)
 		print("Usou a skill: SpreadShoot" )
+
+func _handle_anim():
+	player.get_node("anim").play("idle_" + player.get_node("DirectionTracker").get_action_direction(mouse_position))

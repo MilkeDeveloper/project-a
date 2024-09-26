@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://4igtmvdmdtyf"]
+[gd_scene load_steps=6 format=3 uid="uid://4igtmvdmdtyf"]
 
 [ext_resource type="Script" path="res://core/skills/SkillManager.cs" id="1_n6cgg"]
 [ext_resource type="Resource" uid="uid://b3k42oek75dfx" path="res://scripts/others/disparo_espalhado_grimoire.tres" id="2_f0mjt"]
 [ext_resource type="Resource" uid="uid://6r3e0el1q3ci" path="res://resources/grimoires/triple_shoot_grimoire.tres" id="3_rk4p4"]
 [ext_resource type="Resource" uid="uid://c4w1mreo76kwe" path="res://resources/grimoires/soul_chain_grimoire.tres" id="4_ekd56"]
+[ext_resource type="Resource" uid="uid://dftx51i82tx6y" path="res://resources/grimoires/meteor_storm_grimoire.tres" id="5_bouhq"]
 
 [node name="SkillManager" type="Node"]
 script = ExtResource("1_n6cgg")
-acquired_grimoires = Array[Resource]([ExtResource("2_f0mjt"), ExtResource("3_rk4p4"), ExtResource("4_ekd56")])
+acquired_grimoires = Array[Resource]([ExtResource("2_f0mjt"), ExtResource("3_rk4p4"), ExtResource("4_ekd56"), ExtResource("5_bouhq")])

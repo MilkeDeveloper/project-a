@@ -326,6 +326,7 @@ _data = {
 
 [sub_resource type="SystemFont" id="SystemFont_owbkg"]
 font_names = PackedStringArray("A Grazing Mace")
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="FontVariation" id="FontVariation_mpbpn"]

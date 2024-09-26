@@ -17,7 +17,9 @@ func _process(delta):
 	if is_navigation_finished():
 		# Emite um sinal para o nó pai informando que a navegação terminou
 		emit_signal("destination_reached")
-
+		
+		
+		
 	if is_navigation_finished() == false:
 		# Move o personagem com base no próximo ponto da trajetória
 		direction = self.get_next_path_position() - node.global_position
@@ -31,3 +33,4 @@ func _process(delta):
 			anim_component.update_blend_position(get_next_path_position())
 		
 		node.move_and_slide()
+		

@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c74rasfa8qw8u"]
+[gd_scene load_steps=21 format=3 uid="uid://c74rasfa8qw8u"]
 
 [ext_resource type="Texture2D" uid="uid://d3c7ku1q5ox28" path="res://VFX/Complex/smoke/smoke2_2.png" id="1_f0adc"]
 [ext_resource type="Script" path="res://game_scenes/Projectiles/vfx_fireball_explosion.gd" id="1_iew7p"]
 [ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="3_a0pd3"]
+[ext_resource type="AudioStream" uid="uid://1i5j0mx67hon" path="res://SFX/explosion-1-SBA-300286280-preview (2).mp3" id="4_uggvg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tr3pa"]
 blend_mode = 1
@@ -75,7 +76,7 @@ blend_mode = 1
 
 [sub_resource type="Animation" id="Animation_x6yxw"]
 resource_name = "Explosion"
-length = 0.500003
+length = 1.66667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -119,7 +120,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.433333),
+"times": PackedFloat32Array(0, 1.63333),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -128,6 +129,45 @@ tracks/3/keys = {
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SFX")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.314585,
+"stream": ExtResource("4_uggvg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("explosion/PointLight2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_hry1c"]
@@ -167,6 +207,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("explosion/PointLight2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1r0a8"]
@@ -230,5 +294,8 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 0.88)
 shape = SubResource("CircleShape2D_0esyf")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

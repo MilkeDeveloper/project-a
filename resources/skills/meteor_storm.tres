@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bkjfrov8gk55e"]
+
+[ext_resource type="Script" path="res://core/data/SkillData.cs" id="1_o1hep"]
+[ext_resource type="PackedScene" uid="uid://bt31cehb0lijh" path="res://game_scenes/skills/meteor_storm.tscn" id="2_t830j"]
+
+[resource]
+script = ExtResource("1_o1hep")
+id = 4
+skill_name = "Meteor Storm"
+skill_description = "10 meteoros caem do céu em pontos aleatórios em uma area de 200x 200 "
+mana_cost = 25
+cooldown = 10.0
+damage = 56800
+is_aim_skill = true
+skill_effect = ExtResource("2_t830j")

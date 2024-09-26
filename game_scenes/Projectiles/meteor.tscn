@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://4pyua5w52b1r"]
+
+[ext_resource type="Script" path="res://scripts/others/projectile.gd" id="1_0x5j3"]
+[ext_resource type="Texture2D" uid="uid://cc80bgkh68muh" path="res://VFX/Color/energyball/energyball_9.png" id="2_e1jjj"]
+[ext_resource type="PackedScene" uid="uid://c74rasfa8qw8u" path="res://game_scenes/Projectiles/vfx_fireball_explosion.tscn" id="2_k2c5y"]
+[ext_resource type="PackedScene" uid="uid://pr8claufjmgg" path="res://game_scenes/Projectiles/vfx_fireball.tscn" id="3_ooo2g"]
+
+[sub_resource type="Animation" id="Animation_qp73l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(220, -1120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX Fireball:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(264, -1143)]
+}
+
+[sub_resource type="Animation" id="Animation_tgqb3"]
+resource_name = "fall"
+length = 0.500003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(220, -1120), Vector2(2, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX Fireball:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(264, -1143), Vector2(7.00003, -44.9999)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_destroy"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qpfm1"]
+_data = {
+"RESET": SubResource("Animation_qp73l"),
+"fall": SubResource("Animation_tgqb3")
+}
+
+[node name="projectile" type="Node2D"]
+script = ExtResource("1_0x5j3")
+explosion_scene = ExtResource("2_k2c5y")
+
+[node name="VFX Fireball" parent="." instance=ExtResource("3_ooo2g")]
+position = Vector2(264, -1143)
+rotation = 1.79575
+script = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(220, -1120)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_e1jjj")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qpfm1")
+}
+speed_scale = 0.302

@@ -11,6 +11,8 @@ class_name State
 @export var manager: StateMachineManager
 @export var dash_component: Node2D
 
+var is_jumping: bool = false
+
 # Função que é chamada ao entrar no estado
 func enter(args: Dictionary = {}) -> void:
 	pass
@@ -28,4 +30,7 @@ func handle_input(event: InputEvent) -> void:
 	pass
 
 func handle_anim():
+	pass
+	
+func transit_state():
 	pass

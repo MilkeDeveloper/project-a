@@ -24,6 +24,9 @@ func get_input(event):
 	if event.is_action_pressed("basic_attack"):
 		if GLobals.target != null:
 			get_parent().find_child("basic_attack").ranged_basic_attack(GLobals.target)
+			
+	if event.is_action_pressed("jump"):
+		get_parent().get_node("State").is_jumping = true
 	
 	if event.is_action_just_pressed("shoot"):
 		skill_mananager.activate_skill("Disparo Espalhado", node, anim_component, nullable)
@@ -38,3 +41,7 @@ func get_input(event):
 		skill_mananager.activate_skill("Soul Chain", node, anim_component, nullable)
 		#cam.apply_shake(0.3, 1.5)
 		#skill_component.start_petagon_court(node.global_position)
+
+	if event.is_action_just_pressed("skill4"):
+		skill_mananager.activate_skill("Meteor Storm", node, anim_component, nullable)
+		print("ativando a skill")

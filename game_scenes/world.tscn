@@ -6986,9 +6986,6 @@ navigation_polygon = SubResource("NavigationPolygon_ki0lx")
 z_as_relative = true
 position = Vector2(1733, 129)
 
-[node name="AnimationTree" parent="Player" index="5"]
-parameters/dash/directions2/blend_position = Vector2(0, 0)
-
 [node name="64x128RuningFree" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 1

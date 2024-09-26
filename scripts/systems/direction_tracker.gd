@@ -23,19 +23,19 @@ func get_direction():
 	if angle > -PI / 8 and angle <= PI / 8:
 		direction = "right"
 	elif angle > PI / 8 and angle <= 3 * PI / 8:
-		direction = "right"
+		direction = "down"
 	elif angle > 3 * PI / 8 and angle <= 5 * PI / 8:
 		direction = "down"
 	elif angle > 5 * PI / 8 and angle <= 7 * PI / 8:
-		direction = "left"
+		direction = "down"
 	elif angle > 7 * PI / 8 or angle <= -7 * PI / 8:
 		direction = "left"
 	elif angle > -7 * PI / 8 and angle <= -5 * PI / 8:
-		direction = "left"
+		direction = "up"
 	elif angle > -5 * PI / 8 and angle <= -3 * PI / 8:
 		direction = "up"
 	elif angle > -3 * PI / 8 and angle <= -PI / 8:
-		direction = "right"
+		direction = "up"
 	else:
 		direction = "down"  # Valor padrão se nenhuma condição for atendida
 	

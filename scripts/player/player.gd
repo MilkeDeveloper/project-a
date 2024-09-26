@@ -18,7 +18,7 @@ func _physics_process(delta):
 	input_component.get_input(Input)
 	if not GLobals.target:
 		get_node("basic_attack").is_attacking = false
-		SPEED = 650
+		#SPEED = 650
 		return
 	
 func _on_destination_reached() -> void:
@@ -31,6 +31,6 @@ func _on_destination_reached() -> void:
 	
 
 func _on_cam_shake(intensity, duration):
-	$cam.apply_shake(duration, intensity)
+	$sprite/cam.apply_shake(duration, intensity)
 	
 	
