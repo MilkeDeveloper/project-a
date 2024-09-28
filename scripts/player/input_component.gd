@@ -29,7 +29,7 @@ func get_input(event):
 		get_parent().get_node("State").is_jumping = true
 	
 	if event.is_action_just_pressed("shoot"):
-		skill_mananager.activate_skill("Disparo Espalhado", node, anim_component, nullable)
+		#skill_mananager.activate_skill("Disparo Espalhado", node, anim_component, nullable)
 		print("A skill precisa de um alvo")
 	
 		#projectile_component.use_skill(GLobals.target)
@@ -44,4 +44,8 @@ func get_input(event):
 
 	if event.is_action_just_pressed("skill4"):
 		skill_mananager.activate_skill("Meteor Storm", node, anim_component, nullable)
+		print("ativando a skill")
+	
+	if event.is_action_just_pressed("skill5"):
+		skill_mananager.activate_skill("Arrow Assault", node, anim_component, nullable)
 		print("ativando a skill")

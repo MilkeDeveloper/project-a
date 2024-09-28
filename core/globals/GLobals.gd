@@ -4,6 +4,7 @@ signal target_found(node)
 signal on_click
 signal cam_shake(intesity, duration)
 signal start_anim
+signal body_entered(body)
 
 var target: Node2D = null
 var mouse_over: bool = false

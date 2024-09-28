@@ -185,9 +185,9 @@ tracks/3/path = NodePath("Label:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-33.5, -0.25, 0, 0.125, -84, -156.5, -0.125, 8, 0.125, -13, 28.5, -0.25, -161, 0.0625, 1),
-"times": PackedFloat32Array(0, 0.3125, 1)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-33.5, -0.25, 0, 0.1875, -68.5, 28.5, -0.25, -161, 0.0625, 1),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -247,9 +247,9 @@ tracks/1/path = NodePath("Label:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-42.5, -0.25, 0, 0.125, -71, -156.5, -0.125, 21, 0.125, -21, 28.5, -0.1875, -161, 0.0625, 1),
-"times": PackedFloat32Array(0, 0.3125, 1)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-42.5, -0.25, 0, 0.1875, -87.5, 28.5, -0.1875, -175.5, 0.0625, 1),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -355,10 +355,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -74.5
-offset_right = 36.0
-offset_bottom = -51.5
+offset_right = 68.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(33, 11)

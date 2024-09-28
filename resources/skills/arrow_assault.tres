@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dtripmsxvs4q0"]
+
+[ext_resource type="Script" path="res://core/data/SkillData.cs" id="1_rxoow"]
+[ext_resource type="PackedScene" uid="uid://dpqfmtfbfu6rx" path="res://game_scenes/skills/arrow_assault.tscn" id="2_52n8p"]
+
+[resource]
+script = ExtResource("1_rxoow")
+id = 5
+skill_name = "Arrow Assault"
+skill_description = "Dispara uma violenta rajada de flechas em todas as direções por 5 segundos."
+mana_cost = 35
+cooldown = 10.0
+damage = 45
+is_aim_skill = false
+skill_effect = ExtResource("2_52n8p")
