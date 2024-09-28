@@ -33,3 +33,5 @@ func transit_state():
 	elif player.velocity != Vector2.ZERO and is_jumping == true:
 		manager.change_state("JumpState", {})
 		is_jumping = false
+	elif player.velocity == Vector2.ZERO and GLobals.spinning or player.velocity != Vector2.ZERO and GLobals.spinning:
+		manager.change_state("SpinningState", {})

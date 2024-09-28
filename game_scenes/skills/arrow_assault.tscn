@@ -50,6 +50,7 @@ one_shot = true
 [node name="time_between_arrows" type="Timer" parent="."]
 
 [node name="particles" type="GPUParticles2D" parent="."]
+z_index = -1
 material = SubResource("CanvasItemMaterial_6l20v")
 amount = 300
 process_material = SubResource("ParticleProcessMaterial_tmns7")

@@ -37,6 +37,7 @@ func use_skill(_player, skill_damage, _cooldown, anim_component, target):
 	cast_skill = true
 	original_speed = original_player.SPEED
 	original_player.SPEED = original_speed / 3
+	GLobals.spinning = true
 	start_timers()
 	set_process(true)
 
@@ -67,6 +68,7 @@ func shoot_random_direction():
 	projectile.var_damage = randi_range(damage * 0.8, damage)
 	
 	get_parent().get_parent().add_child(projectile)
+	_handle_anim()
 	
 func cancel_skill():
 	pass
@@ -74,10 +76,13 @@ func cancel_skill():
 func _input(event: InputEvent) -> void:
 	pass
 
+func _handle_anim():
+	get_parent().get_node("anim").play("crossbow_spin")
 
 func _on_skill_timer_timeout() -> void:
 	cast_skill = false
 	original_player.SPEED = original_speed
+	GLobals.spinning = false
 	$time_between_arrows.stop()
 	queue_free()
 
