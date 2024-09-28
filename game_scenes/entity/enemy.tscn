@@ -733,12 +733,13 @@ _data = {
 
 [node name="enemy" type="CharacterBody2D" groups=["entity"]]
 z_index = 1
+scale = Vector2(0.8, 0.8)
 collision_layer = 57
 collision_mask = 8
 input_pickable = true
 script = ExtResource("1_c1oxh")
 _name = "Piglet"
-max_hp = 100000
+max_hp = 5600
 level = 25
 popup_instance = ExtResource("2_ve010")
 dmg_effect = ExtResource("3_iqlnw")

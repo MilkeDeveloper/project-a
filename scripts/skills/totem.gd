@@ -87,4 +87,4 @@ func remove_connection(body):
 			break
 
 func emit_cam_shake():
-	GLobals.emit_signal("cam_shake", 5.4, 0.6)
+	GLobals.emit_signal("cam_shake", 75.4, 1.4)

@@ -32,7 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_destroy():
 	var explosion = explosion_scene.instantiate()
 	explosion.position = global_position
-	explosion.damage = damage * 100
+	explosion.damage = damage * 15
 	explosion.attacker = attacker
 	get_parent().get_tree().current_scene.add_child(explosion)
 	queue_free()

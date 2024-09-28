@@ -2,9 +2,16 @@ using Godot;
 
 public partial class cam_shake : Camera2D
 {
+	[Export] public Sprite2D player;
 	private float intensity = 0.0f;
 	private float duration = 0.0f;
 	private Vector2 original_position = Vector2.Zero;
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		original_position = player.Position;
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -29,6 +36,6 @@ public partial class cam_shake : Camera2D
 	{
 		this.intensity = intensity;
 		this.duration = duration;
-		original_position = Position;
+		//original_position = Position;
 	}
 }

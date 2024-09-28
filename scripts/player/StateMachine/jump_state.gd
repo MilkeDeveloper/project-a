@@ -28,5 +28,5 @@ func transit_state():
 	if player.velocity == Vector2.ZERO:
 		manager.change_state("IdleState", {})
 	elif player.velocity != Vector2.ZERO:
-		player.SPEED = 350
+		player.SPEED = (player.SPEED / 2) + 200
 		manager.change_state("RunState", {})

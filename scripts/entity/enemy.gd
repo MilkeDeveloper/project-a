@@ -46,7 +46,7 @@ func take_damage(damage, attacker, target_attacker, effect_anim_name):
 	randomize()
 	dmg_popup.position.x = global_position.x + randi_range(-32, 32)
 	dmg_popup.position.y = global_position.y + randi_range(-32, -64)
-	get_parent().add_child(dmg_popup)
+	get_parent().get_node("take_dmg").add_child(dmg_popup)
 	dmg_popup.start_popup2(damage, anim_name, attacker, target_attacker)
 	apply_damage(damage)
 	get_node("navigation").set_process(false)

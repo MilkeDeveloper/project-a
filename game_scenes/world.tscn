@@ -7104,10 +7104,12 @@ position = Vector2(-2.57492e-05, 65.2742)
 scale = Vector2(1.19141, 1.2048)
 texture = ExtResource("13_hi7y1")
 
+[node name="take_dmg" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="map_01/trees/tree44/Area2D" to="map_01/trees/tree44" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="map_01/trees/tree44/Area2D" to="map_01/trees/tree44" method="_on_area_2d_body_exited"]
 
 [editable path="Player"]
-[editable path="Player/hud_player"]
+[editable path="Player/sprite/hud_player"]

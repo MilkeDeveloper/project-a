@@ -10,6 +10,6 @@ skill_name = "Disparo Espalhado"
 skill_description = "Uma skill poderosa"
 mana_cost = 10
 cooldown = 3.0
-damage = 70
+damage = 255
 is_aim_skill = false
 skill_effect = ExtResource("2_yin4b")

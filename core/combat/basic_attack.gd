@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	if GLobals.target != null:
 		#ranged_basic_attack(GLobals.target)
 		
-		pass
+			pass
 		
 func ranged_basic_attack(target = null):
 	_target = target
@@ -58,7 +58,7 @@ func ranged_basic_attack(target = null):
 		get_parent().SPEED = 650
 
 func _handle_anim():
-	get_parent().get_node("anim").play("idle_" + get_parent().get_node("DirectionTracker").get_action_direction(_target.global_position))
+	get_parent().get_node("anim").play("run_" + get_parent().get_node("DirectionTracker").get_action_direction(_target.global_position))
 		
 func on_attack_timer_timout():
 	can_attack = true

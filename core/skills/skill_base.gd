@@ -5,6 +5,7 @@ class_name SkillBase
 @export var Projectile: PackedScene
 @export var animation: AnimationPlayer
 @export var selector: Sprite2D
+@export var projectile_config: ProjectileData 
 
 var _target : Node
 var cooldown : float
@@ -22,7 +23,7 @@ func _process(delta: float) -> void:
 	pass
 
 func use_skill(_player, skill_damage, _cooldown, anim_component, target):
-	pass
+	player = _player
 	
 func cancel_skill():
 	pass

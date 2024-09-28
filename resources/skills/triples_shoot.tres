@@ -10,6 +10,6 @@ skill_name = "Triple Shoot"
 skill_description = "Dispara uma rajada de flechas no local marcado"
 mana_cost = 15
 cooldown = 2.5
-damage = 45
+damage = 15
 is_aim_skill = true
 skill_effect = ExtResource("2_l0kuk")

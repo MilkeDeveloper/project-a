@@ -2,9 +2,12 @@ extends State
 
 class_name RunState
 
+func _ready() -> void:
+	original_speed = player.SPEED
+
 func enter(args: Dictionary = {}) -> void:
 	await get_tree().create_timer(0.2).timeout
-	player.SPEED = 650
+	player.SPEED = original_speed
 # Função chamada enquanto o estado está ativo
 func update(delta: float) -> void:
 	handle_anim()

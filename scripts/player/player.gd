@@ -32,5 +32,6 @@ func _on_destination_reached() -> void:
 
 func _on_cam_shake(intensity, duration):
 	$sprite/cam.apply_shake(duration, intensity)
-	
+	await get_tree().create_timer(duration).timeout
+	$sprite/cam.position_smoothing_enabled = true
 	

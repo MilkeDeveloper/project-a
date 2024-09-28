@@ -10,6 +10,6 @@ skill_name = "Soul Chain"
 skill_description = "Aprisiona os inimgos em uma area de 200 x 200. Inimigos aprisionados sofrem dano ao longo do tempo"
 mana_cost = 40
 cooldown = 5.0
-damage = 23800
+damage = 570
 is_aim_skill = true
 skill_effect = ExtResource("2_yitof")

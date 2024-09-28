@@ -12,6 +12,7 @@ class_name State
 @export var dash_component: Node2D
 
 var is_jumping: bool = false
+var original_speed: float
 
 # Função que é chamada ao entrar no estado
 func enter(args: Dictionary = {}) -> void:

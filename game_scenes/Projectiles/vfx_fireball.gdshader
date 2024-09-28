@@ -13,18 +13,18 @@ void fragment() {
     // Cor da textura de noise (aplicando movimento com o panning)
     vec4 noise_effect = texture(noise_texture, noise_uv);
 	vec4 gradient = texture(gradient_texture, noise_uv);
-	
+
 	float texture_clamped = noise_effect.r - gradient.r;
     // Aplicando o noise apenas na parte visível da fireball
 	float noise_r = noise_effect.r;
 	vec4 transparent_noise = noise_effect - noise_r;
-	
+
 	vec4 final_color = mix(fireball_color, noise_effect, gradient);
 	vec4 final_color_clamped = final_color * texture_clamped;
 	// Ajustar o alfa final com base no alfa da fireball
     // Definindo a cor final do fragmento
 	vec4 final_color_add = clamp(final_color_clamped, 0, 1);
     COLOR = final_color * color_ramp;
-	//COLOR.a = 
-	
+	//COLOR.a =
+
 }

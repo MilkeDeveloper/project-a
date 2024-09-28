@@ -10,6 +10,6 @@ skill_name = "Meteor Storm"
 skill_description = "10 meteoros caem do céu em pontos aleatórios em uma area de 200x 200 "
 mana_cost = 25
 cooldown = 10.0
-damage = 56800
+damage = 568
 is_aim_skill = true
 skill_effect = ExtResource("2_t830j")
