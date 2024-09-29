@@ -32,8 +32,8 @@ radial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -2.23517e-06
 radial_accel_max = -2.23517e-06
-scale_min = 0.02
-scale_max = 0.2
+scale_min = 0.1
+scale_max = 0.1
 scale_curve = SubResource("CurveTexture_jda01")
 color_ramp = SubResource("GradientTexture1D_wbeeo")
 
@@ -57,7 +57,34 @@ process_material = SubResource("ParticleProcessMaterial_tmns7")
 texture = ExtResource("4_5klev")
 preprocess = 5.0
 speed_scale = 2.0
+fixed_fps = 60
 local_coords = true
+trail_lifetime = 0.52
+
+[node name="particles3" type="GPUParticles2D" parent="."]
+visible = false
+z_index = -1
+material = SubResource("CanvasItemMaterial_6l20v")
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_tmns7")
+texture = ExtResource("4_5klev")
+preprocess = 5.0
+speed_scale = 2.0
+local_coords = true
+trail_lifetime = 0.52
+
+[node name="particles2" type="GPUParticles2D" parent="."]
+visible = false
+z_index = -1
+material = SubResource("CanvasItemMaterial_6l20v")
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_tmns7")
+texture = ExtResource("4_5klev")
+preprocess = 5.0
+speed_scale = 2.0
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.52
 
 [connection signal="timeout" from="skillTimer" to="." method="_on_skill_timer_timeout"]
 [connection signal="timeout" from="time_between_arrows" to="." method="_on_time_between_arrows_timeout"]

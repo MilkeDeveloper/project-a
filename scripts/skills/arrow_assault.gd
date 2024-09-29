@@ -71,15 +71,22 @@ func shoot_random_direction():
 	_handle_anim()
 	
 func cancel_skill():
-	pass
+	GLobals.emit_signal("key_skill_released", "Arrow Assault")
+	cast_skill = false
+	original_player.SPEED = original_speed
+	GLobals.spinning = false
+	$time_between_arrows.stop()
+	queue_free()
 
 func _input(event: InputEvent) -> void:
-	pass
+	if event.is_action_released("skill5") and cast_skill:
+		cancel_skill()
 
 func _handle_anim():
 	get_parent().get_node("anim").play("crossbow_spin")
 
 func _on_skill_timer_timeout() -> void:
+	GLobals.emit_signal("key_skill_released", "Arrow Assault")
 	cast_skill = false
 	original_player.SPEED = original_speed
 	GLobals.spinning = false

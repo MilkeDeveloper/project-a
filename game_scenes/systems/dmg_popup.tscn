@@ -331,12 +331,12 @@ multichannel_signed_distance_field = true
 
 [sub_resource type="FontVariation" id="FontVariation_mpbpn"]
 base_font = SubResource("SystemFont_owbkg")
-spacing_glyph = 2
+spacing_glyph = 4
 
 [node name="dmg_popup" type="Marker2D" node_paths=PackedStringArray("anim", "damage_text")]
 z_index = 1
 position = Vector2(0, -1)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.9, 0.9)
 script = ExtResource("1_yvo42")
 anim = NodePath("anim_dmg")
 damage_text = NodePath("Label")

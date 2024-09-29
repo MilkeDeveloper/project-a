@@ -12,4 +12,5 @@ mana_cost = 35
 cooldown = 10.0
 damage = 45
 is_aim_skill = false
+is_charging_skill = true
 skill_effect = ExtResource("2_52n8p")

@@ -18,6 +18,8 @@ public partial class SkillData : Resource
     [Export] 
     public bool is_aim_skill;
     [Export]
+    public bool is_charging_skill;
+    [Export]
     public PackedScene skill_effect;
     public float cooldown_left;
 
