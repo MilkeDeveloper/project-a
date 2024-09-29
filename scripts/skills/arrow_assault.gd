@@ -4,31 +4,45 @@ class_name  ArrowAssault
 
 @export var skill_timer: float
 @export var time_between_arrows: float
+@export var charge_bar: TextureProgressBar
+@export var charge_label: Label
 
 var direction: Vector2
 var available_angles = [] # Lista para armazenar os ângulos disponíveis
 var player_position: Vector2
 var original_speed: float
 var original_player: Node
+var charge_time: float = 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Crie uma lista de ângulos únicos (em radianos), aqui 360 ângulos, mas você pode ajustar
 	for i in range(0, 360, 15):
 		available_angles.append(deg_to_rad(i))
-	
 	# Embaralhe a lista para garantir que a sequência seja aleatória
 	available_angles.shuffle()
 	
 	set_process(false)
+	
+	#charge bar
+	charge_bar.max_value = skill_timer
+	charge_bar.value = 0
+	charge_label.text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if cast_skill:
 		player_position = original_player.global_position
+		
+	skill_charge(delta)
 
 func start_timers():
 	$skillTimer.start(skill_timer)
 	$time_between_arrows.start(time_between_arrows)
+	is_charging = true
+	charge_time = 0.0 # Reinicia o tempo de carregamento da skill
+	charge_bar.value = 0 # Reinicia a charge bar
+	print("Charging...")
 
 func use_skill(_player, skill_damage, _cooldown, anim_component, target):
 	original_player = _player
@@ -69,8 +83,29 @@ func shoot_random_direction():
 	
 	get_parent().get_parent().add_child(projectile)
 	_handle_anim()
+
+func skill_charge(delta: float):
+	# Se está carregando a habilidade incrementa o charge time
+	if is_charging:
+		charge_time += delta
+		# Limita o charge time com o tempo de duração máximo da skill
+		if charge_time >= skill_timer:
+			charge_time = skill_timer
+			charge_label.text = str("Charged")
+			# encerra a skill
+			cancel_skill()
+			
+		# Atualiza o charge bar
+		charge_bar.value = charge_time
+		charge_label.text = str(charge_time)
+		print("skill charging")
 	
 func cancel_skill():
+	if is_charging:
+		is_charging = false
+	
+	charge_bar.value = 0 # Reseta a charge bar após o encerramento da skill
+	
 	GLobals.emit_signal("key_skill_released", "Arrow Assault")
 	cast_skill = false
 	original_player.SPEED = original_speed
@@ -86,12 +121,7 @@ func _handle_anim():
 	get_parent().get_node("anim").play("crossbow_spin")
 
 func _on_skill_timer_timeout() -> void:
-	GLobals.emit_signal("key_skill_released", "Arrow Assault")
-	cast_skill = false
-	original_player.SPEED = original_speed
-	GLobals.spinning = false
-	$time_between_arrows.stop()
-	queue_free()
+	cancel_skill()
 
 
 func _on_time_between_arrows_timeout() -> void:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpqfmtfbfu6rx"]
+[gd_scene load_steps=12 format=3 uid="uid://dpqfmtfbfu6rx"]
 
 [ext_resource type="Script" path="res://scripts/skills/arrow_assault.gd" id="1_caycl"]
 [ext_resource type="PackedScene" uid="uid://klgctucux3ww" path="res://game_scenes/Projectiles/arrow.tscn" id="2_hg28t"]
 [ext_resource type="Resource" uid="uid://b44hcjgin5muu" path="res://resources/projectiles/arrow.tres" id="2_hndvv"]
 [ext_resource type="Texture2D" uid="uid://2ciqvl2qk78h" path="res://addons/kenney_particle_pack/star_08.png" id="4_5klev"]
+[ext_resource type="PackedScene" uid="uid://b76ox03l1ew21" path="res://game_scenes/UI/ui_charge.tscn" id="5_dn2v1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6l20v"]
 blend_mode = 1
@@ -37,10 +38,12 @@ scale_max = 0.1
 scale_curve = SubResource("CurveTexture_jda01")
 color_ramp = SubResource("GradientTexture1D_wbeeo")
 
-[node name="ArrowAssault" type="Node2D"]
+[node name="ArrowAssault" type="Node2D" node_paths=PackedStringArray("charge_bar", "charge_label")]
 script = ExtResource("1_caycl")
 skill_timer = 5.0
 time_between_arrows = 0.02
+charge_bar = NodePath("UI charge/Control/charge_bar")
+charge_label = NodePath("UI charge/Control/charge_bar/charge_label")
 Projectile = ExtResource("2_hg28t")
 projectile_config = ExtResource("2_hndvv")
 
@@ -86,5 +89,13 @@ local_coords = true
 trail_enabled = true
 trail_lifetime = 0.52
 
+[node name="UI charge" parent="." instance=ExtResource("5_dn2v1")]
+
+[node name="charge_bar" parent="UI charge/Control" index="0"]
+min_value = 0.0
+step = 0.01
+
 [connection signal="timeout" from="skillTimer" to="." method="_on_skill_timer_timeout"]
 [connection signal="timeout" from="time_between_arrows" to="." method="_on_time_between_arrows_timeout"]
+
+[editable path="UI charge"]

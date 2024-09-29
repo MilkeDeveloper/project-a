@@ -11,6 +11,7 @@ var _target : Node
 var cooldown : float
 var damage : int
 var cast_skill : bool = false
+var is_charging: bool = false
 var mouse_position : Vector2
 var player: Node
 

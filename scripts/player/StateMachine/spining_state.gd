@@ -21,7 +21,6 @@ func handle_input(event: InputEvent) -> void:
 func handle_anim():
 	if GLobals.spinning == true:
 		animation.play("crossbow_spin")
-		print("spinning")
 	else:
 		player.get_node("sprite2").hide()
 		player.get_node("sprite").show()
