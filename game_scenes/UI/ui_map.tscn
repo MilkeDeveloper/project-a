@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7lbwsekejpe1"]
+
+[ext_resource type="Script" path="res://ui/ui_scripts/mini_map.gd" id="1_ecxlq"]
+[ext_resource type="Texture2D" uid="uid://doqpxjyiyd6cq" path="res://assets/ui/UI map/bg_minimap2.png" id="2_avcdc"]
+[ext_resource type="Texture2D" uid="uid://dq3itn4fgfqxr" path="res://assets/ui/UI map/bg_minimap.png" id="2_e7sr8"]
+[ext_resource type="Texture2D" uid="uid://du5mg7noakupd" path="res://assets/ui/UI map/replace_color.png" id="3_pu8bq"]
+[ext_resource type="Texture2D" uid="uid://cwmje0owq51h2" path="res://assets/ui/UI map/cover_minimap2.png" id="4_bkxhe"]
+[ext_resource type="Texture2D" uid="uid://brvb0vyiw8nl6" path="res://assets/misc/target2.png" id="5_7jeun"]
+[ext_resource type="Script" path="res://ui/ui_scripts/point_direction.gd" id="6_gj8ma"]
+
+[node name="UI map" type="CanvasLayer"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+clip_children = 2
+clip_contents = true
+offset_left = 1354.0
+offset_top = 40.0
+offset_right = 1554.0
+offset_bottom = 190.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(200, 150)
+render_target_update_mode = 4
+script = ExtResource("1_ecxlq")
+
+[node name="BG_minimap" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+modulate = Color(1, 1, 1, 0.552941)
+scale = Vector2(5, 1)
+texture = ExtResource("2_avcdc")
+
+[node name="way" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+texture = ExtResource("3_pu8bq")
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="CoverMinimap" type="Sprite2D" parent="."]
+position = Vector2(1454, 114.5)
+scale = Vector2(1.0099, 0.767327)
+texture = ExtResource("4_bkxhe")
+
+[node name="point" type="Sprite2D" parent="."]
+position = Vector2(1454, 114)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_7jeun")
+offset = Vector2(0, 2)
+script = ExtResource("6_gj8ma")
+
+[node name="BG" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1454, 114.5)
+scale = Vector2(1, 0.75)
+texture = ExtResource("2_e7sr8")

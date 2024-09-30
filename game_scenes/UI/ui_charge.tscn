@@ -6,6 +6,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_x8imq"]
 font_names = PackedStringArray("Sans-Serif")
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [node name="UI charge" type="CanvasLayer"]
