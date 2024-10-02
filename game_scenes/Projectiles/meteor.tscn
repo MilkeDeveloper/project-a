@@ -1,9 +1,36 @@
-[gd_scene load_steps=8 format=3 uid="uid://4pyua5w52b1r"]
+[gd_scene load_steps=14 format=3 uid="uid://4pyua5w52b1r"]
 
 [ext_resource type="Script" path="res://scripts/others/projectile.gd" id="1_0x5j3"]
 [ext_resource type="Texture2D" uid="uid://cc80bgkh68muh" path="res://VFX/Color/energyball/energyball_9.png" id="2_e1jjj"]
 [ext_resource type="PackedScene" uid="uid://c74rasfa8qw8u" path="res://game_scenes/Projectiles/vfx_fireball_explosion.tscn" id="2_k2c5y"]
 [ext_resource type="PackedScene" uid="uid://pr8claufjmgg" path="res://game_scenes/Projectiles/vfx_fireball.tscn" id="3_ooo2g"]
+[ext_resource type="Texture2D" uid="uid://dg52rkesvqo3q" path="res://addons/kenney_particle_pack/smoke_04.png" id="4_pb1d2"]
+
+[sub_resource type="Gradient" id="Gradient_dnqy4"]
+offsets = PackedFloat32Array(0, 0.616162, 1)
+colors = PackedColorArray(1, 0.790872, 0.639555, 1, 0.300132, 0.31251, 0.324985, 0.384314, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eu2n8"]
+gradient = SubResource("Gradient_dnqy4")
+
+[sub_resource type="Curve" id="Curve_msgqt"]
+_data = [Vector2(0, 0.582418), 0.0, 0.0, 0, 0, Vector2(0.977876, 0.516483), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iugbu"]
+curve = SubResource("Curve_msgqt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qweoh"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 5.0
+initial_velocity_max = 30.53
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_iugbu")
+color = Color(0.65834, 0.65834, 0.65834, 1)
+color_ramp = SubResource("GradientTexture1D_eu2n8")
 
 [sub_resource type="Animation" id="Animation_qp73l"]
 length = 0.001
@@ -30,6 +57,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(264, -1143)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VFX Fireball/GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_tgqb3"]
@@ -87,6 +126,18 @@ tracks/3/keys = {
 "method": &"_on_destroy"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VFX Fireball/GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qpfm1"]
 _data = {
@@ -103,6 +154,14 @@ position = Vector2(264, -1143)
 rotation = 1.79575
 script = null
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="VFX Fireball"]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_qweoh")
+texture = ExtResource("4_pb1d2")
+lifetime = 5.0
+speed_scale = 3.35
+fixed_fps = 60
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(220, -1120)
@@ -113,4 +172,4 @@ texture = ExtResource("2_e1jjj")
 libraries = {
 "": SubResource("AnimationLibrary_qpfm1")
 }
-speed_scale = 0.302
+speed_scale = 0.699

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://l200m2x0yagx"]
+[gd_scene load_steps=67 format=4 uid="uid://l200m2x0yagx"]
 
 [ext_resource type="Texture2D" uid="uid://0tond388mexi" path="res://assets/tilesets/map3.png" id="1_lccmo"]
 [ext_resource type="Texture2D" uid="uid://c0ltjbh58tjd8" path="res://assets/tilesets/trees_others-removebg-preview.png" id="3_gcx2y"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bgtddydt6cpmh" path="res://assets/sprites/Spritesheet.png" id="12_lumad"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="13_hi7y1"]
 [ext_resource type="PackedScene" uid="uid://b7lbwsekejpe1" path="res://game_scenes/UI/ui_map.tscn" id="15_qexld"]
+[ext_resource type="Script" path="res://ui/ui_scripts/pivot.gd" id="17_l2bv6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p81if"]
 shader = ExtResource("4_lk73s")
@@ -1282,7 +1283,6 @@ position = Vector2(1205, 569)
 texture = ExtResource("1_lccmo")
 
 [node name="rocks" type="Node2D" parent="map_01"]
-visible = false
 z_index = -1
 z_as_relative = false
 y_sort_enabled = true
@@ -7089,6 +7089,7 @@ position = Vector2(1184, 34)
 environment = SubResource("Environment_fxajy")
 
 [node name="Image1" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(2011, 165.72)
 scale = Vector2(0.48, 0.450938)
 sprite_frames = SubResource("SpriteFrames_y24br")
@@ -7107,6 +7108,10 @@ texture = ExtResource("13_hi7y1")
 
 [node name="take_dmg" type="Node2D" parent="."]
 
+[node name="pivot" type="Marker2D" parent="." node_paths=PackedStringArray("_player")]
+script = ExtResource("17_l2bv6")
+_player = NodePath("../Player")
+
 [node name="UI map" parent="." instance=ExtResource("15_qexld")]
 
 [node name="SubViewport" parent="UI map/SubViewportContainer" index="0" node_paths=PackedStringArray("camera_mini_map", "player")]
@@ -7114,11 +7119,10 @@ camera_mini_map = NodePath("Camera2D")
 player = NodePath("../../../Player")
 
 [node name="Camera2D" parent="UI map/SubViewportContainer/SubViewport" index="2"]
-offset = Vector2(-1200, -600)
-zoom = Vector2(0.1, 0.1)
+offset = Vector2(-1200, -580)
 
-[node name="point" parent="UI map" index="2" node_paths=PackedStringArray("_player")]
-_player = NodePath("../../Player")
+[node name="point" parent="UI map/CoverMinimap" index="0"]
+position = Vector2(100, 100)
 
 [connection signal="body_entered" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_exited"]

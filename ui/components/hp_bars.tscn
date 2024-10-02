@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxiasrjikt47l"]
+[gd_scene load_steps=12 format=3 uid="uid://dxiasrjikt47l"]
 
 [ext_resource type="Texture2D" uid="uid://csfjhjxrhi7os" path="res://assets/misc/player_bar_bg.png" id="1_onp77"]
 [ext_resource type="Texture2D" uid="uid://bden8eioluqwx" path="res://assets/misc/player_bar_cover.png" id="2_btc0n"]
 [ext_resource type="Texture2D" uid="uid://dm02w7diwxjcw" path="res://assets/misc/player_bar_progress.png" id="3_mod22"]
 [ext_resource type="Script" path="res://ui/ui_scripts/hp_bar.gd" id="4_a6p2v"]
+[ext_resource type="Texture2D" uid="uid://jp3dngxjm2en" path="res://assets/misc/under_bar2.png" id="5_fqu3e"]
+[ext_resource type="Texture2D" uid="uid://b6cwr6vm7juo1" path="res://assets/misc/default_bar.png" id="7_fmg2w"]
 
 [sub_resource type="SystemFont" id="SystemFont_ulvlu"]
 subpixel_positioning = 0
@@ -12,12 +14,16 @@ subpixel_positioning = 0
 subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_ngfuv"]
+font_names = PackedStringArray("Sans-Serif")
+font_weight = 700
 subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_tffg7"]
 subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_2lxrh"]
+font_names = PackedStringArray("Sans-Serif")
+font_weight = 700
 subpixel_positioning = 0
 
 [node name="Control" type="Control"]
@@ -92,36 +98,44 @@ offset_top = 74.0
 offset_right = 51.0
 offset_bottom = 87.5
 grow_horizontal = 2
-scale = Vector2(1.88, 2.12)
+scale = Vector2(0.8, 1.2)
 pivot_offset = Vector2(50.2654, 5.90521)
 size_flags_horizontal = 4
 step = 0.1
 value = 50.0
-texture_under = ExtResource("1_onp77")
-texture_over = ExtResource("2_btc0n")
-texture_progress = ExtResource("3_mod22")
-tint_progress = Color(0.65, 0.0455, 0.156325, 1)
+texture_under = ExtResource("5_fqu3e")
+texture_progress = ExtResource("7_fmg2w")
+texture_progress_offset = Vector2(16, 5)
+tint_progress = Color(0.94902, 0.560784, 0.27451, 1)
 
 [node name="hp_text" type="Label" parent="HUD_HP/bar"]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 99.0
-offset_bottom = 24.0
-scale = Vector2(0.440005, 0.360001)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.3164
+offset_top = -4.34913
+offset_right = 69.6836
+offset_bottom = 23.6509
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.590017, 0.360001)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = SubResource("SystemFont_ngfuv")
-text = "999/999"
+theme_override_font_sizes/font_size = 24
+text = "999 / 999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="hbox" type="HBoxContainer" parent="HUD_HP/bar"]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 10.0
-offset_right = 227.0
-offset_bottom = 37.0
-scale = Vector2(0.403442, 0.377358)
+offset_left = 17.4336
+offset_top = 15.9842
+offset_right = 238.434
+offset_bottom = 49.9842
+scale = Vector2(0.703436, 0.510691)
 theme_override_constants/separation = 28
 
 [node name="level_hud" type="Label" parent="HUD_HP/bar/hbox"]
@@ -130,6 +144,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = SubResource("SystemFont_tffg7")
+theme_override_font_sizes/font_size = 24
 text = "Lv. 25"
 
 [node name="name_hud" type="Label" parent="HUD_HP/bar/hbox"]
@@ -138,6 +153,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = SubResource("SystemFont_2lxrh")
+theme_override_font_sizes/font_size = 24
 text = "Final boss"
 horizontal_alignment = 1
 

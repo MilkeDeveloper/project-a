@@ -22,7 +22,7 @@ _data = {
 
 [node name="MeteorStorm" type="Node2D" node_paths=PackedStringArray("animation", "selector")]
 script = ExtResource("1_26s5l")
-projectile_num = 7
+projectile_num = 15
 time_between_projectiles = 0.2
 random_area = 100
 Projectile = ExtResource("2_glt6v")

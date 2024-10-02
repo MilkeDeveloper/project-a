@@ -34,7 +34,7 @@ gravity = Vector3(0, 0, 0)
 radial_accel_min = -2.23517e-06
 radial_accel_max = -2.23517e-06
 scale_min = 0.1
-scale_max = 0.1
+scale_max = 0.2
 scale_curve = SubResource("CurveTexture_jda01")
 color_ramp = SubResource("GradientTexture1D_wbeeo")
 

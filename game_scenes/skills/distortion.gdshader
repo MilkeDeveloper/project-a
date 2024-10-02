@@ -7,10 +7,10 @@ uniform float distortion_strength = 0.05;  // Controle da intensidade da distor�
 void fragment() {
     // Coordenadas da textura original
     vec2 uv = FRAGCOORD.xy / SCREEN_PIXEL_SIZE;
-    
+
     // Pega o valor da textura de distorção, normalmente usamos os canais R e G
     vec2 distortion = texture(distortion_texture, UV).rg;
-    
+
     // Remapeia o valor de distorção de [-0.5, 0.5] para evitar distorções extremas
     distortion = (distortion - 0.5) * distortion_strength;
 
