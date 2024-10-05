@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3e427a6qj8vf"]
+
+[ext_resource type="PackedScene" uid="uid://bt7ithcv321vn" path="res://game_scenes/systems/key_maper.tscn" id="1_octw0"]
+
+[node name="UI config" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(246, 304)
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="VSeparator" type="VSeparator" parent="Control/PanelContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
+layout_mode = 2
+size_flags_horizontal = 4
+action_name = NodePath("Label")
+
+[node name="HBoxContainer2" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
+layout_mode = 2
+size_flags_horizontal = 4
+action_name = NodePath("Label")
+action_keys = {
+"block": "block"
+}
+
+[node name="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer2" index="0"]
+size_flags_horizontal = 0
+
+[node name="HBoxContainer3" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
+layout_mode = 2
+size_flags_horizontal = 4
+action_name = NodePath("Label")
+action_keys = {
+"inventory": "inventory"
+}
+
+[node name="HBoxContainer4" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
+layout_mode = 2
+size_flags_horizontal = 4
+action_name = NodePath("Label")
+action_keys = {
+"map": "map"
+}
+
+[node name="HBoxContainer5" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
+layout_mode = 2
+size_flags_horizontal = 4
+action_name = NodePath("Label")
+action_keys = {
+"hotbar_1": "hotbar_1"
+}
+
+[node name="HBoxContainer6" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
+layout_mode = 2
+size_flags_horizontal = 4
+action_name = NodePath("Label")
+action_keys = {
+"hotbar_2": "hotbar_2"
+}
+
+[editable path="Control/PanelContainer/VBoxContainer/HBoxContainer"]
+[editable path="Control/PanelContainer/VBoxContainer/HBoxContainer2"]
+[editable path="Control/PanelContainer/VBoxContainer/HBoxContainer3"]
+[editable path="Control/PanelContainer/VBoxContainer/HBoxContainer4"]
+[editable path="Control/PanelContainer/VBoxContainer/HBoxContainer5"]
+[editable path="Control/PanelContainer/VBoxContainer/HBoxContainer6"]

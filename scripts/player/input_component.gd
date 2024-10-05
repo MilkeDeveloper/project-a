@@ -12,6 +12,15 @@ extends Node2D
 var can_shoot: bool = true
 var nullable: Node
 
+var action_keys = {
+	"attack": "basic_attack",
+	"block": "block",
+	"inventory": "inventory",
+	"map": "map",
+	"hotbar_1": "hotbar_1",
+	"hotbar_2": "hotbar_2"
+}
+
 # Checa os inputs do player
 func get_input(event):
 	if event.is_action_pressed("mouse_right") and not dash_component.is_dashing:
@@ -49,3 +58,16 @@ func get_input(event):
 	if event.is_action_just_pressed("skill5"):
 		skill_mananager.activate_skill("Arrow Assault", node, anim_component, nullable)
 		print("ativando a skill")
+		
+		
+	#GUI config
+	if event.is_action_just_pressed("config"):
+		$"../UI config".get_node("Control").visible = not $"../UI config".get_node("Control").visible
+		if $"../UI config".get_node("Control").visible == false:
+			ConfigManager.save_keybindings()
+			print("salvando mapeamento de teclas...")
+		
+	
+	#GUI interface
+	if event.is_action_just_pressed("inventory"):
+		$"../UI interface/inventory".visible = not $"../UI interface/inventory".visible

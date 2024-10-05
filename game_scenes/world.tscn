@@ -1,5 +1,6 @@
-[gd_scene load_steps=67 format=4 uid="uid://l200m2x0yagx"]
+[gd_scene load_steps=70 format=4 uid="uid://l200m2x0yagx"]
 
+[ext_resource type="Script" path="res://config/game_init.gd" id="1_4616h"]
 [ext_resource type="Texture2D" uid="uid://0tond388mexi" path="res://assets/tilesets/map3.png" id="1_lccmo"]
 [ext_resource type="Texture2D" uid="uid://c0ltjbh58tjd8" path="res://assets/tilesets/trees_others-removebg-preview.png" id="3_gcx2y"]
 [ext_resource type="Texture2D" uid="uid://dpmiknwkwl5da" path="res://assets/tilesets/rocks.png.png" id="3_gna71"]
@@ -16,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="13_hi7y1"]
 [ext_resource type="PackedScene" uid="uid://b7lbwsekejpe1" path="res://game_scenes/UI/ui_map.tscn" id="15_qexld"]
 [ext_resource type="Script" path="res://ui/ui_scripts/pivot.gd" id="17_l2bv6"]
+[ext_resource type="PackedScene" uid="uid://4t7eil3yoxnl" path="res://game_scenes/item/itemBase.tscn" id="18_gocsr"]
+[ext_resource type="Resource" uid="uid://dd8c38oryw55r" path="res://resources/items/hp_potion.tres" id="19_8ac37"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p81if"]
 shader = ExtResource("4_lk73s")
@@ -1273,6 +1276,7 @@ animations = [{
 [node name="World" type="Node2D"]
 z_index = -1
 y_sort_enabled = true
+script = ExtResource("1_4616h")
 
 [node name="map_01" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -7119,10 +7123,72 @@ camera_mini_map = NodePath("Camera2D")
 player = NodePath("../../../Player")
 
 [node name="Camera2D" parent="UI map/SubViewportContainer/SubViewport" index="2"]
-offset = Vector2(-1200, -580)
+offset = Vector2(-1220, -580)
 
-[node name="point" parent="UI map/CoverMinimap" index="0"]
-position = Vector2(100, 100)
+[node name="item_sprite" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1477, 752)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite2" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1385, 854)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite3" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1502, 868)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite4" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1612, 960)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite5" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1412, 988)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite6" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1329, 987)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite7" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1315, 899)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite8" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1278, 800)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite9" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1395, 739)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite10" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1274, 682)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite11" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1612, 726)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite12" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1512, 620)
+item_data = ExtResource("19_8ac37")
+quantity = 20
+
+[node name="item_sprite13" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1713, 650)
+item_data = ExtResource("19_8ac37")
+quantity = 20
 
 [connection signal="body_entered" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_exited"]

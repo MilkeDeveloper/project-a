@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cprg26eibyck"]
+
+[ext_resource type="Texture2D" uid="uid://dahu8kpwp4qto" path="res://assets/misc/hotbar_slot3.png" id="1_g1ltw"]
+[ext_resource type="Script" path="res://scripts/systems/Inventory/slot.gd" id="1_gv3nj"]
+
+[node name="slot" type="PanelContainer"]
+offset_left = 125.0
+offset_top = 125.0
+offset_right = 175.0
+offset_bottom = 175.0
+script = ExtResource("1_gv3nj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_g1ltw")
+
+[node name="item" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="stacks" type="Label" parent="item"]
+layout_mode = 2
+offset_top = 27.0
+offset_right = 50.0
+offset_bottom = 50.0
+size_flags_vertical = 8
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_item_clicked"]

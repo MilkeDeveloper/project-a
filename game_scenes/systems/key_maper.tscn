@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt7ithcv321vn"]
+
+[ext_resource type="Script" path="res://scripts/systems/config/keys_config.gd" id="1_b6wg7"]
+
+[node name="HBoxContainer" type="HBoxContainer" node_paths=PackedStringArray("button")]
+offset_left = 550.0
+offset_top = 150.0
+offset_right = 1050.0
+offset_bottom = 173.0
+script = ExtResource("1_b6wg7")
+button = NodePath("Button")
+action_keys = {
+"attack": "basic_attack"
+}
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2

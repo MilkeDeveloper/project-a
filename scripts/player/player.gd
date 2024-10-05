@@ -9,7 +9,17 @@ class_name Player
 @export var SPEED = 300.0
 @export var hp: int
 
+var action_keys = {
+	"attack": "basic_attack",
+	"block": "block",
+	"inventory": "inventory",
+	"map": "map",
+	"hotbar_1": "hotbar_1",
+	"hotbar_2": "hotbar_2"
+}
+
 func _ready() -> void:
+	load_keybindings()
 	$sprite2.hide()
 	GLobals.connect("cam_shake", _on_cam_shake)
 
@@ -35,3 +45,15 @@ func _on_cam_shake(intensity, duration):
 	await get_tree().create_timer(duration).timeout
 	$sprite/cam.position_smoothing_enabled = true
 	
+
+func load_keybindings():
+	var config = ConfigFile.new()
+	if config.load("res://config/keybindings.cfg") == OK:
+		for action in action_keys.keys():
+			var scancode = config.get_value("keybindings", action_keys[action], null)
+			if scancode:
+				var key_event = InputEventKey.new()
+				key_event.keycode = scancode
+				InputMap.action_erase_events(action_keys[action])
+				InputMap.action_add_event(action_keys[action], key_event)
+				print(scancode)

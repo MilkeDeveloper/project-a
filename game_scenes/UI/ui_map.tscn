@@ -54,7 +54,7 @@ scale = Vector2(1.5297, 1.27228)
 texture = ExtResource("4_bkxhe")
 
 [node name="point" type="Sprite2D" parent="CoverMinimap"]
-position = Vector2(1.96124, 135.19)
+position = Vector2(100, 100)
 scale = Vector2(0.392234, 0.471594)
 texture = ExtResource("4_h5k26")
 offset = Vector2(1.6665, 0)

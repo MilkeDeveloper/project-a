@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://drffed2tq2jus"]
+[gd_scene load_steps=85 format=3 uid="uid://drffed2tq2jus"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_35xu0"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="2_vej8t"]
@@ -48,6 +48,8 @@
 [ext_resource type="Texture2D" uid="uid://dhfgxmf6cj2pl" path="res://assets/misc/skill_icon_ice_breath.png" id="38_cyvm6"]
 [ext_resource type="Texture2D" uid="uid://biykkrhy1js3j" path="res://assets/misc/skill_icon_magic_amplification.png" id="39_dm4k3"]
 [ext_resource type="Texture2D" uid="uid://lr6g61edf1vv" path="res://assets/misc/skill_icon_lightining_strike.png" id="40_wy80i"]
+[ext_resource type="PackedScene" uid="uid://c3e427a6qj8vf" path="res://ui_config.tscn" id="49_nbt1q"]
+[ext_resource type="PackedScene" uid="uid://t1slqsevmadj" path="res://game_scenes/UI/inventory.tscn" id="50_ym2mu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yqhx"]
 radius = 15.0
@@ -2396,7 +2398,7 @@ base_font = SubResource("SystemFont_ebkd5")
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_component", "input_component", "dash_component") groups=["player"]]
 z_index = 1
 z_as_relative = false
-collision_layer = 5
+collision_layer = 69
 collision_mask = 8
 script = ExtResource("1_35xu0")
 navigation_component = NodePath("navigation")
@@ -3274,6 +3276,13 @@ texture_under = ExtResource("33_j3vti")
 texture_progress = ExtResource("35_sssbo")
 texture_progress_offset = Vector2(16, 5)
 tint_progress = Color(1, 0.733333, 0.117647, 1)
+
+[node name="UI config" parent="." instance=ExtResource("49_nbt1q")]
+
+[node name="UI interface" type="CanvasLayer" parent="."]
+
+[node name="inventory" parent="UI interface" instance=ExtResource("50_ym2mu")]
+visible = false
 
 [connection signal="destination_reached" from="navigation" to="." method="_on_destination_reached"]
 
