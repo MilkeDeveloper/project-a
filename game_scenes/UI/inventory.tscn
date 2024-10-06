@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://t1slqsevmadj"]
+[gd_scene load_steps=16 format=3 uid="uid://t1slqsevmadj"]
 
 [ext_resource type="Script" path="res://scripts/systems/Inventory/inventory.gd" id="1_86htq"]
 [ext_resource type="Resource" uid="uid://0u5glavfj3oo" path="res://resources/inv/Inventory.tres" id="2_a74jh"]
@@ -9,61 +9,8 @@
 [sub_resource type="SystemFont" id="SystemFont_mwxd5"]
 font_names = PackedStringArray("Arial")
 font_weight = 600
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
-
-[sub_resource type="Animation" id="Animation_5ly84"]
-resource_name = "inventory_open"
-length = 0.200003
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NinePatchRect:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-300.328, -0.100002, 0, 0.100002, 0, 0, -0.166667, -74.5235, 0.100002, 0),
-"times": PackedFloat32Array(0, 0.2)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("NinePatchRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
-}
-
-[sub_resource type="Animation" id="Animation_axofg"]
-resource_name = "inventory_close"
-length = 0.200003
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NinePatchRect:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.536237, -0.100002, 0, 0.100002, 0, -340.36, -0.166667, 131.891, 0.100002, 0),
-"times": PackedFloat32Array(0, 0.2)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("NinePatchRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_tb3dv"]
 length = 0.001
@@ -98,6 +45,30 @@ tracks/2/path = NodePath("discardItem_dialog:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("discardItem_quantity:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("discardItem_quantity:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -160,16 +131,132 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_axofg"]
+resource_name = "inventory_close"
+length = 0.200003
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.536237, -0.100002, 0, 0.100002, 0, -340.36, -0.166667, 131.891, 0.100002, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_5ly84"]
+resource_name = "inventory_open"
+length = 0.200003
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-300.328, -0.100002, 0, 0.100002, 0, 0, -0.166667, -74.5235, 0.100002, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_36ijp"]
+resource_name = "confirm_dialog_open"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("discardItem_quantity:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("discardItem_quantity:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vho16"]
+resource_name = "confirm_dialog_close"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("discardItem_quantity:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("discardItem_quantity:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_whcq1"]
 _data = {
 "RESET": SubResource("Animation_tb3dv"),
+"confirm_dialog_close": SubResource("Animation_vho16"),
+"confirm_dialog_open": SubResource("Animation_36ijp"),
 "dialog_close": SubResource("Animation_ubw8w"),
 "dialog_open": SubResource("Animation_irddj"),
 "inventory_close": SubResource("Animation_axofg"),
 "inventory_open": SubResource("Animation_5ly84")
 }
 
-[node name="inventory UI" type="Control" node_paths=PackedStringArray("inventory_container", "dragging_preview", "inventory_window", "discardItem_dialog", "anim")]
+[sub_resource type="SystemFont" id="SystemFont_qxthk"]
+font_names = PackedStringArray("Arial")
+multichannel_signed_distance_field = true
+
+[node name="inventory UI" type="Control" node_paths=PackedStringArray("inventory_container", "dragging_preview", "inventory_window", "discardItem_dialog", "discardItem_confirm", "anim")]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 3
 anchors_preset = 0
@@ -183,6 +270,7 @@ inventory = ExtResource("2_a74jh")
 dragging_preview = NodePath("NinePatchRect/ScrollContainer/GridContainer/slot/dragging_preview")
 inventory_window = NodePath("NinePatchRect")
 discardItem_dialog = NodePath("discardItem_dialog")
+discardItem_confirm = NodePath("discardItem_quantity")
 anim = NodePath("anim")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -399,15 +487,59 @@ libraries = {
 [node name="discardItem_dialog" parent="." instance=ExtResource("5_omeg8")]
 visible = false
 layout_mode = 0
-offset_left = 318.0
-offset_top = 303.0
-offset_right = 568.0
-offset_bottom = 453.0
+offset_left = 321.0
+offset_top = 307.0
+offset_right = 571.0
+offset_bottom = 457.0
 scale = Vector2(1, 1)
+
+[node name="dialog" parent="discardItem_dialog" index="0"]
+theme_override_colors/font_color = Color(0.72549, 0, 0.278431, 1)
+
+[node name="item_quantity" type="LineEdit" parent="discardItem_dialog"]
+visible = false
+layout_mode = 0
+offset_left = 44.0
+offset_top = 92.0
+offset_right = 111.063
+offset_bottom = 131.0
+placeholder_text = "0"
+
+[node name="discardItem_quantity" parent="." instance=ExtResource("5_omeg8")]
+visible = false
+layout_mode = 0
+offset_left = 321.0
+offset_top = 307.0
+offset_right = 571.0
+offset_bottom = 457.0
+scale = Vector2(1, 1)
+
+[node name="dialog" parent="discardItem_quantity" index="0"]
+theme_override_colors/font_color = Color(0.724826, 0, 0.277528, 1)
+text = "Digite a quantidade a ser descartada:"
+autowrap_mode = 2
+
+[node name="accept" parent="discardItem_quantity/accept_button" index="0"]
+visible = false
+
+[node name="reject" parent="discardItem_quantity/reject_button" index="0"]
+theme_override_colors/font_color = Color(0, 0.639216, 0.435294, 1)
+text = "Ok"
+
+[node name="item_quantity" type="LineEdit" parent="discardItem_quantity"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 92.0
+offset_right = 111.063
+offset_bottom = 131.0
+theme_override_fonts/font = SubResource("SystemFont_qxthk")
+placeholder_text = "0"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="discardItem_dialog/accept_button" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="discardItem_dialog/reject_button" to="." method="_on_reject_button_pressed"]
+[connection signal="pressed" from="discardItem_quantity/accept_button" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="discardItem_quantity/reject_button" to="." method="_on_discard_confirm_button_pressed"]
 
 [editable path="NinePatchRect/ScrollContainer/GridContainer/slot"]
 [editable path="NinePatchRect/ScrollContainer/GridContainer/slot2"]
@@ -450,3 +582,4 @@ scale = Vector2(1, 1)
 [editable path="NinePatchRect/ScrollContainer/GridContainer/slot39"]
 [editable path="NinePatchRect/ScrollContainer/GridContainer/slot40"]
 [editable path="discardItem_dialog"]
+[editable path="discardItem_quantity"]

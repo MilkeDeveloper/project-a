@@ -11,6 +11,7 @@ var interactions: int = 1
 var is_dragging: bool = false
 var dragged_item: ItemData
 var index_from_dragg: int
+var discarded_items: int
 
 var discard_area: Rect2  # Define a área do inventário para comparação
 
@@ -107,10 +108,16 @@ func _on_slot_released(index: int, screen_mouse_position: Vector2):
 	var mouse_position = screen_mouse_position
 	if is_in_discard_area(mouse_position) and is_dragging:
 		# O item foi arrastado para fora do inventário, descartar
-		print("Item discarded")
-		is_dragging = false
-		ItemGlobals.send_discard.emit()
-		ItemGlobals.update_ui.emit()  # Atualiza a UI para refletir que o item foi removido
+		if dragged_item.stackable and dragged_item.stacks > 1:
+			print("Item discarded")
+			is_dragging = false
+			ItemGlobals.send_discard.emit(true)
+			ItemGlobals.update_ui.emit()  # Atualiza a UI para refletir que o item foi removido
+		else:
+			print("Item discarded")
+			is_dragging = false
+			ItemGlobals.send_discard.emit(false)
+			ItemGlobals.update_ui.emit()  # Atualiza a UI para refletir que o item foi removido
 	
 	elif is_valid_slot(index) and item_slots[index] == null and is_dragging:
 		# Solta o item no novo slot
@@ -142,9 +149,18 @@ func is_valid_slot(index: int) -> bool:
 func is_in_discard_area(mouse_position: Vector2) -> bool:
 	return not discard_area.has_point(mouse_position)
 
-func _on_discard_item(discard: bool):
-	if discard:
-		is_dragging = false
+func _on_discard_item(discard: bool, quantity: int):
+	if discard and quantity < dragged_item.stacks:
+		item_slots[index_from_dragg] = dragged_item
+		item_slots[index_from_dragg].stacks -= quantity
+		dragged_item = null
+		print("O item foi descartado com sucesso!")
+		ItemGlobals.update_ui.emit()
+		ItemGlobals.item_dragged_to_slot.emit(index_from_dragg)
+	elif discard and quantity >= dragged_item.stacks:
+		item_slots[index_from_dragg] = dragged_item
+		item_slots[index_from_dragg].stacks = 0
+		item_slots[index_from_dragg] = null
 		dragged_item = null
 		print("O item foi descartado com sucesso!")
 		ItemGlobals.update_ui.emit()

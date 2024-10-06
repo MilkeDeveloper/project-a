@@ -5,6 +5,7 @@ extends Control
 @export var dragging_preview: TextureRect = null
 @export var inventory_window: NinePatchRect
 @export var discardItem_dialog: NinePatchRect
+@export var discardItem_confirm: NinePatchRect
 @export var anim: AnimationPlayer
 
 var on_mouse_UI: bool = false
@@ -13,6 +14,7 @@ var index: int
 var slot_index: int
 var dragged_item: ItemData
 var backup_item: ItemData
+var quantity_to_discard: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -103,17 +105,27 @@ func _on_mouse_released(slot_index):
 func _on_mouse_entered() -> void:
 	on_mouse_UI = true
 
-func _on_discard_item():
-	dragging_preview.visible = false
-	discardItem_dialog.visible = true
-	discardItem_dialog.get_node("dialog").text = "Deseja destarcar o item?"
-	anim.play("dialog_open")
+func _on_discard_item(stackble: bool):
+	if stackble:
+		dragging_preview.visible = false
+		anim.play("confirm_dialog_open")
+		stackble = false
+	else:
+		dragging_preview.visible = false
+		discardItem_dialog.visible = true
+		discardItem_dialog.get_node("dialog").text = "Deseja destarcar o item?"
+		anim.play("dialog_open")
 
 func _on_accept_button_pressed() -> void:
 	anim.play("dialog_close")
-	ItemGlobals.receive_discard.emit(true)
+	ItemGlobals.receive_discard.emit(true, 1)
 
 
 func _on_reject_button_pressed() -> void:
 	anim.play("dialog_close")
 	ItemGlobals.receive_discard.emit(false)
+	
+func _on_discard_confirm_button_pressed():
+	quantity_to_discard = int(discardItem_confirm.get_node("item_quantity").text)
+	anim.play("confirm_dialog_close")
+	ItemGlobals.receive_discard.emit(true, quantity_to_discard)

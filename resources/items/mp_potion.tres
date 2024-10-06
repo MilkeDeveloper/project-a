@@ -13,6 +13,6 @@ item_type = Array[String](["consumable"])
 usable = true
 item_cost = 20.0
 item_weight = 0.1
-max_stacks = 99
+max_stacks = 99999
 stacks = 0
 stackable = true
