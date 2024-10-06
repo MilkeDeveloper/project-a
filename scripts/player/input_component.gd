@@ -8,9 +8,12 @@ extends Node2D
 @export var cam: Camera2D
 @export var node: CharacterBody2D
 @export var skill_mananager: Node
+@export var ui_inventory: Control
 
 var can_shoot: bool = true
 var nullable: Node
+var inventory_open: bool
+var anim: AnimationPlayer
 
 var action_keys = {
 	"attack": "basic_attack",
@@ -20,6 +23,9 @@ var action_keys = {
 	"hotbar_1": "hotbar_1",
 	"hotbar_2": "hotbar_2"
 }
+
+func _ready() -> void:
+	anim = ui_inventory.get_node("anim")
 
 # Checa os inputs do player
 func get_input(event):
@@ -70,4 +76,14 @@ func get_input(event):
 	
 	#GUI interface
 	if event.is_action_just_pressed("inventory"):
-		$"../UI interface/inventory".visible = not $"../UI interface/inventory".visible
+		
+		if anim != null and not inventory_open:
+			ui_inventory.visible = true
+			anim.play("inventory_open")
+			inventory_open = true
+		else:
+			var anim = ui_inventory.get_node("anim")
+			anim.play("inventory_close")
+			await anim.animation_finished
+			ui_inventory.visible = false
+			inventory_open = false

@@ -7188,7 +7188,6 @@ quantity = 20
 [node name="item_sprite13" parent="." instance=ExtResource("18_gocsr")]
 position = Vector2(1713, 650)
 item_data = ExtResource("19_8ac37")
-quantity = 20
 
 [connection signal="body_entered" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_exited"]

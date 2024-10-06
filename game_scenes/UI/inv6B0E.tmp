@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://t1slqsevmadj"]
+
+[ext_resource type="Texture2D" uid="uid://dorwqex30uudp" path="res://assets/misc/slot_number.png" id="1_8mucc"]
+[ext_resource type="Script" path="res://scripts/systems/Inventory/inventory.gd" id="1_86htq"]
+[ext_resource type="Resource" uid="uid://0u5glavfj3oo" path="res://resources/inv/Inventory.tres" id="2_a74jh"]
+[ext_resource type="PackedScene" uid="uid://bd8xhujhk3po6" path="res://game_scenes/systems/Inventory/slot.tscn" id="4_pyrsv"]
+
+[node name="inventory UI" type="Control" node_paths=PackedStringArray("inventory_container")]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(348, 243)
+script = ExtResource("1_86htq")
+inventory_container = NodePath("NinePatchRect/GridContainer")
+inventory = ExtResource("2_a74jh")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.772549)
+texture_filter = 1
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+offset_right = 400.0
+offset_bottom = 300.0
+texture = ExtResource("1_8mucc")
+patch_margin_left = 3
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -186.0
+offset_top = 25.0
+offset_right = 188.0
+offset_bottom = 129.0
+grow_horizontal = 2
+columns = 7
+
+[node name="slot" parent="NinePatchRect/GridContainer" instance=ExtResource("4_pyrsv")]
+layout_mode = 2
+
+[node name="slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("4_pyrsv")]
+layout_mode = 2
+slot_index = 1
+
+[node name="slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("4_pyrsv")]
+layout_mode = 2
+slot_index = 2
+
+[node name="slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("4_pyrsv")]
+layout_mode = 2
+slot_index = 3
+
+[node name="slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("4_pyrsv")]
+layout_mode = 2
+slot_index = 4
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+
+[editable path="NinePatchRect/GridContainer/slot"]
+[editable path="NinePatchRect/GridContainer/slot2"]
+[editable path="NinePatchRect/GridContainer/slot3"]
+[editable path="NinePatchRect/GridContainer/slot4"]
+[editable path="NinePatchRect/GridContainer/slot5"]

@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://c87tufpuw46d5"]
+
+[ext_resource type="Texture2D" uid="uid://c4aykgc1v66v" path="res://assets/misc/inv_style_box.png" id="1_rjoku"]
+[ext_resource type="Texture2D" uid="uid://dahu8kpwp4qto" path="res://assets/misc/hotbar_slot3.png" id="2_hy2ah"]
+
+[sub_resource type="SystemFont" id="SystemFont_yquj6"]
+font_names = PackedStringArray("Arial")
+font_weight = 675
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[sub_resource type="SystemFont" id="SystemFont_2mnc6"]
+font_names = PackedStringArray("Arial")
+font_weight = 700
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[node name="discardItem_dialog" type="NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0.878431)
+texture_filter = 1
+custom_minimum_size = Vector2(250, 150)
+offset_left = 334.0
+offset_top = 294.0
+offset_right = 584.0
+offset_bottom = 444.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(125, 81)
+texture = ExtResource("1_rjoku")
+region_rect = Rect2(-0.374908, -0.15731, 50.7034, 50.1051)
+patch_margin_left = 8
+patch_margin_top = 36
+patch_margin_right = 8
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="dialog" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -24.0
+offset_right = 79.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_yquj6")
+theme_override_font_sizes/font_size = 14
+text = "Deseja descartar o item?"
+horizontal_alignment = 1
+
+[node name="accept_button" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 0
+offset_left = 42.0
+offset_top = 91.0
+offset_right = 112.0
+offset_bottom = 132.0
+texture_normal = ExtResource("2_hy2ah")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="accept" type="Label" parent="accept_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.637646, 0.433923, 1)
+theme_override_fonts/font = SubResource("SystemFont_2mnc6")
+theme_override_font_sizes/font_size = 14
+text = "Sim"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="reject_button" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 0
+offset_left = 138.0
+offset_top = 91.0
+offset_right = 208.0
+offset_bottom = 132.0
+texture_normal = ExtResource("2_hy2ah")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="reject" type="Label" parent="reject_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.991681, 0, 0.32472, 1)
+theme_override_fonts/font = SubResource("SystemFont_2mnc6")
+theme_override_font_sizes/font_size = 14
+text = "Não"
+horizontal_alignment = 1
+vertical_alignment = 1

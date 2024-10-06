@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd8xhujhk3po6"]
+
+[ext_resource type="Texture2D" uid="uid://dahu8kpwp4qto" path="res://assets/misc/hotbar_slot3.png" id="1_gsh3j"]
+[ext_resource type="Script" path="res://scripts/systems/Inventory/slot.gd" id="2_txg3k"]
+
+[node name="slot" type="TextureButton"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
+texture_normal = ExtResource("1_gsh3j")
+script = ExtResource("2_txg3k")
+
+[node name="item_icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="stack_label" type="Label" parent="item_icon"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 19.0
+offset_right = 53.0
+offset_bottom = 42.0
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="dragging_preview" type="TextureRect" parent="."]
+z_index = 5
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
