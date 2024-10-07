@@ -26,6 +26,7 @@ func _ready() -> void:
 	ItemGlobals.connect("dragg_item", _on_draggin_item)
 	ItemGlobals.connect("item_dragged_to_slot", _on_dragging_released)
 	ItemGlobals.connect("send_discard", _on_discard_item)
+	ItemGlobals.connect("update_category_ui", update_category_inventory)
 	
 	inventory.discard_area = Rect2(inventory_window.position, inventory_window.size)
 
@@ -42,7 +43,7 @@ func update_inventory():
 	for i in range(inventory_container.get_child_count()):
 		var slot = inventory_container.get_child(i)
 		var item_icon = slot.get_child(0)
-		var item = inventory.item_slots[i]
+		var item = inventory.general_slots[i]
 		
 
 		if item != null:
@@ -60,8 +61,45 @@ func update_inventory():
 			# Limpa o slot se estiver vazio
 			item_icon.texture = null
 			item_icon.get_node("stack_label").text = ""
+
+func update_category_inventory(category: String):
+	# Limpa a interface
+	for i in range(inventory_container.get_child_count()):
+		var slot = inventory_container.get_child(i)
+		var item_icon = slot.get_child(0)
+		var item = null
+		match category:
+			"general":
+				item = inventory.general_slots[i]
+			"equipment":
+				item = inventory.equipment_slots[i]
+			"consumable":
+				item = inventory.consumable_slots[i]
+			"material":
+				item = inventory.material_slots[i]
+			"etc":
+				item = inventory.etc_slots[i]
 		
 		
+		
+
+		if item != null:
+			# Exibe o ícone do item no slot
+			item_icon.texture = item.icon
+			
+			# Exibe a quantidade, se o item for empilhável
+			var label = item_icon.get_node("stack_label")
+			#label.text = str(item.stacks) if item.stacks > 1 and item.stacks < item.max_stacks else ""
+			if item.stacks >= item.max_stacks:
+				label.text = str(item.max_stacks)
+			else:
+				label.text = str(item.stacks) if item.stacks > 1 else ""
+		else:
+			# Limpa o slot se estiver vazio
+			item_icon.texture = null
+			item_icon.get_node("stack_label").text = ""
+
+
 func show_dragging_preview(slot_index: int):
 	pass
 		
@@ -71,7 +109,7 @@ func on_item_added():
 	update_inventory()
 	
 func _on_draggin_item(new_index: int):
-	var item_dragged = inventory.item_slots[new_index]
+	var item_dragged = inventory.slots[new_index]
 	
 	if item_dragged != null:
 		print("arrastando")
@@ -123,9 +161,29 @@ func _on_accept_button_pressed() -> void:
 
 func _on_reject_button_pressed() -> void:
 	anim.play("dialog_close")
-	ItemGlobals.receive_discard.emit(false)
+	ItemGlobals.receive_discard.emit(false, 0)
 	
 func _on_discard_confirm_button_pressed():
 	quantity_to_discard = int(discardItem_confirm.get_node("item_quantity").text)
 	anim.play("confirm_dialog_close")
 	ItemGlobals.receive_discard.emit(true, quantity_to_discard)
+
+
+func _on_equipment_button_pressed() -> void:
+	ItemGlobals.send_item_category.emit("equipment")
+
+
+func _on_all_button_pressed() -> void:
+	ItemGlobals.send_item_category.emit("general")
+
+
+func _on_cosumable_button_pressed() -> void:
+	ItemGlobals.send_item_category.emit("consumable")
+
+
+func _on_material_button_pressed() -> void:
+	ItemGlobals.send_item_category.emit("material")
+
+
+func _on_etc_button_pressed() -> void:
+	ItemGlobals.send_item_category.emit("etc")

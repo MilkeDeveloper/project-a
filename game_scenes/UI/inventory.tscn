@@ -1,14 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://t1slqsevmadj"]
+[gd_scene load_steps=19 format=3 uid="uid://t1slqsevmadj"]
 
 [ext_resource type="Script" path="res://scripts/systems/Inventory/inventory.gd" id="1_86htq"]
 [ext_resource type="Resource" uid="uid://0u5glavfj3oo" path="res://resources/inv/Inventory.tres" id="2_a74jh"]
 [ext_resource type="Texture2D" uid="uid://c4aykgc1v66v" path="res://assets/misc/inv_style_box.png" id="3_fh8my"]
 [ext_resource type="PackedScene" uid="uid://bd8xhujhk3po6" path="res://game_scenes/systems/Inventory/slot.tscn" id="4_pyrsv"]
+[ext_resource type="Texture2D" uid="uid://dahu8kpwp4qto" path="res://assets/misc/hotbar_slot3.png" id="5_ex6br"]
+[ext_resource type="Texture2D" uid="uid://dorwqex30uudp" path="res://assets/misc/slot_number.png" id="5_jyh7a"]
 [ext_resource type="PackedScene" uid="uid://c87tufpuw46d5" path="res://game_scenes/systems/Inventory/box_dialog.tscn" id="5_omeg8"]
 
 [sub_resource type="SystemFont" id="SystemFont_mwxd5"]
 font_names = PackedStringArray("Arial")
 font_weight = 600
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[sub_resource type="SystemFont" id="SystemFont_s61kw"]
+font_names = PackedStringArray("Arial")
+font_weight = 575
 subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
@@ -73,6 +81,62 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vho16"]
+resource_name = "confirm_dialog_close"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("discardItem_quantity:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("discardItem_quantity:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_36ijp"]
+resource_name = "confirm_dialog_open"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("discardItem_quantity:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("discardItem_quantity:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ubw8w"]
@@ -185,62 +249,6 @@ tracks/1/keys = {
 "values": [false, true, true]
 }
 
-[sub_resource type="Animation" id="Animation_36ijp"]
-resource_name = "confirm_dialog_open"
-length = 0.200003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("discardItem_quantity:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("discardItem_quantity:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_vho16"]
-resource_name = "confirm_dialog_close"
-length = 0.200003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("discardItem_quantity:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("discardItem_quantity:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_whcq1"]
 _data = {
 "RESET": SubResource("Animation_tb3dv"),
@@ -254,6 +262,7 @@ _data = {
 
 [sub_resource type="SystemFont" id="SystemFont_qxthk"]
 font_names = PackedStringArray("Arial")
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [node name="inventory UI" type="Control" node_paths=PackedStringArray("inventory_container", "dragging_preview", "inventory_window", "discardItem_dialog", "discardItem_confirm", "anim")]
@@ -291,9 +300,9 @@ axis_stretch_vertical = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect"]
 layout_mode = 0
-offset_top = 291.0
+offset_top = 425.0
 offset_right = 300.0
-offset_bottom = 611.0
+offset_bottom = 745.0
 scroll_vertical_custom_step = 50.0
 horizontal_scroll_mode = 0
 
@@ -479,6 +488,171 @@ text = "inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="category_container" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -41.5
+offset_right = 133.0
+offset_bottom = -4.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="all_button" type="TextureButton" parent="NinePatchRect/category_container"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("5_ex6br")
+texture_pressed = ExtResource("5_jyh7a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/category_container/all_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.854218, 0.557735, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_s61kw")
+theme_override_font_sizes/font_size = 6
+text = "All"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="equipment_button" type="TextureButton" parent="NinePatchRect/category_container"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("5_ex6br")
+texture_pressed = ExtResource("5_jyh7a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/category_container/equipment_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.854218, 0.557735, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_s61kw")
+theme_override_font_sizes/font_size = 6
+text = "Equipment"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cosumable_button" type="TextureButton" parent="NinePatchRect/category_container"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("5_ex6br")
+texture_pressed = ExtResource("5_jyh7a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/category_container/cosumable_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.854218, 0.557735, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_s61kw")
+theme_override_font_sizes/font_size = 6
+text = "Equipment"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="material_button" type="TextureButton" parent="NinePatchRect/category_container"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("5_ex6br")
+texture_pressed = ExtResource("5_jyh7a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/category_container/material_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.854218, 0.557735, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_s61kw")
+theme_override_font_sizes/font_size = 6
+text = "Equipment"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="etc_button" type="TextureButton" parent="NinePatchRect/category_container"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("5_ex6br")
+texture_pressed = ExtResource("5_jyh7a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/category_container/etc_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.854218, 0.557735, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_s61kw")
+theme_override_font_sizes/font_size = 6
+text = "Equipment"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_whcq1")
@@ -536,6 +710,11 @@ theme_override_fonts/font = SubResource("SystemFont_qxthk")
 placeholder_text = "0"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="NinePatchRect/category_container/all_button" to="." method="_on_all_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/category_container/equipment_button" to="." method="_on_equipment_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/category_container/cosumable_button" to="." method="_on_cosumable_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/category_container/material_button" to="." method="_on_material_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/category_container/etc_button" to="." method="_on_etc_button_pressed"]
 [connection signal="pressed" from="discardItem_dialog/accept_button" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="discardItem_dialog/reject_button" to="." method="_on_reject_button_pressed"]
 [connection signal="pressed" from="discardItem_quantity/accept_button" to="." method="_on_accept_button_pressed"]

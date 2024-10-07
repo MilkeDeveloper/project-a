@@ -20,5 +20,5 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print("send item")
-		ItemGlobals.emit_signal("item_pickup", item_data, quantity)
+		ItemGlobals.emit_signal("item_pickup", item_data, quantity, item_data.item_category)
 		call_deferred("queue_free")
