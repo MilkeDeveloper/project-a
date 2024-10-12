@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=4 format=3 uid="uid://djaysrjcco6tw"]
+
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_qmuv3"]
+[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="1_w3yey"]
+[ext_resource type="Texture2D" uid="uid://bq1cpxi1sugbd" path="res://assets/misc/skill_icon_expurge.png" id="2_ayper"]
+
+[resource]
+script = ExtResource("1_qmuv3")
+id = 6
+skill_name = "Expurge"
+skill_description = "Lança um luz divida no local alvo durante 10 segundos. Inimigos que a travessarema  área sofrem dando a cada 0.2 segundos"
+skill_icon = ExtResource("2_ayper")
+mana_cost = 25
+cooldown = 15.0
+charge_time = 2.0
+effect_type = "100 + 20% MATK. Dano adicional de 50% contra mortos-vivos, e mostros de propriedade sombria"
+damage = 100
+heal = 0
+skill_level = 1
+skill_max_level = 10
+is_passive = false
+weapon_required = "wand"
+is_charging_skill = true
+is_aim_skill = true
+is_target_skill = false
+grimoire_Slots = Array[ExtResource("1_w3yey")]([null, null, null, null, null])

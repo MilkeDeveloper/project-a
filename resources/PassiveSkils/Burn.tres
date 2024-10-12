@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PassiveSkillData" load_steps=3 format=3 uid="uid://ccal6pdusgnkp"]
+
+[ext_resource type="Script" path="res://core/data/SkillPassiveData.gd" id="1_ev08y"]
+[ext_resource type="Texture2D" uid="uid://cf5iccnnf0fk1" path="res://assets/icons/passives/Burn_icon.png" id="1_smrjc"]
+
+[resource]
+script = ExtResource("1_ev08y")
+passive_id = 1
+passive_name = "Burn"
+passive_desc = "Inimigos atingidos pela Bola de Fogo sofrem dano adicional ao longo do tempo."
+Passive_icon = ExtResource("1_smrjc")
+passive_effect = "Causa 20% do dano original como dano ao longo do tempo durante 4 segundos."
+passive_skill_id = 2

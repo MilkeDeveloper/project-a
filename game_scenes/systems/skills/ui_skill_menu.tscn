@@ -1,0 +1,2387 @@
+[gd_scene load_steps=23 format=3 uid="uid://dk8musy26dkll"]
+
+[ext_resource type="Texture2D" uid="uid://c4aykgc1v66v" path="res://assets/misc/inv_style_box.png" id="1_2fo60"]
+[ext_resource type="Script" path="res://ui/ui_scripts/skill_menu.gd" id="2_mlrp7"]
+[ext_resource type="Resource" uid="uid://cg6jal838spvt" path="res://resources/skills/WeaponSkillTrees.tres" id="3_a0eh8"]
+[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="4_42y8j"]
+[ext_resource type="Texture2D" uid="uid://bnt5ftme061d0" path="res://assets/misc/skills_level_case.png" id="5_3q57o"]
+[ext_resource type="Resource" uid="uid://4gr58pv1p0qu" path="res://resources/grimoires/BurnGrimoire.tres" id="5_57oh7"]
+[ext_resource type="Texture2D" uid="uid://by1y2wksrqngd" path="res://assets/misc/levelup_button.png" id="6_a85tx"]
+[ext_resource type="Resource" uid="uid://pqqays5liwol" path="res://resources/grimoires/SharpFreezingGrimoire.tres" id="6_vfis4"]
+[ext_resource type="Texture2D" uid="uid://05pdtq22fktm" path="res://assets/misc/levelup_button_pressed.png" id="7_3ya6y"]
+[ext_resource type="Texture2D" uid="uid://bwr0f2gxg37iy" path="res://assets/misc/Staff_icon.png" id="8_1gxaj"]
+[ext_resource type="Texture2D" uid="uid://rpq0jaequfib" path="res://assets/misc/hotbar_slot_remake.png" id="8_6lopr"]
+[ext_resource type="Texture2D" uid="uid://cjfu6bhrq3pgt" path="res://assets/misc/Wand_icon.png" id="9_7vj3p"]
+[ext_resource type="Texture2D" uid="uid://oye5semj2hp3" path="res://assets/misc/decorator.png" id="10_uay8b"]
+[ext_resource type="Texture2D" uid="uid://bmqckhx3myyv7" path="res://assets/misc/hud_head3.png" id="10_xr170"]
+[ext_resource type="Texture2D" uid="uid://bdskym7geqc08" path="res://assets/misc/hud_head2.png" id="11_fc37a"]
+[ext_resource type="Texture2D" uid="uid://bcauirtnl16nk" path="res://assets/misc/nature_grimoire.png" id="12_73aos"]
+[ext_resource type="PackedScene" uid="uid://sn6536laccq2" path="res://passive.tscn" id="16_gdwug"]
+[ext_resource type="Texture2D" uid="uid://dahu8kpwp4qto" path="res://assets/misc/hotbar_slot3.png" id="17_mmi2a"]
+
+[sub_resource type="Shortcut" id="Shortcut_xk86f"]
+
+[sub_resource type="SystemFont" id="SystemFont_ic21k"]
+font_names = PackedStringArray("Times New Roman")
+multichannel_signed_distance_field = true
+
+[sub_resource type="FontVariation" id="FontVariation_nno6e"]
+base_font = SubResource("SystemFont_ic21k")
+
+[sub_resource type="SystemFont" id="SystemFont_wnjhj"]
+font_names = PackedStringArray("Times New Roman")
+multichannel_signed_distance_field = true
+
+[node name="ui_SKillMenu" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 580)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -481.0
+offset_bottom = 672.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="skill_m_container" type="NinePatchRect" parent="Control"]
+modulate = Color(1, 1, 1, 0.909804)
+custom_minimum_size = Vector2(0, 580)
+layout_mode = 1
+offset_right = 1125.0
+offset_bottom = 694.0
+texture = ExtResource("1_2fo60")
+region_rect = Rect2(0, 0, 50, 50)
+patch_margin_left = 42
+patch_margin_top = 44
+patch_margin_right = 42
+patch_margin_bottom = 14
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="w_container" type="HBoxContainer" parent="Control/skill_m_container"]
+custom_minimum_size = Vector2(1100, 580)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -289.5
+offset_right = 550.0
+offset_bottom = 290.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="weapon1" type="Panel" parent="Control/skill_m_container/w_container" node_paths=PackedStringArray("skill_info_panel", "passive_container", "inv_panel", "title_container")]
+custom_minimum_size = Vector2(320, 580)
+layout_mode = 2
+script = ExtResource("2_mlrp7")
+WeaponSkillTrees = ExtResource("3_a0eh8")
+GrimoireSlots = Array[ExtResource("4_42y8j")]([ExtResource("5_57oh7"), null, null, null, null])
+GrimoireInv = Array[ExtResource("4_42y8j")]([ExtResource("6_vfis4"), ExtResource("5_57oh7"), ExtResource("6_vfis4"), null, null, ExtResource("5_57oh7"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+skill_info_panel = NodePath("../info")
+weapon_type = "Staff"
+skill_passive_scene = ExtResource("16_gdwug")
+passive_container = NodePath("../info/ScrollContainer/Panel2")
+inv_panel = NodePath("../info/ScrollContainer/inv_panel")
+title_container = NodePath("../info/title_container")
+metadata/_edit_lock_ = true
+
+[node name="skill_icon" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 141.5
+offset_top = 377.0
+offset_right = 177.5
+offset_bottom = 413.0
+shortcut = SubResource("Shortcut_xk86f")
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon"]
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon2" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 40.5
+offset_top = 318.0
+offset_right = 76.5
+offset_bottom = 354.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon2"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon2/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon2/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon3" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 244.5
+offset_top = 312.0
+offset_right = 280.5
+offset_bottom = 348.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon3"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon3/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon3/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon4" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 40.5
+offset_top = 216.0
+offset_right = 76.5
+offset_bottom = 252.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon4"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon4/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon4/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon5" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 242.5
+offset_top = 216.0
+offset_right = 278.5
+offset_bottom = 252.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon5"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon5/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon5/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon6" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 40.5
+offset_top = 120.0
+offset_right = 76.5
+offset_bottom = 156.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon6"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon6/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon6/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon7" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 241.5
+offset_top = 114.0
+offset_right = 277.5
+offset_bottom = 150.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon7"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon7/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon7/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon8" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 141.5
+offset_top = 263.0
+offset_right = 177.5
+offset_bottom = 299.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon8"]
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon8/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon8/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon9" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 141.5
+offset_top = 163.0
+offset_right = 177.5
+offset_bottom = 199.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon9"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon9/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon9/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon10" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 0
+offset_left = 141.5
+offset_top = 67.0
+offset_right = 177.5
+offset_bottom = 103.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/skill_icon10"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/skill_icon10/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/skill_icon10/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="TitleClass" type="Label" parent="Control/skill_m_container/w_container/weapon1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_right = 147.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("FontVariation_nno6e")
+text = "Class SKILLS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/TitleClass"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 12.0
+offset_right = 76.0
+offset_bottom = 42.0
+grow_horizontal = 2
+texture = ExtResource("10_uay8b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/TitleClass"]
+layout_mode = 0
+offset_left = 54.5
+offset_right = 88.5
+offset_bottom = 62.0
+texture = ExtResource("8_1gxaj")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/skill_m_container/w_container/weapon1/TitleClass"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -109.0
+offset_top = 427.0
+offset_right = 109.0
+offset_bottom = 497.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="especialization" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/TitleClass/HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("10_xr170")
+expand_mode = 1
+
+[node name="especialization2" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/TitleClass/HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("10_xr170")
+expand_mode = 1
+
+[node name="especialization3" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/TitleClass/HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("10_xr170")
+expand_mode = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/skill_m_container/w_container/weapon1/TitleClass"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 213.0
+offset_top = 427.0
+offset_right = 431.0
+offset_bottom = 497.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="especialization" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/TitleClass/HBoxContainer2"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("10_xr170")
+expand_mode = 1
+
+[node name="especialization2" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/TitleClass/HBoxContainer2"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("10_xr170")
+expand_mode = 1
+
+[node name="especialization3" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/TitleClass/HBoxContainer2"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("10_xr170")
+expand_mode = 1
+
+[node name="weapon2" type="Panel" parent="Control/skill_m_container/w_container" node_paths=PackedStringArray("skill_info_panel", "passive_container", "inv_panel", "title_container")]
+custom_minimum_size = Vector2(320, 580)
+layout_mode = 2
+script = ExtResource("2_mlrp7")
+WeaponSkillTrees = ExtResource("3_a0eh8")
+GrimoireInv = Array[ExtResource("4_42y8j")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+skill_info_panel = NodePath("../info")
+weapon_type = "Wand"
+passive_container = NodePath("../info/ScrollContainer/Panel2")
+inv_panel = NodePath("../info/ScrollContainer/inv_panel")
+title_container = NodePath("../info/title_container")
+metadata/_edit_lock_ = true
+
+[node name="skill_icon" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 146.5
+offset_top = 370.0
+offset_right = 182.5
+offset_bottom = 406.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon2" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 46.5
+offset_top = 313.0
+offset_right = 82.5
+offset_bottom = 349.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon2"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon2/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon2/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon3" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 243.5
+offset_top = 309.0
+offset_right = 279.5
+offset_bottom = 345.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon3"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon3/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon3/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon4" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 41.5
+offset_top = 215.0
+offset_right = 77.5
+offset_bottom = 251.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon4"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon4/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon4/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon5" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 241.5
+offset_top = 213.0
+offset_right = 277.5
+offset_bottom = 249.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon5"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon5/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon5/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon6" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 41.5
+offset_top = 115.0
+offset_right = 77.5
+offset_bottom = 151.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon6"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon6/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon6/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon7" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 240.5
+offset_top = 111.0
+offset_right = 276.5
+offset_bottom = 147.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon7"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon7/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon7/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon8" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 145.5
+offset_top = 259.0
+offset_right = 181.5
+offset_bottom = 295.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon8"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon8/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon8/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon9" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 143.5
+offset_top = 159.0
+offset_right = 179.5
+offset_bottom = 195.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon9"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon9/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon9/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="skill_icon10" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
+layout_mode = 0
+offset_left = 139.5
+offset_top = 64.0
+offset_right = 175.5
+offset_bottom = 100.0
+texture_normal = ExtResource("8_6lopr")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="texture" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/skill_icon10"]
+visible = false
+self_modulate = Color(0.801168, 0.597416, 3.85046e-07, 1)
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 59.0
+texture = ExtResource("5_3q57o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/skill_icon10/texture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/skill_icon10/texture"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 43.0
+texture_normal = ExtResource("6_a85tx")
+texture_pressed = ExtResource("7_3ya6y")
+ignore_texture_size = true
+
+[node name="TitleClass" type="Label" parent="Control/skill_m_container/w_container/weapon2"]
+z_index = 1
+layout_mode = 2
+offset_left = 14.0
+offset_top = -1.0
+offset_right = 306.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("FontVariation_nno6e")
+text = "Class SKILLS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/TitleClass"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -73.5
+offset_top = 12.0
+offset_right = 76.5
+offset_bottom = 42.0
+grow_horizontal = 2
+texture = ExtResource("10_uay8b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/TitleClass"]
+layout_mode = 0
+offset_left = 54.5
+offset_right = 88.5
+offset_bottom = 62.0
+texture = ExtResource("9_7vj3p")
+expand_mode = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/skill_m_container/w_container"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="info" type="Panel" parent="Control/skill_m_container/w_container"]
+custom_minimum_size = Vector2(370, 580)
+layout_mode = 2
+
+[node name="skill_name" type="Label" parent="Control/skill_m_container/w_container/info"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.5
+offset_top = 30.0
+offset_right = 140.5
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_wnjhj")
+theme_override_font_sizes/font_size = 16
+text = "Grimoires"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 25.0
+offset_right = 76.0
+offset_bottom = 55.0
+grow_horizontal = 2
+texture = ExtResource("10_uay8b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="passive" type="TextureButton" parent="Control/skill_m_container/w_container/info"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.5
+offset_top = 74.0
+offset_right = 42.5
+offset_bottom = 154.0
+grow_horizontal = 2
+texture_normal = ExtResource("11_fc37a")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/passive"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -30.0
+offset_right = 33.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_73aos")
+expand_mode = 1
+
+[node name="passive2" type="TextureButton" parent="Control/skill_m_container/w_container/info"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.5
+offset_top = 73.0
+offset_right = -41.5
+offset_bottom = 153.0
+grow_horizontal = 2
+texture_normal = ExtResource("11_fc37a")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/passive2"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -23.0
+offset_right = 25.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_73aos")
+expand_mode = 1
+
+[node name="passive3" type="TextureButton" parent="Control/skill_m_container/w_container/info"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 45.5
+offset_top = 74.0
+offset_right = 125.5
+offset_bottom = 154.0
+grow_horizontal = 2
+texture_normal = ExtResource("11_fc37a")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/passive3"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -23.0
+offset_right = 25.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_73aos")
+expand_mode = 1
+
+[node name="passive4" type="TextureButton" parent="Control/skill_m_container/w_container/info"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.5
+offset_top = 144.0
+offset_right = 0.5
+offset_bottom = 224.0
+grow_horizontal = 2
+texture_normal = ExtResource("11_fc37a")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/passive4"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -23.0
+offset_right = 25.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="passive5" type="TextureButton" parent="Control/skill_m_container/w_container/info"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 4.5
+offset_top = 144.0
+offset_right = 84.5
+offset_bottom = 224.0
+grow_horizontal = 2
+texture_normal = ExtResource("11_fc37a")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/passive5"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -23.0
+offset_right = 25.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="title_container" type="Panel" parent="Control/skill_m_container/w_container/info"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -66.0
+offset_right = 20.5
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="skill_name" type="Label" parent="Control/skill_m_container/w_container/info/title_container"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.5
+offset_top = 30.0
+offset_right = 140.5
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_wnjhj")
+theme_override_font_sizes/font_size = 16
+text = "Skill Passives"
+horizontal_alignment = 1
+
+[node name="inv_name" type="Label" parent="Control/skill_m_container/w_container/info/title_container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.5
+offset_top = 30.0
+offset_right = 140.5
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_wnjhj")
+theme_override_font_sizes/font_size = 16
+text = "Grimoire Inventory"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/title_container"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 25.0
+offset_right = 76.0
+offset_bottom = 55.0
+grow_horizontal = 2
+texture = ExtResource("10_uay8b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/skill_m_container/w_container/info"]
+custom_minimum_size = Vector2(320, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = 10.0
+offset_right = 125.5
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Panel2" type="VBoxContainer" parent="Control/skill_m_container/w_container/info/ScrollContainer"]
+visible = false
+custom_minimum_size = Vector2(320, 250)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="inv_panel" type="GridContainer" parent="Control/skill_m_container/w_container/info/ScrollContainer"]
+custom_minimum_size = Vector2(320, 400)
+layout_mode = 2
+columns = 6
+
+[node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton2" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton3" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton4" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton4"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton5" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton5"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton6" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton6"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton7" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton7"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton8" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton8"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton9" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton9"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton10" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton10"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton11" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton11"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton12" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton12"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton13" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton13"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton14" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton14"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton15" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton15"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton16" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton16"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton17" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton17"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton18" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton18"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton19" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton19"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton20" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton20"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton21" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton21"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton22" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton22"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton23" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton23"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton24" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton24"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton25" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton25"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton26" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton26"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton27" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton27"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton28" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton28"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton29" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton29"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton30" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton30"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton31" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton31"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton32" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton32"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton33" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton33"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton34" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton34"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton35" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton35"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton36" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton36"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton37" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton37"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton38" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton38"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton39" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton39"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton40" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton40"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton41" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton41"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton42" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("17_mmi2a")
+
+[node name="TextureRect" type="TextureRect" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel/TextureButton42"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1

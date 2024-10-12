@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PassiveSkillData" load_steps=3 format=3 uid="uid://btj68rbooyno1"]
+
+[ext_resource type="Script" path="res://core/data/SkillPassiveData.gd" id="1_2p4sc"]
+[ext_resource type="Texture2D" uid="uid://p4mhglaq4p3o" path="res://assets/icons/passives/SharpFreezing.png" id="1_imhys"]
+
+[resource]
+script = ExtResource("1_2p4sc")
+passive_id = 2
+passive_name = "Sharp Freezing"
+passive_desc = "A magia de Ice Bolt se torna ainda mais intensa, aumentando a probabilidade de congelar seus alvos."
+Passive_icon = ExtResource("1_imhys")
+passive_effect = "Aumenta a chance de congelar inimigos com Ice Bolt em 2% por nível, até um maximo de 20%. Se o alvo estiver com menos de 30% de vida, a chance de congelamento aumenta para 30% no nível máximo."
+passive_skill_id = 7

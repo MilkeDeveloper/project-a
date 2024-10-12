@@ -2701,6 +2701,9 @@ fixed_fps = 60
 
 [node name="Ui hotbar" parent="." instance=ExtResource("30_bp7b4")]
 
+[node name="Hotbars" parent="Ui hotbar" index="0" node_paths=PackedStringArray("skill_manager")]
+skill_manager = NodePath("../../SkillManager")
+
 [node name="UI config" parent="." instance=ExtResource("49_nbt1q")]
 
 [node name="UI interface" type="CanvasLayer" parent="."]
@@ -2712,3 +2715,4 @@ visible = false
 
 [editable path="sprite/hud_player"]
 [editable path="sprite2/hud_player"]
+[editable path="Ui hotbar"]

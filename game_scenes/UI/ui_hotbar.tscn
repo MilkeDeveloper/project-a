@@ -1,9 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://bow2jfwlefmfj"]
+[gd_scene load_steps=35 format=3 uid="uid://bow2jfwlefmfj"]
 
+[ext_resource type="Script" path="res://ui/ui_scripts/ui_hotbar.gd" id="1_76fkq"]
 [ext_resource type="Texture2D" uid="uid://rpq0jaequfib" path="res://assets/misc/hotbar_slot_remake.png" id="1_a4nem"]
-[ext_resource type="Texture2D" uid="uid://uvdkb3oartgf" path="res://assets/items/HP_potion.png" id="2_pojqh"]
-[ext_resource type="Texture2D" uid="uid://herb8q78piqw" path="res://assets/items/SP_potion.png" id="3_tsy1h"]
+[ext_resource type="Resource" uid="uid://0u5glavfj3oo" path="res://resources/inv/Inventory.tres" id="2_knkxj"]
+[ext_resource type="Script" path="res://core/data/ItemData.gd" id="3_rethg"]
 [ext_resource type="Texture2D" uid="uid://dbuxjqe57qlnb" path="res://assets/misc/skill_icon_arrow_assault3.png" id="4_1mtrp"]
+[ext_resource type="Resource" uid="uid://dd8c38oryw55r" path="res://resources/items/hp_potion.tres" id="4_3don7"]
+[ext_resource type="Resource" uid="uid://boe343ajkcfyk" path="res://resources/items/fire_ball_grimoire.tres" id="4_k3g2i"]
+[ext_resource type="Resource" uid="uid://dmfu4bn38rvhy" path="res://resources/items/mp_potion.tres" id="4_ta36m"]
 [ext_resource type="Texture2D" uid="uid://dorwqex30uudp" path="res://assets/misc/slot_number.png" id="5_cgwcx"]
 [ext_resource type="Texture2D" uid="uid://dq73vj6enidv" path="res://assets/misc/skill_icon_fireball.png" id="6_ehkg5"]
 [ext_resource type="Texture2D" uid="uid://drn64v3fc6xo3" path="res://assets/misc/skill_icon_chain_soul.png" id="7_4dhee"]
@@ -20,6 +24,13 @@
 [ext_resource type="Texture2D" uid="uid://kgxi7334evs0" path="res://assets/misc/cover_bar2.png" id="18_67wtm"]
 [ext_resource type="Texture2D" uid="uid://b6cwr6vm7juo1" path="res://assets/misc/default_bar.png" id="19_yhbwu"]
 
+[sub_resource type="InputEventAction" id="InputEventAction_wea66"]
+action = &"use_item1"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_yj8vc"]
+events = [SubResource("InputEventAction_wea66")]
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_u2bhq"]
 color = Color(0, 0.531874, 0.428456, 1)
 grow_begin = -10.0
@@ -28,6 +39,7 @@ grow_end = -10.0
 [sub_resource type="SystemFont" id="SystemFont_deq3t"]
 font_names = PackedStringArray("Sans-Serif")
 font_weight = 700
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="FontVariation" id="FontVariation_18g60"]
@@ -35,11 +47,13 @@ base_font = SubResource("SystemFont_deq3t")
 
 [sub_resource type="SystemFont" id="SystemFont_u1e82"]
 font_names = PackedStringArray("Sans-Serif")
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="SystemFont" id="SystemFont_454ah"]
 font_names = PackedStringArray("Sans-Serif")
 font_weight = 700
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="FontVariation" id="FontVariation_vooi4"]
@@ -47,16 +61,18 @@ base_font = SubResource("SystemFont_454ah")
 
 [sub_resource type="SystemFont" id="SystemFont_ebkd5"]
 font_names = PackedStringArray("Sans-Serif")
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="FontVariation" id="FontVariation_am5i2"]
 base_font = SubResource("SystemFont_ebkd5")
 
 [sub_resource type="SystemFont" id="SystemFont_wxqso"]
+subpixel_positioning = 0
 
 [node name="Ui hotbar" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Hotbars" type="Control" parent="." node_paths=PackedStringArray("hotbar_container")]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -69,8 +85,13 @@ offset_right = 20.0
 offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_76fkq")
+inventory = ExtResource("2_knkxj")
+item_hotbar = Array[ExtResource("3_rethg")]([ExtResource("4_k3g2i"), ExtResource("4_ta36m"), ExtResource("4_3don7"), ExtResource("4_ta36m"), ExtResource("4_k3g2i"), ExtResource("4_ta36m"), ExtResource("4_3don7"), ExtResource("4_ta36m")])
+item = ExtResource("4_k3g2i")
+hotbar_container = NodePath("hotbar1")
 
-[node name="hotbar1" type="HBoxContainer" parent="Control"]
+[node name="hotbar1" type="HBoxContainer" parent="Hotbars"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -85,14 +106,15 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.8, 0.8)
 
-[node name="TextureButton" type="TextureButton" parent="Control/hotbar1"]
+[node name="TextureButton" type="TextureButton" parent="Hotbars/hotbar1"]
 self_modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 2
 size_flags_vertical = 4
+shortcut = SubResource("Shortcut_yj8vc")
 texture_normal = ExtResource("1_a4nem")
 stretch_mode = 0
 
-[node name="item_icon" type="TextureRect" parent="Control/hotbar1/TextureButton"]
+[node name="item_icon" type="TextureRect" parent="Hotbars/hotbar1/TextureButton"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 8
@@ -106,17 +128,16 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_pojqh")
 expand_mode = 1
 
-[node name="TextureButton2" type="TextureButton" parent="Control/hotbar1"]
+[node name="TextureButton2" type="TextureButton" parent="Hotbars/hotbar1"]
 self_modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("1_a4nem")
 stretch_mode = 0
 
-[node name="item_icon" type="TextureRect" parent="Control/hotbar1/TextureButton2"]
+[node name="item_icon" type="TextureRect" parent="Hotbars/hotbar1/TextureButton2"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 8
@@ -130,29 +151,60 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_tsy1h")
 expand_mode = 1
 
-[node name="TextureButton3" type="TextureButton" parent="Control/hotbar1"]
+[node name="TextureButton3" type="TextureButton" parent="Hotbars/hotbar1"]
 self_modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("1_a4nem")
 stretch_mode = 0
 
-[node name="TextureButton4" type="TextureButton" parent="Control/hotbar1"]
+[node name="item_icon" type="TextureRect" parent="Hotbars/hotbar1/TextureButton3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton4" type="TextureButton" parent="Hotbars/hotbar1"]
 self_modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("1_a4nem")
 stretch_mode = 0
 
-[node name="HSeparator" type="HSeparator" parent="Control/hotbar1"]
+[node name="item_icon" type="TextureRect" parent="Hotbars/hotbar1/TextureButton4"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="HSeparator" type="HSeparator" parent="Hotbars/hotbar1"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_u2bhq")
 
-[node name="Label" type="Label" parent="Control/hotbar1/HSeparator"]
+[node name="Label" type="Label" parent="Hotbars/hotbar1/HSeparator"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -168,35 +220,99 @@ text = "mikoto"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton5" type="TextureButton" parent="Control/hotbar1"]
+[node name="TextureButton5" type="TextureButton" parent="Hotbars/hotbar1"]
 self_modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("1_a4nem")
 stretch_mode = 0
 
-[node name="TextureButton6" type="TextureButton" parent="Control/hotbar1"]
+[node name="item_icon" type="TextureRect" parent="Hotbars/hotbar1/TextureButton5"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton6" type="TextureButton" parent="Hotbars/hotbar1"]
 self_modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("1_a4nem")
 stretch_mode = 0
 
-[node name="TextureButton7" type="TextureButton" parent="Control/hotbar1"]
+[node name="item_icon" type="TextureRect" parent="Hotbars/hotbar1/TextureButton6"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton7" type="TextureButton" parent="Hotbars/hotbar1"]
 self_modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("1_a4nem")
 stretch_mode = 0
 
-[node name="TextureButton8" type="TextureButton" parent="Control/hotbar1"]
+[node name="item_icon" type="TextureRect" parent="Hotbars/hotbar1/TextureButton7"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureButton8" type="TextureButton" parent="Hotbars/hotbar1"]
 self_modulate = Color(1, 1, 1, 0.686275)
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("1_a4nem")
 stretch_mode = 0
 
-[node name="hotbar2" type="HBoxContainer" parent="Control"]
+[node name="item_icon" type="TextureRect" parent="Hotbars/hotbar1/TextureButton8"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="hotbar2" type="HBoxContainer" parent="Hotbars"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -209,13 +325,13 @@ offset_right = 266.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="TextureButton" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("4_1mtrp")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -224,7 +340,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -243,13 +359,13 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton2" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton2" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("6_ehkg5")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton2"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton2"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -258,7 +374,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton2/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton2/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -277,13 +393,13 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton3" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton3" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("7_4dhee")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton3"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton3"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -292,7 +408,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton3/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton3/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -311,13 +427,13 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton4" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton4" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("8_p6rdh")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton4"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton4"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -326,7 +442,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton4/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton4/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -345,13 +461,13 @@ text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton5" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton5" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("9_yyone")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton5"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton5"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -360,7 +476,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton5/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton5/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -379,12 +495,12 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Control/hotbar2"]
+[node name="HSeparator" type="HSeparator" parent="Hotbars/hotbar2"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(74, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/hotbar2/HSeparator"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/HSeparator"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 85.0
@@ -396,13 +512,13 @@ theme_override_fonts/font = SubResource("FontVariation_vooi4")
 theme_override_font_sizes/font_size = 16
 text = "Lv"
 
-[node name="TextureButton6" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton6" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("10_qxqfd")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton6"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton6"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -411,7 +527,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton6/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton6/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -430,13 +546,13 @@ text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton7" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton7" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("11_u5x82")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton7"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton7"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -445,7 +561,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton7/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton7/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -464,13 +580,13 @@ text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton8" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton8" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("12_n6lqd")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton8"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton8"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -479,7 +595,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton8/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton8/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -498,13 +614,13 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton9" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton9" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("13_1bl10")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton9"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton9"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -513,7 +629,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton9/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton9/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -532,13 +648,13 @@ text = "R"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton10" type="TextureButton" parent="Control/hotbar2"]
+[node name="TextureButton10" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("14_ggaf4")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/hotbar2/TextureButton10"]
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton10"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
@@ -547,7 +663,7 @@ offset_bottom = 91.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_cgwcx")
 
-[node name="Label" type="Label" parent="Control/hotbar2/TextureButton10/TextureRect"]
+[node name="Label" type="Label" parent="Hotbars/hotbar2/TextureButton10/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -566,7 +682,7 @@ text = "6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control2" type="Control" parent="."]
+[node name="Elements" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -580,7 +696,7 @@ offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control2"]
+[node name="TextureRect" type="TextureRect" parent="Elements"]
 layout_mode = 2
 offset_left = 45.0
 offset_top = 41.0
@@ -591,13 +707,13 @@ size_flags_vertical = 0
 texture = ExtResource("15_2m662")
 stretch_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Control2/TextureRect"]
+[node name="Sprite2D" type="Sprite2D" parent="Elements/TextureRect"]
 texture_filter = 1
 position = Vector2(51, 56)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("16_dps4n")
 
-[node name="UnderBar" type="TextureProgressBar" parent="Control2"]
+[node name="UnderBar" type="TextureProgressBar" parent="Elements"]
 z_index = -1
 texture_filter = 1
 layout_mode = 2
@@ -615,7 +731,7 @@ texture_progress = ExtResource("19_yhbwu")
 texture_progress_offset = Vector2(16, 5)
 tint_progress = Color(0, 0.905882, 0.27451, 1)
 
-[node name="hp_label" type="Label" parent="Control2/UnderBar"]
+[node name="hp_label" type="Label" parent="Elements/UnderBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -635,7 +751,7 @@ text = "3928 / 7856"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UnderBar2" type="TextureProgressBar" parent="Control2"]
+[node name="UnderBar2" type="TextureProgressBar" parent="Elements"]
 z_index = -1
 texture_filter = 1
 layout_mode = 2
@@ -652,7 +768,7 @@ texture_progress = ExtResource("19_yhbwu")
 texture_progress_offset = Vector2(16, 5)
 tint_progress = Color(0, 0.870588, 1, 1)
 
-[node name="mp_label" type="Label" parent="Control2/UnderBar2"]
+[node name="mp_label" type="Label" parent="Elements/UnderBar2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -672,7 +788,7 @@ text = "2354 / 2354"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Control2"]
+[node name="TextureRect2" type="TextureRect" parent="Elements"]
 layout_mode = 0
 offset_left = 71.0
 offset_top = 109.0
@@ -683,7 +799,7 @@ size_flags_vertical = 0
 texture = ExtResource("15_2m662")
 stretch_mode = 2
 
-[node name="level" type="Label" parent="Control2/TextureRect2"]
+[node name="level" type="Label" parent="Elements/TextureRect2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -705,7 +821,7 @@ text = "50
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Control2"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Elements"]
 visible = false
 layout_mode = 1
 offset_right = 253.0
@@ -717,3 +833,5 @@ texture_under = ExtResource("17_dtytg")
 texture_progress = ExtResource("19_yhbwu")
 texture_progress_offset = Vector2(16, 5)
 tint_progress = Color(1, 0.733333, 0.117647, 1)
+
+[connection signal="pressed" from="Hotbars/hotbar1/TextureButton" to="Hotbars" method="_on_texture_button_pressed"]

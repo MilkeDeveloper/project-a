@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=4 format=3 uid="uid://dkh2dlrw1nh71"]
+
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_6mrmp"]
+[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="1_s48vr"]
+[ext_resource type="Texture2D" uid="uid://heyaqurnigxf" path="res://assets/misc/skill_icon_heal.png" id="2_ut4g4"]
+
+[resource]
+script = ExtResource("1_6mrmp")
+id = 3
+skill_name = "Heal"
+skill_description = "Lança um magia de cura no chão. Ao passar por cima da ára da cura no chão o jogador é curado."
+skill_icon = ExtResource("2_ut4g4")
+mana_cost = 10
+cooldown = 5.0
+charge_time = 2.0
+effect_type = "(150 + 10% / Skill levell) de HP"
+damage = 0
+heal = 150
+skill_level = 1
+skill_max_level = 10
+is_passive = false
+weapon_required = "Wand"
+is_charging_skill = true
+is_aim_skill = false
+is_target_skill = false
+grimoire_Slots = Array[ExtResource("1_s48vr")]([null, null, null, null, null])

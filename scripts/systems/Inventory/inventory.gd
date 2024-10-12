@@ -79,9 +79,6 @@ func update_category_inventory(category: String):
 				item = inventory.material_slots[i]
 			"etc":
 				item = inventory.etc_slots[i]
-		
-		
-		
 
 		if item != null:
 			# Exibe o ícone do item no slot
@@ -98,11 +95,6 @@ func update_category_inventory(category: String):
 			# Limpa o slot se estiver vazio
 			item_icon.texture = null
 			item_icon.get_node("stack_label").text = ""
-
-
-func show_dragging_preview(slot_index: int):
-	pass
-		
 
 # Função para ser chamada quando um item for adicionado ao inventário
 func on_item_added():

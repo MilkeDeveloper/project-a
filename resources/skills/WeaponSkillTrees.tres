@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SkillWeaponClass" load_steps=11 format=3 uid="uid://cg6jal838spvt"]
+
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_836df"]
+[ext_resource type="Script" path="res://scripts/systems/skill_core/game_skills.gd" id="2_m6bef"]
+[ext_resource type="Resource" uid="uid://f1027vhegein" path="res://resources/skills/FireBall.tres" id="2_nahvr"]
+[ext_resource type="Resource" uid="uid://dkh2dlrw1nh71" path="res://resources/skills/Heal.tres" id="2_tm5uf"]
+[ext_resource type="Resource" uid="uid://q4pk2i0s2eoh" path="res://resources/skills/IceBolt.tres" id="3_ottco"]
+[ext_resource type="Resource" uid="uid://bi2urwoeonsh8" path="res://resources/skills/MeteorStorm.tres" id="4_3g4e7"]
+[ext_resource type="Resource" uid="uid://bc1quf7fuha4x" path="res://resources/skills/LightiningStrike.tres" id="4_hadfw"]
+[ext_resource type="Resource" uid="uid://djwg77h8hhd13" path="res://resources/skills/FreezingBreeze.tres" id="5_ecmkp"]
+[ext_resource type="Resource" uid="uid://bpln86gdjw18h" path="res://resources/skills/ChainSoul.tres" id="6_wndf6"]
+[ext_resource type="Resource" uid="uid://djaysrjcco6tw" path="res://resources/skills/Expurge.tres" id="9_lbcv6"]
+
+[resource]
+script = ExtResource("2_m6bef")
+Staff = Array[ExtResource("1_836df")]([ExtResource("2_nahvr"), ExtResource("3_ottco"), ExtResource("4_3g4e7"), ExtResource("5_ecmkp"), ExtResource("6_wndf6"), null, null, null, null, ExtResource("4_hadfw")])
+Bow = Array[ExtResource("1_836df")]([])
+Wand = Array[ExtResource("1_836df")]([ExtResource("2_tm5uf"), null, null, null, null, null, null, null, null, ExtResource("9_lbcv6")])
+Dagger = Array[ExtResource("1_836df")]([])
+Sword = Array[ExtResource("1_836df")]([])
+Shield = Array[ExtResource("1_836df")]([])
+Crossbow = Array[ExtResource("1_836df")]([])

@@ -7196,4 +7196,5 @@ item_data = ExtResource("19_8ac37")
 [editable path="Player"]
 [editable path="Player/sprite/hud_player"]
 [editable path="Player/sprite2/hud_player"]
+[editable path="Player/Ui hotbar"]
 [editable path="UI map"]

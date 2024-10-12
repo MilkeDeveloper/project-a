@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://q4pk2i0s2eoh"]
+
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_dc5de"]
+[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="1_uhnkb"]
+[ext_resource type="Resource" uid="uid://pqqays5liwol" path="res://resources/grimoires/SharpFreezingGrimoire.tres" id="2_3dj8t"]
+[ext_resource type="Texture2D" uid="uid://hlxb03hokxl8" path="res://assets/misc/skill_icon_ice_bolt.png" id="2_v4axt"]
+
+[resource]
+script = ExtResource("1_dc5de")
+id = 7
+skill_name = "Ice Bolt"
+skill_description = "dispara uma lança de gelo no alvo causando dano."
+skill_icon = ExtResource("2_v4axt")
+mana_cost = 10
+cooldown = 5.0
+charge_time = 2.0
+effect_type = "100 + 50% MATK de dano. Tem 50% de chance de congelar o alvo. Alvos congelados sofrem o status \"frio\""
+damage = 100
+heal = 0
+skill_level = 1
+skill_max_level = 10
+is_passive = false
+weapon_required = "Staff"
+is_charging_skill = true
+is_aim_skill = false
+is_target_skill = true
+grimoire_Slots = Array[ExtResource("1_uhnkb")]([ExtResource("2_3dj8t"), null, null, null, null])

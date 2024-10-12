@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=6 format=3 uid="uid://bi2urwoeonsh8"]
+
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_03g2q"]
+[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="1_vdh3u"]
+[ext_resource type="PackedScene" uid="uid://bt31cehb0lijh" path="res://game_scenes/skills/meteor_storm.tscn" id="2_1x6uy"]
+[ext_resource type="Resource" uid="uid://4gr58pv1p0qu" path="res://resources/grimoires/BurnGrimoire.tres" id="2_d0kox"]
+[ext_resource type="Texture2D" uid="uid://nyvppxcsc3i0" path="res://assets/misc/skill_icon_meteor_storm.png" id="3_fxu6k"]
+
+[resource]
+script = ExtResource("1_03g2q")
+id = 4
+skill_name = "MeteorStorm"
+skill_description = "Lança uma chuva de meteoros no local alvo"
+skill_icon = ExtResource("3_fxu6k")
+mana_cost = 25
+cooldown = 10.0
+charge_time = 2.0
+effect_type = "(250 + 50% de dano) x (skill level hits)"
+damage = 250
+heal = 0
+skill_effect = ExtResource("2_1x6uy")
+skill_level = 1
+skill_max_level = 15
+is_passive = false
+weapon_required = "Staff"
+is_charging_skill = true
+is_aim_skill = true
+is_target_skill = false
+grimoire_Slots = Array[ExtResource("1_vdh3u")]([ExtResource("2_d0kox"), ExtResource("2_d0kox"), null, null, null])

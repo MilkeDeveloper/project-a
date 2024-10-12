@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=4 format=3 uid="uid://bpln86gdjw18h"]
+
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_e64ok"]
+[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="1_e71q8"]
+[ext_resource type="Texture2D" uid="uid://drn64v3fc6xo3" path="res://assets/misc/skill_icon_chain_soul.png" id="2_kq17o"]
+
+[resource]
+script = ExtResource("1_e64ok")
+id = 5
+skill_name = "Soul Chain"
+skill_description = "Invoca um totem que aprisiona de qualquer inimigo que estiver perto. Os inimigos que entrarem na área são suprimidos e  e acorrentados durante toda a duração da skill"
+skill_icon = ExtResource("2_kq17o")
+mana_cost = 30
+cooldown = 10.0
+charge_time = 3.0
+effect_type = "125 + 25% MTAK de dano mágico"
+damage = 125
+heal = 0
+skill_level = 1
+skill_max_level = 10
+is_passive = false
+weapon_required = "Staff"
+is_charging_skill = true
+is_aim_skill = true
+is_target_skill = false
+grimoire_Slots = Array[ExtResource("1_e71q8")]([null, null, null, null, null])
