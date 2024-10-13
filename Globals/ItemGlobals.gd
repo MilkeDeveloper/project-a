@@ -17,3 +17,5 @@ signal send_item_category(category: String)
 #control vars
 var collected: bool
 var is_dragging: bool = false
+var secondary_skill_active = false
+var primary_skill_active = false

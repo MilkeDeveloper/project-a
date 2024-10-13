@@ -9,6 +9,7 @@ multichannel_signed_distance_field = true
 
 [sub_resource type="SystemFont" id="SystemFont_kmsjd"]
 font_names = PackedStringArray("Times New Roman")
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="SystemFont" id="SystemFont_tva8f"]
@@ -89,6 +90,7 @@ text = "auhsuahushauhusuhasdasdasdsaijdijaisjdiajsidjiasjdijasijdijasidjiajsidji
 
 [node name="Label" type="Label" parent="."]
 visible = false
+layout_mode = 0
 theme_override_colors/font_color = Color(0.921569, 0.870588, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
@@ -99,6 +101,7 @@ text = "Descrição:"
 [node name="passive_desc" type="RichTextLabel" parent="."]
 visible = false
 custom_minimum_size = Vector2(150, 32)
+layout_mode = 0
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = SubResource("SystemFont_tva8f")
 theme_override_font_sizes/normal_font_size = 10
