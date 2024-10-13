@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dk8musy26dkll"]
+[gd_scene load_steps=27 format=3 uid="uid://dk8musy26dkll"]
 
 [ext_resource type="Texture2D" uid="uid://c4aykgc1v66v" path="res://assets/misc/inv_style_box.png" id="1_2fo60"]
 [ext_resource type="Resource" uid="uid://cg6jal838spvt" path="res://resources/skills/WeaponSkillTrees.tres" id="3_a0eh8"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dahu8kpwp4qto" path="res://assets/misc/hotbar_slot3.png" id="17_mmi2a"]
 [ext_resource type="Texture2D" uid="uid://bmroj5j00t6ky" path="res://assets/misc/button_ginv.png" id="19_2oaeh"]
 [ext_resource type="Texture2D" uid="uid://cvmpcvnmjx1u4" path="res://assets/misc/button_ginv_pressed.png" id="20_6onms"]
+[ext_resource type="Script" path="res://ui/ui_scripts/GrimoireInv.gd" id="21_fv2a1"]
 
 [sub_resource type="Shortcut" id="Shortcut_xk86f"]
 
@@ -84,7 +85,6 @@ custom_minimum_size = Vector2(320, 580)
 layout_mode = 2
 script = ExtResource("5_7cn80")
 WeaponSkillTrees = ExtResource("3_a0eh8")
-GrimoireInv = Array[ExtResource("4_42y8j")]([ExtResource("5_57oh7"), ExtResource("5_57oh7"), ExtResource("5_57oh7"), ExtResource("6_vfis4"), ExtResource("6_vfis4"), ExtResource("6_vfis4"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 GrimoireSlots = Array[ExtResource("4_42y8j")]([null, null, null, null, null])
 inv_panel = NodePath("../info/ScrollContainer/inv_panel")
 skill_info_panel = NodePath("../info")
@@ -691,7 +691,6 @@ custom_minimum_size = Vector2(320, 580)
 layout_mode = 2
 script = ExtResource("15_8e01e")
 WeaponSkillTrees = ExtResource("3_a0eh8")
-GrimoireInv = Array[ExtResource("4_42y8j")]([ExtResource("6_vfis4"), ExtResource("6_vfis4"), ExtResource("6_vfis4"), ExtResource("5_57oh7"), ExtResource("5_57oh7"), ExtResource("5_57oh7"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 GrimoireSlots = Array[ExtResource("4_42y8j")]([null, null, null, null, null])
 inv_panel = NodePath("../info/ScrollContainer/inv_panel")
 skill_info_panel = NodePath("../info")
@@ -1532,6 +1531,8 @@ theme_override_constants/separation = 5
 custom_minimum_size = Vector2(320, 400)
 layout_mode = 2
 columns = 6
+script = ExtResource("21_fv2a1")
+GrimoireInv = Array[ExtResource("4_42y8j")]([ExtResource("5_57oh7"), ExtResource("5_57oh7"), ExtResource("5_57oh7"), null, ExtResource("6_vfis4"), ExtResource("6_vfis4"), ExtResource("6_vfis4"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
 custom_minimum_size = Vector2(40, 40)

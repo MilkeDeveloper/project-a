@@ -2,7 +2,6 @@ extends Panel
 
 
 @export var WeaponSkillTrees: SkillWeaponClass
-@export var GrimoireInv: Array[SkillGrimoireData]
 @export var GrimoireSlots: Array[SkillGrimoireData]
 @export var inv_panel: GridContainer
 @export var skill_info_panel: Panel
@@ -28,7 +27,6 @@ func _ready() -> void:
 	get_primary_weapon_skills_ui_slot()
 	update_skill_tree_panel()
 	get_callable_buttons()
-	get_grimoire_slot_inv()
 	connect_event_inv_slots()
 	connect_event_grimoire_slots()
 	connect_event_inv_button()
@@ -142,21 +140,9 @@ func show_skill_info(index: int):
 	get_grimoire_slots()
 	get_equiped_grimoires()
 
-func get_grimoire_slot_inv():
-	for i in range(inv_panel.get_child_count()):
-		update_grimoire_inv(i)
 
 func set_grimoire_slots(index: int):
 	GrimoireSlots = skill_tree[index].grimoire_Slots
-
-
-func update_grimoire_inv(index: int):
-	InvSlot = GrimoireInv[index]
-	
-	var _slot = inv_panel.get_child(index)
-	
-	if InvSlot != null:
-		_slot.get_child(0).texture = InvSlot.grimoire_icon
 
 
 func get_grimoire_slots():
@@ -214,11 +200,11 @@ func _on_inv_button_pressed() -> void:
 
 
 func _on_mouse_slot_clicked(slot_index: int):
-	if GrimoireInv[slot_index] != null and not ItemGlobals.primary_skill_active:
+	if inv_panel.GrimoireInv[slot_index] != null and not ItemGlobals.primary_skill_active:
 		slotReleaseIndex = slot_index
 		is_dragging = true
-		dragging_item = GrimoireInv[slot_index]
-		GrimoireInv[slot_index] = null
+		dragging_item = inv_panel.GrimoireInv[slot_index]
+		inv_panel.GrimoireInv[slot_index] = null
 		grimoireInvSlotIndex_from_dragg = slot_index
 		_on_dragging_grimoire(slot_index)
 		print("index from drag: " + str(grimoireInvSlotIndex_from_dragg))
@@ -257,23 +243,23 @@ func _on_dragging_grimoire(index: int):
 
 
 func release_dragged_item(index: int) -> void:
-	if GrimoireInv[index] == null and not ItemGlobals.primary_skill_active:
+	if inv_panel.GrimoireInv[index] == null and not ItemGlobals.primary_skill_active:
 		is_dragging = false
 		dragging_preview.hide()
-		GrimoireInv[index] = dragging_item
+		inv_panel.GrimoireInv[index] = dragging_item
 		dragging_item = null
 		
 		print("item draged on slot " + str(index))
-		get_grimoire_slot_inv()
+		inv_panel.get_grimoire_slot_inv()
 
-	elif GrimoireInv[index] != null and not ItemGlobals.primary_skill_active:
+	elif inv_panel.GrimoireInv[index] != null and not ItemGlobals.primary_skill_active:
 		print("index from drag: " + str(grimoireInvSlotIndex_from_dragg))
 		is_dragging = false
 		dragging_preview.hide()
-		GrimoireInv[grimoireInvSlotIndex_from_dragg] = GrimoireInv[index]
-		GrimoireInv[index] = dragging_item
+		inv_panel.GrimoireInv[grimoireInvSlotIndex_from_dragg] = inv_panel.GrimoireInv[index]
+		inv_panel.GrimoireInv[index] = dragging_item
 		dragging_item = null
-		get_grimoire_slot_inv()
+		inv_panel.get_grimoire_slot_inv()
 		print("item draged de volta no slot " + str(grimoireInvSlotIndex_from_dragg))
 
 
@@ -285,7 +271,7 @@ func release_dragged_item_on_grimoire_slot(index: int):
 		dragging_item = null
 		
 		get_equiped_grimoires()
-		get_grimoire_slot_inv()
+		inv_panel.get_grimoire_slot_inv()
 		print("item draged on grimoire slot " + str(index))
 		
 	elif GrimoireSlots[index] != null and not ItemGlobals.primary_skill_active:
@@ -293,11 +279,11 @@ func release_dragged_item_on_grimoire_slot(index: int):
 		print("index from drag: " + str(grimoireInvSlotIndex_from_dragg))
 		is_dragging = false
 		dragging_preview.hide()
-		GrimoireInv[grimoireInvSlotIndex_from_dragg] = dragging_item
+		inv_panel.GrimoireInv[grimoireInvSlotIndex_from_dragg] = dragging_item
 		dragging_item = null
 		
 		get_equiped_grimoires()
-		get_grimoire_slot_inv()
+		inv_panel.get_grimoire_slot_inv()
 
 func _on_mouse_exited(index: int):
 	gSlotReleasedIndex = null
