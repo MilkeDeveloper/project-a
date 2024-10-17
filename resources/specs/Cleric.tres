@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpecData" load_steps=4 format=3 uid="uid://xffhwpp8c8hj"]
+
+[ext_resource type="Script" path="res://core/data/SpecData.gd" id="1_4pfpp"]
+[ext_resource type="Texture2D" uid="uid://vs60d40yrlv7" path="res://assets/icons/especializations/Cleric.png" id="2_wch5e"]
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="3_bf08h"]
+
+[resource]
+script = ExtResource("1_4pfpp")
+spec_id = 2
+spec_name = "Cleric"
+spec_desc = "\"Especialização focada em cura e proteção para o grupo.\""
+spec_icon = ExtResource("2_wch5e")
+spec_weapon = "Wand"
+spec_level = 1
+spec_max_level = 25
+spec_skills = Array[ExtResource("3_bf08h")]([null, null, null, null, null, null, null, null, null, null])

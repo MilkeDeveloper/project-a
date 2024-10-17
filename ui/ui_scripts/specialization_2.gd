@@ -1,6 +1,7 @@
 extends HBoxContainer
 
-@export var spec_slot1: HBoxContainer
+
+@export var spec_slot2: HBoxContainer
 @export var spec_icon: TextureRect
 @export var spec_level: Label
 
@@ -15,7 +16,7 @@ func _process(delta: float) -> void:
 	pass
 
 func show_spec_info():
-	if spec_slot1.primary_spec[0] != null:
-		spec = spec_slot1.primary_spec[0].spec
+	if spec_slot2.secondary_spec[0] != null:
+		spec = spec_slot2.secondary_spec[0].spec
 		spec_icon.texture = spec.spec_icon
 		spec_level.text = "Lv. " + str(spec.spec_level)

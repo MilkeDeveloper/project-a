@@ -1,8 +1,8 @@
 extends GridContainer
 
-@export var GrimoireInv: Array[SkillGrimoireData]
+@export var GrimoireInv: Array[Resource]
 
-var InvSlot: SkillGrimoireData
+var InvSlot
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,5 +22,9 @@ func update_grimoire_inv(index: int):
 	
 	var _slot = get_child(index)
 	
-	if InvSlot != null:
+	if InvSlot != null and InvSlot is SkillCardData:
+		_slot.get_child(0).texture = InvSlot.card_icon
+	elif InvSlot != null and InvSlot is SpecGrimoireData: 
 		_slot.get_child(0).texture = InvSlot.grimoire_icon
+	else:
+		_slot.get_child(0).texture = null

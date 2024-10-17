@@ -20,6 +20,6 @@ class_name GDSkillData
 @export var is_charging_skill: bool
 @export var is_aim_skill: bool
 @export var is_target_skill: bool
-@export var grimoire_Slots: Array[SkillGrimoireData]
+@export var grimoire_Slots: Array[SkillCardData]
 
 var cooldown_left: float

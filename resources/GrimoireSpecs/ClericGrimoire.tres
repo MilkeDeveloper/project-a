@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpecGrimoireData" load_steps=4 format=3 uid="uid://savs1fc5o37y"]
+
+[ext_resource type="Script" path="res://core/data/SpecGrimoireData.gd" id="1_6g8mm"]
+[ext_resource type="Texture2D" uid="uid://c2wgd3lcudgsx" path="res://assets/icons/grimoires/BurnGrimoire.png" id="1_xuxtx"]
+[ext_resource type="Resource" uid="uid://xffhwpp8c8hj" path="res://resources/specs/Cleric.tres" id="3_cn8n4"]
+
+[resource]
+script = ExtResource("1_6g8mm")
+grimoire_id = 2
+grimoire_name = "Cleric Grimoire"
+grimoire_desc = "\"Grmorio perdido com poderes divinos\""
+grimoire_icon = ExtResource("1_xuxtx")
+spec = ExtResource("3_cn8n4")
+spec_id = 2

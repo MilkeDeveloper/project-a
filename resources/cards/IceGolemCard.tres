@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillCardData" load_steps=4 format=3 uid="uid://6wkrnws25rlk"]
+
+[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_lygtg"]
+[ext_resource type="Texture2D" uid="uid://chxmrtk4e1871" path="res://assets/icons/cards/Card.png" id="1_nnoev"]
+[ext_resource type="Resource" uid="uid://btj68rbooyno1" path="res://resources/PassiveSkils/SharpFreezing.tres" id="2_yydyj"]
+
+[resource]
+script = ExtResource("1_lygtg")
+card_id = 2
+card_name = "Ice Golem Card"
+card_desc = "2% de chance por nível de congelar o alvo ao usar a skill \"ice bolt\""
+card_icon = ExtResource("1_nnoev")
+card_skill_id = 7
+card_passive = ExtResource("2_yydyj")

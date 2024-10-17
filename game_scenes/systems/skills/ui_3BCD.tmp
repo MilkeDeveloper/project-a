@@ -1,12 +1,13 @@
-[gd_scene load_steps=57 format=3 uid="uid://dk8musy26dkll"]
+[gd_scene load_steps=40 format=3 uid="uid://dk8musy26dkll"]
 
 [ext_resource type="Texture2D" uid="uid://c4aykgc1v66v" path="res://assets/misc/inv_style_box.png" id="1_2fo60"]
-[ext_resource type="Script" path="res://ui/ui_scripts/ui_skill_control.gd" id="1_3erth"]
 [ext_resource type="Resource" uid="uid://cg6jal838spvt" path="res://resources/skills/WeaponSkillTrees.tres" id="3_a0eh8"]
-[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="4_42y8j"]
+[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="4_42y8j"]
 [ext_resource type="Texture2D" uid="uid://bnt5ftme061d0" path="res://assets/misc/skills_level_case.png" id="5_3q57o"]
 [ext_resource type="Script" path="res://ui/ui_scripts/weapon_1.gd" id="5_7cn80"]
+[ext_resource type="Resource" uid="uid://4gr58pv1p0qu" path="res://resources/grimoires/BurnGrimoire.tres" id="5_57oh7"]
 [ext_resource type="Texture2D" uid="uid://by1y2wksrqngd" path="res://assets/misc/levelup_button.png" id="6_a85tx"]
+[ext_resource type="Resource" uid="uid://pqqays5liwol" path="res://resources/grimoires/SharpFreezingGrimoire.tres" id="6_vfis4"]
 [ext_resource type="Texture2D" uid="uid://05pdtq22fktm" path="res://assets/misc/levelup_button_pressed.png" id="7_3ya6y"]
 [ext_resource type="Texture2D" uid="uid://bwr0f2gxg37iy" path="res://assets/misc/Staff_icon.png" id="8_1gxaj"]
 [ext_resource type="Texture2D" uid="uid://rpq0jaequfib" path="res://assets/misc/hotbar_slot_remake.png" id="8_6lopr"]
@@ -16,10 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bdskym7geqc08" path="res://assets/misc/hud_head2.png" id="11_fc37a"]
 [ext_resource type="Script" path="res://ui/ui_scripts/specSlot1.gd" id="12_6ghh0"]
 [ext_resource type="Texture2D" uid="uid://bcauirtnl16nk" path="res://assets/misc/nature_grimoire.png" id="12_73aos"]
-[ext_resource type="Script" path="res://core/data/SpecGrimoireData.gd" id="13_sqh5h"]
-[ext_resource type="Texture2D" uid="uid://x5pnfo18tqe" path="res://assets/misc/button_skilltree_page.png" id="14_1fx3g"]
 [ext_resource type="Script" path="res://ui/ui_scripts/weapon_2.gd" id="15_8e01e"]
-[ext_resource type="Texture2D" uid="uid://dcrbcu3saqt6o" path="res://assets/misc/button_skilltree_page_Pressed.png" id="15_sbdpn"]
 [ext_resource type="PackedScene" uid="uid://sn6536laccq2" path="res://passive.tscn" id="16_gdwug"]
 [ext_resource type="Texture2D" uid="uid://dahu8kpwp4qto" path="res://assets/misc/hotbar_slot3.png" id="17_mmi2a"]
 [ext_resource type="Script" path="res://ui/ui_scripts/specSlot2.gd" id="17_vedfw"]
@@ -27,16 +25,10 @@
 [ext_resource type="Texture2D" uid="uid://cvmpcvnmjx1u4" path="res://assets/misc/button_ginv_pressed.png" id="20_6onms"]
 [ext_resource type="Script" path="res://ui/ui_scripts/GrimoireInv.gd" id="21_fv2a1"]
 [ext_resource type="Texture2D" uid="uid://ckm1ucqa73vnv" path="res://assets/icons/especializations/Necromancer.png" id="23_iiuoe"]
-[ext_resource type="Resource" uid="uid://6wkrnws25rlk" path="res://resources/cards/IceGolemCard.tres" id="23_v6xwn"]
-[ext_resource type="Resource" uid="uid://b5ri14d68le2e" path="res://resources/cards/IgniterCard.tres" id="24_a02ms"]
 [ext_resource type="Texture2D" uid="uid://cgm0ebwjmol8x" path="res://assets/misc/under_bar.png" id="24_gwvvq"]
 [ext_resource type="Texture2D" uid="uid://vs60d40yrlv7" path="res://assets/icons/especializations/Cleric.png" id="24_r0dja"]
 [ext_resource type="Texture2D" uid="uid://b6cwr6vm7juo1" path="res://assets/misc/default_bar.png" id="25_lyika"]
 [ext_resource type="Script" path="res://ui/ui_scripts/specialization_1.gd" id="25_ogydp"]
-[ext_resource type="Resource" uid="uid://bmo4p8lcjnkhm" path="res://resources/GrimoireSpecs/NecromancerGrimoire.tres" id="25_rvtwx"]
-[ext_resource type="Resource" uid="uid://savs1fc5o37y" path="res://resources/GrimoireSpecs/ClericGrimoire.tres" id="26_bg1hh"]
-[ext_resource type="Script" path="res://ui/ui_scripts/specialization_2.gd" id="31_xhb0f"]
-[ext_resource type="Texture2D" uid="uid://cpkegt1ph71wi" path="res://addons/kenney_particle_pack/magic_05.png" id="36_860rp"]
 
 [sub_resource type="Shortcut" id="Shortcut_xk86f"]
 
@@ -76,114 +68,6 @@ font = SubResource("SystemFont_2ve6k")
 font_size = 12
 font_color = Color(1, 0.12549, 0.337255, 0.709804)
 
-[sub_resource type="Animation" id="Animation_3q8nn"]
-resource_name = "click"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"restart"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GPUParticles2D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0333333, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_5gd65"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pp2eg"]
-_data = {
-"RESET": SubResource("Animation_5gd65"),
-"click": SubResource("Animation_3q8nn")
-}
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sirp6"]
-blend_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_rd5bq"]
-offsets = PackedFloat32Array(0, 0.535354, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.431373, 1, 1, 0.803922, 0.627451, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mpmdy"]
-gradient = SubResource("Gradient_rd5bq")
-
-[sub_resource type="Curve" id="Curve_k46la"]
-_data = [Vector2(0, 0.978022), 0.0, 0.0, 0, 0, Vector2(0.977876, 0.142857), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_6k35h"]
-curve = SubResource("Curve_k46la")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lro08"]
-particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
-spread = 83.182
-flatness = 1.0
-initial_velocity_min = -53.82
-initial_velocity_max = 52.67
-radial_velocity_min = -2.23517e-05
-radial_velocity_max = 25.0
-gravity = Vector3(0, 20, 0)
-scale_min = 0.05
-scale_max = 0.1
-scale_curve = SubResource("CurveTexture_6k35h")
-color = Color(0.490196, 1, 1, 1)
-color_ramp = SubResource("GradientTexture1D_mpmdy")
-
 [node name="ui_SKillMenu" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
@@ -195,7 +79,6 @@ offset_right = -481.0
 offset_bottom = 672.0
 grow_horizontal = 2
 size_flags_horizontal = 3
-script = ExtResource("1_3erth")
 metadata/_edit_lock_ = true
 
 [node name="skill_m_container" type="NinePatchRect" parent="Control"]
@@ -231,7 +114,7 @@ grow_vertical = 2
 alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="weapon1" type="Panel" parent="Control/skill_m_container/w_container" node_paths=PackedStringArray("inv_panel", "skill_info_panel", "passive_container", "title_container", "dragging_preview", "spec_alert", "weapon_class_name")]
+[node name="weapon1" type="Panel" parent="Control/skill_m_container/w_container" node_paths=PackedStringArray("inv_panel", "skill_info_panel", "passive_container", "title_container", "dragging_preview", "spec_alert")]
 custom_minimum_size = Vector2(320, 580)
 layout_mode = 2
 script = ExtResource("5_7cn80")
@@ -245,7 +128,7 @@ dragging_preview = NodePath("preview_texture")
 skill_passive_scene = ExtResource("16_gdwug")
 weapon_type = "Staff"
 spec_alert = NodePath("../info/especialization")
-weapon_class_name = NodePath("TitleClass")
+metadata/_edit_lock_ = true
 
 [node name="skill_icon" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1"]
 layout_mode = 0
@@ -786,7 +669,7 @@ offset_bottom = 62.0
 texture = ExtResource("8_1gxaj")
 expand_mode = 1
 
-[node name="weapon1" type="HBoxContainer" parent="Control/skill_m_container/w_container/weapon1/TitleClass" node_paths=PackedStringArray("InvSkill", "spec_slot", "preview_texture", "spec1_panel", "spec_alert")]
+[node name="weapon1" type="HBoxContainer" parent="Control/skill_m_container/w_container/weapon1/TitleClass" node_paths=PackedStringArray("InvSkill", "spec_slot", "preview_texture")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -799,34 +682,18 @@ offset_right = 106.0
 offset_bottom = 484.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 8
 alignment = 1
 script = ExtResource("12_6ghh0")
-primary_spec = Array[ExtResource("13_sqh5h")]([null])
+primary_spec = Array[ExtResource("4_42y8j")]([ExtResource("5_57oh7")])
 InvSkill = NodePath("../../../info/ScrollContainer/inv_panel")
 spec_slot = NodePath("especialization/grimoire_icon")
 preview_texture = NodePath("../../preview_texture")
-spec1_panel = NodePath("../../../info/especialization/vbox/especialization1")
-spec_alert = NodePath("../../../info/especialization/spec_alert")
 
 [node name="especialization" type="TextureRect" parent="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("10_xr170")
 expand_mode = 1
-
-[node name="previous_page" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1/especialization"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-offset_left = -72.0
-offset_top = 76.0
-offset_right = -40.0
-offset_bottom = 92.0
-texture_normal = ExtResource("14_1fx3g")
-texture_pressed = ExtResource("15_sbdpn")
-ignore_texture_size = true
-stretch_mode = 5
-flip_h = true
 
 [node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1/especialization"]
 layout_mode = 1
@@ -847,18 +714,6 @@ theme_override_font_sizes/font_size = 0
 text = "Grimoire Specialization"
 horizontal_alignment = 1
 
-[node name="next_page" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1/especialization"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-offset_left = 110.0
-offset_top = 77.0
-offset_right = 142.0
-offset_bottom = 93.0
-texture_normal = ExtResource("14_1fx3g")
-texture_pressed = ExtResource("15_sbdpn")
-ignore_texture_size = true
-stretch_mode = 5
-
 [node name="grimoire_icon" type="TextureButton" parent="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1/especialization"]
 layout_mode = 1
 anchors_preset = 8
@@ -875,7 +730,7 @@ grow_vertical = 2
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="weapon2" type="Panel" parent="Control/skill_m_container/w_container" node_paths=PackedStringArray("inv_panel", "skill_info_panel", "passive_container", "title_container", "dragging_preview", "spec_alert", "weapon_class_name")]
+[node name="weapon2" type="Panel" parent="Control/skill_m_container/w_container" node_paths=PackedStringArray("inv_panel", "skill_info_panel", "passive_container", "title_container", "dragging_preview", "spec_alert")]
 custom_minimum_size = Vector2(320, 580)
 layout_mode = 2
 script = ExtResource("15_8e01e")
@@ -889,7 +744,6 @@ dragging_preview = NodePath("../weapon1/preview_texture")
 skill_passive_scene = ExtResource("16_gdwug")
 weapon_type = "Wand"
 spec_alert = NodePath("../info/especialization")
-weapon_class_name = NodePath("TitleClass")
 metadata/_edit_lock_ = true
 
 [node name="skill_icon" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2"]
@@ -1418,7 +1272,7 @@ offset_bottom = 62.0
 texture = ExtResource("9_7vj3p")
 expand_mode = 1
 
-[node name="weapon2" type="HBoxContainer" parent="Control/skill_m_container/w_container/weapon2" node_paths=PackedStringArray("InvSkill", "spec_slot", "preview_texture", "spec2_panel", "spec_alert")]
+[node name="weapon2" type="HBoxContainer" parent="Control/skill_m_container/w_container/weapon2" node_paths=PackedStringArray("InvSkill", "spec_slot", "preview_texture")]
 z_index = 1
 layout_mode = 1
 anchors_preset = 7
@@ -1434,30 +1288,16 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 script = ExtResource("17_vedfw")
-secondary_spec = Array[ExtResource("13_sqh5h")]([null])
+secondary_spec = Array[ExtResource("4_42y8j")]([null])
 InvSkill = NodePath("../../info/ScrollContainer/inv_panel")
 spec_slot = NodePath("especialization/grimoire_icon")
 preview_texture = NodePath("../../weapon1/preview_texture")
-spec2_panel = NodePath("../../info/especialization/vbox/especialization2")
-spec_alert = NodePath("../../info/especialization/spec_alert")
 
 [node name="especialization" type="TextureRect" parent="Control/skill_m_container/w_container/weapon2/weapon2"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("10_xr170")
 expand_mode = 1
-
-[node name="previous_page" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/weapon2/especialization"]
-custom_minimum_size = Vector2(16, 16)
-offset_left = -72.0
-offset_top = 76.0
-offset_right = -40.0
-offset_bottom = 92.0
-texture_normal = ExtResource("14_1fx3g")
-texture_pressed = ExtResource("15_sbdpn")
-ignore_texture_size = true
-stretch_mode = 5
-flip_h = true
 
 [node name="Label" type="Label" parent="Control/skill_m_container/w_container/weapon2/weapon2/especialization"]
 layout_mode = 1
@@ -1477,17 +1317,6 @@ theme_override_fonts/font = SubResource("SystemFont_3ppof")
 theme_override_font_sizes/font_size = 0
 text = "Grimoire Specialization"
 horizontal_alignment = 1
-
-[node name="next_page" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/weapon2/especialization"]
-custom_minimum_size = Vector2(16, 16)
-offset_left = 110.0
-offset_top = 77.0
-offset_right = 142.0
-offset_bottom = 93.0
-texture_normal = ExtResource("14_1fx3g")
-texture_pressed = ExtResource("15_sbdpn")
-ignore_texture_size = true
-stretch_mode = 5
 
 [node name="grimoire_icon" type="TextureButton" parent="Control/skill_m_container/w_container/weapon2/weapon2/especialization"]
 layout_mode = 1
@@ -1803,7 +1632,7 @@ custom_minimum_size = Vector2(320, 400)
 layout_mode = 2
 columns = 6
 script = ExtResource("21_fv2a1")
-GrimoireInv = Array[Resource]([ExtResource("23_v6xwn"), ExtResource("24_a02ms"), ExtResource("24_a02ms"), ExtResource("24_a02ms"), ExtResource("23_v6xwn"), ExtResource("23_v6xwn"), ExtResource("24_a02ms"), ExtResource("23_v6xwn"), ExtResource("25_rvtwx"), ExtResource("25_rvtwx"), ExtResource("26_bg1hh"), ExtResource("26_bg1hh"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+GrimoireInv = Array[ExtResource("4_42y8j")]([ExtResource("5_57oh7"), ExtResource("5_57oh7"), ExtResource("5_57oh7"), null, ExtResource("6_vfis4"), ExtResource("6_vfis4"), ExtResource("6_vfis4"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [node name="TextureButton" type="TextureButton" parent="Control/skill_m_container/w_container/info/ScrollContainer/inv_panel"]
 custom_minimum_size = Vector2(40, 40)
@@ -2711,15 +2540,11 @@ offset_bottom = 170.0
 grow_horizontal = 2
 theme_override_constants/separation = -32
 
-[node name="especialization1" type="HBoxContainer" parent="Control/skill_m_container/w_container/info/especialization/vbox" node_paths=PackedStringArray("spec_slot1", "spec_icon", "spec_level")]
-visible = false
+[node name="especialization1" type="HBoxContainer" parent="Control/skill_m_container/w_container/info/especialization/vbox"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_vertical = 6
 script = ExtResource("25_ogydp")
-spec_slot1 = NodePath("../../../../weapon1/TitleClass/weapon1")
-spec_icon = NodePath("especialization_icon")
-spec_level = NodePath("especialization_icon/Label")
 
 [node name="especialization_icon" type="TextureRect" parent="Control/skill_m_container/w_container/info/especialization/vbox/especialization1"]
 custom_minimum_size = Vector2(60, 60)
@@ -2800,15 +2625,11 @@ offset_bottom = 44.5
 texture_normal = ExtResource("6_a85tx")
 texture_pressed = ExtResource("7_3ya6y")
 
-[node name="especialization2" type="HBoxContainer" parent="Control/skill_m_container/w_container/info/especialization/vbox" node_paths=PackedStringArray("spec_slot2", "spec_icon", "spec_level")]
+[node name="especialization2" type="HBoxContainer" parent="Control/skill_m_container/w_container/info/especialization/vbox"]
 visible = false
 custom_minimum_size = Vector2(250, 20)
 layout_mode = 2
 size_flags_vertical = 6
-script = ExtResource("31_xhb0f")
-spec_slot2 = NodePath("../../../../weapon2/weapon2")
-spec_icon = NodePath("especialization_icon")
-spec_level = NodePath("especialization_icon/Label")
 
 [node name="especialization_icon" type="TextureRect" parent="Control/skill_m_container/w_container/info/especialization/vbox/especialization2"]
 custom_minimum_size = Vector2(60, 60)
@@ -2889,6 +2710,7 @@ texture_normal = ExtResource("6_a85tx")
 texture_pressed = ExtResource("7_3ya6y")
 
 [node name="spec_alert" type="Label" parent="Control/skill_m_container/w_container/info/especialization"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2924,25 +2746,7 @@ label_settings = SubResource("LabelSettings_vkgsy")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="anim" type="AnimationPlayer" parent="Control"]
-libraries = {
-"": SubResource("AnimationLibrary_pp2eg")
-}
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Control"]
-visible = false
-material = SubResource("CanvasItemMaterial_sirp6")
-amount = 20
-process_material = SubResource("ParticleProcessMaterial_lro08")
-texture = ExtResource("36_860rp")
-lifetime = 0.5
-speed_scale = 1.5
-explosiveness = 1.0
-fixed_fps = 60
-
-[connection signal="button_down" from="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1/especialization/grimoire_icon" to="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1" method="_on_grimoire_icon_pressed"]
 [connection signal="mouse_entered" from="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1/especialization/grimoire_icon" to="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1" method="_on_grimoire_icon_mouse_entered"]
 [connection signal="mouse_exited" from="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1/especialization/grimoire_icon" to="Control/skill_m_container/w_container/weapon1/TitleClass/weapon1" method="_on_grimoire_icon_mouse_exited"]
 [connection signal="mouse_entered" from="Control/skill_m_container/w_container/weapon2/weapon2/especialization/grimoire_icon" to="Control/skill_m_container/w_container/weapon2/weapon2" method="_on_grimoire_icon_mouse_entered"]
 [connection signal="mouse_exited" from="Control/skill_m_container/w_container/weapon2/weapon2/especialization/grimoire_icon" to="Control/skill_m_container/w_container/weapon2/weapon2" method="_on_grimoire_icon_mouse_exited"]
-[connection signal="pressed" from="Control/skill_m_container/w_container/weapon2/weapon2/especialization/grimoire_icon" to="Control/skill_m_container/w_container/weapon2/weapon2" method="_on_grimoire_icon_pressed"]

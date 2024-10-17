@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillCardData" load_steps=4 format=3 uid="uid://b5ri14d68le2e"]
+
+[ext_resource type="Texture2D" uid="uid://chxmrtk4e1871" path="res://assets/icons/cards/Card.png" id="1_8vq0a"]
+[ext_resource type="Resource" uid="uid://ccal6pdusgnkp" path="res://resources/PassiveSkils/Burn.tres" id="2_ktktg"]
+[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="3_n0iv0"]
+
+[resource]
+script = ExtResource("3_n0iv0")
+card_id = 1
+card_name = "Igniter Card"
+card_desc = "2% de chance de causar o efeito \"queimadura\" no alvo."
+card_icon = ExtResource("1_8vq0a")
+card_skill_id = 2
+card_passive = ExtResource("2_ktktg")

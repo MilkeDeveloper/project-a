@@ -1,14 +1,16 @@
 extends HBoxContainer
 
-@export var primary_spec: Array[SkillGrimoireData]
+@export var primary_spec: Array[SpecGrimoireData]
 @export var InvSkill: GridContainer
 @export var spec_slot: TextureButton
-@export var preview_texture: TextureRect 
+@export var preview_texture: TextureRect
+@export var spec1_panel: HBoxContainer
+@export var spec_alert: Label
 
 var is_on_slot: bool = false
 var released: bool = false
 
-var _item: SkillGrimoireData
+var _item: SpecGrimoireData
 var _index: int
 
 # Called when the node enters the scene tree for the first time.
@@ -32,42 +34,45 @@ func _on_grimoire_icon_mouse_entered() -> void:
 	SkillMenuGlobals.on_spec_slot = true
 	print("on specialization slot")
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_released("mouse_left") and is_on_slot:
-		released = true
-		equip_grimoire()
-
-func _on_receive_item(item: SkillGrimoireData, index: int):
-	_item = item
-	_index = index
-	if released:
-		item = null
+func _on_receive_item(item: SpecGrimoireData, index: int):
+	equip_grimoire(item, index)
 	
 	
-func equip_grimoire():
+func equip_grimoire(item: SpecGrimoireData, i: int):
 	print("sinal recebido")
-	if primary_spec[0] == null and _item != null:
-		primary_spec[0] = _item
+	if primary_spec[0] == null and item != null:
+		primary_spec[0] = item
 		is_on_slot = false
-		_item = null
+		item = null
 		preview_texture.hide()
-		InvSkill.GrimoireInv[_index] = null
+		InvSkill.GrimoireInv[i] = null
 		print("spec reached")
 		InvSkill.get_grimoire_slot_inv()
 		update_spec_slots()
+		update_spec_info()
 		SkillMenuGlobals.clear_dragged_item.emit()
 		
-	elif primary_spec[0] != null and _item != null:
-		InvSkill.GrimoireInv[_index] = primary_spec[0]
-		primary_spec[0] = _item
-		is_on_slot = false
-		_item = null
-		preview_texture.hide()
-		
-		print("spec reached")
-		SkillMenuGlobals.clear_dragged_item.emit()
+	else:
+		print("slot já ocupado")
+		InvSkill.GrimoireInv[i] = item
 		InvSkill.get_grimoire_slot_inv()
 		update_spec_slots()
+
+func update_spec_info():
+	spec_alert.hide()
+	spec1_panel.show()
+	spec1_panel.show_spec_info()
 
 func _on_grimoire_icon_mouse_exited() -> void:
 	is_on_slot = false
+	#SkillMenuGlobals.on_spec_slot = false
+
+
+func _on_grimoire_icon_pressed() -> void:
+	$"../../../../../GPUParticles2D".position = get_global_mouse_position()
+	$"../../../../../anim".play("click")
+	print("primary spec selected")
+	ItemGlobals.secondary_skill_active = false
+	ItemGlobals.primary_skill_active = true
+	SkillMenuGlobals.current_secondary_spec_slot_selected = false
+	SkillMenuGlobals.current_primary_spec_slot_selected = true

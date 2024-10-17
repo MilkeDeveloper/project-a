@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://djaysrjcco6tw"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=4 format=3 uid="uid://djaysrjcco6tw"]
 
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_qmuv3"]
-[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="1_w3yey"]
+[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_w3yey"]
 [ext_resource type="Texture2D" uid="uid://bq1cpxi1sugbd" path="res://assets/misc/skill_icon_expurge.png" id="2_ayper"]
-[ext_resource type="Resource" uid="uid://4gr58pv1p0qu" path="res://resources/grimoires/BurnGrimoire.tres" id="2_rcg40"]
 
 [resource]
 script = ExtResource("1_qmuv3")
@@ -24,4 +23,4 @@ weapon_required = "wand"
 is_charging_skill = true
 is_aim_skill = true
 is_target_skill = false
-grimoire_Slots = Array[ExtResource("1_w3yey")]([ExtResource("2_rcg40"), null, null, null, null])
+grimoire_Slots = Array[ExtResource("1_w3yey")]([null, null, null, null, null])

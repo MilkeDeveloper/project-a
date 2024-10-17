@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://djwg77h8hhd13"]
 
-[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="1_6kh5j"]
+[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_6kh5j"]
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_doxox"]
 [ext_resource type="Texture2D" uid="uid://dhfgxmf6cj2pl" path="res://assets/misc/skill_icon_ice_breath.png" id="2_2qk12"]
-[ext_resource type="Resource" uid="uid://pqqays5liwol" path="res://resources/grimoires/SharpFreezingGrimoire.tres" id="2_3on4y"]
+[ext_resource type="Resource" uid="uid://6wkrnws25rlk" path="res://resources/cards/IceGolemCard.tres" id="2_wi0oi"]
 
 [resource]
 script = ExtResource("1_doxox")
@@ -24,4 +24,4 @@ weapon_required = "Staff"
 is_charging_skill = true
 is_aim_skill = false
 is_target_skill = false
-grimoire_Slots = Array[ExtResource("1_6kh5j")]([ExtResource("2_3on4y"), null, null, null, null])
+grimoire_Slots = Array[ExtResource("1_6kh5j")]([ExtResource("2_wi0oi"), null, null, null, null])

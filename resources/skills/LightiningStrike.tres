@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GDSkillData" load_steps=4 format=3 uid="uid://bc1quf7fuha4x"]
 
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_p8v0i"]
-[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="1_q4yfd"]
+[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_q4yfd"]
 [ext_resource type="Texture2D" uid="uid://lr6g61edf1vv" path="res://assets/misc/skill_icon_lightining_strike.png" id="2_obc6o"]
 
 [resource]

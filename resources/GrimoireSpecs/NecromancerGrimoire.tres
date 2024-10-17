@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpecGrimoireData" load_steps=4 format=3 uid="uid://bmo4p8lcjnkhm"]
+
+[ext_resource type="Script" path="res://core/data/SpecGrimoireData.gd" id="1_4i6ju"]
+[ext_resource type="Texture2D" uid="uid://bcauirtnl16nk" path="res://assets/misc/nature_grimoire.png" id="1_sxx82"]
+[ext_resource type="Resource" uid="uid://bv8my26cb5fpx" path="res://resources/specs/Necromancer.tres" id="3_lbghw"]
+
+[resource]
+script = ExtResource("1_4i6ju")
+grimoire_id = 1
+grimoire_name = "Necronmancer Grimoire"
+grimoire_desc = "\"Um grimório imbuído de forças obscuras.\""
+grimoire_icon = ExtResource("1_sxx82")
+spec = ExtResource("3_lbghw")
+spec_id = 1

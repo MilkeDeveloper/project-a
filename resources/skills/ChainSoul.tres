@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GDSkillData" load_steps=4 format=3 uid="uid://bpln86gdjw18h"]
 
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_e64ok"]
-[ext_resource type="Script" path="res://core/data/SkillGrimoireData.gd" id="1_e71q8"]
+[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_e71q8"]
 [ext_resource type="Texture2D" uid="uid://drn64v3fc6xo3" path="res://assets/misc/skill_icon_chain_soul.png" id="2_kq17o"]
 
 [resource]
