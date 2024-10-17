@@ -9,6 +9,7 @@ extends Node2D
 @export var node: CharacterBody2D
 @export var skill_mananager: Node
 @export var ui_inventory: Control
+@export var ui_skills: Control
 
 var can_shoot: bool = true
 var nullable: Node
@@ -87,3 +88,6 @@ func get_input(event):
 			await anim.animation_finished
 			ui_inventory.visible = false
 			inventory_open = false
+	
+	if event.is_action_just_pressed("ui_skills"):
+		ui_skills.visible = not ui_skills.visible

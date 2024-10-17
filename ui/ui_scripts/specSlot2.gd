@@ -7,6 +7,7 @@ extends HBoxContainer
 @export var preview_texture: TextureRect
 @export var spec2_panel: HBoxContainer
 @export var spec_alert: Label
+@export var skill_tree_panel: Panel
 
 var is_on_slot: bool = false
 var released: bool = false
@@ -75,3 +76,15 @@ func _on_grimoire_icon_pressed() -> void:
 	SkillMenuGlobals.current_primary_spec_slot_selected = false
 	SkillMenuGlobals.current_secondary_spec_slot_selected = true
 	
+
+func _on_previous_page_pressed() -> void:
+	if secondary_spec[0] != null:
+		SkillMenuGlobals.current_skill_tree2 = "Wand"
+		skill_tree_panel.update_skill_tree_panel()
+
+
+func _on_next_page_pressed() -> void:
+	if secondary_spec[0] != null:
+		var spec = secondary_spec[0].spec
+		SkillMenuGlobals.current_skill_tree2 = spec.spec_name
+		skill_tree_panel.update_skill_tree_panel()

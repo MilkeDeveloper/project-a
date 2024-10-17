@@ -6,6 +6,7 @@ extends HBoxContainer
 @export var preview_texture: TextureRect
 @export var spec1_panel: HBoxContainer
 @export var spec_alert: Label
+@export var skill_tree_panel: Panel
 
 var is_on_slot: bool = false
 var released: bool = false
@@ -69,10 +70,20 @@ func _on_grimoire_icon_mouse_exited() -> void:
 
 
 func _on_grimoire_icon_pressed() -> void:
-	$"../../../../../GPUParticles2D".position = get_global_mouse_position()
-	$"../../../../../anim".play("click")
 	print("primary spec selected")
 	ItemGlobals.secondary_skill_active = false
 	ItemGlobals.primary_skill_active = true
 	SkillMenuGlobals.current_secondary_spec_slot_selected = false
 	SkillMenuGlobals.current_primary_spec_slot_selected = true
+
+
+func _on_next_page_pressed() -> void:
+	if primary_spec[0] != null:
+		var spec = primary_spec[0].spec
+		SkillMenuGlobals.current_skill_tree1 = spec.spec_name
+		skill_tree_panel.update_skill_tree_panel()
+
+func _on_previous_page_pressed() -> void:
+	if primary_spec[0] != null:
+		SkillMenuGlobals.current_skill_tree1 = "Staff"
+		skill_tree_panel.update_skill_tree_panel()

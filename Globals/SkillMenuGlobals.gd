@@ -14,3 +14,5 @@ var current_primary_spec_slot_selected: bool = false
 var current_secondary_spec_slot_selected: bool = false
 var curent_primary_skill_selected: bool = false
 var curent_secondary_skill_selected: bool = false
+var current_skill_tree1: String = "Staff"
+var current_skill_tree2: String = "Wand"

@@ -12,6 +12,7 @@ extends Panel
 @export var weapon_type: String
 @export var spec_alert: Panel
 @export var weapon_class_name: Label
+@export var spec: HBoxContainer
 
 
 var button_index 
@@ -45,10 +46,16 @@ func _clear_dragged_item():
 	dragging_item = null
 
 func update_skill_tree_panel():
-	weapon_class_name.text = "Wand Skills"
-	skill_tree = WeaponSkillTrees.Wand
-	load_weapon_skill_tree(WeaponSkillTrees.Wand)
-
+	if SkillMenuGlobals.current_skill_tree2 == "Wand":
+		weapon_class_name.text = "Wand Skills"
+		skill_tree = WeaponSkillTrees.Wand
+		load_weapon_skill_tree(WeaponSkillTrees.Wand)
+	else:
+		if spec.secondary_spec[0] != null:
+			var weapon_spec = spec.secondary_spec[0].spec
+			weapon_class_name.text = weapon_spec.spec_name
+			skill_tree = weapon_spec.spec_skills
+			load_weapon_skill_tree(weapon_spec.spec_skills)
 
 func get_primary_weapon_skills_ui_slot():
 	button_index = []
@@ -66,10 +73,15 @@ func get_primary_weapon_skills_ui_slot():
 func load_weapon_skill_tree(skill_tree: Array[GDSkillData]):
 	for i in range(button_index.size()):
 		if skill_tree[i] != null:
+			button_index[i].disabled = false
 			button_index[i].texture_normal = skill_tree[i].skill_icon
 			button_index[i].get_child(0).show()
 			var skilLv_text = button_index[i].get_child(0).get_node("Label")
 			skilLv_text.text = str(skill_tree[i].skill_level) + "/" + str(skill_tree[i].skill_max_level)
+		else:
+			button_index[i].texture_normal = load("res://assets/misc/hotbar_slot_remake.png")
+			button_index[i].disabled = true
+			button_index[i].get_child(0).hide()
 
 func connect_spec_signals():
 	SkillMenuGlobals.clear_dragged_item.connect(_clear_dragged_item)
