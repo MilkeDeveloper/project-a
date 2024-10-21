@@ -44,7 +44,7 @@ func start_timers():
 	charge_bar.value = 0 # Reinicia a charge bar
 	print("Charging...")
 
-func use_skill(_player, skill_damage, _cooldown, anim_component, target):
+func use_skill(_player, skill_damage, _cooldown, target):
 	original_player = _player
 	damage = skill_damage
 	cooldown = _cooldown
@@ -106,7 +106,7 @@ func cancel_skill():
 	
 	charge_bar.value = 0 # Reseta a charge bar após o encerramento da skill
 	
-	GLobals.emit_signal("key_skill_released", "Arrow Assault")
+	GLobals.emit_signal("key_skill_released", 1)
 	cast_skill = false
 	original_player.SPEED = original_speed
 	GLobals.spinning = false

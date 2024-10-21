@@ -20,7 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 # Função que contem a lógica principal da skill
-func use_skill(node, damage, _cooldown, anim_component, _target = null):
+func use_skill(node, damage, _cooldown, _target = null):
 	# Posição do player
 	player = node
 	var position = node.global_position

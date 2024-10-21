@@ -12,6 +12,6 @@ spec_name = "Necromancer"
 spec_desc = "n/a"
 spec_icon = ExtResource("2_4u6sv")
 spec_weapon = "Staff"
-spec_level = 1
+spec_level = 5
 spec_max_level = 25
 spec_skills = Array[ExtResource("2_sig6t")]([ExtResource("4_lchma"), null, null, null, null, null, null, null, null, null])

@@ -6,6 +6,8 @@ signal on_grimoire_clicked(item: SkillCardData, index: int)
 signal on_grimoire_clicked2(item: SkillCardData, index: int)
 signal clear_dragged_item
 
+signal dragg_from_skill_menu(skill: GDSkillData)
+
 # Control Vars
 var on_spec_slot: bool = false
 var specs_visible: bool = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://l200m2x0yagx"]
+[gd_scene load_steps=72 format=4 uid="uid://l200m2x0yagx"]
 
 [ext_resource type="Script" path="res://config/game_init.gd" id="1_4616h"]
 [ext_resource type="Texture2D" uid="uid://0tond388mexi" path="res://assets/tilesets/map3.png" id="1_lccmo"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://4t7eil3yoxnl" path="res://game_scenes/item/itemBase.tscn" id="18_gocsr"]
 [ext_resource type="Resource" uid="uid://dd8c38oryw55r" path="res://resources/items/hp_potion.tres" id="19_8ac37"]
 [ext_resource type="Resource" uid="uid://dmfu4bn38rvhy" path="res://resources/items/mp_potion.tres" id="20_6ilid"]
+[ext_resource type="Resource" uid="uid://cwfau0wfemdo6" path="res://resources/items/MagicShard.tres" id="20_rjinh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p81if"]
 shader = ExtResource("4_lk73s")
@@ -7137,7 +7138,7 @@ quantity = 20
 
 [node name="item_sprite3" parent="." instance=ExtResource("18_gocsr")]
 position = Vector2(1502, 868)
-item_data = ExtResource("19_8ac37")
+item_data = ExtResource("20_rjinh")
 quantity = 20
 
 [node name="item_sprite4" parent="." instance=ExtResource("18_gocsr")]
@@ -7152,7 +7153,7 @@ quantity = 20
 
 [node name="item_sprite6" parent="." instance=ExtResource("18_gocsr")]
 position = Vector2(1329, 987)
-item_data = ExtResource("19_8ac37")
+item_data = ExtResource("20_rjinh")
 quantity = 20
 
 [node name="item_sprite7" parent="." instance=ExtResource("18_gocsr")]
@@ -7162,12 +7163,12 @@ quantity = 20
 
 [node name="item_sprite8" parent="." instance=ExtResource("18_gocsr")]
 position = Vector2(1278, 800)
-item_data = ExtResource("19_8ac37")
-quantity = 20
+item_data = ExtResource("20_rjinh")
+quantity = 30
 
 [node name="item_sprite9" parent="." instance=ExtResource("18_gocsr")]
 position = Vector2(1395, 739)
-item_data = ExtResource("20_6ilid")
+item_data = ExtResource("20_rjinh")
 quantity = 20
 
 [node name="item_sprite10" parent="." instance=ExtResource("18_gocsr")]
@@ -7182,6 +7183,7 @@ quantity = 20
 
 [node name="item_sprite12" parent="." instance=ExtResource("18_gocsr")]
 position = Vector2(1512, 620)
+item_data = ExtResource("20_rjinh")
 quantity = 20
 
 [node name="item_sprite13" parent="." instance=ExtResource("18_gocsr")]
@@ -7197,4 +7199,5 @@ item_data = ExtResource("19_8ac37")
 [editable path="Player/sprite/hud_player"]
 [editable path="Player/sprite2/hud_player"]
 [editable path="Player/Ui hotbar"]
+[editable path="Player/ui_SKillMenu"]
 [editable path="UI map"]

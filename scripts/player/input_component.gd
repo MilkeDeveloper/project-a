@@ -21,6 +21,7 @@ var action_keys = {
 	"block": "block",
 	"inventory": "inventory",
 	"map": "map",
+	
 	"hotbar_1": "hotbar_1",
 	"hotbar_2": "hotbar_2"
 }
@@ -49,22 +50,6 @@ func get_input(event):
 		print("A skill precisa de um alvo")
 	
 		#projectile_component.use_skill(GLobals.target)
-	if event.is_action_just_pressed("skill2"):
-		skill_mananager.activate_skill("Triple Shoot", node, anim_component, nullable)
-		print("ativando a skill")
-		
-	if event.is_action_just_pressed("skill"):
-		skill_mananager.activate_skill("Soul Chain", node, anim_component, nullable)
-		#cam.apply_shake(0.3, 1.5)
-		#skill_component.start_petagon_court(node.global_position)
-
-	if event.is_action_just_pressed("skill4"):
-		skill_mananager.activate_skill("Meteor Storm", node, anim_component, nullable)
-		print("ativando a skill")
-	
-	if event.is_action_just_pressed("skill5"):
-		skill_mananager.activate_skill("Arrow Assault", node, anim_component, nullable)
-		print("ativando a skill")
 		
 		
 	#GUI config

@@ -1,8 +1,21 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=4 format=3 uid="uid://dkh2dlrw1nh71"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=7 format=3 uid="uid://dkh2dlrw1nh71"]
 
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_6mrmp"]
+[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_n4rux"]
 [ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_s48vr"]
 [ext_resource type="Texture2D" uid="uid://heyaqurnigxf" path="res://assets/misc/skill_icon_heal.png" id="2_ut4g4"]
+
+[sub_resource type="Resource" id="Resource_7vjx7"]
+script = ExtResource("1_n4rux")
+type = 5
+amount = 50.0
+mod_percentage = 0.0
+
+[sub_resource type="Resource" id="Resource_ec2f8"]
+script = ExtResource("1_n4rux")
+type = 7
+amount = 100.0
+mod_percentage = 0.0
 
 [resource]
 script = ExtResource("1_6mrmp")
@@ -10,12 +23,14 @@ id = 3
 skill_name = "Heal"
 skill_description = "Lança um magia de cura no chão. Ao passar por cima da ára da cura no chão o jogador é curado."
 skill_icon = ExtResource("2_ut4g4")
+skill_type = Array[int]([1, 2])
+buff_type = Array[ExtResource("1_n4rux")]([SubResource("Resource_7vjx7"), SubResource("Resource_ec2f8")])
 mana_cost = 10
 cooldown = 5.0
 charge_time = 2.0
 effect_type = "(150 + 10% / Skill levell) de HP"
-damage = 0
-heal = 150
+amount = 0
+percentage = 0
 skill_level = 1
 skill_max_level = 10
 is_passive = false

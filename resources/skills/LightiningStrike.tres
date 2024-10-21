@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=4 format=3 uid="uid://bc1quf7fuha4x"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://bc1quf7fuha4x"]
 
+[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_2eq3u"]
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_p8v0i"]
 [ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_q4yfd"]
 [ext_resource type="Texture2D" uid="uid://lr6g61edf1vv" path="res://assets/misc/skill_icon_lightining_strike.png" id="2_obc6o"]
@@ -10,12 +11,14 @@ id = 9
 skill_name = ""
 skill_description = "Lança um a tempestade no local alvo Atingindo todos os inimigos na área."
 skill_icon = ExtResource("2_obc6o")
+skill_type = Array[int]([])
+buff_type = Array[ExtResource("1_2eq3u")]([])
 mana_cost = 45
 cooldown = 10.0
 charge_time = 3.0
 effect_type = "250 + % 200% de MATK dmg. 30% de chance de atordordoar o inimigo atingido"
-damage = 250
-heal = 0
+amount = 0
+percentage = 0
 skill_level = 1
 skill_max_level = 10
 is_passive = false

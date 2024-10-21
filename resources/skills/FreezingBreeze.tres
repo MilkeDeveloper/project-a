@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://djwg77h8hhd13"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=6 format=3 uid="uid://djwg77h8hhd13"]
 
 [ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_6kh5j"]
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_doxox"]
+[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_sso2k"]
 [ext_resource type="Texture2D" uid="uid://dhfgxmf6cj2pl" path="res://assets/misc/skill_icon_ice_breath.png" id="2_2qk12"]
 [ext_resource type="Resource" uid="uid://6wkrnws25rlk" path="res://resources/cards/IceGolemCard.tres" id="2_wi0oi"]
 
@@ -11,12 +12,14 @@ id = 8
 skill_name = "Ice Breath"
 skill_description = "Lança uma torrente de ar gelado  na direçao escolhida. A habilidade pode ser carregada causando dando a cada 0.2 durante 5 segundos"
 skill_icon = ExtResource("2_2qk12")
+skill_type = Array[int]([])
+buff_type = Array[ExtResource("1_sso2k")]([])
 mana_cost = 30
 cooldown = 10.0
 charge_time = 5.0
 effect_type = "75 + 25% MTAK dmg. Chance de 25% de congelar inimigos. Inimigos congelados sao afetados pelo status \"frio\"."
-damage = 75
-heal = 0
+amount = 0
+percentage = 0
 skill_level = 1
 skill_max_level = 5
 is_passive = false

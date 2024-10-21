@@ -1,8 +1,21 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=4 format=3 uid="uid://djaysrjcco6tw"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=7 format=3 uid="uid://djaysrjcco6tw"]
 
+[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_m1aom"]
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_qmuv3"]
 [ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_w3yey"]
 [ext_resource type="Texture2D" uid="uid://bq1cpxi1sugbd" path="res://assets/misc/skill_icon_expurge.png" id="2_ayper"]
+
+[sub_resource type="Resource" id="Resource_lf56w"]
+script = ExtResource("1_m1aom")
+type = 5
+amount = 0.0
+mod_percentage = 0.0
+
+[sub_resource type="Resource" id="Resource_oiyup"]
+script = ExtResource("1_m1aom")
+type = 7
+amount = 0.0
+mod_percentage = 0.0
 
 [resource]
 script = ExtResource("1_qmuv3")
@@ -10,12 +23,14 @@ id = 6
 skill_name = "Expurge"
 skill_description = "Lança um luz divida no local alvo durante 10 segundos. Inimigos que a travessarema  área sofrem dando a cada 0.2 segundos"
 skill_icon = ExtResource("2_ayper")
+skill_type = Array[int]([0, 3])
+buff_type = Array[ExtResource("1_m1aom")]([SubResource("Resource_lf56w"), SubResource("Resource_oiyup")])
 mana_cost = 25
 cooldown = 15.0
 charge_time = 2.0
 effect_type = "100 + 20% MATK. Dano adicional de 50% contra mortos-vivos, e mostros de propriedade sombria"
-damage = 100
-heal = 0
+amount = 0
+percentage = 0
 skill_level = 1
 skill_max_level = 10
 is_passive = false

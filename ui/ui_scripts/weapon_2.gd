@@ -12,7 +12,10 @@ extends Panel
 @export var weapon_type: String
 @export var spec_alert: Panel
 @export var weapon_class_name: Label
+@export var spec_name: Label
 @export var spec: HBoxContainer
+@export var spec_button: TextureButton
+@export var control: Control
 
 
 var button_index 
@@ -41,7 +44,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_dragging:
 		dragging_preview.global_position = get_global_mouse_position() - dragging_preview.size / 2
-		
+	update_skill_tree_panel()
+	
 func _clear_dragged_item():
 	dragging_item = null
 
@@ -53,9 +57,12 @@ func update_skill_tree_panel():
 	else:
 		if spec.secondary_spec[0] != null:
 			var weapon_spec = spec.secondary_spec[0].spec
-			weapon_class_name.text = weapon_spec.spec_name
 			skill_tree = weapon_spec.spec_skills
 			load_weapon_skill_tree(weapon_spec.spec_skills)
+
+	if spec.secondary_spec[0] != null:
+		var weapon_spec = spec.secondary_spec[0].spec
+		spec_name.text = weapon_spec.spec_name
 
 func get_primary_weapon_skills_ui_slot():
 	button_index = []
@@ -78,6 +85,16 @@ func load_weapon_skill_tree(skill_tree: Array[GDSkillData]):
 			button_index[i].get_child(0).show()
 			var skilLv_text = button_index[i].get_child(0).get_node("Label")
 			skilLv_text.text = str(skill_tree[i].skill_level) + "/" + str(skill_tree[i].skill_max_level)
+			if skill_tree[i].skill_level >= skill_tree[i].skill_max_level:
+				var lvupButton = button_lvup_index[i]
+				lvupButton.disabled = true
+			elif skill_tree[i].skill_level <= skill_tree[i].skill_max_level and control.skill_points <= 0:
+				var lvupButton = button_lvup_index[i]
+				lvupButton.hide()
+			else:
+				var lvupButton = button_lvup_index[i]
+				lvupButton.disabled = false
+				lvupButton.show()
 		else:
 			button_index[i].texture_normal = load("res://assets/misc/hotbar_slot_remake.png")
 			button_index[i].disabled = true
@@ -97,6 +114,10 @@ func get_callable_buttons():
 		var callable = Callable(_on_skill_button_pressed)
 		callable = callable.bind(_index)
 		skill_button.connect("pressed", callable)
+		
+		var callable_down = Callable(_on_skill_button_down)
+		callable_down = callable_down.bind(_index)
+		skill_button.connect("button_down", callable_down)
 	
 	for b_index in range(button_lvup_index.size()):
 		var buttonLvup = button_lvup_index[b_index]
@@ -134,8 +155,11 @@ func connect_event_grimoire_slots():
 		gExitCallable = gExitCallable.bind(i)
 		_gSlot.connect("mouse_exited", gExitCallable)
 
+func _on_skill_button_down(i: int):
+	SkillMenuGlobals.dragg_from_skill_menu.emit(skill_tree[i])
 
 func _on_skill_button_pressed(i: int):
+	spec_button.show()
 	skill_index = i
 	spec_alert.hide()
 	ItemGlobals.primary_skill_active = false
@@ -143,9 +167,9 @@ func _on_skill_button_pressed(i: int):
 	SkillMenuGlobals.curent_primary_skill_selected = false
 	SkillMenuGlobals.curent_secondary_skill_selected = true
 	inv_panel.hide()
-	title_container.get_node("inv_name").hide()
+	var title = title_container.get_node("title")
+	title.text = "Card Effects"
 	title_container.get_node("inv_button").show()
-	title_container.get_node("skill_name").show()
 	passive_container.show()
 	clear_passive_cards()
 	set_grimoire_slots(i)
@@ -162,9 +186,12 @@ func _skill_levelup(index: int):
 	# Se o nível da skill for menor que o nível máximo dela, então aumenta o nível em 1 ponto
 	if skill_tree[index] != null and skill_tree[index].skill_level < skill_tree[index].skill_max_level:
 		skill_tree[index].skill_level += 1
+		control.update_skill_points(1)
 		update_skill_tree_panel()
 
 func show_skill_info(index: int):
+	var section_title = skill_info_panel.get_node("skill_name")
+	section_title.text = "Cards"
 	get_grimoire_slots()
 	get_equiped_grimoires()
 
@@ -190,6 +217,7 @@ func get_equiped_grimoires():
 	for g_slot in range(GrimoireSlots.size()):
 		var grimoire_slot = grimoire_slots[g_slot]
 		var g_icon = grimoire_slot.get_child(0)
+		grimoire_slot.show()
 		
 		if GrimoireSlots[g_slot] != null:
 			g_icon.texture = GrimoireSlots[g_slot].card_icon
@@ -225,7 +253,8 @@ func get_grimoire_passives(slot: int):
 
 func _on_inv_button_pressed() -> void:
 	if not ItemGlobals.primary_skill_active:
-		title_container.get_node("inv_button").hide()
+		var title = title_container.get_node("title")
+		title.text = "Grimoires & Cards"
 		passive_container.hide()
 		inv_panel.show()
 		print(weapon_type)

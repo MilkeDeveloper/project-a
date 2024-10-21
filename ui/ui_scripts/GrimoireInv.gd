@@ -1,6 +1,7 @@
 extends GridContainer
 
 @export var GrimoireInv: Array[Resource]
+@export var panel_name: Label
 
 var InvSlot
 
@@ -18,6 +19,7 @@ func get_grimoire_slot_inv():
 		update_grimoire_inv(i)
 
 func update_grimoire_inv(index: int):
+	panel_name.text = "Grimoires & Cards"
 	InvSlot = GrimoireInv[index]
 	
 	var _slot = get_child(index)

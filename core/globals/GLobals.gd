@@ -7,7 +7,7 @@ signal start_anim
 signal body_entered(body)
 
 #skill signals
-signal key_skill_released(_skill_name: String)
+signal key_skill_released(skill_id: int)
 signal on_click
 
 var target: Node2D = null

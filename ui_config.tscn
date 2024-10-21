@@ -73,7 +73,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 action_name = NodePath("Label")
 action_keys = {
-"hotbar_1": "hotbar_1"
+"hotbar_1": "hotbar_0"
 }
 
 [node name="HBoxContainer6" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
@@ -81,7 +81,31 @@ layout_mode = 2
 size_flags_horizontal = 4
 action_name = NodePath("Label")
 action_keys = {
-"hotbar_2": "hotbar_2"
+"hotbar_2": "hotbar_1"
+}
+
+[node name="HBoxContainer7" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
+layout_mode = 2
+size_flags_horizontal = 4
+action_name = NodePath("Label")
+action_keys = {
+"hotbar_3": "hotbar_2"
+}
+
+[node name="HBoxContainer8" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
+layout_mode = 2
+size_flags_horizontal = 4
+action_name = NodePath("Label")
+action_keys = {
+"hotbar_4": "hotbar_3"
+}
+
+[node name="HBoxContainer9" parent="Control/PanelContainer/VBoxContainer" node_paths=PackedStringArray("action_name") instance=ExtResource("1_octw0")]
+layout_mode = 2
+size_flags_horizontal = 4
+action_name = NodePath("Label")
+action_keys = {
+"hotbar_5": "hotbar_4"
 }
 
 [editable path="Control/PanelContainer/VBoxContainer/HBoxContainer"]
@@ -90,3 +114,6 @@ action_keys = {
 [editable path="Control/PanelContainer/VBoxContainer/HBoxContainer4"]
 [editable path="Control/PanelContainer/VBoxContainer/HBoxContainer5"]
 [editable path="Control/PanelContainer/VBoxContainer/HBoxContainer6"]
+[editable path="Control/PanelContainer/VBoxContainer/HBoxContainer7"]
+[editable path="Control/PanelContainer/VBoxContainer/HBoxContainer8"]
+[editable path="Control/PanelContainer/VBoxContainer/HBoxContainer9"]

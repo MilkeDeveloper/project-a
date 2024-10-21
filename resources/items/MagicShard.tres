@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cwfau0wfemdo6"]
+
+[ext_resource type="Script" path="res://core/data/ItemData.gd" id="1_e3o83"]
+[ext_resource type="Texture2D" uid="uid://vc81iob2oelt" path="res://assets/items/magic_shard.png" id="1_j712p"]
+
+[resource]
+script = ExtResource("1_e3o83")
+item_id = 4
+item_name = "Magic Shard"
+icon = ExtResource("1_j712p")
+item_desc = "\"Um crystal magico obtido de mosntros\""
+item_category = "Material"
+usable = false
+item_cost = 1.0
+item_weight = 0.1
+max_stacks = 99999
+stacks = 10
+stackable = true
+is_weapon = false
+weapon_type = Array[String]([])

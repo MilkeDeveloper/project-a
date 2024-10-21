@@ -23,7 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func use_skill(_player, skill_damage, _cooldown, anim_component, target):
+func use_skill(_player, skill_damage, _cooldown, target):
 	player = _player
 	
 func cancel_skill():

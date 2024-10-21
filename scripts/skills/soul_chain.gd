@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		spawn_totem()
 		set_process(false)
 		
-func use_skill(_player, skill_damage, _cooldown, anim_component, target):
+func use_skill(_player, skill_damage, _cooldown, target):
 	if mouse_position != null:
 		select_area.show()
 		
