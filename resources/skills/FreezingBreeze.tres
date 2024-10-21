@@ -10,20 +10,22 @@
 script = ExtResource("1_doxox")
 id = 8
 skill_name = "Ice Breath"
-skill_description = "Lança uma torrente de ar gelado  na direçao escolhida. A habilidade pode ser carregada causando dando a cada 0.2 durante 5 segundos"
+skill_description = "Lança uma torrente de ar gelado  na direçao escolhida. A habilidade pode ser carregada causando dando a cada 0.2 segundos, durante 5 segundos."
 skill_icon = ExtResource("2_2qk12")
 skill_type = Array[int]([])
 buff_type = Array[ExtResource("1_sso2k")]([])
 mana_cost = 30
 cooldown = 10.0
+dmg_amount = 75
 charge_time = 5.0
-effect_type = "75 + 25% MTAK dmg. Chance de 25% de congelar inimigos. Inimigos congelados sao afetados pelo status \"frio\"."
+effect_type = "75 + 25% MTAK dmg. Chance de 25% de congelar inimigos. Aplica o o status [color=cyan][b]\"freeze\"[/b][/color] aos inimigos atingidos."
 amount = 0
 percentage = 0
 skill_level = 1
 skill_max_level = 5
 is_passive = false
 weapon_required = "Staff"
+cast_time = 0.0
 is_charging_skill = true
 is_aim_skill = false
 is_target_skill = false

@@ -16,7 +16,9 @@ extends Panel
 @export var spec: HBoxContainer
 @export var spec_button: TextureButton
 @export var control: Control
+@export var skill_detail: PackedScene
 
+var details
 
 var button_index 
 var button_lvup_index 
@@ -118,6 +120,14 @@ func get_callable_buttons():
 		var callable_down = Callable(_on_skill_button_down)
 		callable_down = callable_down.bind(_index)
 		skill_button.connect("button_down", callable_down)
+		
+		var skill_entered = Callable(_on_mouse_skill_entered)
+		skill_entered = skill_entered.bind(_index)
+		skill_button.connect("mouse_entered", skill_entered)
+		
+		var skill_exited = Callable(_on_mouse_skill_exited)
+		skill_exited = skill_exited.bind(_index)
+		skill_button.connect("mouse_exited", skill_exited)
 	
 	for b_index in range(button_lvup_index.size()):
 		var buttonLvup = button_lvup_index[b_index]
@@ -376,3 +386,20 @@ func equip_card_on_skill(_index: int):
 			dragging_preview.hide()
 			inv_panel.GrimoireInv[_index] = inv_panel.GrimoireInv[_index]
 			inv_panel.get_grimoire_slot_inv()
+
+func _on_mouse_skill_entered(index: int):
+	print("skill entered")
+	if skill_tree[index] != null:
+		show_skill_details(index)
+	
+func _on_mouse_skill_exited(index: int):
+	print("skill_exited")
+	if skill_tree[index] != null:
+		remove_child(details)
+		details.queue_free()
+	
+func show_skill_details(index: int):
+	details = skill_detail.instantiate()
+	details.position.x = button_index[index].position.x + 50 
+	details.position.y = button_index[index].position.y
+	add_child(details)

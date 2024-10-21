@@ -141,8 +141,8 @@ base_font = SubResource("SystemFont_ebkd5")
 [sub_resource type="SystemFont" id="SystemFont_wxqso"]
 subpixel_positioning = 0
 
-[node name="Ui hotbar" type="CanvasLayer"]
-layer = 3
+[node name="Ui skills" type="CanvasLayer"]
+layer = 2
 
 [node name="Hotbars" type="Control" parent="." node_paths=PackedStringArray("hotbar_container")]
 layout_mode = 3

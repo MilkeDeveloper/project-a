@@ -1,0 +1,277 @@
+[gd_scene load_steps=21 format=3 uid="uid://xrjvdwaoxyb"]
+
+[ext_resource type="Texture2D" uid="uid://hlxb03hokxl8" path="res://assets/misc/skill_icon_ice_bolt.png" id="1_a4jsq"]
+[ext_resource type="Texture2D" uid="uid://csyammmxevcxj" path="res://assets/misc/style_box_datails.png" id="1_n8ko3"]
+[ext_resource type="Texture2D" uid="uid://cljd41g4j60ei" path="res://assets/misc/tag_icon.png" id="2_2j5vm"]
+
+[sub_resource type="SystemFont" id="SystemFont_0hjw6"]
+font_names = PackedStringArray("Times New Roman")
+font_weight = 550
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_q737u"]
+font = SubResource("SystemFont_0hjw6")
+font_size = 10
+font_color = Color(0.454902, 1, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k46ud"]
+font = SubResource("SystemFont_0hjw6")
+font_size = 10
+font_color = Color(0.454902, 1, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_0xgrp"]
+font_names = PackedStringArray("Times New Roman")
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_jupvs"]
+font = SubResource("SystemFont_0xgrp")
+font_size = 18
+
+[sub_resource type="SystemFont" id="SystemFont_icfm2"]
+font_names = PackedStringArray("Times New Roman")
+font_weight = 600
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_y0s05"]
+font = SubResource("SystemFont_icfm2")
+font_size = 12
+font_color = Color(1, 0.933333, 0.654902, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_c2dec"]
+font_names = PackedStringArray("Times New Roman")
+multichannel_signed_distance_field = true
+
+[sub_resource type="SystemFont" id="SystemFont_8od17"]
+font_names = PackedStringArray("Times New Roman")
+font_weight = 575
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_011ea"]
+font = SubResource("SystemFont_8od17")
+font_size = 12
+font_color = Color(1, 1, 0.713726, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_bw0it"]
+font_names = PackedStringArray("Times New Roman")
+font_weight = 575
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_8pi8f"]
+font = SubResource("SystemFont_bw0it")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_yk4w3"]
+font_names = PackedStringArray("Times New Roman")
+font_weight = 550
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_um5xa"]
+font = SubResource("SystemFont_yk4w3")
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_soi7h"]
+font_names = PackedStringArray("Times New Roman")
+font_weight = 575
+multichannel_signed_distance_field = true
+
+[sub_resource type="SystemFont" id="SystemFont_w3f7s"]
+font_names = PackedStringArray("Times New Roman")
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8twm"]
+font = SubResource("SystemFont_w3f7s")
+font_size = 12
+font_color = Color(0.712129, 0.712129, 0.712129, 1)
+
+[node name="skill_datails" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 470.0
+
+[node name="Panel" type="NinePatchRect" parent="."]
+z_index = 5
+layout_mode = 0
+offset_top = 1.0
+offset_right = 300.0
+offset_bottom = 470.0
+texture = ExtResource("1_n8ko3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="skill_icon" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.0
+offset_top = 13.0
+offset_right = 12.0
+offset_bottom = 63.0
+grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_a4jsq")
+
+[node name="level" type="Label" parent="Panel/skill_icon"]
+layout_mode = 0
+offset_left = -63.3333
+offset_top = 1.33333
+offset_right = -23.3333
+offset_bottom = 24.3333
+text = "Lv.0"
+label_settings = SubResource("LabelSettings_q737u")
+
+[node name="sp" type="TextureRect" parent="Panel/skill_icon"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 2.0
+offset_right = 98.0
+offset_bottom = 14.0
+texture = ExtResource("2_2j5vm")
+expand_mode = 1
+
+[node name="text" type="Label" parent="Panel/skill_icon/sp"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 0.666665
+offset_right = 56.0
+offset_bottom = 23.6667
+text = "25"
+label_settings = SubResource("LabelSettings_k46ud")
+
+[node name="skill_name" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 95.0
+offset_right = 204.0
+offset_bottom = 118.0
+text = "Skill Name"
+label_settings = SubResource("LabelSettings_jupvs")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 105.0
+offset_right = 264.0
+offset_bottom = 150.0
+
+[node name="skill_desc" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 144.0
+offset_right = 112.0
+offset_bottom = 167.0
+text = "Description:"
+label_settings = SubResource("LabelSettings_y0s05")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/skill_desc"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 242.0
+offset_bottom = 92.0
+theme_override_colors/default_color = Color(0.753984, 0.753984, 0.753984, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_c2dec")
+theme_override_font_sizes/normal_font_size = 12
+text = "Conjura uma lança de gelo em direção ao alvo, causando dano e podendo congelar o inimigo."
+
+[node name="HSeparator2" type="HSeparator" parent="Panel"]
+offset_left = 35.0
+offset_top = 223.0
+offset_right = 264.0
+offset_bottom = 268.0
+
+[node name="skill_dmg" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 258.0
+offset_right = 76.0
+offset_bottom = 281.0
+text = "Damage:"
+label_settings = SubResource("LabelSettings_011ea")
+
+[node name="text" type="Label" parent="Panel/skill_dmg"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = -5.0
+offset_right = 99.0
+offset_bottom = 18.0
+text = "210"
+label_settings = SubResource("LabelSettings_8pi8f")
+vertical_alignment = 1
+
+[node name="skill_cooldown" type="Label" parent="Panel"]
+offset_left = 168.0
+offset_top = 258.0
+offset_right = 225.0
+offset_bottom = 281.0
+text = "Cooldown:"
+label_settings = SubResource("LabelSettings_011ea")
+
+[node name="text" type="Label" parent="Panel/skill_cooldown"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = -4.0
+offset_right = 111.0
+offset_bottom = 19.0
+text = "2.0 sec"
+label_settings = SubResource("LabelSettings_um5xa")
+vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Panel"]
+offset_left = 35.0
+offset_top = 265.0
+offset_right = 264.0
+offset_bottom = 310.0
+
+[node name="skill_factor" type="Label" parent="Panel"]
+offset_left = 36.0
+offset_top = 300.0
+offset_right = 98.0
+offset_bottom = 323.0
+text = "Skill factor:"
+label_settings = SubResource("LabelSettings_011ea")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/skill_factor"]
+offset_left = -1.0
+offset_top = 20.0
+offset_right = 239.0
+offset_bottom = 69.0
+theme_override_colors/default_color = Color(0.753984, 0.753984, 0.753984, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_c2dec")
+theme_override_fonts/bold_font = SubResource("SystemFont_soi7h")
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "150% de MATK como dano mágico.
+Chance de 20% de aplicar [b][color=cyan]\"freeze\"[/color][/b] o alvo atingido."
+
+[node name="HSeparator4" type="HSeparator" parent="Panel"]
+offset_left = 35.0
+offset_top = 353.0
+offset_right = 264.0
+offset_bottom = 398.0
+
+[node name="tooltip" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 397.0
+offset_right = 276.0
+offset_bottom = 428.0
+text = "\"Clique na skill para verificar as passivas das cartas equipadas.\""
+label_settings = SubResource("LabelSettings_d8twm")
+autowrap_mode = 2

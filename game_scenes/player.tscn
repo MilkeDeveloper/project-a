@@ -2605,7 +2605,7 @@ cam = NodePath("../sprite/cam")
 node = NodePath("..")
 skill_mananager = NodePath("../SkillManager")
 ui_inventory = NodePath("../UI interface/inventory")
-ui_skills = NodePath("../ui_SKillMenu/Control")
+ui_skills = NodePath("../Ui hotbar/ui_SKillMenu")
 
 [node name="dash_component" parent="." node_paths=PackedStringArray("node", "navigation_component", "node_texture") instance=ExtResource("8_f5wbr")]
 node = NodePath("..")
@@ -2701,7 +2701,15 @@ speed_scale = 4.0
 explosiveness = 1.0
 fixed_fps = 60
 
+[node name="UI config" parent="." instance=ExtResource("49_nbt1q")]
+
+[node name="UI interface" type="CanvasLayer" parent="."]
+
+[node name="inventory" parent="UI interface" instance=ExtResource("50_ym2mu")]
+visible = false
+
 [node name="Ui hotbar" parent="." instance=ExtResource("30_bp7b4")]
+layer = 1
 
 [node name="Hotbars" parent="Ui hotbar" index="0" node_paths=PackedStringArray("skill_manager")]
 skill_manager = NodePath("../../SkillManager")
@@ -2710,29 +2718,11 @@ skill_manager = NodePath("../../SkillManager")
 skill_manager = NodePath("../../../SkillManager")
 player = NodePath("../../..")
 
-[node name="UI config" parent="." instance=ExtResource("49_nbt1q")]
-
-[node name="UI interface" type="CanvasLayer" parent="."]
-
-[node name="inventory" parent="UI interface" instance=ExtResource("50_ym2mu")]
-visible = false
-
-[node name="ui_SKillMenu" parent="." instance=ExtResource("33_uguah")]
-
-[node name="Control" parent="ui_SKillMenu" index="0"]
-visible = false
-
-[node name="previous_page" parent="ui_SKillMenu/Control/skill_m_container/w_container/weapon2/weapon2/especialization" index="0"]
-offset_left = -71.0
-offset_right = -39.0
-
-[node name="next_page" parent="ui_SKillMenu/Control/skill_m_container/w_container/weapon2/weapon2/especialization" index="2"]
-offset_left = 108.0
-offset_right = 140.0
+[node name="ui_SKillMenu" parent="Ui hotbar" instance=ExtResource("33_uguah")]
 
 [connection signal="destination_reached" from="navigation" to="." method="_on_destination_reached"]
 
 [editable path="sprite/hud_player"]
 [editable path="sprite2/hud_player"]
 [editable path="Ui hotbar"]
-[editable path="ui_SKillMenu"]
+[editable path="Ui hotbar/ui_SKillMenu"]

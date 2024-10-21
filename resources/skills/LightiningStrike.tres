@@ -8,21 +8,23 @@
 [resource]
 script = ExtResource("1_p8v0i")
 id = 9
-skill_name = ""
-skill_description = "Lança um a tempestade no local alvo Atingindo todos os inimigos na área."
+skill_name = "Lightining Strike"
+skill_description = "Lança um a tempestade no local alvo Atingindo todos os inimigos em uma área de 100 x 100."
 skill_icon = ExtResource("2_obc6o")
 skill_type = Array[int]([])
 buff_type = Array[ExtResource("1_2eq3u")]([])
 mana_cost = 45
 cooldown = 10.0
+dmg_amount = 250
 charge_time = 3.0
-effect_type = "250 + % 200% de MATK dmg. 30% de chance de atordordoar o inimigo atingido"
+effect_type = "250 + % 200% de MATK de dano mágico . 30% de chance de aplicar [color=#ffeea7][b]\"stun\"[/b][/color] ao inimigo atingido."
 amount = 0
 percentage = 0
 skill_level = 1
 skill_max_level = 10
 is_passive = false
 weapon_required = "Staff"
+cast_time = 0.0
 is_charging_skill = true
 is_aim_skill = true
 is_target_skill = false

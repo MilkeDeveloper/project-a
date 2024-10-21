@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("mouse_left") and gui_window.has_point(get_global_mouse_position()):
-		$GPUParticles2D.position = get_global_mouse_position() - Vector2(240, 0)
+		$GPUParticles2D.position = get_local_mouse_position()
 		$anim.play("click")
 		
 		apply_buff()

@@ -10,8 +10,8 @@
 [resource]
 script = ExtResource("1_03g2q")
 id = 4
-skill_name = "MeteorStorm"
-skill_description = "Lança uma chuva de meteoros no local alvo"
+skill_name = "Meteor Storm"
+skill_description = "Lança uma chuva de meteoros no local alvo causando dano em em uma área de 150 x 150. "
 skill_icon = ExtResource("3_fxu6k")
 skill_type = Array[int]([])
 buff_type = Array[ExtResource("1_oks5u")]([])
@@ -19,7 +19,7 @@ mana_cost = 25
 cooldown = 10.0
 dmg_amount = 2500
 charge_time = 2.0
-effect_type = "(250 + 50% de dano) x (skill level hits)"
+effect_type = "(250 + 50% de dano) x (skill level hits). Aplica o status de [color=red][b]\"queimadura\"[/b][/color] ao alvo atingido."
 amount = 0
 percentage = 0
 skill_effect = ExtResource("2_1x6uy")

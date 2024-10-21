@@ -16,14 +16,16 @@ skill_type = Array[int]([])
 buff_type = Array[ExtResource("1_qwxq1")]([])
 mana_cost = 10
 cooldown = 5.0
+dmg_amount = 100
 charge_time = 2.0
-effect_type = "100 + 50% MATK de dano. Tem 50% de chance de congelar o alvo. Alvos congelados sofrem o status \"frio\""
+effect_type = "100 + 50% MATK de dano mágico. Tem 20% de chance de congelar o alvo. Aplica o status [color=cyan][b]\"freeze\"[/b][/color] ao alvo atingido."
 amount = 0
 percentage = 0
 skill_level = 1
 skill_max_level = 10
 is_passive = false
 weapon_required = "Staff"
+cast_time = 0.0
 is_charging_skill = true
 is_aim_skill = false
 is_target_skill = true

@@ -16,9 +16,11 @@ extends Panel
 @export var spec: HBoxContainer
 @export var spec_button: TextureButton
 @export var control: Control
+@export var skill_detail: PackedScene
 
 var class_skills
 
+var details
 
 var button_index 
 var button_lvup_index 
@@ -118,6 +120,14 @@ func get_callable_buttons():
 		var callable_down = Callable(_on_skill_button_down)
 		callable_down = callable_down.bind(_index)
 		skill_button.connect("button_down", callable_down)
+		
+		var skill_entered = Callable(_on_mouse_skill_entered)
+		skill_entered = skill_entered.bind(_index)
+		skill_button.connect("mouse_entered", skill_entered)
+		
+		var skill_exited = Callable(_on_mouse_skill_exited)
+		skill_exited = skill_exited.bind(_index)
+		skill_button.connect("mouse_exited", skill_exited)
 	
 	for b_index in range(button_lvup_index.size()):
 		var buttonLvup = button_lvup_index[b_index]
@@ -386,3 +396,40 @@ func equip_card_on_skill(_index: int):
 			inv_panel.GrimoireInv[_index] = inv_panel.GrimoireInv[_index]
 			inv_panel.get_grimoire_slot_inv()
 			
+
+func _on_mouse_skill_entered(index: int):
+	print("skill entered")
+	if skill_tree[index] != null:
+		show_skill_details(index)
+	
+func _on_mouse_skill_exited(index: int):
+	print("skill_exited")
+	if skill_tree[index] != null:
+		remove_child(details)
+		details.queue_free()
+	
+func show_skill_details(index: int):
+	details = skill_detail.instantiate()
+	details.position.x = button_index[index].position.x + 50 
+	details.position.y = button_index[index].position.y
+	add_child(details)
+	
+	var skill_icon = details.get_child(0).get_node("skill_icon")
+	var skill_name = details.get_child(0).get_node("skill_name")
+	var skill_lv = skill_icon.get_node("level")
+	var sp_cost = skill_icon.get_node("sp").get_child(0)
+	var skill_desc = details.get_child(0).get_node("skill_desc").get_child(0)
+	var skill_dmg = details.get_child(0).get_node("skill_dmg").get_child(0)
+	var skill_cooldown = details.get_child(0).get_node("skill_cooldown").get_child(0)
+	var skill_factor = details.get_child(0).get_node("skill_factor").get_child(0)
+	skill_icon.texture = skill_tree[index].skill_icon
+	skill_lv.text = "Lv." + str(skill_tree[index].skill_level)
+	sp_cost.text = str(skill_tree[index].mana_cost)
+	skill_name.text = skill_tree[index].skill_name
+	skill_desc.text = skill_tree[index].skill_description
+	skill_dmg.text = str(skill_tree[index].dmg_amount)
+	skill_cooldown.text = str(skill_tree[index].cooldown) + " sec"
+	skill_factor.text = skill_tree[index].effect_type
+	
+	
+	

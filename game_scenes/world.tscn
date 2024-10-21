@@ -6994,6 +6994,21 @@ navigation_polygon = SubResource("NavigationPolygon_ki0lx")
 z_as_relative = true
 position = Vector2(1733, 129)
 
+[node name="UI map" parent="Player" instance=ExtResource("15_qexld")]
+
+[node name="SubViewport" parent="Player/UI map/SubViewportContainer" index="0" node_paths=PackedStringArray("camera_mini_map", "player")]
+camera_mini_map = NodePath("Camera2D")
+player = NodePath("../../..")
+
+[node name="Camera2D" parent="Player/UI map/SubViewportContainer/SubViewport" index="2"]
+offset = Vector2(-1220, -580)
+
+[node name="Ui hotbar" parent="Player" index="22"]
+layer = 2
+
+[node name="ui_SKillMenu" parent="Player/Ui hotbar" index="2"]
+visible = false
+
 [node name="64x128RuningFree" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 1
@@ -7118,15 +7133,6 @@ texture = ExtResource("13_hi7y1")
 script = ExtResource("17_l2bv6")
 _player = NodePath("../Player")
 
-[node name="UI map" parent="." instance=ExtResource("15_qexld")]
-
-[node name="SubViewport" parent="UI map/SubViewportContainer" index="0" node_paths=PackedStringArray("camera_mini_map", "player")]
-camera_mini_map = NodePath("Camera2D")
-player = NodePath("../../../Player")
-
-[node name="Camera2D" parent="UI map/SubViewportContainer/SubViewport" index="2"]
-offset = Vector2(-1220, -580)
-
 [node name="item_sprite" parent="." instance=ExtResource("18_gocsr")]
 position = Vector2(1477, 752)
 item_data = ExtResource("19_8ac37")
@@ -7198,6 +7204,6 @@ item_data = ExtResource("19_8ac37")
 [editable path="Player"]
 [editable path="Player/sprite/hud_player"]
 [editable path="Player/sprite2/hud_player"]
+[editable path="Player/UI map"]
 [editable path="Player/Ui hotbar"]
-[editable path="Player/ui_SKillMenu"]
-[editable path="UI map"]
+[editable path="Player/Ui hotbar/ui_SKillMenu"]
