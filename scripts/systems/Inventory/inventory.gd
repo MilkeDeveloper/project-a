@@ -20,6 +20,7 @@ var quantity_to_discard: int
 func _ready() -> void:
 	dragging_preview.visible = false
 	update_inventory()
+	update_category_inventory("general")
 	# Conectando o sinal ao adicionar um item
 	ItemGlobals.connect("update_ui", on_item_added)
 	ItemGlobals.connect("mouse_released", _on_mouse_released)
@@ -27,6 +28,7 @@ func _ready() -> void:
 	ItemGlobals.connect("item_dragged_to_slot", _on_dragging_released)
 	ItemGlobals.connect("send_discard", _on_discard_item)
 	ItemGlobals.connect("update_category_ui", update_category_inventory)
+	ItemGlobals.send_item_category.emit("general")
 	
 	inventory.discard_area = Rect2(inventory_window.position, inventory_window.size)
 
@@ -99,6 +101,7 @@ func update_category_inventory(category: String):
 # Função para ser chamada quando um item for adicionado ao inventário
 func on_item_added():
 	update_inventory()
+	
 	
 func _on_draggin_item(new_index: int):
 	var item_dragged = inventory.slots[new_index]

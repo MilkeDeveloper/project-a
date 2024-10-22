@@ -32,14 +32,17 @@ func show_spec_info():
 		spec = spec_slot2.secondary_spec[0].spec
 		spec_icon.texture = spec.spec_icon
 		spec_level.text = "Lv. " + str(spec.spec_level)
-		progression_text.text = str(shards.stacks) + "/" + str(calculate_necessary_items_for_next_level(spec.spec_level))
+		progression_text.text = str(shards.stacks) + "/" + str(calculate_necessary_items_for_next_level(spec.spec_level)) if shards != null else str(0) + "/" + str(calculate_necessary_items_for_next_level(spec.spec_level))
 		progression_bar.max_value = calculate_necessary_items_for_next_level(spec.spec_level)
-		progression_bar.value = shards.stacks
+		progression_bar.value = shards.stacks if shards != null else 0
 		
-		if shards.stacks < calculate_necessary_items_for_next_level(spec.spec_level):
+		if shards != null:
+			if shards.stacks < calculate_necessary_items_for_next_level(spec.spec_level):
+				spec_lvup_btn.hide()
+			elif shards.stacks >= calculate_necessary_items_for_next_level(spec.spec_level):
+				spec_lvup_btn.show()
+		else:
 			spec_lvup_btn.hide()
-		elif shards.stacks >= calculate_necessary_items_for_next_level(spec.spec_level):
-			spec_lvup_btn.show()
 
 func get_progression_item_necessary():
 	for slot in PlayerInv.material_slots:

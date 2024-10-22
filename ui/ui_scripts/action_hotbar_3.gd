@@ -43,15 +43,15 @@ func connect_hover_buttons():
 	for i in range(ui_hotbar_slots.size()):
 		var slot = ui_hotbar_slots[i]
 		var callable = Callable(_mouse_on_slot)
-		callable = callable.bind(i)
+		callable = callable.bind(i + 10)
 		slot.connect("mouse_entered", callable)
 		
 		var pressed = Callable(_on_slot_pressed)
-		pressed = pressed.bind(i)
+		pressed = pressed.bind(i + 10)
 		slot.connect("pressed", pressed)
 		
 		var exit_callable = Callable(_mouse_out_slot)
-		exit_callable = exit_callable.bind(i)
+		exit_callable = exit_callable.bind(i + 10)
 		slot.connect("mouse_exited", exit_callable)
 
 # Função para atualizar a hotbar física
@@ -65,8 +65,8 @@ func get_skills_in_hotbar():
 		var hotbar_slot = ui_hotbar_slots[i]
 		
 		# Aqui se foi encontrada uma skill no slot, mostra a o icone da skill
-		if skill_hotbar1[i] != null:
-			hotbar_slot.texture_normal = skill_hotbar1[i].skill_icon
+		if skill_hotbar1[i + 10] != null:
+			hotbar_slot.texture_normal = skill_hotbar1[i + 10].skill_icon
 		else:
 			hotbar_slot.texture_normal = load("res://assets/misc/hotbar_slot_remake.png")
 
@@ -144,8 +144,8 @@ func _set_skill_data_to_drop(dragged_skill: GDSkillData):
 func show_skill_card_info(i: int):
 	details = skill_detail.instantiate()
 	
-	details.position.x = ui_hotbar_slots[i].position.x - 420 
-	details.position.y = ui_hotbar_slots[i].position.y - 620
+	details.position.x = ui_hotbar_slots[i - 10].position.x - 420 
+	details.position.y = ui_hotbar_slots[i - 10].position.y - 760
 	get_parent().add_child(details)
 	
 	var skill_icon = details.get_child(0).get_node("skill_icon")
@@ -165,3 +165,10 @@ func show_skill_card_info(i: int):
 	skill_dmg.text = str(skill_hotbar1[i].dmg_amount)
 	skill_cooldown.text = str(skill_hotbar1[i].cooldown) + " sec"
 	skill_factor.text = skill_hotbar1[i].effect_type
+
+
+func _on_hotbar_plus_button_pressed():
+	self.show()
+
+func _on_hotbar_minus_button_pressed():
+	self.hide()

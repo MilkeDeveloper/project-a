@@ -234,7 +234,7 @@ skill_points_label = NodePath("skill_m_container/skill_points")
 skill = ExtResource("2_rtew8")
 
 [node name="skill_m_container" type="NinePatchRect" parent="."]
-modulate = Color(1, 1, 1, 0.909804)
+self_modulate = Color(1, 1, 1, 0.909804)
 custom_minimum_size = Vector2(0, 580)
 layout_mode = 1
 offset_right = 1125.0

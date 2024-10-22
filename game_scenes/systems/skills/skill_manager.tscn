@@ -6,4 +6,4 @@
 
 [node name="SkillManager" type="Node"]
 script = ExtResource("1_g4pl2")
-hotbar_skills = Array[ExtResource("2_jav7p")]([ExtResource("3_vw4px"), null, null, null, null, null, null, null, null, null])
+hotbar_skills = Array[ExtResource("2_jav7p")]([ExtResource("3_vw4px"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

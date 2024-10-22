@@ -95,6 +95,7 @@ func load_weapon_skill_tree(skill_tree: Array[GDSkillData]):
 			skilLv_text.text = str(skill_tree[i].skill_level) + "/" + str(skill_tree[i].skill_max_level)
 			if skill_tree[i].skill_level >= skill_tree[i].skill_max_level:
 				var lvupButton = button_lvup_index[i]
+				lvupButton.show()
 				lvupButton.disabled = true
 			elif skill_tree[i].skill_level <= skill_tree[i].skill_max_level and control.skill_points <= 0:
 				var lvupButton = button_lvup_index[i]

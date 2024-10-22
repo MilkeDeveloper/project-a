@@ -2718,6 +2718,10 @@ skill_manager = NodePath("../../SkillManager")
 skill_manager = NodePath("../../../SkillManager")
 player = NodePath("../../..")
 
+[node name="hotbar3" parent="Ui hotbar/Hotbars" index="3" node_paths=PackedStringArray("skill_manager", "player")]
+skill_manager = NodePath("../../../SkillManager")
+player = NodePath("../../..")
+
 [node name="ui_SKillMenu" parent="Ui hotbar" instance=ExtResource("33_uguah")]
 
 [connection signal="destination_reached" from="navigation" to="." method="_on_destination_reached"]

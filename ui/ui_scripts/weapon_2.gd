@@ -403,3 +403,21 @@ func show_skill_details(index: int):
 	details.position.x = button_index[index].position.x + 50 
 	details.position.y = button_index[index].position.y
 	add_child(details)
+	
+	var skill_icon = details.get_child(0).get_node("skill_icon")
+	var skill_name = details.get_child(0).get_node("skill_name")
+	var skill_lv = skill_icon.get_node("level")
+	var sp_cost = skill_icon.get_node("sp").get_child(0)
+	var skill_desc = details.get_child(0).get_node("skill_desc").get_child(0)
+	var skill_dmg = details.get_child(0).get_node("skill_dmg").get_child(0)
+	var skill_cooldown = details.get_child(0).get_node("skill_cooldown").get_child(0)
+	var skill_factor = details.get_child(0).get_node("skill_factor").get_child(0)
+	
+	skill_icon.texture = skill_tree[index].skill_icon
+	skill_lv.text = "Lv." + str(skill_tree[index].skill_level)
+	sp_cost.text = str(skill_tree[index].mana_cost)
+	skill_name.text = skill_tree[index].skill_name
+	skill_desc.text = skill_tree[index].skill_description
+	skill_dmg.text = str(skill_tree[index].dmg_amount)
+	skill_cooldown.text = str(skill_tree[index].cooldown) + " sec"
+	skill_factor.text = skill_tree[index].effect_type

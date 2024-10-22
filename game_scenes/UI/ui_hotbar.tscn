@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bow2jfwlefmfj"]
+[gd_scene load_steps=62 format=3 uid="uid://bow2jfwlefmfj"]
 
 [ext_resource type="Script" path="res://ui/ui_scripts/ui_hotbar.gd" id="1_76fkq"]
 [ext_resource type="Texture2D" uid="uid://rpq0jaequfib" path="res://assets/misc/hotbar_slot_remake.png" id="1_a4nem"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://drn64v3fc6xo3" path="res://assets/misc/skill_icon_chain_soul.png" id="7_4dhee"]
 [ext_resource type="Texture2D" uid="uid://nyvppxcsc3i0" path="res://assets/misc/skill_icon_meteor_storm.png" id="8_p6rdh"]
 [ext_resource type="Script" path="res://ui/ui_scripts/action_hotbar_2.gd" id="8_yrvkl"]
+[ext_resource type="PackedScene" uid="uid://xrjvdwaoxyb" path="res://game_scenes/systems/skills/skill_datails.tscn" id="9_vqlo4"]
 [ext_resource type="Texture2D" uid="uid://heyaqurnigxf" path="res://assets/misc/skill_icon_heal.png" id="9_yyone"]
 [ext_resource type="Texture2D" uid="uid://bq1cpxi1sugbd" path="res://assets/misc/skill_icon_expurge.png" id="10_qxqfd"]
 [ext_resource type="Texture2D" uid="uid://hlxb03hokxl8" path="res://assets/misc/skill_icon_ice_bolt.png" id="11_u5x82"]
@@ -24,6 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://jp3dngxjm2en" path="res://assets/misc/under_bar2.png" id="17_dtytg"]
 [ext_resource type="Texture2D" uid="uid://kgxi7334evs0" path="res://assets/misc/cover_bar2.png" id="18_67wtm"]
 [ext_resource type="Texture2D" uid="uid://b6cwr6vm7juo1" path="res://assets/misc/default_bar.png" id="19_yhbwu"]
+[ext_resource type="Script" path="res://ui/ui_scripts/action_hotbar_3.gd" id="21_kq3k8"]
+[ext_resource type="Texture2D" uid="uid://cotknkqmdq0rb" path="res://assets/misc/button_hotbar_plus.png" id="22_2216b"]
+[ext_resource type="Texture2D" uid="uid://bw4vsh74k34i3" path="res://assets/misc/button_hotbar_plus_pressed.png" id="23_3g8ld"]
+[ext_resource type="Texture2D" uid="uid://c2cth8075xr5i" path="res://assets/misc/button_hotbar_minus.png" id="24_g7qur"]
+[ext_resource type="Texture2D" uid="uid://bhfrwp8pm5w73" path="res://assets/misc/button_hotbar_minus_pressed.png" id="25_wndkb"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_wea66"]
 action = &"use_item1"
@@ -408,6 +414,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("8_yrvkl")
 preview_texture = NodePath("../preview_texture")
+skill_detail = ExtResource("9_vqlo4")
 
 [node name="TextureButton" type="TextureButton" parent="Hotbars/hotbar2"]
 layout_mode = 2
@@ -632,7 +639,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_u1e82")
 theme_override_font_sizes/font_size = 32
-text = "Q"
+text = "6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -667,7 +674,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_u1e82")
 theme_override_font_sizes/font_size = 32
-text = "W"
+text = "7"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -702,7 +709,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_u1e82")
 theme_override_font_sizes/font_size = 32
-text = "E"
+text = "8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -737,7 +744,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_u1e82")
 theme_override_font_sizes/font_size = 32
-text = "R"
+text = "9"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -772,9 +779,435 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_u1e82")
 theme_override_font_sizes/font_size = 32
-text = "6"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="hotbar3" type="HBoxContainer" parent="Hotbars" node_paths=PackedStringArray("preview_texture")]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -221.0
+offset_top = -247.0
+offset_right = 222.0
+offset_bottom = -207.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("21_kq3k8")
+preview_texture = NodePath("../preview_texture")
+skill_detail = ExtResource("9_vqlo4")
+
+[node name="TextureButton" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_vkkmq")
+texture_normal = ExtResource("4_1mtrp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_1hdmx")
+texture_normal = ExtResource("6_ehkg5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton2/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton3" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_labxw")
+texture_normal = ExtResource("7_4dhee")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton3"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton3/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton4" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_efyen")
+texture_normal = ExtResource("8_p6rdh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton4"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton4/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton5" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_l0c88")
+texture_normal = ExtResource("9_yyone")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton5"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton5/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Hotbars/hotbar3"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/HSeparator"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 85.0
+offset_right = 41.0
+offset_bottom = 108.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_vooi4")
+theme_override_font_sizes/font_size = 16
+
+[node name="TextureButton6" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_hvgwv")
+texture_normal = ExtResource("10_qxqfd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton6"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton6/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton7" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_k80vb")
+texture_normal = ExtResource("11_u5x82")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton7"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton7/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "U"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton8" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_5pd1k")
+texture_normal = ExtResource("12_n6lqd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton8"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton8/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton9" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_d5cuh")
+texture_normal = ExtResource("13_1bl10")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton9"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton9/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "O"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton10" type="TextureButton" parent="Hotbars/hotbar3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_rvxjg")
+texture_normal = ExtResource("14_ggaf4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar3/TextureButton10"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 62.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_cgwcx")
+
+[node name="Label" type="Label" parent="Hotbars/hotbar3/TextureButton10/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_u1e82")
+theme_override_font_sizes/font_size = 32
+text = "P"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="+hotbar" type="TextureButton" parent="Hotbars"]
+layout_mode = 0
+offset_left = -336.0
+offset_top = -111.0
+offset_right = -320.0
+offset_bottom = -95.0
+texture_normal = ExtResource("22_2216b")
+texture_pressed = ExtResource("23_3g8ld")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="-hotbar" type="TextureButton" parent="Hotbars"]
+layout_mode = 0
+offset_left = -336.0
+offset_top = -91.0
+offset_right = -320.0
+offset_bottom = -75.0
+texture_normal = ExtResource("24_g7qur")
+texture_pressed = ExtResource("25_wndkb")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Elements" type="Control" parent="."]
 layout_mode = 3
@@ -929,3 +1362,5 @@ texture_progress_offset = Vector2(16, 5)
 tint_progress = Color(1, 0.733333, 0.117647, 1)
 
 [connection signal="pressed" from="Hotbars/hotbar1/TextureButton" to="Hotbars" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Hotbars/+hotbar" to="Hotbars/hotbar3" method="_on_hotbar_plus_button_pressed"]
+[connection signal="pressed" from="Hotbars/-hotbar" to="Hotbars/hotbar3" method="_on_hotbar_minus_button_pressed"]

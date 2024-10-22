@@ -201,12 +201,15 @@ func get_items_by_category(category: String):
 			slots = etc_slots
 			item_category = "etc"
 			ItemGlobals.emit_signal("update_category_ui", current_category)
+			
+	return current_category
 
 # Recebe o item coletado
 func _on_item_received(itemData: ItemData, quantity: int, category: String):
 	# Adiciona o item recebido ao iventário
 	_add_item(itemData, quantity, itemData.item_category)
 	_add_item_by_category(itemData, quantity, itemData.item_category)
+	get_items_by_category("general")
 
 # Verifica se houve um click no slot, então pega o index do slot para mover o item de lugar
 func _on_slot_clicked(slot_index: int):

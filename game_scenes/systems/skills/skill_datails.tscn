@@ -7,6 +7,7 @@
 [sub_resource type="SystemFont" id="SystemFont_0hjw6"]
 font_names = PackedStringArray("Times New Roman")
 font_weight = 550
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_q737u"]
@@ -25,6 +26,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_0xgrp"]
 font_names = PackedStringArray("Times New Roman")
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_jupvs"]
@@ -34,6 +36,7 @@ font_size = 18
 [sub_resource type="SystemFont" id="SystemFont_icfm2"]
 font_names = PackedStringArray("Times New Roman")
 font_weight = 600
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_y0s05"]
@@ -45,11 +48,13 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_c2dec"]
 font_names = PackedStringArray("Times New Roman")
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="SystemFont" id="SystemFont_8od17"]
 font_names = PackedStringArray("Times New Roman")
 font_weight = 575
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_011ea"]
@@ -62,6 +67,7 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="SystemFont" id="SystemFont_bw0it"]
 font_names = PackedStringArray("Times New Roman")
 font_weight = 575
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_8pi8f"]
@@ -72,6 +78,7 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="SystemFont" id="SystemFont_yk4w3"]
 font_names = PackedStringArray("Times New Roman")
 font_weight = 550
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_um5xa"]
@@ -83,10 +90,12 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="SystemFont" id="SystemFont_soi7h"]
 font_names = PackedStringArray("Times New Roman")
 font_weight = 575
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="SystemFont" id="SystemFont_w3f7s"]
 font_names = PackedStringArray("Times New Roman")
+subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8twm"]
@@ -95,6 +104,7 @@ font_size = 12
 font_color = Color(0.712129, 0.712129, 0.712129, 1)
 
 [node name="skill_datails" type="Control"]
+modulate = Color(1, 1, 1, 0.933333)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 300.0
@@ -190,6 +200,7 @@ theme_override_font_sizes/normal_font_size = 12
 text = "Conjura uma lança de gelo em direção ao alvo, causando dano e podendo congelar o inimigo."
 
 [node name="HSeparator2" type="HSeparator" parent="Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 223.0
 offset_right = 264.0
@@ -215,6 +226,7 @@ label_settings = SubResource("LabelSettings_8pi8f")
 vertical_alignment = 1
 
 [node name="skill_cooldown" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 168.0
 offset_top = 258.0
 offset_right = 225.0
@@ -233,12 +245,14 @@ label_settings = SubResource("LabelSettings_um5xa")
 vertical_alignment = 1
 
 [node name="HSeparator3" type="HSeparator" parent="Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 265.0
 offset_right = 264.0
 offset_bottom = 310.0
 
 [node name="skill_factor" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 36.0
 offset_top = 300.0
 offset_right = 98.0
@@ -247,6 +261,7 @@ text = "Skill factor:"
 label_settings = SubResource("LabelSettings_011ea")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/skill_factor"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = 20.0
 offset_right = 239.0
@@ -261,6 +276,7 @@ text = "150% de MATK como dano mágico.
 Chance de 20% de aplicar [b][color=cyan]\"freeze\"[/color][/b] o alvo atingido."
 
 [node name="HSeparator4" type="HSeparator" parent="Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 353.0
 offset_right = 264.0

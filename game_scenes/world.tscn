@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://l200m2x0yagx"]
+[gd_scene load_steps=73 format=4 uid="uid://l200m2x0yagx"]
 
 [ext_resource type="Script" path="res://config/game_init.gd" id="1_4616h"]
 [ext_resource type="Texture2D" uid="uid://0tond388mexi" path="res://assets/tilesets/map3.png" id="1_lccmo"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://dd8c38oryw55r" path="res://resources/items/hp_potion.tres" id="19_8ac37"]
 [ext_resource type="Resource" uid="uid://dmfu4bn38rvhy" path="res://resources/items/mp_potion.tres" id="20_6ilid"]
 [ext_resource type="Resource" uid="uid://cwfau0wfemdo6" path="res://resources/items/MagicShard.tres" id="20_rjinh"]
+[ext_resource type="Resource" uid="uid://dbnfows6r6j2k" path="res://resources/items/EnhancedMagicShard.tres" id="22_ca167"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p81if"]
 shader = ExtResource("4_lk73s")
@@ -6994,6 +6995,12 @@ navigation_polygon = SubResource("NavigationPolygon_ki0lx")
 z_as_relative = true
 position = Vector2(1733, 129)
 
+[node name="Ui hotbar" parent="Player" index="21"]
+layer = 2
+
+[node name="ui_SKillMenu" parent="Player/Ui hotbar" index="2"]
+visible = false
+
 [node name="UI map" parent="Player" instance=ExtResource("15_qexld")]
 
 [node name="SubViewport" parent="Player/UI map/SubViewportContainer" index="0" node_paths=PackedStringArray("camera_mini_map", "player")]
@@ -7002,12 +7009,6 @@ player = NodePath("../../..")
 
 [node name="Camera2D" parent="Player/UI map/SubViewportContainer/SubViewport" index="2"]
 offset = Vector2(-1220, -580)
-
-[node name="Ui hotbar" parent="Player" index="22"]
-layer = 2
-
-[node name="ui_SKillMenu" parent="Player/Ui hotbar" index="2"]
-visible = false
 
 [node name="64x128RuningFree" type="Sprite2D" parent="."]
 visible = false
@@ -7194,7 +7195,35 @@ quantity = 20
 
 [node name="item_sprite13" parent="." instance=ExtResource("18_gocsr")]
 position = Vector2(1713, 650)
-item_data = ExtResource("19_8ac37")
+item_data = ExtResource("22_ca167")
+
+[node name="item_sprite14" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1948, 710)
+item_data = ExtResource("22_ca167")
+
+[node name="item_sprite15" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(2097, 653)
+item_data = ExtResource("22_ca167")
+
+[node name="item_sprite16" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(2176, 830)
+item_data = ExtResource("22_ca167")
+
+[node name="item_sprite17" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1930, 852)
+item_data = ExtResource("22_ca167")
+
+[node name="item_sprite18" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(2009, 580)
+item_data = ExtResource("22_ca167")
+
+[node name="item_sprite19" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(2044, 434)
+item_data = ExtResource("22_ca167")
+
+[node name="item_sprite20" parent="." instance=ExtResource("18_gocsr")]
+position = Vector2(1885, 492)
+item_data = ExtResource("22_ca167")
 
 [connection signal="body_entered" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="map_01/trees/tree/Area2D" to="map_01/trees/tree" method="_on_area_2d_body_exited"]
@@ -7204,6 +7233,6 @@ item_data = ExtResource("19_8ac37")
 [editable path="Player"]
 [editable path="Player/sprite/hud_player"]
 [editable path="Player/sprite2/hud_player"]
-[editable path="Player/UI map"]
 [editable path="Player/Ui hotbar"]
 [editable path="Player/Ui hotbar/ui_SKillMenu"]
+[editable path="Player/UI map"]
