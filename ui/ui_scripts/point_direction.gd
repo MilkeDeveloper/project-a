@@ -10,5 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass#rotation = owner.get_parent().find_child("pivot").rotation
+	if _player != null:
+		if _player.get_parent().get_node("pivot") != null:
+			self.rotation = _player.get_parent().get_node("pivot").rotation
 	

@@ -1,30 +1,25 @@
 extends State
 
-class_name DashState
+class_name EntityPatrolState
 
 # Função que é chamada ao entrar no estado
 func enter(args: Dictionary = {}) -> void:
-	print("dashing")
-	
+	print("state patrol")
 	
 # Função chamada enquanto o estado está ativo
 func update(delta: float) -> void:
 	handle_anim()
 	transit_state()
-	
+
 # Função chamada quando saímos do estado
 func exit() -> void:
 	pass
 
-# Método opcional para transições rápidas entre estados
-func handle_input(event: InputEvent) -> void:
-	pass
-
+# Função que lida com as animações do estado atual
 func handle_anim():
-	animation.play("dash_" + direction_tracker.get_direction())
-	
+	animation.play("idle_" + direction_tracker.get_direction())
+
+# Função para transitar para outros estados
 func transit_state():
 	if entity.velocity == Vector2.ZERO:
-		manager.change_state("IdleState", {})
-	elif entity.velocity != Vector2.ZERO and not dash_component.is_dashing:
-		manager.change_state("RunState", {})
+		manager.change_state("IdleState")

@@ -29,8 +29,5 @@ func _process(delta):
 		else:
 			node.velocity = direction.normalized() * node.SPEED * 15 * delta
 		
-		if get_parent().is_in_group("entity"):
-			anim_component.update_blend_position(get_next_path_position())
-		
 		node.move_and_slide()
 		

@@ -8,6 +8,7 @@ class_name SkillBase
 @export var projectile_config: ProjectileData 
 
 var _target : Node
+var cast_time: float
 var cooldown : float
 var damage : int
 var cast_skill : bool = false
@@ -23,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func use_skill(_player, skill_damage, _cooldown, target):
+func use_skill(_player, skill_damage, _cooldown, target, _cast_time = null):
 	player = _player
 	
 func cancel_skill():

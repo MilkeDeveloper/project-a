@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name target_area
+
 @export var node: Node2D
 @export var target_sprite: Sprite2D
 @onready var hud_hp: CanvasLayer = $"../hud_entity/HUD_HP"

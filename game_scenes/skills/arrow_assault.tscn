@@ -41,7 +41,7 @@ color_ramp = SubResource("GradientTexture1D_wbeeo")
 [node name="ArrowAssault" type="Node2D" node_paths=PackedStringArray("charge_bar", "charge_label")]
 script = ExtResource("1_caycl")
 skill_timer = 5.0
-time_between_arrows = 0.02
+time_between_arrows = 0.03
 charge_bar = NodePath("UI charge/Control/charge_bar")
 charge_label = NodePath("UI charge/Control/charge_bar/charge_label")
 Projectile = ExtResource("2_hg28t")

@@ -44,7 +44,7 @@ func start_timers():
 	charge_bar.value = 0 # Reinicia a charge bar
 	print("Charging...")
 
-func use_skill(_player, skill_damage, _cooldown, target):
+func use_skill(_player, skill_damage, _cooldown, _cast_time, target = null):
 	original_player = _player
 	damage = skill_damage
 	cooldown = _cooldown
@@ -113,9 +113,6 @@ func cancel_skill():
 	$time_between_arrows.stop()
 	queue_free()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_released("skill5") and cast_skill:
-		cancel_skill()
 
 func _handle_anim():
 	get_parent().get_node("anim").play("crossbow_spin")

@@ -25,8 +25,8 @@ func handle_anim():
 	animation.seek(current_frame, true)
 
 func transit_state():
-	if player.velocity == Vector2.ZERO:
+	if entity.velocity == Vector2.ZERO:
 		manager.change_state("IdleState", {})
-	elif player.velocity != Vector2.ZERO:
-		player.SPEED = (player.SPEED / 2) + 200
+	elif entity.velocity != Vector2.ZERO:
+		entity.SPEED = (entity.SPEED / 2) + 200
 		manager.change_state("RunState", {})

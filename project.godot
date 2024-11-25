@@ -21,6 +21,7 @@ GLobals="*res://core/globals/GLobals.gd"
 ConfigManager="*res://config/ConfigManager.gd"
 ItemGlobals="*res://Globals/ItemGlobals.gd"
 SkillMenuGlobals="*res://Globals/SkillMenuGlobals.gd"
+Combat="*res://Globals/CombatGlobals.gd"
 
 [display]
 

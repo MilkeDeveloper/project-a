@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=6 format=3 uid="uid://balr7abbigcvf"]
+
+[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_pp2hj"]
+[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="2_tsu2w"]
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="3_qpdl5"]
+[ext_resource type="PackedScene" uid="uid://ltjdh404tmpc" path="res://game_scenes/skills/disparo_espalhado.tscn" id="4_t5kyy"]
+[ext_resource type="Texture2D" uid="uid://cyxykjuoi3nvw" path="res://assets/misc/skill_icon.png" id="5_tit5l"]
+
+[resource]
+script = ExtResource("3_qpdl5")
+id = 10
+skill_name = "Spread Shoot"
+skill_description = "Dispara 5 projeteis em formato de cone na direção do mouse."
+skill_icon = ExtResource("5_tit5l")
+skill_type = Array[int]([0])
+buff_type = Array[ExtResource("1_pp2hj")]([])
+mana_cost = 10
+cooldown = 1.0
+dmg_amount = 2899
+charge_time = 0.0
+effect_type = "Skill Damage + 250% do ATK de dano físico."
+amount = 0
+percentage = 0
+skill_effect = ExtResource("4_t5kyy")
+skill_level = 1
+skill_max_level = 10
+is_passive = false
+weapon_required = "Crossbow"
+cast_time = 0.2
+is_charging_skill = false
+is_aim_skill = false
+is_target_skill = false
+insta_cast_skill = false
+is_cast_skill = true
+grimoire_Slots = Array[ExtResource("2_tsu2w")]([null, null, null, null, null])

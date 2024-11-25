@@ -23,12 +23,12 @@ func handle_anim():
 	animation.play("idle_" + direction_tracker.get_direction())
 
 func transit_state():
-	if player.velocity != Vector2.ZERO:
+	if entity.velocity != Vector2.ZERO:
 		manager.change_state("RunState", {})
-	elif player.velocity != Vector2.ZERO and dash_component.is_dashing:
+	elif entity.velocity != Vector2.ZERO and dash_component.is_dashing:
 		manager.change_state("DashState", {})
-	elif player.velocity == Vector2.ZERO and is_jumping == true:
+	elif entity.velocity == Vector2.ZERO and is_jumping == true:
 			manager.change_state("JumpState", {})
 			is_jumping = false
-	elif player.velocity == Vector2.ZERO and GLobals.spinning or player.velocity != Vector2.ZERO and GLobals.spinning:
+	elif entity.velocity == Vector2.ZERO and GLobals.spinning or entity.velocity != Vector2.ZERO and GLobals.spinning:
 			manager.change_state("SpinningState", {})

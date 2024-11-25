@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var navigation_component: NavigationAgent2D
+@export var take_dmg: Node2D
 @export var input_component: Node2D
 @export var animation_component: Node2D
 @export var dash_component: Node2D
@@ -38,13 +39,14 @@ func _on_destination_reached() -> void:
 
 	velocity = Vector2.ZERO
 	#animation_component.state_machine.dispatch(&"to_idle")
-	
 
 func _on_cam_shake(intensity, duration):
 	$sprite/cam.apply_shake(duration, intensity)
 	await get_tree().create_timer(duration).timeout
 	$sprite/cam.position_smoothing_enabled = true
 	
+func receive_dmg(damage: int, attacker: Node, target: Node, anim: String):
+	take_dmg.apply_dmg_popup(damage, attacker, target, anim)
 
 func load_keybindings():
 	var config = ConfigFile.new()

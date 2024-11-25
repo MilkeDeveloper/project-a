@@ -2,7 +2,7 @@ extends Node2D
 
 class_name DirectionTracker
 # Called when the node enters the scene tree for the first time.
-@export var player: CharacterBody2D
+@export var entity: CharacterBody2D
 
 var direction = "down"
 
@@ -17,7 +17,7 @@ func get_direction():
 	var velocity = get_velocity().normalized()
 	var angle = velocity.angle()
 	
-	if player.velocity == Vector2.ZERO:
+	if entity.velocity == Vector2.ZERO:
 		return direction
 	
 	if angle > -PI / 8 and angle <= PI / 8:
@@ -43,7 +43,7 @@ func get_direction():
 	
 	
 func get_action_direction(_target: Vector2):
-	var my_direction = player.global_position.direction_to(_target).normalized()
+	var my_direction = entity.global_position.direction_to(_target).normalized()
 	var angle = my_direction.angle()
 	
 	if angle > -PI / 8 and angle <= PI / 8:
@@ -68,4 +68,4 @@ func get_action_direction(_target: Vector2):
 	return direction
 	
 func get_velocity():
-	return player.velocity
+	return entity.velocity

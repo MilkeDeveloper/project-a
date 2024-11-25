@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 			GLobals.emit_signal("on_click")
 		
 		
-func use_skill(_player, skill_damage, _cooldown, target):
+func use_skill(_player, skill_damage, _cooldown, _cast_time, target = null):
 	damage = skill_damage
 	cooldown = _cooldown
 	_target = target

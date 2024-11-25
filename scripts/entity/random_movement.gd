@@ -26,9 +26,10 @@ func random_movement():
 func _on_time_to_move_timeout() -> void:
 	# Se o cooldown de movimento zerou, então chama novamente a função de movimento
 	# aleatório para defininir uma nova rota de movimento
-	random_movement()
+	if not get_parent().died:
+		random_movement()
 
 func _on_destination_reached() -> void:
 	# Se a entidade chegou ao destino, define a velocidade como 0 e o movimento para idle
 	get_parent().velocity = Vector2.ZERO
-	animation_component.state_machine.dispatch(&"to_idle")
+	

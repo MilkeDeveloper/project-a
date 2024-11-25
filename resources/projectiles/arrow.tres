@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource("1_2ntnd")
 max_distance = 125.0
-projectile_speed = 1000.0
+projectile_speed = 900.0
 texture = ExtResource("3_nt50p")
 Projectile_logic = ExtResource("1_wftax")

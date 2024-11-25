@@ -7,6 +7,9 @@ class_name SkillManager
 var clicked: bool = true
 var key_released: bool = false
 var can_skill: bool = true
+var cast_started: bool = false
+
+var skill_instance: Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +20,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	cooldown_process(delta)
+	
+	if cast_started:
+		cast_process(delta)
 
 
 func cooldown_process(delta: float):
@@ -28,6 +34,15 @@ func cooldown_process(delta: float):
 					skill_data.cooldown_left = 0
 					print("A skill está pronta para uso novamente!")
 
+func cast_process(delta: float):
+	for skill_data in hotbar_skills:
+		if skill_data.cast_left > 0:
+			skill_data.cast_left -= delta
+			if skill_data.cast_left < 0:
+				skill_data.cast_left = 0
+				cast_started = false # reset cast time
+				print("Cast finalizado")
+
 func activate_skill(skill_id: int, player: CharacterBody2D, target: Node = null):
 	for skill in hotbar_skills:
 		if skill != null and skill.id == skill_id:
@@ -38,10 +53,10 @@ func activate_skill(skill_id: int, player: CharacterBody2D, target: Node = null)
 					print("A skill estará disponível para uso novamente em: " + str(skill_data.cooldown_left) + "sec")
 					return
 				
-				var skill_instance = skill_data.skill_effect.instantiate()
+				skill_instance = skill_data.skill_effect.instantiate()
 				get_parent().add_child(skill_instance)
 				
-				if skill_data.cast_time <= 0:
+				if skill_data.cast_time == 0:
 					skill_instance.use_skill(player, skill_data.dmg_amount, skill_data.cooldown, target)
 				
 					if skill_data.is_aim_skill and clicked == true and skill_data.cooldown_left <= 0:
@@ -50,6 +65,25 @@ func activate_skill(skill_id: int, player: CharacterBody2D, target: Node = null)
 						clicked = false
 					elif skill_data.is_charging_skill and clicked == true and skill_data.cooldown_left <= 0:
 						key_released = false
+					elif skill_data.insta_cast_skill and skill_data.cooldown_left <= 0:
+						skill_data.cooldown_left = skill_data.cooldown
+					
+				
+				if skill_data.cast_time > 0:
+					skill_instance.use_skill(player, skill_data.dmg_amount, skill_data.cooldown, skill_data.cast_time, target)
+					
+					if skill_data.is_cast_skill and skill_data.cooldown_left <= 0:
+						key_released = false
+
+func cancel_skill(skill_id: int):
+	for skill in hotbar_skills:
+		if skill != null and skill.id == skill_id:
+			var skill_data = skill
+			
+			if skill_instance != null and skill.is_cast_skill:
+				skill_instance.cancel_skill()
+			
+			
 
 func _on_clicked_aim_skill():
 	print("clicked")
@@ -67,6 +101,10 @@ func reset_charging_skill(skill_id: int):
 				var skill = skill_data
 				
 				if skill.is_charging_skill:
+					if key_released:
+						skill.cooldown_left = skill.cooldown
+						print("cooldown iniciado")
+				elif skill.is_cast_skill:
 					if key_released:
 						skill.cooldown_left = skill.cooldown
 						print("cooldown iniciado")

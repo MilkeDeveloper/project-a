@@ -2,10 +2,12 @@ extends Node
 
 class_name State
 
-@export var player: Player
+@export var entity: CharacterBody2D
 @export var anim_tree: AnimationTree
 @export var direction_tracker: DirectionTracker
 @export var animation: AnimationPlayer
+@export var attack_timer: Timer
+@export var navigation: NavigationAgent2D
 
 # Referência ao State Machine Manager
 @export var manager: StateMachineManager
@@ -13,6 +15,7 @@ class_name State
 
 var is_jumping: bool = false
 var original_speed: float
+var can_attack: bool = true
 
 # Função que é chamada ao entrar no estado
 func enter(args: Dictionary = {}) -> void:

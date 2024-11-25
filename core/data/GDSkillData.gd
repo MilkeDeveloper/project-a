@@ -26,6 +26,9 @@ enum SkillType {DAMAGE, HEAL, BUFF, DEBUFF}
 @export var is_charging_skill: bool
 @export var is_aim_skill: bool
 @export var is_target_skill: bool
+@export var insta_cast_skill: bool
+@export var is_cast_skill: bool
 @export var grimoire_Slots: Array[SkillCardData]
 
 var cooldown_left: float
+var cast_left: float

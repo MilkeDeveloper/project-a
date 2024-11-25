@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://drffed2tq2jus"]
+[gd_scene load_steps=61 format=3 uid="uid://drffed2tq2jus"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_35xu0"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="2_vej8t"]
@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://4igtmvdmdtyf" path="res://game_scenes/systems/skills/skill_manager.tscn" id="17_nxdyt"]
 [ext_resource type="Script" path="res://core/combat/basic_attack.gd" id="17_wwwbr"]
 [ext_resource type="PackedScene" uid="uid://c364u20x2uojc" path="res://game_scenes/projectile.tscn" id="18_myu4g"]
-[ext_resource type="Script" path="res://scripts/systems/direction_tracker.gd" id="19_6k20i"]
 [ext_resource type="Script" path="res://scripts/player/StateMachine/state_machine_manager.gd" id="20_rpnuu"]
+[ext_resource type="PackedScene" uid="uid://dpnhg15unapxy" path="res://game_scenes/systems/direction_tracker.tscn" id="21_78bhd"]
 [ext_resource type="Script" path="res://scripts/player/StateMachine/state.gd" id="21_xtvo4"]
 [ext_resource type="Script" path="res://scripts/player/StateMachine/idle.gd" id="22_ejng3"]
 [ext_resource type="Script" path="res://scripts/player/StateMachine/run.gd" id="23_ffcry"]
@@ -31,6 +31,8 @@
 [ext_resource type="Script" path="res://scripts/player/StateMachine/spining_state.gd" id="29_ypm5c"]
 [ext_resource type="PackedScene" uid="uid://bow2jfwlefmfj" path="res://game_scenes/UI/ui_hotbar.tscn" id="30_bp7b4"]
 [ext_resource type="PackedScene" uid="uid://dk8musy26dkll" path="res://game_scenes/systems/skills/ui_skill_menu.tscn" id="33_uguah"]
+[ext_resource type="Script" path="res://scripts/player/take_damage.gd" id="34_gy2ci"]
+[ext_resource type="PackedScene" uid="uid://beleyacui46l8" path="res://game_scenes/systems/dmg_popup.tscn" id="35_m1h7x"]
 [ext_resource type="PackedScene" uid="uid://c3e427a6qj8vf" path="res://ui_config.tscn" id="49_nbt1q"]
 [ext_resource type="PackedScene" uid="uid://t1slqsevmadj" path="res://game_scenes/UI/inventory.tscn" id="50_ym2mu"]
 
@@ -2440,13 +2442,14 @@ scale_min = 0.06
 scale_max = 0.08
 color_ramp = SubResource("GradientTexture1D_0n7ug")
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_component", "input_component", "dash_component") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_component", "take_dmg", "input_component", "dash_component") groups=["player"]]
 z_index = 1
 z_as_relative = false
 collision_layer = 69
 collision_mask = 0
 script = ExtResource("1_35xu0")
 navigation_component = NodePath("navigation")
+take_dmg = NodePath("take_damage")
 input_component = NodePath("input_component")
 dash_component = NodePath("dash_component")
 SPEED = 800.0
@@ -2464,10 +2467,9 @@ shape = SubResource("CapsuleShape2D_3yqhx")
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.7, 0.8)
-texture = ExtResource("3_rpmrj")
+texture = ExtResource("4_org4s")
 hframes = 8
 vframes = 4
-frame = 24
 
 [node name="hud_player" parent="sprite" node_paths=PackedStringArray("node") instance=ExtResource("9_5hble")]
 z_index = 1
@@ -2630,53 +2632,50 @@ attack_range = 350.0
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
 
-[node name="DirectionTracker" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("19_6k20i")
-player = NodePath("..")
+[node name="DirectionTracker" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("21_78bhd")]
+entity = NodePath("..")
 
 [node name="StateMachineManager" type="Node" parent="."]
 script = ExtResource("20_rpnuu")
 
-[node name="State" type="Node" parent="." node_paths=PackedStringArray("player", "manager")]
+[node name="State" type="Node" parent="." node_paths=PackedStringArray("manager")]
 script = ExtResource("21_xtvo4")
-player = NodePath("..")
 manager = NodePath("../StateMachineManager")
 
-[node name="IdleState" type="Node" parent="State" node_paths=PackedStringArray("player", "direction_tracker", "animation", "manager", "dash_component")]
+[node name="IdleState" type="Node" parent="State" node_paths=PackedStringArray("entity", "direction_tracker", "animation", "manager", "dash_component")]
 script = ExtResource("22_ejng3")
-player = NodePath("../..")
+entity = NodePath("../..")
 direction_tracker = NodePath("../../DirectionTracker")
 animation = NodePath("../../anim")
 manager = NodePath("../../StateMachineManager")
 dash_component = NodePath("../../dash_component")
 
-[node name="RunState" type="Node" parent="State" node_paths=PackedStringArray("player", "direction_tracker", "animation", "manager", "dash_component")]
+[node name="RunState" type="Node" parent="State" node_paths=PackedStringArray("entity", "direction_tracker", "animation", "manager", "dash_component")]
 script = ExtResource("23_ffcry")
-player = NodePath("../..")
+entity = NodePath("../..")
 direction_tracker = NodePath("../../DirectionTracker")
 animation = NodePath("../../anim")
 manager = NodePath("../../StateMachineManager")
 dash_component = NodePath("../../dash_component")
 
-[node name="DashState" type="Node" parent="State" node_paths=PackedStringArray("player", "direction_tracker", "animation", "manager", "dash_component")]
+[node name="DashState" type="Node" parent="State" node_paths=PackedStringArray("entity", "direction_tracker", "animation", "manager", "dash_component")]
 script = ExtResource("24_yj4fb")
-player = NodePath("../..")
+entity = NodePath("../..")
 direction_tracker = NodePath("../../DirectionTracker")
 animation = NodePath("../../anim")
 manager = NodePath("../../StateMachineManager")
 dash_component = NodePath("../../dash_component")
 
-[node name="JumpState" type="Node" parent="State" node_paths=PackedStringArray("player", "direction_tracker", "animation", "manager")]
+[node name="JumpState" type="Node" parent="State" node_paths=PackedStringArray("entity", "direction_tracker", "animation", "manager")]
 script = ExtResource("27_wvltd")
-player = NodePath("../..")
+entity = NodePath("../..")
 direction_tracker = NodePath("../../DirectionTracker")
 animation = NodePath("../../anim")
 manager = NodePath("../../StateMachineManager")
 
-[node name="SpinningState" type="Node" parent="State" node_paths=PackedStringArray("player", "direction_tracker", "animation", "manager")]
+[node name="SpinningState" type="Node" parent="State" node_paths=PackedStringArray("entity", "animation", "manager")]
 script = ExtResource("29_ypm5c")
-player = NodePath("../..")
-direction_tracker = NodePath("../../DirectionTracker")
+entity = NodePath("../..")
 animation = NodePath("../../anim")
 manager = NodePath("../../StateMachineManager")
 
@@ -2723,6 +2722,11 @@ skill_manager = NodePath("../../../SkillManager")
 player = NodePath("../../..")
 
 [node name="ui_SKillMenu" parent="Ui hotbar" instance=ExtResource("33_uguah")]
+
+[node name="take_damage" type="Node2D" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("34_gy2ci")
+dmgPop = ExtResource("35_m1h7x")
+entity = NodePath("..")
 
 [connection signal="destination_reached" from="navigation" to="." method="_on_destination_reached"]
 

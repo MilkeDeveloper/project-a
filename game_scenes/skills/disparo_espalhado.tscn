@@ -1,8 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://ltjdh404tmpc"]
+[gd_scene load_steps=8 format=3 uid="uid://ltjdh404tmpc"]
 
 [ext_resource type="Script" path="res://scripts/player/projectile_compoenent.gd" id="1_rl2pr"]
-[ext_resource type="PackedScene" uid="uid://c364u20x2uojc" path="res://game_scenes/projectile.tscn" id="3_vntvr"]
+[ext_resource type="PackedScene" uid="uid://klgctucux3ww" path="res://game_scenes/Projectiles/arrow.tscn" id="2_dks8x"]
+[ext_resource type="Script" path="res://assets/projectiles/Projectile.gd" id="3_djq28"]
+[ext_resource type="Script" path="res://core/data/ProjectileData.gd" id="4_rfhyn"]
+[ext_resource type="Texture2D" uid="uid://crs4cut67td74" path="res://assets/projectiles/arrow2.png" id="5_4pi48"]
+[ext_resource type="PackedScene" uid="uid://b76ox03l1ew21" path="res://game_scenes/UI/ui_charge.tscn" id="6_bu53h"]
 
-[node name="projectile_component" type="Node2D"]
+[sub_resource type="Resource" id="Resource_4jxti"]
+script = ExtResource("4_rfhyn")
+max_distance = 500.0
+projectile_speed = 1200.0
+texture = ExtResource("5_4pi48")
+Projectile_logic = ExtResource("3_djq28")
+
+[node name="projectile_component" type="Node2D" node_paths=PackedStringArray("charge_bar", "charge_label")]
 script = ExtResource("1_rl2pr")
-Projectile = ExtResource("3_vntvr")
+charge_bar = NodePath("UI charge/Control/charge_bar")
+charge_label = NodePath("UI charge/Control/charge_bar/charge_label")
+spread_factor = 0.2
+Projectile = ExtResource("2_dks8x")
+projectile_config = SubResource("Resource_4jxti")
+
+[node name="UI charge" parent="." instance=ExtResource("6_bu53h")]
+
+[node name="charge_bar" parent="UI charge/Control" index="0"]
+min_value = 0.0
+step = 0.01
+value = 0.0
+
+[editable path="UI charge"]

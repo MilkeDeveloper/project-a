@@ -50,6 +50,10 @@ func connect_hover_buttons():
 		pressed = pressed.bind(i)
 		slot.connect("pressed", pressed)
 		
+		var released = Callable(_on_slot_released)
+		released = released.bind(i)
+		slot.connect("button_up", released)
+		
 		var exit_callable = Callable(_mouse_out_slot)
 		exit_callable = exit_callable.bind(i)
 		slot.connect("mouse_exited", exit_callable)
@@ -103,7 +107,12 @@ func _input(event: InputEvent) -> void:
 			preview_texture.hide()
 			preview_texture.texture = null
 			is_dragging = false
-
+	
+	for slot in ui_hotbar_slots:
+		if slot.shortcut.events[0] is InputEventAction:
+			if event.is_action_released(slot.shortcut.events[0].action):
+				_on_slot_released(slot_index)
+		
 # Função para verificar se o mouse está sobre um slot
 func _mouse_on_slot(index: int):
 	print("on slot: " + str(index))
@@ -129,10 +138,16 @@ func _on_slot_pressed(index: int):
 	print("hotbar slot pressed: " + str(index))
 	# Se há uma skill no slot pressionado, chame a função do skill manager para ativar a skill
 	if skill_hotbar1[index] != null:
+		slot_index = index
 		skill_manager.activate_skill(skill_hotbar1[index].id, player)
 	else:
 		print("Não há skill o slot pressionado")
 
+func _on_slot_released(index: int):
+	if skill_hotbar1[index] != null:
+		skill_manager.cancel_skill(skill_hotbar1[index].id)
+		print("skill_cancelada")
+	
 # Função que recebe o sinal com a skill que está sendo arrastada para o slot da hotbar
 func _set_skill_data_to_drop(dragged_skill: GDSkillData):
 	skill = dragged_skill
