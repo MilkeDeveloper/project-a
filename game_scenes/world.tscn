@@ -7094,6 +7094,51 @@ avoidance_layers = 3
 [node name="enemy" parent="." instance=ExtResource("10_rxba7")]
 position = Vector2(970, 704)
 
+[node name="enemy2" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1134, 629)
+
+[node name="enemy3" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1270, 623)
+
+[node name="enemy4" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(979, 591)
+
+[node name="enemy5" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(675, 674)
+
+[node name="enemy6" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(406, 861)
+
+[node name="enemy7" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(644, 904)
+
+[node name="enemy8" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1708, 377)
+
+[node name="enemy9" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1500, 351)
+
+[node name="enemy10" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1739, 648)
+
+[node name="enemy11" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1583, 521)
+
+[node name="enemy12" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(375, 144)
+
+[node name="enemy14" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(463, -21)
+
+[node name="enemy15" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(597, 151)
+
+[node name="enemy16" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(1734, -13)
+
+[node name="enemy13" parent="." instance=ExtResource("10_rxba7")]
+position = Vector2(712, 20)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fxajy")
 

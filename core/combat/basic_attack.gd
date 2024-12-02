@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var Projectile : PackedScene
+@export var ProjectileConfig: ProjectileData
 @export var anim_direction : Node2D
 @export var basic_dmg: int
 @export var attack_speed: float
@@ -13,19 +14,19 @@ var is_attacking: bool = false
 
 func _ready() -> void:
 	add_child(timer)
-	timer.wait_time = attack_speed
+	timer.wait_time = 50 / attack_speed
 	timer.one_shot = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if get_parent().jumping:
+		return
+	
 	if not can_attack and timer.time_left <= 0:
 		on_attack_timer_timout()
-		#is_attacking = true
-		
-	if GLobals.target != null:
-		#ranged_basic_attack(GLobals.target)
-		
-			pass
-		
+		is_attacking = true
+	
+	
+
 func ranged_basic_attack(target = null):
 	_target = target
 	if not GLobals.target or get_parent().global_position.distance_to(GLobals.target.global_position) > attack_range:
@@ -38,16 +39,20 @@ func ranged_basic_attack(target = null):
 	if can_attack and GLobals.target and get_parent().global_position.distance_to(GLobals.target.global_position) < attack_range:
 		var projectile = Projectile.instantiate()
 		projectile.position = get_parent().global_position
-		projectile.damage = randi_range((basic_dmg * 0.7), basic_dmg)
-		projectile.attacker = get_parent()
+		projectile.projectile_data.texture = ProjectileConfig.texture
+		projectile.projectile_data.Projectile_logic = ProjectileConfig.Projectile_logic
+		projectile.var_damage = randi_range((basic_dmg * 0.5), basic_dmg)
+		projectile.var_attacker = get_parent()
+		projectile.var_max_distance = ProjectileConfig.max_distance
+		projectile.var_speed = ProjectileConfig.projectile_speed
 		
 		#projectile.target_position = get_global_mouse_position()
 		var direction = (GLobals.target.global_position - get_parent().global_position).normalized()
-		projectile.direction = direction
+		projectile.var_direction = direction
 		
 		_handle_anim()
 		
-		get_parent().SPEED = 400
+		get_parent().SPEED = 650
 		get_parent().get_parent().add_child(projectile)
 		#projectile.launch_fireball()
 		

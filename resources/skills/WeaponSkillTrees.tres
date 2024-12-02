@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_836df"]
 [ext_resource type="Script" path="res://scripts/systems/skill_core/game_skills.gd" id="2_m6bef"]
-[ext_resource type="Resource" uid="uid://f1027vhegein" path="res://resources/skills/FireBall.tres" id="2_nahvr"]
+[ext_resource type="Resource" uid="uid://f1027vhegein" path="res://resources/skills/MultiShoot.tres" id="2_nahvr"]
 [ext_resource type="Resource" uid="uid://dkh2dlrw1nh71" path="res://resources/skills/Heal.tres" id="2_tm5uf"]
 [ext_resource type="Resource" uid="uid://q4pk2i0s2eoh" path="res://resources/skills/IceBolt.tres" id="3_ottco"]
 [ext_resource type="Resource" uid="uid://bi2urwoeonsh8" path="res://resources/skills/MeteorStorm.tres" id="4_3g4e7"]

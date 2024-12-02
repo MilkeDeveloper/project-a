@@ -8,6 +8,8 @@ func _ready() -> void:
 func enter(args: Dictionary = {}) -> void:
 	await get_tree().create_timer(0.2).timeout
 	entity.SPEED = original_speed
+	entity.jumping = false
+	
 # Função chamada enquanto o estado está ativo
 func update(delta: float) -> void:
 	handle_anim()
@@ -23,7 +25,10 @@ func handle_input(event: InputEvent) -> void:
 		is_jumping = true
 
 func handle_anim():
-	animation.play("run_" + direction_tracker.get_direction())
+	if entity.is_in_group("player") and GLobals.target != null:
+		animation.play("run_" + entity.get_node("DirectionTracker").get_action_direction(GLobals.target.global_position))
+	else:
+		animation.play("run_" + direction_tracker.get_direction())
 
 func transit_state():
 	if entity.velocity == Vector2.ZERO:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://core/skills/skill_manager.gd" id="1_g4pl2"]
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="2_jav7p"]
 [ext_resource type="Resource" uid="uid://bfu2vadkpdgig" path="res://resources/skills/GDArrow_assalt.tres" id="3_vw4px"]
-[ext_resource type="Resource" uid="uid://f1027vhegein" path="res://resources/skills/FireBall.tres" id="4_m0cvw"]
+[ext_resource type="Resource" uid="uid://f1027vhegein" path="res://resources/skills/MultiShoot.tres" id="4_m0cvw"]
 [ext_resource type="Resource" uid="uid://bpln86gdjw18h" path="res://resources/skills/ChainSoul.tres" id="5_mtiak"]
 
 [node name="SkillManager" type="Node"]

@@ -8,7 +8,8 @@ func enter(args: Dictionary = {}) -> void:
 	print("death state")
 	Combat.is_attacking = false
 	handle_anim()
-
+	attack_timer.stop()
+	
 # Função chamada enquanto o estado está ativo
 func update(delta: float) -> void:
 	

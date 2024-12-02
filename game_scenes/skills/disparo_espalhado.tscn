@@ -18,7 +18,6 @@ Projectile_logic = ExtResource("3_djq28")
 script = ExtResource("1_rl2pr")
 charge_bar = NodePath("UI charge/Control/charge_bar")
 charge_label = NodePath("UI charge/Control/charge_bar/charge_label")
-spread_factor = 0.2
 Projectile = ExtResource("2_dks8x")
 projectile_config = SubResource("Resource_4jxti")
 

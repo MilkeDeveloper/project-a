@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=7 format=3 uid="uid://f1027vhegein"]
+
+[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_cxego"]
+[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="2_tplve"]
+[ext_resource type="Resource" uid="uid://b5ri14d68le2e" path="res://resources/cards/IgniterCard.tres" id="3_1mv8y"]
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="4_emnwv"]
+[ext_resource type="PackedScene" uid="uid://yaj61l6t65v1" path="res://game_scenes/skills/triple_shoot.tscn" id="5_og8bn"]
+[ext_resource type="Texture2D" uid="uid://dto5bhmit0q4n" path="res://assets/misc/skill_icon_meteor_storm2.png" id="6_wsji7"]
+
+[resource]
+script = ExtResource("4_emnwv")
+id = 2
+skill_name = "MultiShoot"
+skill_description = "Lança uma bola de fogo na direção que o jogador escolher."
+skill_icon = ExtResource("6_wsji7")
+skill_type = Array[int]([])
+buff_type = Array[ExtResource("1_cxego")]([])
+mana_cost = 10
+cooldown = 3.0
+dmg_amount = 340
+charge_time = 1.5
+effect_type = "150 + 50% MTAK de dano"
+amount = 0
+percentage = 0
+skill_effect = ExtResource("5_og8bn")
+skill_level = 1
+skill_max_level = 5
+is_passive = false
+weapon_required = "Staff"
+cast_time = 0.0
+is_charging_skill = false
+is_aim_skill = false
+is_target_skill = true
+insta_cast_skill = false
+is_cast_skill = false
+grimoire_Slots = Array[ExtResource("2_tplve")]([ExtResource("3_1mv8y"), ExtResource("3_1mv8y"), ExtResource("3_1mv8y"), null, null])

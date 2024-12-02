@@ -4,6 +4,7 @@ class_name IdleState
 
 func enter(args: Dictionary = {}) -> void:
 	print(direction_tracker.get_direction())
+	entity.jumping = false
 	
 # Função chamada enquanto o estado está ativo
 func update(delta: float) -> void:

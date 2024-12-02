@@ -8,6 +8,7 @@ extends HBoxContainer
 
 var skill_hotbar1: Array[GDSkillData]
 var ui_hotbar_slots = []
+var ui_hotbar_cooldowns = []
 var on_slot: bool = false
 var slot_index: int
 var skill: GDSkillData
@@ -27,12 +28,24 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_dragging:
 		preview_texture.global_position = get_global_mouse_position() - preview_texture.size / 2
+	
+	for i in range(ui_hotbar_cooldowns.size()):
+		if skill_hotbar1[i] != null:
+			var hsolt_cooldown = ui_hotbar_cooldowns[i]
+			hsolt_cooldown.max_value = skill_hotbar1[i].cooldown
+			hsolt_cooldown.value = skill_hotbar1[i].cooldown_left
+			if skill_hotbar1[i].cooldown_left > 0.0:
+				hsolt_cooldown.get_child(0).text = str(skill_hotbar1[i].cooldown_left)
+			else:
+				hsolt_cooldown.get_child(0).text = " "
 
 # Função para definir os slots da ui hotbar
 func set_ui_hotbar_slots():
 	for slot in get_children():
 		if slot is TextureButton:
 			ui_hotbar_slots.append(slot)
+		if slot.get_child(0) is TextureProgressBar:
+			ui_hotbar_cooldowns.append(slot.get_child(0))
 
 # Função para conectar os sinais de drag and drop
 func connect_signals():
@@ -73,6 +86,14 @@ func get_skills_in_hotbar():
 			hotbar_slot.texture_normal = skill_hotbar1[i].skill_icon
 		else:
 			hotbar_slot.texture_normal = load("res://assets/misc/hotbar_slot_remake.png")
+
+func get_skills_on_cooldown():
+	for i in range(ui_hotbar_slots.size()):
+		var hotbar_slot = ui_hotbar_slots[i]
+		
+		# Aqui se foi encontrada uma skill no slot, mostra a o icone da skill
+		if skill_hotbar1[i] != null:
+			hotbar_slot.texture_normal = skill_hotbar1[i].skill_icon
 
 # Função para soltar a skill que foi arrastada do menu de skills
 func drop_skill_from_skill_menu(dragged_skill: GDSkillData, index: int):

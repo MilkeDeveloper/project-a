@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://beleyacui46l8"]
+[gd_scene load_steps=11 format=3 uid="uid://beleyacui46l8"]
 
 [ext_resource type="Script" path="res://scripts/systems/DmgPopup.cs" id="1_yvo42"]
 
@@ -73,6 +73,69 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.731]
+}
+
+[sub_resource type="Animation" id="Animation_mo4fa"]
+resource_name = "alt_default_dmg"
+length = 1.5
+step = 0.0625
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-42.5, -0.25, 0, 0.25, 0, -42.5, -0.1875, 1, 0.25, -1),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-38.5, -0.25, 0, 0.0625, 5, -22.5, -0.113872, -8, 0.0736275, 5),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(0.8, 0.8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.1875, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.996549, 0.570167, 1.07813e-05, 1), Color(0.996078, 0.568627, 0, 1), Color(0.996078, 0.568627, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("anim_dmg:speed_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.0, 2.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_nihxy"]
@@ -317,6 +380,7 @@ tracks/6/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54f5m"]
 _data = {
 "RESET": SubResource("Animation_055cl"),
+"alt_default_dmg": SubResource("Animation_mo4fa"),
 "default_dmg": SubResource("Animation_nihxy"),
 "default_dmg_left": SubResource("Animation_d0xu7"),
 "default_dmg_right": SubResource("Animation_5ni7t")
@@ -325,13 +389,14 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aad83"]
 
 [sub_resource type="SystemFont" id="SystemFont_owbkg"]
-font_names = PackedStringArray("A Grazing Mace")
+font_names = PackedStringArray("Arial")
+font_weight = 450
 subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="FontVariation" id="FontVariation_mpbpn"]
 base_font = SubResource("SystemFont_owbkg")
-spacing_glyph = 10
+spacing_glyph = 3
 
 [node name="dmg_popup" type="Marker2D" node_paths=PackedStringArray("anim", "damage_text")]
 z_index = 1
@@ -356,16 +421,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.5
-offset_top = 28.5
-offset_right = -3.5
-offset_bottom = 51.5
+offset_left = -42.5
+offset_top = -38.5
+offset_right = 43.5
+offset_bottom = -15.5
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(33, 11)
-size_flags_horizontal = 4
+pivot_offset = Vector2(42.1944, 11.6111)
+size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = SubResource("FontVariation_mpbpn")
 theme_override_font_sizes/font_size = 16
 text = "2899"

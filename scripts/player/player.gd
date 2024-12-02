@@ -9,6 +9,7 @@ class_name Player
 @export var dash_component: Node2D
 @export var SPEED = 300.0
 @export var hp: int
+@export var jumping: bool
 
 var action_keys = {
 	"attack": "basic_attack",

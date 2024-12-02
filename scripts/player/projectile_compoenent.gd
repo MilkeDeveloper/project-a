@@ -93,9 +93,11 @@ func skill_charge(delta: float):
 			charge_bar.value = charge_time
 			charge_label.text = str(charge_time)
 			print("skill charging")
-	
+
+# Função para cancelar o carregamento da skill
 func cancel_skill():
 	if is_charging:
+		# Aqui se o cast da skill foi carregado até o final, a skill é ativada, caso contrário, o carregamento é apenas cancelado.
 		if charge_time >= cast_time:
 			start_spread_shoot()
 			is_charging = false
@@ -103,11 +105,9 @@ func cancel_skill():
 			is_charging = false
 	
 	charge_bar.value = 0 # Reseta a charge bar após o encerramento da skill
-	
-	GLobals.emit_signal("key_skill_released", 10)
 	queue_free()
 
-
+# Aqui iniciamos a animação do personagem durante a ativação da skill
 func _handle_anim():
 	player.get_node("anim").play("idle_" + player.get_node("DirectionTracker").get_action_direction(get_global_mouse_position()))
 	

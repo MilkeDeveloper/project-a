@@ -26,7 +26,7 @@ func random_movement():
 func _on_time_to_move_timeout() -> void:
 	# Se o cooldown de movimento zerou, então chama novamente a função de movimento
 	# aleatório para defininir uma nova rota de movimento
-	if not get_parent().died:
+	if not get_parent().died and get_parent().can_move:
 		random_movement()
 
 func _on_destination_reached() -> void:

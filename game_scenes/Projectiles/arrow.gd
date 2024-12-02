@@ -7,6 +7,7 @@ var var_max_distance: float
 var var_attacker: Node2D
 var var_damage: int
 
+
 func _ready() -> void:
 	sprite.texture = projectile_data.texture  # Define a textura do sprite
 	# Setar o novo script

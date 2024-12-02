@@ -40,4 +40,6 @@ cast_time = 0.0
 is_charging_skill = true
 is_aim_skill = false
 is_target_skill = false
+insta_cast_skill = false
+is_cast_skill = false
 grimoire_Slots = Array[ExtResource("1_s48vr")]([null, null, null, null, null])

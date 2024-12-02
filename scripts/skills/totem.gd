@@ -35,14 +35,14 @@ func _on_TotemDurationTimer_timeout():
 func _on_DamageTimer_timeout():
 	# Aplica dano a cada 0.3 segundos nos inimigos presos
 	for enemy in affected_enemies:
-		enemy.take_damage(damage_per_tick, attacker, enemy, "magic_hit")
+		enemy.take_damage(randi_range(damage_per_tick * 0.6, damage_per_tick), attacker, enemy, "magic_hit")
 		
 func create_explosion():
 	# Explosão em uma área de 300x300
 	var explosion_area = $ExplosionArea.get_overlapping_bodies()
 	for enemy in explosion_area:
 		if enemy.is_in_group("entity"):
-			enemy.take_damage(explosion_damage, attacker, enemy, "magic_hit")
+			enemy.take_damage(randi_range(explosion_damage * 0.7, explosion_damage), attacker, enemy, "magic_hit")
 	$anim.play("dark_explosion")
 
 func _on_Area2D_body_entered(body):

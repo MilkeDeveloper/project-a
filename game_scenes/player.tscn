@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://drffed2tq2jus"]
+[gd_scene load_steps=62 format=3 uid="uid://drffed2tq2jus"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_35xu0"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="2_vej8t"]
@@ -17,8 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://dov5rkbktfcst" path="res://game_scenes/skills/star_court.tscn" id="17_mvh31"]
 [ext_resource type="PackedScene" uid="uid://4igtmvdmdtyf" path="res://game_scenes/systems/skills/skill_manager.tscn" id="17_nxdyt"]
 [ext_resource type="Script" path="res://core/combat/basic_attack.gd" id="17_wwwbr"]
-[ext_resource type="PackedScene" uid="uid://c364u20x2uojc" path="res://game_scenes/projectile.tscn" id="18_myu4g"]
+[ext_resource type="PackedScene" uid="uid://klgctucux3ww" path="res://game_scenes/Projectiles/arrow.tscn" id="20_2b3o1"]
 [ext_resource type="Script" path="res://scripts/player/StateMachine/state_machine_manager.gd" id="20_rpnuu"]
+[ext_resource type="Resource" uid="uid://cir5s2ka10y6x" path="res://resources/projectiles/target_arrow.tres" id="21_0l2rf"]
 [ext_resource type="PackedScene" uid="uid://dpnhg15unapxy" path="res://game_scenes/systems/direction_tracker.tscn" id="21_78bhd"]
 [ext_resource type="Script" path="res://scripts/player/StateMachine/state.gd" id="21_xtvo4"]
 [ext_resource type="Script" path="res://scripts/player/StateMachine/idle.gd" id="22_ejng3"]
@@ -2624,9 +2625,10 @@ navigation_component = NodePath("../navigation")
 
 [node name="basic_attack" type="Node2D" parent="."]
 script = ExtResource("17_wwwbr")
-Projectile = ExtResource("18_myu4g")
-basic_dmg = 68
-attack_speed = 0.7
+Projectile = ExtResource("20_2b3o1")
+ProjectileConfig = ExtResource("21_0l2rf")
+basic_dmg = 135
+attack_speed = 150.0
 attack_range = 350.0
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
@@ -2716,6 +2718,33 @@ skill_manager = NodePath("../../SkillManager")
 [node name="hotbar2" parent="Ui hotbar/Hotbars" index="2" node_paths=PackedStringArray("skill_manager", "player")]
 skill_manager = NodePath("../../../SkillManager")
 player = NodePath("../../..")
+
+[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton2" index="0"]
+layout_mode = 0
+
+[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton3" index="0"]
+layout_mode = 0
+
+[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton4" index="0"]
+layout_mode = 0
+
+[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton5" index="0"]
+layout_mode = 0
+
+[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton6" index="0"]
+layout_mode = 0
+
+[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton7" index="0"]
+layout_mode = 0
+
+[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton8" index="0"]
+layout_mode = 0
+
+[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton9" index="0"]
+layout_mode = 0
+
+[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton10" index="0"]
+layout_mode = 0
 
 [node name="hotbar3" parent="Ui hotbar/Hotbars" index="3" node_paths=PackedStringArray("skill_manager", "player")]
 skill_manager = NodePath("../../../SkillManager")

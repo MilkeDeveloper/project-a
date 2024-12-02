@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bow2jfwlefmfj"]
+[gd_scene load_steps=66 format=3 uid="uid://bow2jfwlefmfj"]
 
 [ext_resource type="Script" path="res://ui/ui_scripts/ui_hotbar.gd" id="1_76fkq"]
 [ext_resource type="Texture2D" uid="uid://rpq0jaequfib" path="res://assets/misc/hotbar_slot_remake.png" id="1_a4nem"]
@@ -58,6 +58,21 @@ pressed = true
 
 [sub_resource type="Shortcut" id="Shortcut_vkkmq"]
 events = [SubResource("InputEventAction_jxs8p")]
+
+[sub_resource type="Gradient" id="Gradient_7pq1o"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_31uld"]
+gradient = SubResource("Gradient_7pq1o")
+
+[sub_resource type="SystemFont" id="SystemFont_jykbc"]
+font_names = PackedStringArray("Arial")
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_g70df"]
+font = SubResource("SystemFont_jykbc")
+font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_u1e82"]
 font_names = PackedStringArray("Sans-Serif")
@@ -423,6 +438,34 @@ shortcut = SubResource("Shortcut_vkkmq")
 texture_normal = ExtResource("4_1mtrp")
 stretch_mode = 0
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
+
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton"]
 layout_mode = 0
 offset_left = 18.0
@@ -457,6 +500,33 @@ size_flags_vertical = 4
 shortcut = SubResource("Shortcut_1hdmx")
 texture_normal = ExtResource("6_ehkg5")
 stretch_mode = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton2"]
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton2/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
 
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton2"]
 layout_mode = 0
@@ -493,6 +563,33 @@ shortcut = SubResource("Shortcut_labxw")
 texture_normal = ExtResource("7_4dhee")
 stretch_mode = 0
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton3"]
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton3/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
+
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton3"]
 layout_mode = 0
 offset_left = 18.0
@@ -528,6 +625,33 @@ shortcut = SubResource("Shortcut_efyen")
 texture_normal = ExtResource("8_p6rdh")
 stretch_mode = 0
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton4"]
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton4/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
+
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton4"]
 layout_mode = 0
 offset_left = 18.0
@@ -562,6 +686,33 @@ size_flags_vertical = 4
 shortcut = SubResource("Shortcut_l0c88")
 texture_normal = ExtResource("9_yyone")
 stretch_mode = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton5"]
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton5/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
 
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton5"]
 layout_mode = 0
@@ -615,6 +766,33 @@ shortcut = SubResource("Shortcut_hvgwv")
 texture_normal = ExtResource("10_qxqfd")
 stretch_mode = 0
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton6"]
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton6/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
+
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton6"]
 layout_mode = 0
 offset_left = 18.0
@@ -649,6 +827,33 @@ size_flags_vertical = 4
 shortcut = SubResource("Shortcut_k80vb")
 texture_normal = ExtResource("11_u5x82")
 stretch_mode = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton7"]
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton7/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
 
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton7"]
 layout_mode = 0
@@ -685,6 +890,33 @@ shortcut = SubResource("Shortcut_5pd1k")
 texture_normal = ExtResource("12_n6lqd")
 stretch_mode = 0
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton8"]
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton8/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
+
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton8"]
 layout_mode = 0
 offset_left = 18.0
@@ -720,6 +952,33 @@ shortcut = SubResource("Shortcut_d5cuh")
 texture_normal = ExtResource("13_1bl10")
 stretch_mode = 0
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton9"]
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton9/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
+
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton9"]
 layout_mode = 0
 offset_left = 18.0
@@ -754,6 +1013,33 @@ size_flags_vertical = 4
 shortcut = SubResource("Shortcut_rvxjg")
 texture_normal = ExtResource("14_ggaf4")
 stretch_mode = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Hotbars/hotbar2/TextureButton10"]
+offset_right = 50.0
+offset_bottom = 50.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_31uld")
+tint_progress = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="cd_label" type="Label" parent="Hotbars/hotbar2/TextureButton10/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_g70df")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 3
 
 [node name="TextureRect" type="TextureRect" parent="Hotbars/hotbar2/TextureButton10"]
 layout_mode = 0
