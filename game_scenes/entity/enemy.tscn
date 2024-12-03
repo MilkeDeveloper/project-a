@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cdvbhhh52rcly"]
+[gd_scene load_steps=47 format=3 uid="uid://cdvbhhh52rcly"]
 
 [ext_resource type="Script" path="res://scripts/entity/enemy.gd" id="1_c1oxh"]
 [ext_resource type="Texture2D" uid="uid://hfl3wyri0liy" path="res://assets/sprites/piglet01.png" id="1_d8qkr"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/entity/action_node.gd" id="21_86y62"]
 [ext_resource type="Resource" uid="uid://bw1qjnrr6qiy5" path="res://resources/projectiles/piglet_projectile.tres" id="22_83e3t"]
 [ext_resource type="PackedScene" uid="uid://klgctucux3ww" path="res://game_scenes/Projectiles/arrow.tscn" id="22_jwrq5"]
+[ext_resource type="Script" path="res://scripts/systems/targetable.gd" id="24_oxuvv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mca3"]
 radius = 17.2627
@@ -1114,6 +1115,9 @@ entity = NodePath("..")
 [node name="hurt_timer" type="Timer" parent="."]
 wait_time = 0.13
 one_shot = true
+
+[node name="Targetable" type="Node2D" parent="." groups=["targetables"]]
+script = ExtResource("24_oxuvv")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

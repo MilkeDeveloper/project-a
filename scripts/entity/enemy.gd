@@ -59,10 +59,12 @@ func take_damage(damage, attacker, target_attacker, effect_anim_name):
 	get_node("navigation").set_process(true)
 	GLobals.target = target_attacker
 	$target_area.set_hud_target()
+	attacker.get_node("TargetManager").lock_target()
 	hurted = true
 	
 	if hp <= 0:
 		state_manager.change_state("DeathState")
+		attacker.get_node("TargetManager").unlock_target()
 
 func take_basic_damage(damage, attacker, target_attacker, effect_anim_name):
 	_attacker = attacker
@@ -79,10 +81,12 @@ func take_basic_damage(damage, attacker, target_attacker, effect_anim_name):
 	state_manager.change_state("HurtState", {"target": attacker})
 	await get_tree().create_timer(0.1).timeout
 	get_node("navigation").set_process(true)
+	attacker.get_node("TargetManager").lock_target()
 	hurted = true
 	
 	if hp <= 0:
 		state_manager.change_state("DeathState")
+		attacker.get_node("TargetManager").unlock_target()
 
 
 func apply_hurt_effect(hit_anim_name):

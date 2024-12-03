@@ -51,11 +51,13 @@ func set_hud_target():
 
 # Limpa a hud dos inimigos que não são o alvo atual
 func _clear_targets(target_to_clear):
-	target_to_clear.hud_entity.find_child("HUD_HP").hide()
-	target_to_clear.get_node("target_area").target_sprite.hide()
+	if target_to_clear.hud_entity != null:
+		target_to_clear.hud_entity.find_child("HUD_HP").hide()
+		target_to_clear.get_node("target_area").target_sprite.hide()
 
 # Limpa a hud dos inimigos
 func _clear_target():
+	GLobals.target = null
 	target_sprite.hide()
 	hud_hp.hide()
 	node.hud_entity.hide()
@@ -63,7 +65,7 @@ func _clear_target():
 	if array_target != null and not array_target.mouse_over:
 		GLobals.targets.clear()
 		array_target = null
-		GLobals.target = null
+		
 		
 		
 func _on_target_area_mouse_entered() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://drffed2tq2jus"]
+[gd_scene load_steps=63 format=3 uid="uid://drffed2tq2jus"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_35xu0"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="2_vej8t"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://dk8musy26dkll" path="res://game_scenes/systems/skills/ui_skill_menu.tscn" id="33_uguah"]
 [ext_resource type="Script" path="res://scripts/player/take_damage.gd" id="34_gy2ci"]
 [ext_resource type="PackedScene" uid="uid://beleyacui46l8" path="res://game_scenes/systems/dmg_popup.tscn" id="35_m1h7x"]
+[ext_resource type="Script" path="res://scripts/systems/target_manager.gd" id="37_4vam7"]
 [ext_resource type="PackedScene" uid="uid://c3e427a6qj8vf" path="res://ui_config.tscn" id="49_nbt1q"]
 [ext_resource type="PackedScene" uid="uid://t1slqsevmadj" path="res://game_scenes/UI/inventory.tscn" id="50_ym2mu"]
 
@@ -2600,7 +2601,7 @@ texture_scale = 2.77
 debug_enabled = false
 node = NodePath("..")
 
-[node name="input_component" parent="." node_paths=PackedStringArray("navigation_component", "dash_component", "skill_component", "cam", "node", "skill_mananager", "ui_inventory", "ui_skills") instance=ExtResource("5_vq3vh")]
+[node name="input_component" parent="." node_paths=PackedStringArray("navigation_component", "dash_component", "skill_component", "cam", "node", "skill_mananager", "ui_inventory", "ui_skills", "target_manager") instance=ExtResource("5_vq3vh")]
 navigation_component = NodePath("../navigation")
 dash_component = NodePath("../dash_component")
 skill_component = NodePath("../star_court")
@@ -2609,6 +2610,7 @@ node = NodePath("..")
 skill_mananager = NodePath("../SkillManager")
 ui_inventory = NodePath("../UI interface/inventory")
 ui_skills = NodePath("../Ui hotbar/ui_SKillMenu")
+target_manager = NodePath("../TargetManager")
 
 [node name="dash_component" parent="." node_paths=PackedStringArray("node", "navigation_component", "node_texture") instance=ExtResource("8_f5wbr")]
 node = NodePath("..")
@@ -2719,33 +2721,6 @@ skill_manager = NodePath("../../SkillManager")
 skill_manager = NodePath("../../../SkillManager")
 player = NodePath("../../..")
 
-[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton2" index="0"]
-layout_mode = 0
-
-[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton3" index="0"]
-layout_mode = 0
-
-[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton4" index="0"]
-layout_mode = 0
-
-[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton5" index="0"]
-layout_mode = 0
-
-[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton6" index="0"]
-layout_mode = 0
-
-[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton7" index="0"]
-layout_mode = 0
-
-[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton8" index="0"]
-layout_mode = 0
-
-[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton9" index="0"]
-layout_mode = 0
-
-[node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton10" index="0"]
-layout_mode = 0
-
 [node name="hotbar3" parent="Ui hotbar/Hotbars" index="3" node_paths=PackedStringArray("skill_manager", "player")]
 skill_manager = NodePath("../../../SkillManager")
 player = NodePath("../../..")
@@ -2756,6 +2731,10 @@ player = NodePath("../../..")
 script = ExtResource("34_gy2ci")
 dmgPop = ExtResource("35_m1h7x")
 entity = NodePath("..")
+
+[node name="TargetManager" type="Node" parent="."]
+script = ExtResource("37_4vam7")
+max_target_distance = 300.0
 
 [connection signal="destination_reached" from="navigation" to="." method="_on_destination_reached"]
 

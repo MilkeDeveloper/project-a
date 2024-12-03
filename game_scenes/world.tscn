@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://l200m2x0yagx"]
+[gd_scene load_steps=84 format=4 uid="uid://l200m2x0yagx"]
 
 [ext_resource type="Script" path="res://config/game_init.gd" id="1_4616h"]
 [ext_resource type="Texture2D" uid="uid://0tond388mexi" path="res://assets/tilesets/map3.png" id="1_lccmo"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://game_scenes/systems/teste.gd" id="12_bipia"]
 [ext_resource type="Texture2D" uid="uid://bgtddydt6cpmh" path="res://assets/sprites/Spritesheet.png" id="12_lumad"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="13_hi7y1"]
+[ext_resource type="Shader" path="res://shaders/ghost.gdshader" id="13_uihwe"]
 [ext_resource type="PackedScene" uid="uid://b7lbwsekejpe1" path="res://game_scenes/UI/ui_map.tscn" id="15_qexld"]
 [ext_resource type="Script" path="res://ui/ui_scripts/pivot.gd" id="17_l2bv6"]
 [ext_resource type="PackedScene" uid="uid://4t7eil3yoxnl" path="res://game_scenes/item/itemBase.tscn" id="18_gocsr"]
@@ -1053,6 +1054,13 @@ animations = [{
 "name": &"default",
 "speed": 8.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2eu1"]
+resource_local_to_scene = true
+shader = ExtResource("13_uihwe")
+shader_parameter/shading = true
+shader_parameter/texture_color = Color(1, 1, 1, 1)
+shader_parameter/alpha = 0.0
 
 [sub_resource type="Environment" id="Environment_fxajy"]
 background_mode = 3
@@ -7133,6 +7141,9 @@ position = Vector2(463, -21)
 [node name="enemy15" parent="." instance=ExtResource("10_rxba7")]
 position = Vector2(597, 151)
 
+[node name="sprite" parent="enemy15" index="2"]
+material = SubResource("ShaderMaterial_h2eu1")
+
 [node name="enemy16" parent="." instance=ExtResource("10_rxba7")]
 position = Vector2(1734, -13)
 
@@ -7268,3 +7279,5 @@ item_data = ExtResource("22_ca167")
 [editable path="Player/Ui hotbar"]
 [editable path="Player/Ui hotbar/ui_SKillMenu"]
 [editable path="Player/UI map"]
+[editable path="enemy15"]
+[editable path="enemy15/hud_entity"]

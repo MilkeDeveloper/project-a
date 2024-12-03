@@ -10,6 +10,7 @@ extends Node2D
 @export var skill_mananager: Node
 @export var ui_inventory: Control
 @export var ui_skills: Control
+@export var target_manager: TargetManager
 
 var can_shoot: bool = true
 var nullable: Node
@@ -49,7 +50,14 @@ func get_input(event):
 		#skill_mananager.activate_skill("Disparo Espalhado", node, anim_component, nullable)
 		print("A skill precisa de um alvo")
 	
-		#projectile_component.use_skill(GLobals.target)
+	if event.is_action_just_pressed("Lock-Unlock Target"):
+		if target_manager.target_locked: # Se o alvo estiver trancado destranca o alvo, se não faz o contrário trancando o alvo
+			target_manager.unlock_target()
+		else:
+			target_manager.lock_target()
+	
+	if event.is_action_just_pressed("Switch target"):
+		target_manager.cycle_target() # Alterna manualmente entre os alvos
 		
 		
 	#GUI config
