@@ -59,7 +59,7 @@ func activate_skill(skill_id: int, player: CharacterBody2D, target: Node = null)
 				skill_instance = skill_data.skill_effect.instantiate()
 				get_parent().add_child(skill_instance)
 				
-				if skill_data.cast_time == 0:
+				if skill_data.cast_time == 0 and not skill_data.is_target_skill:
 					skill_instance.use_skill(player, skill_data.dmg_amount, skill_data.cooldown, target)
 				
 					if skill_data.is_aim_skill and clicked == true and skill_data.cooldown_left <= 0:
@@ -70,8 +70,12 @@ func activate_skill(skill_id: int, player: CharacterBody2D, target: Node = null)
 						key_released = false
 					elif skill_data.insta_cast_skill and skill_data.cooldown_left <= 0:
 						skill_data.cooldown_left = skill_data.cooldown
-					elif skill_data.is_target_skill and skill_data.cooldown_left <= 0 and GLobals.target:
-						skill_data.cooldown_left = skill_data.cooldown
+				
+				if skill_data.cast_time == 0 and skill_data.is_target_skill:
+					if GLobals.target != null:
+						skill_instance.use_skill(player, skill_data.dmg_amount, skill_data.cooldown, target)
+						if skill_data.is_target_skill and skill_data.cooldown_left <= 0 and GLobals.target:
+							skill_data.cooldown_left = skill_data.cooldown
 					
 				
 				if skill_data.cast_time > 0:
