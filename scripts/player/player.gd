@@ -10,6 +10,7 @@ class_name Player
 @export var SPEED = 300.0
 @export var hp: int
 @export var jumping: bool
+@export var is_in_combat: bool
 
 var action_keys = {
 	"attack": "basic_attack",

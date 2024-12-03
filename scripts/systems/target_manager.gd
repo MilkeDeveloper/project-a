@@ -7,6 +7,7 @@ class_name TargetManager
 var targets: Array = []  # Lista de alvos disponíveis
 var current_target: Node = null
 var target_locked: bool = false
+var detection_area: float
 
 func _ready():
 	set_process(false)
@@ -24,34 +25,28 @@ func update_target_list():
 	
 	var player_pos = get_parent().global_position  # Obtém a posição do jogador
 	for entity in get_tree().get_nodes_in_group("targetables"):
-		if entity.global_position.distance_to(player_pos) < 300:
-			targets.append(entity)
-			
-	for target in targets:
-		if target is Targetable:  # Garante que o nó tem o script Targetable
-			target.calculate_distance_to_player(player_pos)  # Atualiza a distância
-			
-	targets.sort_custom(_compare_distance)  # Ordena por distância ao jogador
-	
+		if entity.global_position.distance_to(player_pos) > 0 and entity.global_position.distance_to(player_pos) < 300:
+			if entity is Targetable:
+				targets.append(entity)
+
+
 	if not target_locked:
 		select_nearest_target()
 
-func _compare_distance(a: Targetable, b: Targetable) -> int:
-	if a.distance_to_player < b.distance_to_player:
-		return -1
-	else:
-		return 1
-
 func select_nearest_target():
-	if targets.size() > 0 and not target_locked:
-		if targets[0] != null:
-			current_target = targets[0]
-			GLobals.target = current_target.get_parent()
-			print("inimigo mais próximo selecionado")
+	if targets.size() > 0 and not target_locked: 
+		var nearest_disctance = max_target_distance
+		for target in targets:
+			var distance = target.global_position.distance_to(get_parent().global_position)
+			if distance < nearest_disctance:
+				nearest_disctance = distance
+				current_target = target
+				GLobals.target = current_target.get_parent()
+
 			
-			if GLobals.target != null:
-				var _target = GLobals.target
-				_target.get_node("target_area").set_hud_target()
+				if GLobals.target != null:
+					var _target = GLobals.target
+					_target.get_node("target_area").set_hud_target()
 
 func cycle_target():
 	if targets.size() > 0 and targets != null:

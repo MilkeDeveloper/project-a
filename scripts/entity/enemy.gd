@@ -65,6 +65,7 @@ func take_damage(damage, attacker, target_attacker, effect_anim_name):
 	if hp <= 0:
 		state_manager.change_state("DeathState")
 		attacker.get_node("TargetManager").unlock_target()
+		
 
 func take_basic_damage(damage, attacker, target_attacker, effect_anim_name):
 	_attacker = attacker
@@ -87,6 +88,7 @@ func take_basic_damage(damage, attacker, target_attacker, effect_anim_name):
 	if hp <= 0:
 		state_manager.change_state("DeathState")
 		attacker.get_node("TargetManager").unlock_target()
+		
 
 
 func apply_hurt_effect(hit_anim_name):
@@ -107,6 +109,7 @@ func die():
 	hud_entity.hide()
 	$colision.hide()
 	$colision.disabled = true
+	_attacker.is_in_combat = false
 	
 
 

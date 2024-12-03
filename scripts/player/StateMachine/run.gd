@@ -25,7 +25,7 @@ func handle_input(event: InputEvent) -> void:
 		is_jumping = true
 
 func handle_anim():
-	if entity.is_in_group("player") and GLobals.target != null:
+	if entity.is_in_group("player") and GLobals.target != null and entity.is_in_combat:
 		animation.play("run_" + entity.get_node("DirectionTracker").get_action_direction(GLobals.target.global_position))
 	else:
 		animation.play("run_" + direction_tracker.get_direction())

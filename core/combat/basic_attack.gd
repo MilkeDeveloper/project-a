@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 
 func ranged_basic_attack(target = null):
 	_target = target
+	
 	if not GLobals.target or get_parent().global_position.distance_to(GLobals.target.global_position) > attack_range:
 		get_parent().SPEED = 650
 		is_attacking = false
@@ -58,6 +59,7 @@ func ranged_basic_attack(target = null):
 		
 		timer.start()
 		can_attack = false
+		get_parent().is_in_combat = true
 
 	else :
 		get_parent().SPEED = 650
