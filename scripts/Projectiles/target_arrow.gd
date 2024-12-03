@@ -38,6 +38,10 @@ func get_vars(direction: Vector2, _speed: float, _max_distance: float, _attacker
 	damage = _damage
 
 func movement(delta):
+	#var current_frame = $AnimationPlayer.current_animation_position
+	#$AnimationPlayer.play("arrow_anim")
+	#$AnimationPlayer.seek(current_frame, true)
+	
 	global_position += my_direction * speed * delta
 	
 	#if global_position.distance_to(mouse_position) < 10:

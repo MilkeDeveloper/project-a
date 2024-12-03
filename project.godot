@@ -196,4 +196,5 @@ hotbar_9={
 2d_physics/layer_5="explosion_area"
 2d_physics/layer_6="totem_area"
 2d_physics/layer_7="ground_items"
+2d_physics/layer_10="projectiles"
 avoidance/layer_2="player"

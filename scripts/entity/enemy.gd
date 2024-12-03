@@ -60,6 +60,7 @@ func take_damage(damage, attacker, target_attacker, effect_anim_name):
 	GLobals.target = target_attacker
 	$target_area.set_hud_target()
 	attacker.get_node("TargetManager").lock_target()
+	attacker.find_child("basic_attack").ranged_basic_attack(GLobals.target)
 	hurted = true
 	
 	if hp <= 0:
@@ -83,6 +84,7 @@ func take_basic_damage(damage, attacker, target_attacker, effect_anim_name):
 	await get_tree().create_timer(0.1).timeout
 	get_node("navigation").set_process(true)
 	attacker.get_node("TargetManager").lock_target()
+	attacker.find_child("basic_attack").ranged_basic_attack(GLobals.target)
 	hurted = true
 	
 	if hp <= 0:

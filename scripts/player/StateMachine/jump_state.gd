@@ -5,7 +5,7 @@ class_name JumpState
 
 # Função que é chamada ao entrar no estado
 func enter(args: Dictionary = {}) -> void:
-	animation.play("jump_" + direction_tracker.get_direction())
+	#animation.play("jump_" + direction_tracker.get_direction())
 	print("jump")
 	entity.jumping = true
 	

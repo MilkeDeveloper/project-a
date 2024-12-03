@@ -15,7 +15,8 @@ var player
 var used_skill
 var mouse_position
 var is_on_cooldown
-var skill_dmg
+var skill_dmg 
+var shoot_count: int
 
 
 
@@ -38,7 +39,13 @@ func _process(delta: float) -> void:
 		mouse_position = get_global_mouse_position()
 		for arrow in arrows_sequence:
 			var projectile = Projectile.instantiate()
-			projectile.position = player.global_position
+			if shoot_count == 0:
+				projectile.position = $Marker2D3/Marker2D.global_position
+				shoot_count += 1
+			else:
+				projectile.position = $Marker2D3/Marker2D2.global_position
+				shoot_count = 0
+
 			projectile.projectile_data.texture = ProjectileConfig.texture
 			projectile.projectile_data.Projectile_logic = ProjectileConfig.Projectile_logic
 			projectile.var_damage = randi_range((skill_dmg * 0.5), skill_dmg)
@@ -50,6 +57,9 @@ func _process(delta: float) -> void:
 			if GLobals.target != null:
 				var direction = (GLobals.target.global_position - get_parent().global_position).normalized()
 				projectile.var_direction = direction
+				
+				$Marker2D3.rotation = direction.angle()
+				
 				_handle_anim()
 				get_parent().get_parent().add_child(projectile)
 				#projectile.get_node("animation")._on_animate_fireball()

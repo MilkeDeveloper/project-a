@@ -22,6 +22,8 @@ func _ready() -> void:
 
 	call("_ready")  # Chama o _ready() do novo script
 	
+	
+	
 func get_vars(direction: Vector2, speed: float, max_distance: float, attacker: Node2D, damage: int) -> void:
 	pass
 

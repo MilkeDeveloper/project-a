@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cdvbhhh52rcly"]
+[gd_scene load_steps=48 format=3 uid="uid://cdvbhhh52rcly"]
 
 [ext_resource type="Script" path="res://scripts/entity/enemy.gd" id="1_c1oxh"]
 [ext_resource type="Texture2D" uid="uid://hfl3wyri0liy" path="res://assets/sprites/piglet01.png" id="1_d8qkr"]
@@ -26,7 +26,7 @@
 [ext_resource type="Script" path="res://scripts/systems/targetable.gd" id="24_oxuvv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mca3"]
-radius = 17.2627
+radius = 31.251
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lebp"]
 resource_local_to_scene = true
@@ -945,11 +945,14 @@ _data = {
 "idle_up": SubResource("Animation_ddebb")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogj41"]
+radius = 16.25
+
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("state_manager") groups=["entity"]]
 z_index = 1
 scale = Vector2(0.8, 0.8)
-collision_layer = 57
-collision_mask = 8
+collision_layer = 561
+collision_mask = 0
 input_pickable = true
 script = ExtResource("1_c1oxh")
 _name = "Piglet"
@@ -962,6 +965,7 @@ dmg_effect = ExtResource("3_iqlnw")
 state_manager = NodePath("StateMachineManager")
 
 [node name="target_area" parent="." node_paths=PackedStringArray("node") instance=ExtResource("2_4m157")]
+collision_layer = 513
 node = NodePath("..")
 
 [node name="colision" type="CollisionShape2D" parent="."]
@@ -990,6 +994,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_ojcum")
 
 [node name="navigation" parent="." node_paths=PackedStringArray("node") instance=ExtResource("3_jett1")]
+debug_enabled = false
 node = NodePath("..")
 
 [node name="movement" parent="." node_paths=PackedStringArray("navigation_component") instance=ExtResource("7_ylgb4")]
@@ -1099,8 +1104,12 @@ grow_vertical = 2
 pivot_offset = Vector2(-0.349243, -0.127815)
 
 [node name="entity_hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 9
 
 [node name="hitbox_collider" type="CollisionShape2D" parent="entity_hitbox"]
+shape = SubResource("CircleShape2D_ogj41")
+debug_color = Color(0.219669, 0.639032, 1.92523e-07, 0.42)
 
 [node name="attack_timer" type="Timer" parent="."]
 wait_time = 0.8

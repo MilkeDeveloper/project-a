@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource("1_cmamt")
 max_distance = 9999.0
-projectile_speed = 1800.0
+projectile_speed = 1200.0
 texture = ExtResource("2_sgcj2")
 Projectile_logic = ExtResource("1_sdvv5")
