@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=7 format=3 uid="uid://f1027vhegein"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=9 format=3 uid="uid://f1027vhegein"]
 
 [ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_cxego"]
 [ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="2_tplve"]
@@ -6,6 +6,13 @@
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="4_emnwv"]
 [ext_resource type="PackedScene" uid="uid://yaj61l6t65v1" path="res://game_scenes/skills/triple_shoot.tscn" id="5_og8bn"]
 [ext_resource type="Texture2D" uid="uid://dto5bhmit0q4n" path="res://assets/misc/skill_icon_meteor_storm2.png" id="6_wsji7"]
+[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="7_krlq7"]
+
+[sub_resource type="Resource" id="Resource_q5df0"]
+script = ExtResource("7_krlq7")
+Skill_ID = 10
+Skill_effects = 2
+Percentage = 0.025
 
 [resource]
 script = ExtResource("4_emnwv")
@@ -33,4 +40,6 @@ is_aim_skill = false
 is_target_skill = true
 insta_cast_skill = false
 is_cast_skill = false
+max_skill_charges = 0
 grimoire_Slots = Array[ExtResource("2_tplve")]([ExtResource("3_1mv8y"), ExtResource("3_1mv8y"), ExtResource("3_1mv8y"), null, null])
+skill_interaction_effects = Array[ExtResource("7_krlq7")]([SubResource("Resource_q5df0")])

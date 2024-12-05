@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://bc1quf7fuha4x"]
 
-[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_2eq3u"]
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_p8v0i"]
 [ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_q4yfd"]
 [ext_resource type="Texture2D" uid="uid://lr6g61edf1vv" path="res://assets/misc/skill_icon_lightining_strike.png" id="2_obc6o"]
+[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="4_kxt13"]
 
 [resource]
 script = ExtResource("1_p8v0i")
@@ -11,23 +11,25 @@ id = 9
 skill_name = "Lightining Strike"
 skill_description = "Lança um a tempestade no local alvo Atingindo todos os inimigos em uma área de 100 x 100."
 skill_icon = ExtResource("2_obc6o")
-skill_type = Array[int]([])
-buff_type = Array[ExtResource("1_2eq3u")]([])
+skill_type = null
+buff_type = null
 mana_cost = 45
 cooldown = 10.0
 dmg_amount = 250
 charge_time = 3.0
 effect_type = "250 + % 200% de MATK de dano mágico . 30% de chance de aplicar [color=#ffeea7][b]\"stun\"[/b][/color] ao inimigo atingido."
-amount = 0
-percentage = 0
+amount = null
+percentage = null
 skill_level = 1
 skill_max_level = 10
-is_passive = false
+is_passive = null
 weapon_required = "Staff"
-cast_time = 0.0
+cast_time = null
 is_charging_skill = true
 is_aim_skill = true
-is_target_skill = false
-insta_cast_skill = false
-is_cast_skill = false
+is_target_skill = null
+insta_cast_skill = null
+is_cast_skill = null
+max_skill_charges = 0
 grimoire_Slots = Array[ExtResource("1_q4yfd")]([null, null, null, null, null])
+skill_interaction_effects = Array[ExtResource("4_kxt13")]([])

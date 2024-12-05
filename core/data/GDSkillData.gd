@@ -3,6 +3,8 @@ extends Resource
 class_name GDSkillData
 
 enum SkillType {DAMAGE, HEAL, BUFF, DEBUFF}
+enum SkillStates {USED, IN_COOLDOWN, AVAILABLE}
+
 
 @export var id: int
 @export var skill_name: String
@@ -28,7 +30,11 @@ enum SkillType {DAMAGE, HEAL, BUFF, DEBUFF}
 @export var is_target_skill: bool
 @export var insta_cast_skill: bool
 @export var is_cast_skill: bool
+@export var max_skill_charges: int
 @export var grimoire_Slots: Array[SkillCardData]
+@export var skill_interaction_effects: Array[SkillINteractionsData]
 
 var cooldown_left: float
 var cast_left: float
+var skill_states: SkillStates
+var skill_charges: int = 1

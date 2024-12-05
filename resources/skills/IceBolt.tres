@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="GDSkillData" load_steps=6 format=3 uid="uid://q4pk2i0s2eoh"]
 
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_dc5de"]
-[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_qwxq1"]
 [ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_uhnkb"]
 [ext_resource type="Resource" uid="uid://6wkrnws25rlk" path="res://resources/cards/IceGolemCard.tres" id="2_1yes0"]
 [ext_resource type="Texture2D" uid="uid://hlxb03hokxl8" path="res://assets/misc/skill_icon_ice_bolt.png" id="2_v4axt"]
+[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="5_jgp05"]
 
 [resource]
 script = ExtResource("1_dc5de")
@@ -12,23 +12,25 @@ id = 7
 skill_name = "Ice Bolt"
 skill_description = "dispara uma lança de gelo no alvo causando dano."
 skill_icon = ExtResource("2_v4axt")
-skill_type = Array[int]([])
-buff_type = Array[ExtResource("1_qwxq1")]([])
+skill_type = null
+buff_type = null
 mana_cost = 10
 cooldown = 5.0
 dmg_amount = 100
 charge_time = 2.0
 effect_type = "100 + 50% MATK de dano mágico. Tem 20% de chance de congelar o alvo. Aplica o status [color=cyan][b]\"freeze\"[/b][/color] ao alvo atingido."
-amount = 0
-percentage = 0
+amount = null
+percentage = null
 skill_level = 1
 skill_max_level = 10
-is_passive = false
+is_passive = null
 weapon_required = "Staff"
-cast_time = 0.0
+cast_time = null
 is_charging_skill = true
-is_aim_skill = false
+is_aim_skill = null
 is_target_skill = true
-insta_cast_skill = false
-is_cast_skill = false
+insta_cast_skill = null
+is_cast_skill = null
+max_skill_charges = 0
 grimoire_Slots = Array[ExtResource("1_uhnkb")]([ExtResource("2_1yes0"), ExtResource("2_1yes0"), null, null, null])
+skill_interaction_effects = Array[ExtResource("5_jgp05")]([])
