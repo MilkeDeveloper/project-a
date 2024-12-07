@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://gcs7ypobfwur"]
+
+[ext_resource type="Script" path="res://scripts/skills/sharp_shooting.gd" id="1_wy61n"]
+[ext_resource type="PackedScene" uid="uid://erm7hk8t0e5x" path="res://game_scenes/Projectiles/special_arrow.tscn" id="2_bx102"]
+[ext_resource type="Script" path="res://assets/projectiles/Projectile.gd" id="3_4drs7"]
+[ext_resource type="Script" path="res://core/data/ProjectileData.gd" id="4_r1owx"]
+[ext_resource type="Texture2D" uid="uid://crs4cut67td74" path="res://assets/projectiles/arrow2.png" id="5_2j0fb"]
+[ext_resource type="PackedScene" uid="uid://b76ox03l1ew21" path="res://game_scenes/UI/ui_charge.tscn" id="6_rbvkw"]
+
+[sub_resource type="Resource" id="Resource_crwa0"]
+script = ExtResource("4_r1owx")
+max_distance = 600.0
+projectile_speed = 1200.0
+texture = ExtResource("5_2j0fb")
+Projectile_logic = ExtResource("3_4drs7")
+
+[node name="SharpShooting" type="Node2D" node_paths=PackedStringArray("charge_bar", "charge_label")]
+script = ExtResource("1_wy61n")
+charge_bar = NodePath("UI charge/Control/charge_bar")
+charge_label = NodePath("UI charge/Control/charge_bar/charge_label")
+num_arrows = 1
+Projectile = ExtResource("2_bx102")
+projectile_config = SubResource("Resource_crwa0")
+
+[node name="UI charge" parent="." instance=ExtResource("6_rbvkw")]
+
+[node name="charge_bar" parent="UI charge/Control" index="0"]
+min_value = 0.0
+step = 0.01
+value = 0.0
+
+[editable path="UI charge"]

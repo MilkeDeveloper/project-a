@@ -1,6 +1,7 @@
 extends SkillBase
 
-class_name SpreadShoot
+
+class_name SharpShooting
 
 @export var charge_bar: TextureProgressBar
 @export var charge_label: Label
@@ -60,8 +61,8 @@ func start_spread_shoot() -> void:
 		
 		var projectile = Projectile.instantiate()
 		
-		var maxDMG = ((player.stats.get_ATK() * 1.8) / 100) * (player.stats.get_HIT() * 5)
-		var minDMG = ((player.stats.get_minATK() * 1.8) / 100) * (player.stats.get_HIT() * 5)
+		var maxDMG = ((player.stats.get_ATK() * 2.8) / 100) * (player.stats.get_HIT() * 5)
+		var minDMG = ((player.stats.get_minATK() * 2.8) / 100) * (player.stats.get_HIT() * 5)
 		
 		projectile.position = player.global_position
 		projectile.projectile_data.texture = projectile_config.texture
@@ -113,4 +114,3 @@ func cancel_skill():
 # Aqui iniciamos a animação do personagem durante a ativação da skill
 func _handle_anim():
 	player.get_node("anim").play("idle_" + player.get_node("DirectionTracker").get_action_direction(get_global_mouse_position()))
-	

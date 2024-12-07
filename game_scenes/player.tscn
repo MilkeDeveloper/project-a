@@ -1,7 +1,8 @@
-[gd_scene load_steps=63 format=3 uid="uid://drffed2tq2jus"]
+[gd_scene load_steps=64 format=3 uid="uid://drffed2tq2jus"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_35xu0"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="2_vej8t"]
+[ext_resource type="Resource" uid="uid://b71qgyjrpumlh" path="res://resources/stats/CharacterStats.tres" id="2_yn5gp"]
 [ext_resource type="Texture2D" uid="uid://jo4x85u6g4si" path="res://assets/sprites/Sprite-Spin01.png" id="3_j7xta"]
 [ext_resource type="Texture2D" uid="uid://b3bnlsrrsgyjn" path="res://assets/sprites/Sprite-run003.png" id="3_rpmrj"]
 [ext_resource type="Texture2D" uid="uid://dxwsilp1bxe28" path="res://assets/sprites/Sprite-0003.png" id="4_org4s"]
@@ -2450,6 +2451,7 @@ z_as_relative = false
 collision_layer = 581
 collision_mask = 0
 script = ExtResource("1_35xu0")
+stats = ExtResource("2_yn5gp")
 navigation_component = NodePath("navigation")
 take_dmg = NodePath("take_damage")
 input_component = NodePath("input_component")

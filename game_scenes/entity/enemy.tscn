@@ -1122,7 +1122,7 @@ Projectile = ExtResource("22_jwrq5")
 entity = NodePath("..")
 
 [node name="hurt_timer" type="Timer" parent="."]
-wait_time = 0.13
+wait_time = 0.19
 one_shot = true
 
 [node name="Targetable" type="Node2D" parent="." groups=["targetables"]]

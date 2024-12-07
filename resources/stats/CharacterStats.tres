@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://b71qgyjrpumlh"]
+
+[ext_resource type="Script" path="res://scripts/systems/EntityStats.gd" id="1_1p5rd"]
+
+[resource]
+script = ExtResource("1_1p5rd")
+strength = 20
+agility = 50
+dexterity = 50
+intelligence = 10
+vitality = 10

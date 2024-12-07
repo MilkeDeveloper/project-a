@@ -45,7 +45,7 @@ texture_repeat = 1
 
 [resource]
 code = "shader_type canvas_item;
-render_mode blend_mix, unshaded;
+render_mode blend_add, unshaded;
 
 uniform vec4 ColorParameter : source_color;
 uniform vec2 Vector2Parameter;
@@ -98,7 +98,9 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(1072.42, -232.681)
 mode = 1
+modes/blend = 1
 flags/unshaded = true
 flags/light_only = false
 nodes/fragment/0/position = Vector2(3420, -160)

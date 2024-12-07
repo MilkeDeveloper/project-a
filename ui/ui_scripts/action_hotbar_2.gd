@@ -36,6 +36,10 @@ func _process(delta: float) -> void:
 			hsolt_cooldown.value = skill_hotbar1[i].cooldown_left
 			if skill_hotbar1[i].cooldown_left > 0.0:
 				hsolt_cooldown.get_child(0).text = str(skill_hotbar1[i].cooldown_left)
+				if skill_hotbar1[i].cooldown_left >= 10:
+					hsolt_cooldown.get_child(0).visible_characters = 4
+				else:
+					hsolt_cooldown.get_child(0).visible_characters = 3
 			else:
 				hsolt_cooldown.get_child(0).text = " "
 

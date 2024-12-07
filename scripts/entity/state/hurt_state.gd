@@ -12,13 +12,12 @@ func enter(args: Dictionary = {}) -> void:
 	print("hurt state")
 	if "target" in args:
 		attacker = args["target"]
-	
+	handle_anim()
 	entity.can_move = false
 	hurt_timer.start()
 	
 # Função chamada enquanto o estado está ativo
 func update(delta: float) -> void:
-	handle_anim()
 	transit_state()
 
 # Função chamada quando saímos do estado

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4igtmvdmdtyf"]
+[gd_scene load_steps=8 format=3 uid="uid://4igtmvdmdtyf"]
 
 [ext_resource type="Script" path="res://core/skills/skill_manager.gd" id="1_g4pl2"]
 [ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="2_jav7p"]
@@ -6,7 +6,8 @@
 [ext_resource type="Resource" uid="uid://f1027vhegein" path="res://resources/skills/MultiShoot.tres" id="4_m0cvw"]
 [ext_resource type="Resource" uid="uid://b0s17epyyhqh4" path="res://resources/skills/QuickSteps.tres" id="5_ex5gj"]
 [ext_resource type="Resource" uid="uid://balr7abbigcvf" path="res://resources/skills/SpreadShoot.tres" id="6_28j6v"]
+[ext_resource type="Resource" uid="uid://csg6xy3xm2pi6" path="res://resources/skills/SharpSooting.tres" id="7_yh1i3"]
 
 [node name="SkillManager" type="Node"]
 script = ExtResource("1_g4pl2")
-hotbar_skills = Array[ExtResource("2_jav7p")]([ExtResource("3_vw4px"), ExtResource("4_m0cvw"), ExtResource("5_ex5gj"), ExtResource("6_28j6v"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+hotbar_skills = Array[ExtResource("2_jav7p")]([ExtResource("3_vw4px"), ExtResource("4_m0cvw"), ExtResource("5_ex5gj"), ExtResource("6_28j6v"), ExtResource("7_yh1i3"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

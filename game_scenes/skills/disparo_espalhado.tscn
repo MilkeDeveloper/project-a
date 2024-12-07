@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ltjdh404tmpc"]
 
 [ext_resource type="Script" path="res://scripts/player/projectile_compoenent.gd" id="1_rl2pr"]
-[ext_resource type="PackedScene" uid="uid://klgctucux3ww" path="res://game_scenes/Projectiles/arrow.tscn" id="2_dks8x"]
+[ext_resource type="PackedScene" uid="uid://erm7hk8t0e5x" path="res://game_scenes/Projectiles/special_arrow.tscn" id="2_lmnxq"]
 [ext_resource type="Script" path="res://assets/projectiles/Projectile.gd" id="3_djq28"]
 [ext_resource type="Script" path="res://core/data/ProjectileData.gd" id="4_rfhyn"]
 [ext_resource type="Texture2D" uid="uid://crs4cut67td74" path="res://assets/projectiles/arrow2.png" id="5_4pi48"]
@@ -18,7 +18,7 @@ Projectile_logic = ExtResource("3_djq28")
 script = ExtResource("1_rl2pr")
 charge_bar = NodePath("UI charge/Control/charge_bar")
 charge_label = NodePath("UI charge/Control/charge_bar/charge_label")
-Projectile = ExtResource("2_dks8x")
+Projectile = ExtResource("2_lmnxq")
 projectile_config = SubResource("Resource_4jxti")
 
 [node name="UI charge" parent="." instance=ExtResource("6_bu53h")]

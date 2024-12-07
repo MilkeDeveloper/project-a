@@ -11,6 +11,7 @@ var cast_started: bool = false
 
 var skill_instance: Node = null
 var last_used_skill_ID: GDSkillData
+var used_skills: Array[GDSkillData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,6 +35,9 @@ func cooldown_process(delta: float):
 				if skill_data.cooldown_left < 0:
 					skill_data.cooldown_left = 0
 					print("A skill está pronta para uso novamente!")
+					for skill in used_skills:
+						if skill == skill_data:
+							used_skills.erase(skill)
 
 func cast_process(delta: float):
 	for skill_data in hotbar_skills:
@@ -106,13 +110,16 @@ func activate_skill(skill_id: int, player: CharacterBody2D, target: Node = null)
 						
 
 func verify_skill_interactions(last_skill_ID: GDSkillData, skill_data: GDSkillData):
-	if last_skill_ID.skill_interaction_effects.size() > 0:
+	if skill_data.skill_interaction_effects.size() > 0:
 		for effect in skill_data.skill_interaction_effects:
 			if effect.Skill_ID == last_skill_ID.id:
 				apply_skill_effect(effect.Skill_effects, last_skill_ID, effect.Percentage)
-				last_used_skill_ID = skill_data
-	else:
-		print("nao foi encontrada interação válida para essa skill")
+			else:
+				for skill in used_skills:
+					if skill.id == effect.Skill_ID:
+						if skill.skill_states == 1:
+							apply_skill_effect(effect.Skill_effects, skill, effect.Percentage)
+	
 			
 func apply_skill_effect(skill_effect: SkillINteractionsData.Effects, last_skill_data: GDSkillData, percentage: float):
 		match skill_effect:
@@ -131,9 +138,13 @@ func cancel_skill(skill_id: int):
 		if skill != null and skill.id == skill_id:
 			var skill_data = skill
 			if skill_instance != null and skill_instance.has_method("cancel_skill"):
-				if skill_instance != null and skill.is_cast_skill:
+				if skill_instance != null and skill.is_cast_skill and skill.cast_left <= 0:
 					GLobals.emit_signal("key_skill_released", skill_id)
 					skill_instance.cancel_skill()
+					last_used_skill_ID = skill_data
+					skill_data.skill_states = 1
+					used_skills.append(skill_data)
+					
 					if last_used_skill_ID != null:
 						verify_skill_interactions(last_used_skill_ID, skill_data)
 						

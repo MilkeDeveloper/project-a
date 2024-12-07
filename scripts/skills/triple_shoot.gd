@@ -45,10 +45,13 @@ func _process(delta: float) -> void:
 			else:
 				projectile.position = $Marker2D3/Marker2D2.global_position
 				shoot_count = 0
-
+			
+			var maxDMG = ((player.stats.get_ATK() * 1.8) / 100) * (player.stats.get_HIT() * 3.3)
+			var minDMG = ((player.stats.get_minATK() * 1.8) / 100) * (player.stats.get_HIT() * 3.3)
+			
 			projectile.projectile_data.texture = ProjectileConfig.texture
 			projectile.projectile_data.Projectile_logic = ProjectileConfig.Projectile_logic
-			projectile.var_damage = randi_range((skill_dmg * 0.5), skill_dmg)
+			projectile.var_damage = randi_range(minDMG, maxDMG)
 			projectile.var_attacker = player
 			projectile.var_max_distance = ProjectileConfig.max_distance
 			projectile.var_speed = ProjectileConfig.projectile_speed

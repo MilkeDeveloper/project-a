@@ -14,7 +14,7 @@ var is_attacking: bool = false
 
 func _ready() -> void:
 	add_child(timer)
-	timer.wait_time = 50 / attack_speed
+	timer.wait_time = 50 / get_parent().stats.get_ASPD()
 	timer.one_shot = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

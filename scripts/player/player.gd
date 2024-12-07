@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
+@export var stats: EntityStats
 @export var navigation_component: NavigationAgent2D
 @export var take_dmg: Node2D
 @export var input_component: Node2D

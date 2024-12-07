@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=8 format=3 uid="uid://csg6xy3xm2pi6"]
+
+[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_pd3lr"]
+[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="2_qeypg"]
+[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="3_uripq"]
+[ext_resource type="PackedScene" uid="uid://gcs7ypobfwur" path="res://game_scenes/skills/sharp_shooting.tscn" id="4_8tdnt"]
+[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="4_lpbcv"]
+[ext_resource type="Texture2D" uid="uid://dv5232x34sggp" path="res://assets/misc/skill_icon_arrow_assault.png" id="5_a1koy"]
+
+[sub_resource type="Resource" id="Resource_b2648"]
+script = ExtResource("4_lpbcv")
+Skill_ID = 11
+Skill_effects = 1
+Percentage = 2.5
+
+[resource]
+script = ExtResource("3_uripq")
+id = 12
+skill_name = "Disparo Preciso"
+skill_description = "Carrega seu arco até o máximo para disparar uma poderosa flecha contra o inimigo."
+skill_icon = ExtResource("5_a1koy")
+skill_type = Array[int]([])
+buff_type = Array[ExtResource("1_pd3lr")]([])
+mana_cost = 45
+cooldown = 15.0
+dmg_amount = 0
+charge_time = 0.0
+effect_type = "Dano baseado HIT e ATK do personagem"
+amount = 0
+percentage = 0
+skill_effect = ExtResource("4_8tdnt")
+skill_level = 1
+skill_max_level = 10
+is_passive = false
+weapon_required = "Bow"
+cast_time = 1.0
+is_charging_skill = false
+is_aim_skill = false
+is_target_skill = false
+insta_cast_skill = false
+is_cast_skill = true
+max_skill_charges = 0
+grimoire_Slots = Array[ExtResource("2_qeypg")]([null, null, null, null, null])
+skill_interaction_effects = Array[ExtResource("4_lpbcv")]([SubResource("Resource_b2648")])
