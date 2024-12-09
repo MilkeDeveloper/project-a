@@ -55,6 +55,8 @@ func use_skill(_player, skill_damage, _cooldown, _cast_time, target = null):
 	GLobals.spinning = true
 	start_timers()
 	set_process(true)
+	
+	original_player.is_skill_charging = true
 
 func shoot_random_direction():
 	randomize()
@@ -106,6 +108,8 @@ func cancel_skill():
 		is_charging = false
 	
 	charge_bar.value = 0 # Reseta a charge bar após o encerramento da skill
+	
+	original_player.is_skill_charging = false
 	
 	cast_skill = false
 	original_player.SPEED = original_speed

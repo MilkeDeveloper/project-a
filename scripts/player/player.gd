@@ -13,6 +13,8 @@ class_name Player
 @export var jumping: bool
 @export var is_in_combat: bool
 
+var is_skill_charging: bool
+
 var action_keys = {
 	"attack": "basic_attack",
 	"block": "block",

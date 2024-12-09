@@ -18,6 +18,11 @@ func apply_dmg_popup(damage: int, attacker: Node, target: Node, popup_anim: Stri
 	
 	dmg_popup.start_popup2(damage, popup_anim, attacker, self)
 	
-	entity.get_node("navigation").set_process(false)
-	await get_tree().create_timer(0.2).timeout
-	entity.get_node("navigation").set_process(true)
+	if entity.is_skill_charging or entity.get_node("dash_component").is_dashing:
+		print("ignore hurt")
+	else:
+		entity.get_node("navigation").set_process(false)
+		await get_tree().create_timer(0.2).timeout
+		entity.get_node("navigation").set_process(true)
+	
+	
