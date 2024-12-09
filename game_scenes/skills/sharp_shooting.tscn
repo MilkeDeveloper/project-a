@@ -10,7 +10,7 @@
 [sub_resource type="Resource" id="Resource_crwa0"]
 script = ExtResource("4_r1owx")
 max_distance = 600.0
-projectile_speed = 1200.0
+projectile_speed = 1800.0
 texture = ExtResource("5_2j0fb")
 Projectile_logic = ExtResource("3_4drs7")
 

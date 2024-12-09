@@ -45,13 +45,13 @@ func _process(delta: float) -> void:
 func take_damage(damage, attacker, target_attacker, effect_anim_name):
 	_attacker = attacker
 	apply_hurt_effect(effect_anim_name)
-	var anim_name = "alt_default_dmg"
+	var anim_name = "default_dmg"
 	var dmg_popup = popup_instance.instantiate()
 	randomize()
-	dmg_popup.position.x = global_position.x + randi_range(-12, 12)
-	dmg_popup.position.y = global_position.y + randi_range(-12, 12)
+	dmg_popup.position.x = global_position.x + randi_range(-0, 0)
+	dmg_popup.position.y = global_position.y + randi_range(12, 12)
 	get_parent().get_node("take_dmg").add_child(dmg_popup)
-	dmg_popup.start_popup2(damage, anim_name, attacker, target_attacker)
+	dmg_popup.start_popup(damage, anim_name, attacker, target_attacker)
 	apply_damage(damage)
 	get_node("navigation").set_process(false)
 	state_manager.change_state("HurtState", {"target": attacker})
@@ -72,13 +72,13 @@ func take_damage(damage, attacker, target_attacker, effect_anim_name):
 func take_basic_damage(damage, attacker, target_attacker, effect_anim_name):
 	_attacker = attacker
 	apply_hurt_effect(effect_anim_name)
-	var anim_name = "alt_default_dmg"
+	var anim_name = "default_dmg"
 	var dmg_popup = popup_instance.instantiate()
 	randomize()
-	dmg_popup.position.x = global_position.x + randi_range(-15, 15)
-	dmg_popup.position.y = global_position.y + randi_range(-10, 10)
+	dmg_popup.position.x = global_position.x + randi_range(0, 0)
+	dmg_popup.position.y = global_position.y + randi_range(10, 10)
 	get_parent().get_node("take_dmg").add_child(dmg_popup)
-	dmg_popup.start_popup2(damage, anim_name, attacker, target_attacker)
+	dmg_popup.start_popup(damage, anim_name, attacker, target_attacker)
 	apply_damage(damage)
 	get_node("navigation").set_process(false)
 	state_manager.change_state("HurtState", {"target": attacker})

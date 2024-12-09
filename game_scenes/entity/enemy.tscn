@@ -951,7 +951,7 @@ radius = 16.25
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("state_manager") groups=["entity"]]
 z_index = 1
 scale = Vector2(0.8, 0.8)
-collision_layer = 561
+collision_layer = 569
 collision_mask = 0
 input_pickable = true
 script = ExtResource("1_c1oxh")

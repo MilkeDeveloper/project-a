@@ -13,6 +13,7 @@ var player_position: Vector2
 var original_speed: float
 var original_player: Node
 var charge_time: float = 0.0
+var affected_entities: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -123,3 +124,19 @@ func _on_skill_timer_timeout() -> void:
 func _on_time_between_arrows_timeout() -> void:
 	if cast_skill:
 		shoot_random_direction()
+		_hit_damage()
+
+func _hit_damage():
+	for entity in affected_entities:
+		if entity.hp >= 0:
+			if entity.has_method("take_damage"):
+				entity.take_damage(damage, original_player, entity, "magic_hit")
+		
+
+func _on_impact_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("entity"):
+		affected_entities.append(body)
+
+func _on_impact_area_body_exited(body: Node2D) -> void:
+	if affected_entities.size() > 0:
+		affected_entities.erase(body)

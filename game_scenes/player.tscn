@@ -2633,7 +2633,7 @@ Projectile = ExtResource("20_2b3o1")
 ProjectileConfig = ExtResource("21_0l2rf")
 basic_dmg = 135
 attack_speed = 150.0
-attack_range = 350.0
+attack_range = 500.0
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
