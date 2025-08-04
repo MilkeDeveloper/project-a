@@ -80,8 +80,8 @@ target_var = &"target"
 text = "O player está no range de ataque"
 
 [sub_resource type="BBNode" id="BBNode_j5e5a"]
-saved_value = NodePath("Actions")
-resource_name = "Actions"
+saved_value = NodePath("AttackState")
+resource_name = "AttackState"
 
 [sub_resource type="BTCallMethod" id="BTCallMethod_drigp"]
 node = SubResource("BBNode_j5e5a")

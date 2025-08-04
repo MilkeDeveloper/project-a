@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cdvbhhh52rcly"]
+[gd_scene load_steps=54 format=3 uid="uid://cdvbhhh52rcly"]
 
 [ext_resource type="Script" uid="uid://coioa4wf2twhj" path="res://scripts/entity/enemy.gd" id="1_c1oxh"]
 [ext_resource type="Texture2D" uid="uid://hfl3wyri0liy" path="res://assets/sprites/piglet01.png" id="1_d8qkr"]
@@ -23,16 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://cgbn32e7ojfou" path="res://assets/misc/HUDhpbar_under.png" id="24_f3ppg"]
 [ext_resource type="Script" uid="uid://dlm0umo71bvgd" path="res://scripts/systems/targetable.gd" id="24_oxuvv"]
 [ext_resource type="Texture2D" uid="uid://7k0vk78eyjin" path="res://assets/misc/HUDhpbar_cover.png" id="25_leg7g"]
+[ext_resource type="PackedScene" uid="uid://cci2v6hlukcyu" path="res://game_scenes/systems/Entity/state_machine.tscn" id="26_0lsvm"]
 [ext_resource type="Texture2D" uid="uid://ft4uqju6n50g" path="res://assets/misc/HudBar_fill.png" id="26_6rxso"]
-[ext_resource type="Script" uid="uid://citcfu6w5tvvq" path="res://ai/manager/state_machine.gd" id="29_cycs5"]
-[ext_resource type="Script" uid="uid://qgixuc2fdeo6" path="res://ai/states/generic/idle.gd" id="30_f3ppg"]
-[ext_resource type="Script" uid="uid://jxt0hsre057n" path="res://ai/states/generic/chase.gd" id="31_6rxso"]
-[ext_resource type="Script" uid="uid://cjxnraay3q3t4" path="res://ai/states/generic/patrol.gd" id="31_leg7g"]
-[ext_resource type="BehaviorTree" uid="uid://csfgcxmsd127s" path="res://gameAI/Panther.tres" id="32_6rxso"]
 [ext_resource type="Script" uid="uid://dss3wbtbr7j3m" path="res://scripts/entity/actions.gd" id="32_krwcr"]
-[ext_resource type="Script" uid="uid://hgwmpdvlvody" path="res://ai/states/generic/attack.gd" id="33_krwcr"]
-[ext_resource type="Script" uid="uid://b61yfepkhak74" path="res://ai/states/generic/death.gd" id="33_r4muw"]
-[ext_resource type="Script" uid="uid://d1bxap88tig4r" path="res://ai/states/generic/hurt.gd" id="34_r4muw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mca3"]
 radius = 31.251
@@ -1295,73 +1288,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogj41"]
 radius = 16.25
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_krwcr"]
-
-[sub_resource type="BTWait" id="BTWait_f3ppg"]
-
-[sub_resource type="BTSequence" id="BTSequence_krwcr"]
-children = [SubResource("BTWait_f3ppg")]
-
-[sub_resource type="BehaviorTree" id="BehaviorTree_r4muw"]
-blackboard_plan = SubResource("BlackboardPlan_krwcr")
-root_task = SubResource("BTSequence_krwcr")
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_f3ppg"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_iof6o"]
-
-[sub_resource type="BTWait" id="BTWait_leg7g"]
-
-[sub_resource type="BTSequence" id="BTSequence_lr84t"]
-children = [SubResource("BTWait_leg7g")]
-
-[sub_resource type="BehaviorTree" id="BehaviorTree_vlw4x"]
-blackboard_plan = SubResource("BlackboardPlan_iof6o")
-root_task = SubResource("BTSequence_lr84t")
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_leg7g"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_1202b"]
-
-[sub_resource type="BTWait" id="BTWait_6rxso"]
-
-[sub_resource type="BTSequence" id="BTSequence_iof6o"]
-children = [SubResource("BTWait_6rxso")]
-
-[sub_resource type="BehaviorTree" id="BehaviorTree_kr8kd"]
-blackboard_plan = SubResource("BlackboardPlan_1202b")
-root_task = SubResource("BTSequence_iof6o")
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_6rxso"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_r4muw"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_j62gx"]
-
-[sub_resource type="BTWait" id="BTWait_r4muw"]
-
-[sub_resource type="BTSequence" id="BTSequence_1ao84"]
-children = [SubResource("BTWait_r4muw")]
-
-[sub_resource type="BehaviorTree" id="BehaviorTree_jnxkf"]
-blackboard_plan = SubResource("BlackboardPlan_j62gx")
-root_task = SubResource("BTSequence_1ao84")
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_lr84t"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_521lk"]
-
-[sub_resource type="BTWait" id="BTWait_lr84t"]
-
-[sub_resource type="BTSequence" id="BTSequence_j62gx"]
-children = [SubResource("BTWait_lr84t")]
-
-[sub_resource type="BehaviorTree" id="BehaviorTree_auajx"]
-blackboard_plan = SubResource("BlackboardPlan_521lk")
-root_task = SubResource("BTSequence_j62gx")
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_hiud0"]
-
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("limbo_tree", "action", "state_manager") groups=["entity"]]
 z_index = 1
 scale = Vector2(0.7, 0.7)
@@ -1376,7 +1302,7 @@ level = 25
 damage = 79
 detection_range = 360.0
 attack_range = 320.0
-limbo_tree = NodePath("StateMachine/AttackState")
+limbo_tree = NodePath("StateMachine")
 action = NodePath("Actions")
 popup_instance = ExtResource("2_ve010")
 dmg_effect = ExtResource("3_iqlnw")
@@ -1574,8 +1500,7 @@ movement_node = NodePath("../movement")
 action = NodePath("../action_node")
 attacktimer = NodePath("../attack_timer")
 
-[node name="StateMachine" type="LimboHSM" parent="." node_paths=PackedStringArray("states", "entity")]
-script = ExtResource("29_cycs5")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("states", "entity") instance=ExtResource("26_0lsvm")]
 states = {
 &"attack": NodePath("AttackState"),
 &"chase": NodePath("ChaseState"),
@@ -1586,55 +1511,7 @@ states = {
 }
 entity = NodePath("..")
 
-[node name="IdleState" type="BTState" parent="StateMachine" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node")]
-behavior_tree = SubResource("BehaviorTree_r4muw")
-blackboard_plan = SubResource("BlackboardPlan_f3ppg")
-script = ExtResource("30_f3ppg")
-actor = NodePath("../..")
-action = NodePath("../../Actions")
-animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
-movement_node = NodePath("../../movement")
-max_distance = 360.0
-
-[node name="PatrolState" type="BTState" parent="StateMachine" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation")]
-behavior_tree = SubResource("BehaviorTree_vlw4x")
-blackboard_plan = SubResource("BlackboardPlan_leg7g")
-script = ExtResource("31_leg7g")
-actor = NodePath("../..")
-action = NodePath("../../Actions")
-animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
-movement_node = NodePath("../../movement")
-navigation = NodePath("../../navigation")
-max_distance = 360.0
-
-[node name="ChaseState" type="BTState" parent="StateMachine" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node")]
-behavior_tree = SubResource("BehaviorTree_kr8kd")
-blackboard_plan = SubResource("BlackboardPlan_6rxso")
-script = ExtResource("31_6rxso")
-actor = NodePath("../..")
-action = NodePath("../../Actions")
-animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
-movement_node = NodePath("../../movement")
-max_distance = 360.0
-
-[node name="AttackState" type="BTState" parent="StateMachine" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation")]
-behavior_tree = ExtResource("32_6rxso")
-blackboard_plan = SubResource("BlackboardPlan_r4muw")
-script = ExtResource("33_krwcr")
-actor = NodePath("../..")
-action = NodePath("../../Actions")
-animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
-movement_node = NodePath("../../movement")
-navigation = NodePath("../../navigation")
-
-[node name="HurtState" type="BTState" parent="StateMachine" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
-behavior_tree = SubResource("BehaviorTree_jnxkf")
-blackboard_plan = SubResource("BlackboardPlan_lr84t")
-script = ExtResource("34_r4muw")
+[node name="IdleState" parent="StateMachine" index="0" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
 actor = NodePath("../..")
 action = NodePath("../../Actions")
 animation = NodePath("../../anim")
@@ -1643,16 +1520,34 @@ movement_node = NodePath("../../movement")
 navigation = NodePath("../../navigation")
 hurt_timer = NodePath("../../hurt_timer")
 
-[node name="DeathState" type="BTState" parent="StateMachine" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation")]
-behavior_tree = SubResource("BehaviorTree_auajx")
-blackboard_plan = SubResource("BlackboardPlan_hiud0")
-script = ExtResource("33_r4muw")
+[node name="PatrolState" parent="StateMachine" index="1" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
 actor = NodePath("../..")
 action = NodePath("../../Actions")
 animation = NodePath("../../anim")
 direction = NodePath("../../DirectionTracker")
 movement_node = NodePath("../../movement")
 navigation = NodePath("../../navigation")
+hurt_timer = NodePath("../../hurt_timer")
+
+[node name="ChaseState" parent="StateMachine" index="2" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
+actor = NodePath("../..")
+action = NodePath("../../Actions")
+animation = NodePath("../../anim")
+direction = NodePath("../../DirectionTracker")
+movement_node = NodePath("../../movement")
+navigation = NodePath("../../navigation")
+hurt_timer = NodePath("../../hurt_timer")
+
+[node name="AttackState" parent="StateMachine" index="3" node_paths=PackedStringArray("actor", "action", "entity_action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
+actor = NodePath("../..")
+action = NodePath("../../Actions")
+entity_action = NodePath("../../action_node")
+animation = NodePath("../../anim")
+direction = NodePath("../../DirectionTracker")
+movement_node = NodePath("../../movement")
+navigation = NodePath("../../navigation")
+hurt_timer = NodePath("../../hurt_timer")
+max_distance = 320.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
@@ -1660,3 +1555,4 @@ navigation = NodePath("../../navigation")
 [connection signal="destination_reached" from="navigation" to="movement" method="_on_destination_reached"]
 
 [editable path="sprite/hud_entity"]
+[editable path="StateMachine"]

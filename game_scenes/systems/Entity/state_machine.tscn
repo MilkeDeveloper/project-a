@@ -1,0 +1,121 @@
+[gd_scene load_steps=35 format=3 uid="uid://cci2v6hlukcyu"]
+
+[ext_resource type="Script" uid="uid://citcfu6w5tvvq" path="res://ai/manager/state_machine.gd" id="1_hutwe"]
+[ext_resource type="Script" uid="uid://qgixuc2fdeo6" path="res://ai/states/generic/idle.gd" id="2_3bqyt"]
+[ext_resource type="Script" uid="uid://cjxnraay3q3t4" path="res://ai/states/generic/patrol.gd" id="3_ee2pk"]
+[ext_resource type="Script" uid="uid://jxt0hsre057n" path="res://ai/states/generic/chase.gd" id="4_kpvx4"]
+[ext_resource type="BehaviorTree" uid="uid://csfgcxmsd127s" path="res://gameAI/Panther.tres" id="5_vb00r"]
+[ext_resource type="Script" uid="uid://hgwmpdvlvody" path="res://ai/states/generic/attack.gd" id="6_4kmin"]
+[ext_resource type="Script" uid="uid://d1bxap88tig4r" path="res://ai/states/generic/hurt.gd" id="7_bt2pr"]
+[ext_resource type="Script" uid="uid://b61yfepkhak74" path="res://ai/states/generic/death.gd" id="8_c4fav"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_krwcr"]
+
+[sub_resource type="BTWait" id="BTWait_f3ppg"]
+
+[sub_resource type="BTSequence" id="BTSequence_krwcr"]
+children = [SubResource("BTWait_f3ppg")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_r4muw"]
+blackboard_plan = SubResource("BlackboardPlan_krwcr")
+root_task = SubResource("BTSequence_krwcr")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_8w8g3"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_iof6o"]
+
+[sub_resource type="BTWait" id="BTWait_leg7g"]
+
+[sub_resource type="BTSequence" id="BTSequence_lr84t"]
+children = [SubResource("BTWait_leg7g")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_vlw4x"]
+blackboard_plan = SubResource("BlackboardPlan_iof6o")
+root_task = SubResource("BTSequence_lr84t")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_i2wwb"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_1202b"]
+
+[sub_resource type="BTWait" id="BTWait_6rxso"]
+
+[sub_resource type="BTSequence" id="BTSequence_iof6o"]
+children = [SubResource("BTWait_6rxso")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_kr8kd"]
+blackboard_plan = SubResource("BlackboardPlan_1202b")
+root_task = SubResource("BTSequence_iof6o")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_qlwxn"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ycsth"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_j62gx"]
+
+[sub_resource type="BTWait" id="BTWait_r4muw"]
+
+[sub_resource type="BTSequence" id="BTSequence_1ao84"]
+children = [SubResource("BTWait_r4muw")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_jnxkf"]
+blackboard_plan = SubResource("BlackboardPlan_j62gx")
+root_task = SubResource("BTSequence_1ao84")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_jgclr"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_521lk"]
+
+[sub_resource type="BTWait" id="BTWait_lr84t"]
+
+[sub_resource type="BTSequence" id="BTSequence_j62gx"]
+children = [SubResource("BTWait_lr84t")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_auajx"]
+blackboard_plan = SubResource("BlackboardPlan_521lk")
+root_task = SubResource("BTSequence_j62gx")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_sr8gr"]
+
+[node name="StateMachine" type="LimboHSM" node_paths=PackedStringArray("states")]
+script = ExtResource("1_hutwe")
+states = {
+&"attack": NodePath("AttackState"),
+&"chase": NodePath("ChaseState"),
+&"death": NodePath("DeathState"),
+&"hurt": NodePath("HurtState"),
+&"idle": NodePath("IdleState"),
+&"patrol": NodePath("PatrolState")
+}
+
+[node name="IdleState" type="BTState" parent="."]
+behavior_tree = SubResource("BehaviorTree_r4muw")
+blackboard_plan = SubResource("BlackboardPlan_8w8g3")
+script = ExtResource("2_3bqyt")
+max_distance = 360.0
+
+[node name="PatrolState" type="BTState" parent="."]
+behavior_tree = SubResource("BehaviorTree_vlw4x")
+blackboard_plan = SubResource("BlackboardPlan_i2wwb")
+script = ExtResource("3_ee2pk")
+max_distance = 360.0
+
+[node name="ChaseState" type="BTState" parent="."]
+behavior_tree = SubResource("BehaviorTree_kr8kd")
+blackboard_plan = SubResource("BlackboardPlan_qlwxn")
+script = ExtResource("4_kpvx4")
+max_distance = 360.0
+
+[node name="AttackState" type="BTState" parent="."]
+behavior_tree = ExtResource("5_vb00r")
+blackboard_plan = SubResource("BlackboardPlan_ycsth")
+script = ExtResource("6_4kmin")
+
+[node name="HurtState" type="BTState" parent="."]
+behavior_tree = SubResource("BehaviorTree_jnxkf")
+blackboard_plan = SubResource("BlackboardPlan_jgclr")
+script = ExtResource("7_bt2pr")
+
+[node name="DeathState" type="BTState" parent="."]
+behavior_tree = SubResource("BehaviorTree_auajx")
+blackboard_plan = SubResource("BlackboardPlan_sr8gr")
+script = ExtResource("8_c4fav")

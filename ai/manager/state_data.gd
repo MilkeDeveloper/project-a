@@ -4,6 +4,7 @@ class_name StateData
 
 @export var actor: CharacterBody2D
 @export var action: Node
+@export var entity_action: Node2D
 @export var animation: AnimationPlayer
 @export var direction: DirectionTracker
 @export var movement_node: Node2D

@@ -10,7 +10,7 @@ class_name Entity
 @export var detection_range: float
 @export var attack_range: float
 @export var can_move: bool = true
-@export var limbo_tree: BTState
+@export var limbo_tree: LimboHSM
 @export var action: Node
 
 @onready var hud_entity: Control = $sprite/hud_entity
