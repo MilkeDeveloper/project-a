@@ -7059,6 +7059,9 @@ navigation_polygon = SubResource("NavigationPolygon_ki0lx")
 z_as_relative = true
 position = Vector2(1733, 129)
 
+[node name="GPUParticles2D" parent="Player/sprite" index="2"]
+seed = 3282149350
+
 [node name="smoke_step" parent="Player" index="18"]
 texture = null
 
