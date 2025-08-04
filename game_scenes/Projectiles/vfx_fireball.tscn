@@ -1,14 +1,14 @@
 [gd_scene load_steps=29 format=3 uid="uid://pr8claufjmgg"]
 
 [ext_resource type="Shader" uid="uid://c4qtynpca43ib" path="res://shaders/firebal_shader.tres" id="1_nyeao"]
-[ext_resource type="Script" path="res://scripts/Projectiles/fireball_projectile.gd" id="1_wu4rg"]
+[ext_resource type="Script" uid="uid://uedt17gs4fdi" path="res://scripts/Projectiles/fireball_projectile.gd" id="1_wu4rg"]
 [ext_resource type="Texture2D" uid="uid://l6qh58x0rc51" path="res://assets/textures/NoiseTextures/Milky/Milky_07-512x512.png" id="2_6decw"]
 [ext_resource type="Texture2D" uid="uid://dxrh7tm3a5ehw" path="res://assets/textures/head.png" id="2_mrvxa"]
 [ext_resource type="Texture2D" uid="uid://dccomjx72hqfw" path="res://VFX/effects/energyball_4.png" id="4_83akh"]
 [ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="7_mta6i"]
 [ext_resource type="PackedScene" uid="uid://c74rasfa8qw8u" path="res://game_scenes/Projectiles/vfx_fireball_explosion.tscn" id="7_qjrcw"]
 [ext_resource type="Texture2D" uid="uid://d3vlxiga07ha4" path="res://VFX/effects/50.png" id="7_vidji"]
-[ext_resource type="Script" path="res://game_scenes/Projectiles/animate_fireball.gd" id="9_ahhgo"]
+[ext_resource type="Script" uid="uid://cj5og2rxoq2cb" path="res://game_scenes/Projectiles/animate_fireball.gd" id="9_ahhgo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw506"]
 height = 21.9994
@@ -31,7 +31,7 @@ point_count = 2
 curve = SubResource("Curve_mbdku")
 
 [sub_resource type="Curve" id="Curve_rwftu"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -127,8 +127,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nnxya"]
 _data = {
-"RESET": SubResource("Animation_54y7n"),
-"fire_ball_anim": SubResource("Animation_3m8oc")
+&"RESET": SubResource("Animation_54y7n"),
+&"fire_ball_anim": SubResource("Animation_3m8oc")
 }
 
 [node name="VFX Fireball" type="Area2D"]
@@ -154,9 +154,9 @@ texture = ExtResource("2_mrvxa")
 modulate = Color(1, 1, 1, 0.231373)
 position = Vector2(16, 0)
 scale = Vector2(0.05, 0.05)
-process_material = SubResource("ParticleProcessMaterial_oxx2w")
 texture = ExtResource("4_83akh")
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_oxx2w")
 
 [node name="PointLight2D" type="PointLight2D" parent="ball"]
 position = Vector2(-154.5, 0)
@@ -172,11 +172,11 @@ material = SubResource("CanvasItemMaterial_gfhy4")
 position = Vector2(18, 0)
 scale = Vector2(0.05, 0.05)
 amount = 200
-process_material = SubResource("ParticleProcessMaterial_p62c2")
 texture = ExtResource("7_vidji")
 lifetime = 2.0
 speed_scale = 3.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_p62c2")
 
 [node name="animation" type="Node2D" parent="."]
 script = ExtResource("9_ahhgo")
@@ -184,5 +184,5 @@ script = ExtResource("9_ahhgo")
 [node name="anim" type="AnimationPlayer" parent="animation"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_nnxya")
+&"": SubResource("AnimationLibrary_nnxya")
 }

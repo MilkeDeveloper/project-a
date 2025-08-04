@@ -22,8 +22,8 @@ enum SkillStates {USED, IN_COOLDOWN, AVAILABLE}
 @export var skill_effect: PackedScene
 @export var skill_level: int
 @export var skill_max_level: int
-@export var is_passive: bool
-@export var weapon_required: String
+@export var essence_required: Array[int] = [0, 10, 20, 30, 50]
+@export var skill_essences: int
 @export var cast_time: float = 0
 @export var is_charging_skill: bool
 @export var is_aim_skill: bool
@@ -31,7 +31,6 @@ enum SkillStates {USED, IN_COOLDOWN, AVAILABLE}
 @export var insta_cast_skill: bool
 @export var is_cast_skill: bool
 @export var max_skill_charges: int
-@export var grimoire_Slots: Array[SkillCardData]
 @export var skill_interaction_effects: Array[SkillINteractionsData]
 
 var cooldown_left: float

@@ -6,3 +6,5 @@ class_name CombatGlobals
 var can_attack: bool = true
 var is_attacking: bool = false
 var can_move: bool = true
+
+var enemy = null

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bglf2lqqth734"]
 
-[ext_resource type="Script" path="res://scripts/skills/corrent.gd" id="1_4s6mi"]
+[ext_resource type="Script" uid="uid://dlv6xuwvdv6th" path="res://scripts/skills/corrent.gd" id="1_4s6mi"]
 [ext_resource type="Texture2D" uid="uid://qfh7k37rdaop" path="res://assets/misc/corrent.png" id="2_8hp3e"]
 [ext_resource type="Texture2D" uid="uid://mhvg558t6cdg" path="res://VFX/Complex/smoke/smoke2_4.png" id="3_mqwco"]
 

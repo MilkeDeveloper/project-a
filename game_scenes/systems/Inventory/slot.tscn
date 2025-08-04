@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bd8xhujhk3po6"]
 
 [ext_resource type="Texture2D" uid="uid://dahu8kpwp4qto" path="res://assets/misc/hotbar_slot3.png" id="1_gsh3j"]
-[ext_resource type="Script" path="res://scripts/systems/Inventory/slot.gd" id="2_txg3k"]
+[ext_resource type="Script" uid="uid://demlvc5hulwky" path="res://scripts/systems/Inventory/slot.gd" id="2_txg3k"]
 
 [node name="slot" type="TextureButton"]
 custom_minimum_size = Vector2(50, 50)

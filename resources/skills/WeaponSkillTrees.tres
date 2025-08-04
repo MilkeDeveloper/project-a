@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SkillWeaponClass" load_steps=11 format=3 uid="uid://cg6jal838spvt"]
 
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_836df"]
-[ext_resource type="Script" path="res://scripts/systems/skill_core/game_skills.gd" id="2_m6bef"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="1_836df"]
+[ext_resource type="Script" uid="uid://mjn2hie6uyo4" path="res://scripts/systems/skill_core/game_skills.gd" id="2_m6bef"]
 [ext_resource type="Resource" uid="uid://f1027vhegein" path="res://resources/skills/MultiShoot.tres" id="2_nahvr"]
 [ext_resource type="Resource" uid="uid://dkh2dlrw1nh71" path="res://resources/skills/Heal.tres" id="2_tm5uf"]
 [ext_resource type="Resource" uid="uid://q4pk2i0s2eoh" path="res://resources/skills/IceBolt.tres" id="3_ottco"]

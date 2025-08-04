@@ -1,0 +1,184 @@
+[gd_resource type="BehaviorTree" load_steps=39 format=3 uid="uid://csfgcxmsd127s"]
+
+[ext_resource type="Script" uid="uid://biyq0yvhphfrg" path="res://ai/tasks/actions/GetTarget.gd" id="1_j5e5a"]
+[ext_resource type="Script" uid="uid://b6okdeso6o4xk" path="res://ai/tasks/actions/GetNode.gd" id="1_l4sms"]
+[ext_resource type="Script" uid="uid://cxk537sr3fckh" path="res://ai/tasks/conditions/is_in_range.gd" id="4_i2k14"]
+[ext_resource type="Script" uid="uid://dug1dmhwssjlu" path="res://ai/tasks/actions/Reposition.gd" id="4_j5e5a"]
+[ext_resource type="Script" uid="uid://0lelucami72s" path="res://ai/tasks/actions/Dive.gd" id="5_j5e5a"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_jur33"]
+var/is_hurt/name = &"is_hurt"
+var/is_hurt/type = 1
+var/is_hurt/value = false
+var/is_hurt/hint = 0
+var/is_hurt/hint_string = ""
+var/health/name = &"health"
+var/health/type = 3
+var/health/value = 0.0
+var/health/hint = 0
+var/health/hint_string = ""
+var/is_dead/name = &"is_dead"
+var/is_dead/type = 1
+var/is_dead/value = false
+var/is_dead/hint = 0
+var/is_dead/hint_string = ""
+var/patrol_points/name = &"patrol_points"
+var/patrol_points/type = 35
+var/patrol_points/value = PackedVector2Array()
+var/patrol_points/hint = 0
+var/patrol_points/hint_string = ""
+var/action_active/name = &"action_active"
+var/action_active/type = 1
+var/action_active/value = false
+var/action_active/hint = 0
+var/action_active/hint_string = ""
+
+[sub_resource type="BTAction" id="BTAction_drigp"]
+script = ExtResource("1_j5e5a")
+group = &"player"
+target_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_i2k14"]
+script = ExtResource("1_l4sms")
+entity = &"node"
+
+[sub_resource type="BBVariant" id="BBVariant_drigp"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_lpxla"]
+variable = &"target"
+check_type = 5
+value = SubResource("BBVariant_drigp")
+
+[sub_resource type="BBVariant" id="BBVariant_lpxla"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_0c8hv"]
+variable = &"action_active"
+value = SubResource("BBVariant_lpxla")
+
+[sub_resource type="BBVariant" id="BBVariant_jbtjk"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_y5hug"]
+property = &"hp"
+check_type = 3
+value = SubResource("BBVariant_jbtjk")
+
+[sub_resource type="BTCondition" id="BTCondition_j5e5a"]
+script = ExtResource("4_i2k14")
+distance_min = 0.0
+distance_max = 320.0
+target_var = &"target"
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_lpxla"]
+text = "O player está no range de ataque"
+
+[sub_resource type="BBNode" id="BBNode_j5e5a"]
+saved_value = NodePath("Actions")
+resource_name = "Actions"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_drigp"]
+node = SubResource("BBNode_j5e5a")
+method = &"start_attack"
+
+[sub_resource type="BTCooldown" id="BTCooldown_l4sms"]
+duration = 2.0
+start_cooled = true
+children = [SubResource("BTCallMethod_drigp")]
+
+[sub_resource type="BTAction" id="BTAction_lpxla"]
+script = ExtResource("4_j5e5a")
+offset = 100.0
+navigation_var = &"navigation"
+actor_var = &"node"
+
+[sub_resource type="BTCooldown" id="BTCooldown_i2k14"]
+duration = 3.0
+children = [SubResource("BTAction_lpxla")]
+
+[sub_resource type="BTSequence" id="BTSequence_j5e5a"]
+custom_name = "Attack1"
+children = [SubResource("BTCheckVar_lpxla"), SubResource("BTCheckVar_0c8hv"), SubResource("BTCheckAgentProperty_y5hug"), SubResource("BTCondition_j5e5a"), SubResource("BTConsolePrint_lpxla"), SubResource("BTCooldown_l4sms"), SubResource("BTCooldown_i2k14")]
+metadata/_weight_ = 10.0
+
+[sub_resource type="BTProbability" id="BTProbability_i2k14"]
+run_chance = 0.505
+children = [SubResource("BTSequence_j5e5a")]
+
+[sub_resource type="BBVariant" id="BBVariant_0c8hv"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_jbtjk"]
+variable = &"target"
+check_type = 5
+value = SubResource("BBVariant_0c8hv")
+
+[sub_resource type="BBVariant" id="BBVariant_i2k14"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_j5e5a"]
+property = &"hp"
+check_type = 3
+value = SubResource("BBVariant_i2k14")
+
+[sub_resource type="BTCondition" id="BTCondition_drigp"]
+script = ExtResource("4_i2k14")
+distance_min = 75.0
+distance_max = 360.0
+target_var = &"target"
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_0c8hv"]
+text = "O player está no range de ataque"
+
+[sub_resource type="BTAction" id="BTAction_0c8hv"]
+script = ExtResource("5_j5e5a")
+target_var = "target"
+speed_mod = 225.0
+trigger_time = 1.7
+end_distance = 32.0
+offset = 100.0
+
+[sub_resource type="BTCooldown" id="BTCooldown_j5e5a"]
+start_cooled = true
+children = [SubResource("BTAction_0c8hv")]
+
+[sub_resource type="BBVariant" id="BBVariant_j5e5a"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTSetVar" id="BTSetVar_drigp"]
+variable = &"action_active"
+value = SubResource("BBVariant_j5e5a")
+
+[sub_resource type="BTSequence" id="BTSequence_6g7qo"]
+custom_name = "Attack2"
+children = [SubResource("BTCheckVar_jbtjk"), SubResource("BTCheckAgentProperty_j5e5a"), SubResource("BTCondition_drigp"), SubResource("BTConsolePrint_0c8hv"), SubResource("BTCooldown_j5e5a"), SubResource("BTSetVar_drigp")]
+metadata/_weight_ = 0.24
+
+[sub_resource type="BTProbability" id="BTProbability_j5e5a"]
+run_chance = 0.019
+children = [SubResource("BTSequence_6g7qo")]
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_drigp"]
+children = [SubResource("BTProbability_i2k14"), SubResource("BTProbability_j5e5a")]
+
+[sub_resource type="BTSequence" id="BTSequence_i2k14"]
+custom_name = "Setup"
+children = [SubResource("BTAction_drigp"), SubResource("BTAction_i2k14"), SubResource("BTDynamicSelector_drigp")]
+
+[sub_resource type="BTSelector" id="BTSelector_jur33"]
+children = [SubResource("BTSequence_i2k14")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_jur33")
+root_task = SubResource("BTSelector_jur33")

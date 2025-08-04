@@ -27,7 +27,7 @@ func exit() -> void:
 	pass
 
 # Função que lida com as animações do estado atual
-func handle_anim():
+func handle_attack_anim(attacker: Node):
 	if attacker != null:
 		if attacker.global_position.x < entity.global_position.x and attacker.global_position.y < entity.global_position.y:
 			animation.play("attack_up")
@@ -49,7 +49,7 @@ func transit_state():
 
 func _on_attack_timer_timeout() -> void:
 	Combat.can_attack = true
-	handle_anim()
+	handle_attack_anim(attacker)
 	handle_attack()
 	attack_timer.start()
 	

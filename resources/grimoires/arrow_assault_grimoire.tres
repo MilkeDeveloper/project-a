@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://dk8frvk5u8qyg"]
 
 [ext_resource type="Resource" uid="uid://dtripmsxvs4q0" path="res://resources/skills/arrow_assault.tres" id="1_sadtc"]
-[ext_resource type="Script" path="res://core/data/GrimoireData.cs" id="2_wk6gw"]
+[ext_resource type="Script" uid="uid://cop85l32wdg6v" path="res://core/data/GrimoireData.cs" id="2_wk6gw"]
 
 [resource]
 script = ExtResource("2_wk6gw")

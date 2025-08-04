@@ -26,7 +26,9 @@ func _process(delta):
 		if get_parent().is_in_group("player") and get_parent().get_node("dash_component").is_dashing:
 			node.velocity = direction.normalized() * get_parent().get_node("dash_component").final_dash_speed * 15 * delta
 		elif get_parent().is_in_group("player") and get_parent().get_node("basic_attack").is_attacking:
-			node.velocity = direction.normalized() * node.SPEED * 5 * delta
+			node.velocity = direction.normalized() * node.SPEED * 15 * delta
+		#elif get_parent().is_in_group("player") and get_parent().is_in_combat:
+			#node.velocity = Vector2.ZERO
 		else:
 			node.velocity = direction.normalized() * node.SPEED * 15 * delta
 		

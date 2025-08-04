@@ -22,7 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		#GLobals.emit_signal("cam_shake", 55.5, 0.5)
 		if body.has_method("receive_dmg"):
-			body.receive_dmg(damage, attacker, body, "default_dmg")
+			body.receive_dmg(damage, attacker, body, "new_default_dmg_3")
 			print(attacker, body)
 			queue_free()
 

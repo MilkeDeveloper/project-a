@@ -4,7 +4,7 @@ class_name target_area
 
 @export var node: Node2D
 @export var target_sprite: Sprite2D
-@onready var hud_hp: CanvasLayer = $"../hud_entity/HUD_HP"
+@onready var hud_hp: CanvasLayer = $"../sprite/hud_entity/HUD_HP"
 
 # Called when the node enters the scene tree for the first time.
 var my_target = null

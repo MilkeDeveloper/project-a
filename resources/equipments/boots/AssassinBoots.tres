@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=6 format=3 uid="uid://cnw76igewmqhy"]
+
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="1_hwkb7"]
+[ext_resource type="Script" uid="uid://ch1l1clm26ju1" path="res://core/data/SkillPassiveData.gd" id="2_qvpn2"]
+[ext_resource type="Script" uid="uid://cwlqrx6qbq2on" path="res://core/data/EquipmentData.gd" id="3_qhd8p"]
+[ext_resource type="Script" uid="uid://dt7j2ahjci1qx" path="res://core/data/EquipmentTypeData.gd" id="4_qvpn2"]
+
+[sub_resource type="Resource" id="Resource_qhd8p"]
+script = ExtResource("4_qvpn2")
+max_health = 0
+max_spirit = 0
+health_regen = 0.0
+spirit_regen = 0.0
+DEF = 0
+metadata/_custom_type_script = "uid://dt7j2ahjci1qx"
+
+[resource]
+script = ExtResource("3_qhd8p")
+id = 1
+e_name = "Botas de Assassino"
+description = ""
+tier = 3
+rarity = 2
+enchant_lvl = 0
+type = 2
+stats = SubResource("Resource_qhd8p")
+price = 0
+weight = 0
+Skills = Array[ExtResource("1_hwkb7")]([])
+passives = Array[ExtResource("2_qvpn2")]([])
+durability = 0
+metadata/_custom_type_script = "uid://cwlqrx6qbq2on"

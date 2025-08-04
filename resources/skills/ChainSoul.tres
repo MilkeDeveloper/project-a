@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=6 format=3 uid="uid://bpln86gdjw18h"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://bpln86gdjw18h"]
 
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_e64ok"]
-[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_e71q8"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="1_e64ok"]
 [ext_resource type="Texture2D" uid="uid://drn64v3fc6xo3" path="res://assets/misc/skill_icon_chain_soul.png" id="2_kq17o"]
 [ext_resource type="PackedScene" uid="uid://cm3eyrr7ts35k" path="res://game_scenes/skills/soul_chain.tscn" id="4_xdf1a"]
-[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="5_xka8f"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="5_xka8f"]
 
 [resource]
 script = ExtResource("1_e64ok")
@@ -16,7 +15,7 @@ skill_type = null
 buff_type = null
 mana_cost = 30
 cooldown = 10.0
-dmg_amount = 4250
+dmg_amount = 250
 charge_time = 3.0
 effect_type = "125 + 25% MTAK de dano mágico"
 amount = null
@@ -24,8 +23,8 @@ percentage = null
 skill_effect = ExtResource("4_xdf1a")
 skill_level = 1
 skill_max_level = 10
-is_passive = null
-weapon_required = "Staff"
+essence_required = Array[int]([0, 10, 20, 30, 50])
+skill_essences = 0
 cast_time = null
 is_charging_skill = null
 is_aim_skill = true
@@ -33,5 +32,4 @@ is_target_skill = null
 insta_cast_skill = null
 is_cast_skill = null
 max_skill_charges = 0
-grimoire_Slots = Array[ExtResource("1_e71q8")]([null, null, null, null, null])
 skill_interaction_effects = Array[ExtResource("5_xka8f")]([])

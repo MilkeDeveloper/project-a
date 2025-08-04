@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rl3dbv7twsvi"]
 
-[ext_resource type="Script" path="res://scripts/skills/quick_step.gd" id="1_7gvh1"]
+[ext_resource type="Script" uid="uid://lrem5i3yyqre" path="res://scripts/skills/quick_step.gd" id="1_7gvh1"]
 [ext_resource type="PackedScene" uid="uid://biiqhpu4a8iqn" path="res://game_scenes/ghotst_effect.tscn" id="2_xy2k3"]
 
 [node name="QuickStep" type="Node2D"]

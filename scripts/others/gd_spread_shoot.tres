@@ -1,14 +1,36 @@
-[gd_resource type="Resource" script_class="GDSkilLData" load_steps=3 format=3 uid="uid://bsew48tfej13r"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=6 format=3 uid="uid://bsew48tfej13r"]
 
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_cgvw4"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="1_cgvw4"]
+[ext_resource type="Script" uid="uid://iulg0lcy1bom" path="res://core/data/BuffTypeData.gd" id="1_jqvo1"]
+[ext_resource type="Script" uid="uid://cu7n40cfmou4d" path="res://core/data/SkillCardData.gd" id="2_l56wy"]
 [ext_resource type="PackedScene" uid="uid://ltjdh404tmpc" path="res://game_scenes/skills/disparo_espalhado.tscn" id="2_snemx"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="5_s76bs"]
 
 [resource]
 script = ExtResource("1_cgvw4")
 id = 1
 skill_name = "Disparo Espalhado"
 skill_description = "Skill forte"
+skill_type = Array[int]([])
+buff_type = Array[ExtResource("1_jqvo1")]([])
 mana_cost = 10
 cooldown = 1.8
-damage = 25
+dmg_amount = 0
+charge_time = 0.0
+effect_type = ""
+amount = 0
+percentage = 0
 skill_effect = ExtResource("2_snemx")
+skill_level = 0
+skill_max_level = 0
+is_passive = false
+weapon_required = ""
+cast_time = 0.0
+is_charging_skill = false
+is_aim_skill = false
+is_target_skill = false
+insta_cast_skill = false
+is_cast_skill = false
+max_skill_charges = 0
+grimoire_Slots = Array[ExtResource("2_l56wy")]([])
+skill_interaction_effects = Array[ExtResource("5_s76bs")]([])

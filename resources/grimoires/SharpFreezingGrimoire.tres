@@ -1,14 +1,10 @@
-[gd_resource type="Resource" script_class="SkillGrimoireData" load_steps=4 format=3 uid="uid://pqqays5liwol"]
+[gd_resource type="Resource" script_class="SkillCardData" load_steps=2 format=3 uid="uid://pqqays5liwol"]
 
-[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_qgjn1"]
-[ext_resource type="Texture2D" uid="uid://n4es7jag4ndp" path="res://assets/misc/frozen_grimoire.png" id="1_xoeqm"]
-[ext_resource type="Resource" uid="uid://btj68rbooyno1" path="res://resources/PassiveSkils/SharpFreezing.tres" id="2_t1ik4"]
+[ext_resource type="Script" uid="uid://cu7n40cfmou4d" path="res://core/data/SkillCardData.gd" id="1_qgjn1"]
 
 [resource]
 script = ExtResource("1_qgjn1")
-grimoire_id = 2
-grimoire_name = "Sharp Freenzing Grimoire"
-grimoire_desc = "Este grimório concentra um poder arcano que aprimora as magias de gelo do portador, permitindo que seus feitiços penetrem as defesas inimigas com precisão congelante"
-grimoire_icon = ExtResource("1_xoeqm")
-grimoire_skill_id = 7
-grimoire_passive = ExtResource("2_t1ik4")
+card_id = 0
+card_name = ""
+card_desc = ""
+card_skill_id = 0

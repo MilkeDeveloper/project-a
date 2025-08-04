@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="SpecData" load_steps=5 format=3 uid="uid://xffhwpp8c8hj"]
 
-[ext_resource type="Script" path="res://core/data/SpecData.gd" id="1_4pfpp"]
+[ext_resource type="Script" uid="uid://db2ew58k8v2v6" path="res://core/data/SpecData.gd" id="1_4pfpp"]
 [ext_resource type="Texture2D" uid="uid://vs60d40yrlv7" path="res://assets/icons/especializations/Cleric.png" id="2_wch5e"]
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="3_bf08h"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="3_bf08h"]
 [ext_resource type="Resource" uid="uid://dkh2dlrw1nh71" path="res://resources/skills/Heal.tres" id="4_77t3t"]
 
 [resource]

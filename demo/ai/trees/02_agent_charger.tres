@@ -1,10 +1,11 @@
-[gd_resource type="BehaviorTree" load_steps=28 format=3 uid="uid://ylife72ym5et"]
+[gd_resource type="BehaviorTree" load_steps=31 format=3 uid="uid://ylife72ym5et"]
 
-[ext_resource type="Script" path="res://demo/ai/tasks/get_first_in_group.gd" id="1_657p6"]
-[ext_resource type="Script" path="res://demo/ai/tasks/select_flanking_pos.gd" id="2_t3udh"]
-[ext_resource type="Script" path="res://demo/ai/tasks/arrive_pos.gd" id="3_u2ra5"]
-[ext_resource type="Script" path="res://demo/ai/tasks/face_target.gd" id="4_xwjl7"]
-[ext_resource type="Script" path="res://demo/ai/tasks/move_forward.gd" id="5_ucvak"]
+[ext_resource type="Script" uid="uid://ccr43pgd4488l" path="res://demo/ai/tasks/get_first_in_group.gd" id="1_657p6"]
+[ext_resource type="Script" uid="uid://ct71h72pech3b" path="res://demo/ai/tasks/select_flanking_pos.gd" id="2_t3udh"]
+[ext_resource type="Script" uid="uid://df82exuqnfdb2" path="res://demo/ai/tasks/arrive_pos.gd" id="3_u2ra5"]
+[ext_resource type="Script" uid="uid://dbo0kq2cwb4qv" path="res://demo/ai/tasks/face_target.gd" id="4_xwjl7"]
+[ext_resource type="Script" uid="uid://b8ljqe213ud7d" path="res://demo/ai/tasks/move_forward.gd" id="5_ucvak"]
+[ext_resource type="Script" uid="uid://bgsnepq10o1hl" path="res://ai/tasks/conditions/check_target_low_hp.gd" id="6_xhgo0"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_qd806"]
 var/speed/name = &"speed"
@@ -110,9 +111,19 @@ duration = 1.5
 custom_name = "Charge!"
 children = [SubResource("BTPlayAnimation_8s1wq"), SubResource("BTAction_o18uk")]
 
+[sub_resource type="BTCondition" id="BTCondition_umfvn"]
+script = ExtResource("6_xhgo0")
+threshold = 0.3
+target_var = &"target"
+
+[sub_resource type="BTCondition" id="BTCondition_8jmar"]
+script = ExtResource("6_xhgo0")
+threshold = 0.3
+target_var = &"target"
+
 [sub_resource type="BTSequence" id="BTSequence_pjuov"]
 custom_name = "Charge Attack"
-children = [SubResource("BTSequence_l3v31"), SubResource("BTSequence_p6pgg"), SubResource("BTSequence_mde2g"), SubResource("BTSequence_8lur1")]
+children = [SubResource("BTSequence_l3v31"), SubResource("BTSequence_p6pgg"), SubResource("BTSequence_mde2g"), SubResource("BTSequence_8lur1"), SubResource("BTCondition_umfvn"), SubResource("BTCondition_8jmar")]
 
 [resource]
 description = "A [dec]Decorator[/dec] is a type of task that typically has only one child. Decorators are commonly used to alter the behavior or status of their child task. In this behavior tree, the [dec]TimeLimit[/dec] decorator sets a maximum time for the [act]Arrive[/act] action to complete its work. If the child task exceeds this time limit without finishing, it will be aborted, and the TimeLimit decorator will return [FAILURE]."

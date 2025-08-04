@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="ComboBuildData" load_steps=11 format=3 uid="uid://ps6h3x16qw46"]
+
+[ext_resource type="Resource" uid="uid://c6q03lhe3infk" path="res://resources/equipments/armors/MercenaryJacket.tres" id="1_ta0pd"]
+[ext_resource type="Resource" uid="uid://cnw76igewmqhy" path="res://resources/equipments/boots/AssassinBoots.tres" id="2_j5pwe"]
+[ext_resource type="Resource" uid="uid://bqfcvytgtkrq3" path="res://resources/equipments/helmets/GuardianHelmet.tres" id="3_yua3d"]
+[ext_resource type="Script" uid="uid://cw3nghrhhrdp" path="res://core/data/ComboBuildData.gd" id="4_ojkwf"]
+[ext_resource type="Script" uid="uid://dxsvwh85r50di" path="res://core/data/SetEffectsData.gd" id="5_vovur"]
+[ext_resource type="Script" uid="uid://cym8p2o25lr00" path="res://core/data/GDSkillEffectData.gd" id="6_mfl1s"]
+[ext_resource type="Resource" uid="uid://dltk3faml152x" path="res://resources/weapons/BestaLeve.tres" id="7_nyx11"]
+
+[sub_resource type="Resource" id="Resource_tqqou"]
+script = ExtResource("5_vovur")
+type = 4
+percentage_value = 5
+
+[sub_resource type="Resource" id="Resource_iu7kc"]
+script = ExtResource("5_vovur")
+type = 4
+percentage_value = 5
+
+[sub_resource type="Resource" id="Resource_0ddl8"]
+script = ExtResource("6_mfl1s")
+type = 0
+value = 15.0
+duration = 1.5
+chance = 100.0
+max_stacks = 1
+extra_params = {}
+
+[resource]
+script = ExtResource("4_ojkwf")
+name = "Caçador adepto"
+weapon = ExtResource("7_nyx11")
+helmet = ExtResource("3_yua3d")
+armor = ExtResource("1_ta0pd")
+boots = ExtResource("2_j5pwe")
+set_effects = Array[ExtResource("5_vovur")]([SubResource("Resource_tqqou"), SubResource("Resource_iu7kc")])
+skill_e_modifier = SubResource("Resource_0ddl8")
+tags = Array[String]([])
+notes = ""

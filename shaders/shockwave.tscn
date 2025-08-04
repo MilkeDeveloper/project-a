@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dagbxdeyvxxyq"]
 
-[ext_resource type="Shader" path="res://shaders/distortion.gdshader" id="1_fpknx"]
+[ext_resource type="Shader" uid="uid://b6l4y7yv88gbv" path="res://shaders/distortion.gdshader" id="1_fpknx"]
 [ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="2_ddq64"]
-[ext_resource type="Script" path="res://game_scenes/shockwave.gd" id="3_lf4hw"]
+[ext_resource type="Script" uid="uid://0l656glmo6a4" path="res://game_scenes/shockwave.gd" id="3_lf4hw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqmko"]
 shader = ExtResource("1_fpknx")
@@ -103,8 +103,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_etj6n"]
 _data = {
-"RESET": SubResource("Animation_meouh"),
-"shockwave": SubResource("Animation_6ynqg")
+&"RESET": SubResource("Animation_meouh"),
+&"shockwave": SubResource("Animation_6ynqg")
 }
 
 [node name="Shockwave" type="Sprite2D"]

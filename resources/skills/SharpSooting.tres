@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=8 format=3 uid="uid://csg6xy3xm2pi6"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=7 format=3 uid="uid://csg6xy3xm2pi6"]
 
-[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_pd3lr"]
-[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="2_qeypg"]
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="3_uripq"]
+[ext_resource type="Script" uid="uid://iulg0lcy1bom" path="res://core/data/BuffTypeData.gd" id="1_pd3lr"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="3_uripq"]
 [ext_resource type="PackedScene" uid="uid://gcs7ypobfwur" path="res://game_scenes/skills/sharp_shooting.tscn" id="4_8tdnt"]
-[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="4_lpbcv"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="4_lpbcv"]
 [ext_resource type="Texture2D" uid="uid://dv5232x34sggp" path="res://assets/misc/skill_icon_arrow_assault.png" id="5_a1koy"]
 
 [sub_resource type="Resource" id="Resource_b2648"]
@@ -31,8 +30,8 @@ percentage = 0
 skill_effect = ExtResource("4_8tdnt")
 skill_level = 1
 skill_max_level = 10
-is_passive = false
-weapon_required = "Bow"
+essence_required = Array[int]([0, 10, 20, 30, 50])
+skill_essences = 0
 cast_time = 1.0
 is_charging_skill = false
 is_aim_skill = false
@@ -40,5 +39,4 @@ is_target_skill = false
 insta_cast_skill = false
 is_cast_skill = true
 max_skill_charges = 0
-grimoire_Slots = Array[ExtResource("2_qeypg")]([null, null, null, null, null])
 skill_interaction_effects = Array[ExtResource("4_lpbcv")]([SubResource("Resource_b2648")])

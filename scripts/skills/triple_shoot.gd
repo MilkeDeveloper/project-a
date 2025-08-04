@@ -46,8 +46,8 @@ func _process(delta: float) -> void:
 				projectile.position = $Marker2D3/Marker2D2.global_position
 				shoot_count = 0
 			
-			var maxDMG = ((player.stats.get_ATK() * 1.8) / 100) * (player.stats.get_HIT() * 3.3)
-			var minDMG = ((player.stats.get_minATK() * 1.8) / 100) * (player.stats.get_HIT() * 3.3)
+			var maxDMG = ((player.stats.get_ATK() * 0.8) / 100) * (player.stats.get_HIT() * 0.4) + skill_dmg
+			var minDMG = ((player.stats.get_minATK() * 0.8) / 100) * (player.stats.get_HIT() * 0.4) + skill_dmg
 			
 			projectile.projectile_data.texture = ProjectileConfig.texture
 			projectile.projectile_data.Projectile_logic = ProjectileConfig.Projectile_logic

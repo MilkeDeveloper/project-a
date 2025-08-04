@@ -23,12 +23,16 @@ func exit() -> void:
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		is_jumping = true
+	
+	if event.is_action_pressed("basic_attack") and attack_timer.time_left <= 0:
+		manager.change_state("AttackState")
 
 func handle_anim():
-	if entity.is_in_group("player") and GLobals.target != null and entity.is_in_combat:
-		animation.play("run_" + entity.get_node("DirectionTracker").get_action_direction(GLobals.target.global_position))
-	else:
-		animation.play("run_" + direction_tracker.get_direction())
+	if not entity.get_node("basic_attack").is_attacking:
+		if entity.is_in_group("player") and GLobals.target != null and entity.is_in_combat:
+			animation.play("run_" + entity.get_node("DirectionTracker").get_action_direction(GLobals.target.global_position))
+		else:
+			animation.play("run_" + direction_tracker.get_direction())
 
 func transit_state():
 	if entity.velocity == Vector2.ZERO:

@@ -1,12 +1,12 @@
 [gd_scene load_steps=41 format=3 uid="uid://cuw1ymtd6iocu"]
 
-[ext_resource type="Script" path="res://scripts/skills/totem.gd" id="1_bfx4c"]
+[ext_resource type="Script" uid="uid://blidnjy0t63af" path="res://scripts/skills/totem.gd" id="1_bfx4c"]
 [ext_resource type="Texture2D" uid="uid://cgqauibxomnmx" path="res://assets/misc/totem.png" id="2_0kkw6"]
 [ext_resource type="PackedScene" uid="uid://bglf2lqqth734" path="res://game_scenes/skills/corrent_root.tscn" id="2_022s1"]
-[ext_resource type="Shader" path="res://shaders/achatar.gdshader" id="3_ciu6w"]
+[ext_resource type="Shader" uid="uid://d2kp3s7cnwyl3" path="res://shaders/achatar.gdshader" id="3_ciu6w"]
 [ext_resource type="Texture2D" uid="uid://ciosdkeo161s" path="res://VFX/Color/energyball/energyball_10.png" id="3_melay"]
 [ext_resource type="Texture2D" uid="uid://mhvg558t6cdg" path="res://VFX/Complex/smoke/smoke2_4.png" id="4_dk5tp"]
-[ext_resource type="Shader" path="res://game_scenes/skills/distortion.gdshader" id="7_cycb4"]
+[ext_resource type="Shader" uid="uid://jh84hba58vbi" path="res://game_scenes/skills/distortion.gdshader" id="7_cycb4"]
 [ext_resource type="Texture2D" uid="uid://bht6jttj84jyb" path="res://VFX/effects/energyball_10.png" id="8_1k038"]
 [ext_resource type="Texture2D" uid="uid://byni8538inu5l" path="res://VFX/Color/burst/color_burst_19.png" id="9_266am"]
 [ext_resource type="Texture2D" uid="uid://v3yus6gexnah" path="res://VFX/Complex/lines/lines_5.png" id="10_8xnct"]
@@ -80,9 +80,9 @@ noise = SubResource("FastNoiseLite_y2q2p")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6v5sl"]
 shader = ExtResource("7_cycb4")
-shader_parameter/distortion_strength = 0.095
 shader_parameter/source_texture = ExtResource("8_1k038")
 shader_parameter/distortion_texture = SubResource("NoiseTexture2D_rivrw")
+shader_parameter/distortion_strength = 0.095
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k1ddj"]
 
@@ -559,8 +559,8 @@ tracks/19/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u4dqa"]
 _data = {
-"RESET": SubResource("Animation_3mod8"),
-"dark_explosion": SubResource("Animation_20fb8")
+&"RESET": SubResource("Animation_3mod8"),
+&"dark_explosion": SubResource("Animation_20fb8")
 }
 
 [sub_resource type="Gradient" id="Gradient_4q20t"]
@@ -593,7 +593,7 @@ script = ExtResource("1_bfx4c")
 max_enemies = 5
 pull_radius = 50
 totem_duration = 5.0
-tick_interval = 0.2
+tick_interval = 0.5
 corrent_scene = ExtResource("2_022s1")
 
 [node name="colision" type="CollisionShape2D" parent="."]
@@ -609,9 +609,9 @@ material = SubResource("ShaderMaterial_jpfgu")
 position = Vector2(0, 79.7619)
 scale = Vector2(1e-05, 1e-05)
 amount = 16
-process_material = SubResource("ParticleProcessMaterial_1aogp")
 texture = ExtResource("3_melay")
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_1aogp")
 
 [node name="Totem" type="Sprite2D" parent="."]
 z_index = 1
@@ -639,9 +639,9 @@ material = SubResource("CanvasItemMaterial_j1y6h")
 position = Vector2(0, 58)
 scale = Vector2(-0.765579, 1.19299)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_tw5da")
 texture = ExtResource("4_dk5tp")
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_tw5da")
 
 [node name="Energyball10" type="Sprite2D" parent="."]
 visible = false
@@ -665,11 +665,11 @@ position = Vector2(0, -20.2381)
 scale = Vector2(1, 1.14286)
 emitting = false
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_d5ul5")
 texture = ExtResource("10_8xnct")
 preprocess = 10.0
 speed_scale = 7.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_d5ul5")
 
 [node name="wave" type="Sprite2D" parent="."]
 visible = false
@@ -681,7 +681,7 @@ texture = ExtResource("11_0avow")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_u4dqa")
+&"": SubResource("AnimationLibrary_u4dqa")
 }
 
 [node name="explosion" type="GPUParticles2D" parent="."]
@@ -691,12 +691,12 @@ position = Vector2(1, 29.7619)
 scale = Vector2(1, 0.952381)
 emitting = false
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_dmqxk")
 texture = ExtResource("12_yq816")
 preprocess = 1.0
 speed_scale = 2.5
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_dmqxk")
 
 [node name="explosion2" type="GPUParticles2D" parent="."]
 visible = false
@@ -704,12 +704,12 @@ position = Vector2(1, 29.7619)
 scale = Vector2(1, 0.952381)
 emitting = false
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_dmqxk")
 texture = ExtResource("12_yq816")
 preprocess = 10.0
 speed_scale = 2.5
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_dmqxk")
 
 [node name="explosion3" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
@@ -719,12 +719,12 @@ position = Vector2(1, 29.7619)
 scale = Vector2(1, 0.952381)
 emitting = false
 amount = 300
-process_material = SubResource("ParticleProcessMaterial_dmqxk")
 texture = ExtResource("13_c10wi")
 preprocess = 10.0
 speed_scale = 2.5
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_dmqxk")
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Area2D_body_exited"]

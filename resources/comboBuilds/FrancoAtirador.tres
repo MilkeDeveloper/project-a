@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="ComboBuildData" load_steps=11 format=3 uid="uid://45jea56lxhd2"]
+
+[ext_resource type="Resource" uid="uid://c6q03lhe3infk" path="res://resources/equipments/armors/MercenaryJacket.tres" id="1_70ews"]
+[ext_resource type="Resource" uid="uid://cnw76igewmqhy" path="res://resources/equipments/boots/AssassinBoots.tres" id="2_7d188"]
+[ext_resource type="Resource" uid="uid://bqfcvytgtkrq3" path="res://resources/equipments/helmets/GuardianHelmet.tres" id="3_87qi8"]
+[ext_resource type="Script" uid="uid://cw3nghrhhrdp" path="res://core/data/ComboBuildData.gd" id="4_hq3h6"]
+[ext_resource type="Script" uid="uid://dxsvwh85r50di" path="res://core/data/SetEffectsData.gd" id="5_vsyai"]
+[ext_resource type="Script" uid="uid://cym8p2o25lr00" path="res://core/data/GDSkillEffectData.gd" id="6_qxlnj"]
+[ext_resource type="Resource" uid="uid://dltk3faml152x" path="res://resources/weapons/BestaLeve.tres" id="7_s5iqa"]
+
+[sub_resource type="Resource" id="Resource_lk202"]
+script = ExtResource("5_vsyai")
+type = 4
+percentage_value = 0.0
+
+[sub_resource type="Resource" id="Resource_foisn"]
+script = ExtResource("5_vsyai")
+type = 5
+percentage_value = 0.0
+
+[sub_resource type="Resource" id="Resource_72ws3"]
+script = ExtResource("6_qxlnj")
+type = 1
+value = 3.0
+duration = 4.0
+chance = 100.0
+max_stacks = 2
+extra_params = {}
+
+[resource]
+script = ExtResource("4_hq3h6")
+name = "FrancoAtirador"
+weapon = ExtResource("7_s5iqa")
+helmet = ExtResource("3_87qi8")
+armor = ExtResource("1_70ews")
+boots = ExtResource("2_7d188")
+set_effects = Array[ExtResource("5_vsyai")]([SubResource("Resource_lk202"), SubResource("Resource_foisn")])
+skill_e_modifier = SubResource("Resource_72ws3")
+tags = Array[String]([])
+notes = ""

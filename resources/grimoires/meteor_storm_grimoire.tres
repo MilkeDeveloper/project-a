@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://dftx51i82tx6y"]
 
 [ext_resource type="Resource" uid="uid://bkjfrov8gk55e" path="res://resources/skills/meteor_storm.tres" id="1_6p0a2"]
-[ext_resource type="Script" path="res://core/data/GrimoireData.cs" id="2_iyanr"]
+[ext_resource type="Script" uid="uid://cop85l32wdg6v" path="res://core/data/GrimoireData.cs" id="2_iyanr"]
 
 [resource]
 script = ExtResource("2_iyanr")

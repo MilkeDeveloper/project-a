@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cprg26eibyck"]
 
 [ext_resource type="Texture2D" uid="uid://dahu8kpwp4qto" path="res://assets/misc/hotbar_slot3.png" id="1_g1ltw"]
-[ext_resource type="Script" path="res://scripts/systems/Inventory/slot.gd" id="1_gv3nj"]
+[ext_resource type="Script" uid="uid://demlvc5hulwky" path="res://scripts/systems/Inventory/slot.gd" id="1_gv3nj"]
 
 [node name="slot" type="Button"]
 offset_left = 125.0

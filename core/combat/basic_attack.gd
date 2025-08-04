@@ -21,19 +21,18 @@ func _process(delta: float) -> void:
 	if get_parent().jumping:
 		return
 	
-	if not can_attack and timer.time_left <= 0:
-		on_attack_timer_timout()
+	if not can_attack and get_parent().get_node("ATTACK_TIMER").time_left <= 0:
+		_on_attack_timer_timeout()
 		is_attacking = true
-	
-	
 
 func ranged_basic_attack(target = null):
 	_target = target
 	
 	if not GLobals.target or get_parent().global_position.distance_to(GLobals.target.global_position) > attack_range:
-		get_parent().SPEED = 650
+		#get_parent().SPEED = 650
 		is_attacking = false
-		GLobals.target = null
+		#GLobals.target = null
+		get_parent().combat_range()
 		return
 	
 	print(is_attacking)
@@ -51,23 +50,33 @@ func ranged_basic_attack(target = null):
 		var direction = (GLobals.target.global_position - get_parent().global_position).normalized()
 		projectile.var_direction = direction
 		
-		_handle_anim()
 		
-		get_parent().SPEED = 650
+		#await _handle_anim()
+		#get_parent().SPEED = 650
 		get_parent().get_parent().add_child(projectile)
 		#projectile.launch_fireball()
 		
-		timer.start()
+		get_parent().get_node("ATTACK_TIMER").start()
 		can_attack = false
 		get_parent().is_in_combat = true
+		
 
 	else :
 		get_parent().SPEED = 650
+		
+		
 
 func _handle_anim():
-	get_parent().get_node("anim").play("run_" + get_parent().get_node("DirectionTracker").get_action_direction(_target.global_position))
+	get_parent().get_node("anim").play("idle_" + get_parent().get_node("DirectionTracker").get_action_direction(GLobals.target.global_position))
 		
 func on_attack_timer_timout():
-	can_attack = true
+	
+	pass
+	#can_attack = true
 	#is_attacking = true
-	ranged_basic_attack(_target)
+	#ranged_basic_attack(_target)
+
+
+func _on_attack_timer_timeout() -> void:
+	can_attack = true
+	

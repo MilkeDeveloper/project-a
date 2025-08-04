@@ -12,17 +12,16 @@ var nodes: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if get_parent().is_in_group("entity"):
-		hp_bar.value = get_parent().hp
-		bar.value = get_parent().hp
-		hp_bar.max_value = get_parent().max_hp
-		bar.max_value = get_parent().max_hp
-		level.text = "Lv. " + str(get_parent().level)
+	if node.is_in_group("entity"):
+		hp_bar.value = node.hp
+		bar.value = node.hp
+		hp_bar.max_value = node.max_hp
+		bar.max_value = node.max_hp
+		level.text = "Lv. " + str(node.level)
 		level.show()
-		hp_text.text = str(get_parent().hp) + "/" + str(get_parent().max_hp)
-		level_hud.text = "Lv. " + str(get_parent().level)
-		name_hud.text = get_parent()._name
-		
+		hp_text.text = str(node.hp) + "/" + str(node.max_hp)
+		level_hud.text = "Lv. " + str(node.level)
+		name_hud.text = node._name
 		
 	else:
 		level.hide()
@@ -33,4 +32,4 @@ func _process(delta: float) -> void:
 func update_bars(updated_hp):
 	hp_bar.value = updated_hp
 	bar.value = updated_hp
-	hp_text.text = str(updated_hp) + "/" + str(get_parent().max_hp)
+	hp_text.text = str(updated_hp) + "/" + str(node.max_hp)

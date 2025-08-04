@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=8 format=3 uid="uid://djaysrjcco6tw"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=7 format=3 uid="uid://djaysrjcco6tw"]
 
-[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_m1aom"]
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_qmuv3"]
-[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_w3yey"]
+[ext_resource type="Script" uid="uid://iulg0lcy1bom" path="res://core/data/BuffTypeData.gd" id="1_m1aom"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="1_qmuv3"]
 [ext_resource type="Texture2D" uid="uid://bq1cpxi1sugbd" path="res://assets/misc/skill_icon_expurge.png" id="2_ayper"]
-[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="5_71i0g"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="5_71i0g"]
 
 [sub_resource type="Resource" id="Resource_lf56w"]
 script = ExtResource("1_m1aom")
@@ -35,8 +34,8 @@ amount = null
 percentage = null
 skill_level = 1
 skill_max_level = 10
-is_passive = null
-weapon_required = "wand"
+essence_required = Array[int]([0, 10, 20, 30, 50])
+skill_essences = 0
 cast_time = null
 is_charging_skill = true
 is_aim_skill = true
@@ -44,5 +43,4 @@ is_target_skill = null
 insta_cast_skill = null
 is_cast_skill = null
 max_skill_charges = 0
-grimoire_Slots = Array[ExtResource("1_w3yey")]([null, null, null, null, null])
 skill_interaction_effects = Array[ExtResource("5_71i0g")]([])

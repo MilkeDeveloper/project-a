@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://beleyacui46l8"]
+[gd_scene load_steps=13 format=3 uid="uid://beleyacui46l8"]
 
-[ext_resource type="Script" path="res://scripts/systems/DmgPopup.cs" id="1_yvo42"]
+[ext_resource type="Script" uid="uid://e6hlg1360fa4" path="res://scripts/systems/DmgPopup.cs" id="1_yvo42"]
 
 [sub_resource type="Animation" id="Animation_055cl"]
 length = 0.001
@@ -377,62 +377,189 @@ tracks/6/keys = {
 "values": [1.602, 0.731, 1.1]
 }
 
+[sub_resource type="Animation" id="Animation_hi4bh"]
+resource_name = "new_default_dmg_2"
+length = 0.8
+step = 0.0625
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-42.5, -0.25, 0, 0.25, 0, -42.5, -0.1875, 1, 0.25, -1),
+"times": PackedFloat32Array(0, 0.8125)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-38.5, -0.25, 0, 0.0625, -6.5, -106.5, -0.1875, 24.5, 0.0447106, -8),
+"times": PackedFloat32Array(0, 0.75)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.5, 2.5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5625, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.962013, 0.931922, 1), Color(1, 0.940083, 0.892672, 1), Color(1, 0.961994, 0.932054, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("anim_dmg:speed_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3125, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.7, 0.3, 0.1]
+}
+
+[sub_resource type="Animation" id="Animation_pjm3a"]
+resource_name = "new_default_dmg_3"
+length = 0.8
+step = 0.0625
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-42.5, -0.25, 0, 0.25, 0, -42.5, -0.1875, 1, 0.25, -1),
+"times": PackedFloat32Array(0, 0.8125)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-38.5, -0.25, 0, 0.0625, -6.5, -99.5, -0.1875, 24.5, 0.0447106, -8),
+"times": PackedFloat32Array(0, 0.75)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.5, 2.5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6875, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.546409, 7.33994e-07, 3.85046e-07, 1), Color(0.505882, 0, 0, 1), Color(0.490196, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("anim_dmg:speed_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.5, 0.1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54f5m"]
 _data = {
-"RESET": SubResource("Animation_055cl"),
-"alt_default_dmg": SubResource("Animation_mo4fa"),
-"default_dmg": SubResource("Animation_nihxy"),
-"default_dmg_left": SubResource("Animation_d0xu7"),
-"default_dmg_right": SubResource("Animation_5ni7t")
+&"RESET": SubResource("Animation_055cl"),
+&"alt_default_dmg": SubResource("Animation_mo4fa"),
+&"default_dmg": SubResource("Animation_nihxy"),
+&"default_dmg_left": SubResource("Animation_d0xu7"),
+&"default_dmg_right": SubResource("Animation_5ni7t"),
+&"new_default_dmg_2": SubResource("Animation_hi4bh"),
+&"new_default_dmg_3": SubResource("Animation_pjm3a")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aad83"]
 
-[sub_resource type="SystemFont" id="SystemFont_owbkg"]
-font_names = PackedStringArray("Robofan Free")
-font_weight = 450
+[sub_resource type="SystemFont" id="SystemFont_pjm3a"]
+font_names = PackedStringArray("Upheaval TT (BRK)")
 subpixel_positioning = 0
 multichannel_signed_distance_field = true
 
 [sub_resource type="FontVariation" id="FontVariation_mpbpn"]
-base_font = SubResource("SystemFont_owbkg")
-spacing_glyph = 10
+base_font = SubResource("SystemFont_pjm3a")
+spacing_glyph = 2
 
 [node name="dmg_popup" type="Marker2D" node_paths=PackedStringArray("anim", "damage_text")]
 z_index = 1
 position = Vector2(0, -1)
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.7, 0.8)
 script = ExtResource("1_yvo42")
 anim = NodePath("anim_dmg")
 damage_text = NodePath("Label")
 
 [node name="anim_dmg" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_54f5m")
+&"": SubResource("AnimationLibrary_54f5m")
 }
 speed_scale = 0.731
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-z_index = 5
+z_index = 10
 material = SubResource("ShaderMaterial_aad83")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.5
-offset_top = 28.5
-offset_right = -3.5
-offset_bottom = 51.5
+offset_left = -42.5
+offset_top = -38.5
+offset_right = 43.5
+offset_bottom = -15.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(42.1944, 11.6111)
 size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = SubResource("FontVariation_mpbpn")
 theme_override_font_sizes/font_size = 16
-text = "2899"
+text = "452"
 horizontal_alignment = 1
 vertical_alignment = 1

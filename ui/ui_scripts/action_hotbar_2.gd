@@ -166,7 +166,7 @@ func _on_slot_pressed(index: int):
 		slot_index = index
 		skill_manager.activate_skill(skill_hotbar1[index].id, player)
 	else:
-		print("Não há skill o slot pressionado")
+		print("Não há skill no slot pressionado")
 
 func _on_slot_released(index: int):
 	if skill_hotbar1[index] != null:

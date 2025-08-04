@@ -42,7 +42,7 @@ func create_explosion():
 	var explosion_area = $ExplosionArea.get_overlapping_bodies()
 	for enemy in explosion_area:
 		if enemy.is_in_group("entity"):
-			enemy.take_damage(randi_range(explosion_damage * 0.7, explosion_damage), attacker, enemy, "magic_hit")
+			enemy.take_damage(randi_range(explosion_damage * 2.7, explosion_damage), attacker, enemy, "magic_hit")
 	$anim.play("dark_explosion")
 
 func _on_Area2D_body_entered(body):
@@ -87,4 +87,4 @@ func remove_connection(body):
 			break
 
 func emit_cam_shake():
-	GLobals.emit_signal("cam_shake", 75.4, 1.4)
+	GLobals.emit_signal("cam_shake", 7.4, 1.4)

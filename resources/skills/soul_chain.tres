@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://br8a3qgwe0nab"]
 
-[ext_resource type="Script" path="res://core/data/SkillData.cs" id="1_fp5b7"]
+[ext_resource type="Script" uid="uid://c05bwuw7ph2fx" path="res://core/data/SkillData.cs" id="1_fp5b7"]
 [ext_resource type="PackedScene" uid="uid://cm3eyrr7ts35k" path="res://game_scenes/skills/soul_chain.tscn" id="2_yitof"]
 
 [resource]

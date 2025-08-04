@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://4pyua5w52b1r"]
 
-[ext_resource type="Script" path="res://scripts/others/projectile.gd" id="1_0x5j3"]
+[ext_resource type="Script" uid="uid://cnlog0qtf0p02" path="res://scripts/others/projectile.gd" id="1_0x5j3"]
 [ext_resource type="Texture2D" uid="uid://cc80bgkh68muh" path="res://VFX/Color/energyball/energyball_9.png" id="2_e1jjj"]
 [ext_resource type="PackedScene" uid="uid://c74rasfa8qw8u" path="res://game_scenes/Projectiles/vfx_fireball_explosion.tscn" id="2_k2c5y"]
 [ext_resource type="PackedScene" uid="uid://pr8claufjmgg" path="res://game_scenes/Projectiles/vfx_fireball.tscn" id="3_ooo2g"]
-[ext_resource type="Texture2D" uid="uid://dg52rkesvqo3q" path="res://addons/kenney_particle_pack/smoke_04.png" id="4_pb1d2"]
+[ext_resource type="Texture2D" uid="uid://bbt315eteln4b" path="res://addons/kenney_particle_pack/smoke_04.png" id="4_pb1d2"]
 
 [sub_resource type="Gradient" id="Gradient_dnqy4"]
 offsets = PackedFloat32Array(0, 0.616162, 1)
@@ -141,8 +141,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qpfm1"]
 _data = {
-"RESET": SubResource("Animation_qp73l"),
-"fall": SubResource("Animation_tgqb3")
+&"RESET": SubResource("Animation_qp73l"),
+&"fall": SubResource("Animation_tgqb3")
 }
 
 [node name="projectile" type="Node2D"]
@@ -156,11 +156,11 @@ script = null
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="VFX Fireball"]
 amount = 200
-process_material = SubResource("ParticleProcessMaterial_qweoh")
 texture = ExtResource("4_pb1d2")
 lifetime = 5.0
 speed_scale = 3.35
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_qweoh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -170,6 +170,6 @@ texture = ExtResource("2_e1jjj")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_qpfm1")
+&"": SubResource("AnimationLibrary_qpfm1")
 }
 speed_scale = 0.699

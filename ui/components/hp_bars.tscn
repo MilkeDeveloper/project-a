@@ -1,30 +1,55 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxiasrjikt47l"]
+[gd_scene load_steps=19 format=3 uid="uid://dxiasrjikt47l"]
 
-[ext_resource type="Texture2D" uid="uid://csfjhjxrhi7os" path="res://assets/misc/player_bar_bg.png" id="1_onp77"]
-[ext_resource type="Texture2D" uid="uid://bden8eioluqwx" path="res://assets/misc/player_bar_cover.png" id="2_btc0n"]
-[ext_resource type="Texture2D" uid="uid://dm02w7diwxjcw" path="res://assets/misc/player_bar_progress.png" id="3_mod22"]
-[ext_resource type="Script" path="res://ui/ui_scripts/hp_bar.gd" id="4_a6p2v"]
+[ext_resource type="Texture2D" uid="uid://bqwe381i8xmx" path="res://assets/misc/hpbar_under.png" id="2_ovicy"]
+[ext_resource type="Texture2D" uid="uid://eyr52br2l7dx" path="res://assets/misc/hpbar_fill.png" id="3_6ji7v"]
+[ext_resource type="Script" uid="uid://c27tejl1kdyrb" path="res://ui/ui_scripts/hp_bar.gd" id="4_a6p2v"]
 [ext_resource type="Texture2D" uid="uid://jp3dngxjm2en" path="res://assets/misc/under_bar2.png" id="5_fqu3e"]
 [ext_resource type="Texture2D" uid="uid://b6cwr6vm7juo1" path="res://assets/misc/default_bar.png" id="7_fmg2w"]
+[ext_resource type="Texture2D" uid="uid://cgbn32e7ojfou" path="res://assets/misc/HUDhpbar_under.png" id="7_htvo5"]
+[ext_resource type="Texture2D" uid="uid://7k0vk78eyjin" path="res://assets/misc/HUDhpbar_cover.png" id="8_ovicy"]
+[ext_resource type="Texture2D" uid="uid://ft4uqju6n50g" path="res://assets/misc/HudBar_fill.png" id="9_6ji7v"]
+[ext_resource type="Texture2D" uid="uid://bmqckhx3myyv7" path="res://assets/misc/hud_head3.png" id="10_6ji7v"]
+[ext_resource type="Texture2D" uid="uid://5evl74qa70vx" path="res://assets/misc/head.png" id="11_6eyr8"]
 
-[sub_resource type="SystemFont" id="SystemFont_ulvlu"]
+[sub_resource type="SystemFont" id="SystemFont_ne2hb"]
+font_names = PackedStringArray("Retro Gaming")
 subpixel_positioning = 0
+multichannel_signed_distance_field = true
+msdf_size = 71
+
+[sub_resource type="FontVariation" id="FontVariation_35tt6"]
+base_font = SubResource("SystemFont_ne2hb")
+variation_embolden = 0.6
+spacing_glyph = 2
 
 [sub_resource type="SystemFont" id="SystemFont_3caxn"]
 subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_ngfuv"]
-font_names = PackedStringArray("Sans-Serif")
+font_names = PackedStringArray("Upheaval TT (BRK)")
 font_weight = 700
 subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_tffg7"]
+font_names = PackedStringArray("Retro Gaming")
 subpixel_positioning = 0
+multichannel_signed_distance_field = true
 
 [sub_resource type="SystemFont" id="SystemFont_2lxrh"]
-font_names = PackedStringArray("Sans-Serif")
+font_names = PackedStringArray("Retro Gaming")
 font_weight = 700
 subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[sub_resource type="SystemFont" id="SystemFont_6ji7v"]
+font_names = PackedStringArray("Upheaval TT (BRK)")
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[sub_resource type="FontVariation" id="FontVariation_6eyr8"]
+base_font = SubResource("SystemFont_6ji7v")
+variation_embolden = 0.6
+spacing_glyph = 3
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -44,33 +69,39 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -14.0
+offset_left = -25.0
 offset_top = -69.0
-offset_right = 34.0
+offset_right = 59.0
 offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.618255, 0.631814)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0.74902, 0.364706, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = SubResource("SystemFont_ulvlu")
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("FontVariation_35tt6")
+theme_override_font_sizes/font_size = 20
 text = "hestia"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="hp_bar" type="TextureProgressBar" parent="."]
+[node name="daleyed_hpbar" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_left = -29.0
+offset_right = 1.0
+offset_bottom = 1.0
+
+[node name="hp_bar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+offset_left = -28.9999
 offset_top = -55.0
-offset_right = 71.0
-offset_bottom = -15.0
+offset_right = -27.9999
+offset_bottom = -54.0
 scale = Vector2(0.599999, 0.599999)
 step = 0.1
 value = 50.0
-texture_under = ExtResource("1_onp77")
-texture_over = ExtResource("2_btc0n")
-texture_progress = ExtResource("3_mod22")
+texture_under = ExtResource("2_ovicy")
+texture_progress = ExtResource("3_6ji7v")
+texture_progress_offset = Vector2(1, 1)
 tint_progress = Color(0.6, 1, 0.286275, 1)
 
 [node name="level" type="Label" parent="."]
@@ -124,7 +155,7 @@ grow_vertical = 2
 scale = Vector2(0.590017, 0.360001)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = SubResource("SystemFont_ngfuv")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "999 / 999"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -142,18 +173,18 @@ theme_override_constants/separation = 28
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 5
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = SubResource("SystemFont_tffg7")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Lv. 25"
 
 [node name="name_hud" type="Label" parent="HUD_HP/bar/hbox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 5
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = SubResource("SystemFont_2lxrh")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Final boss"
 horizontal_alignment = 1
 
@@ -161,3 +192,77 @@ horizontal_alignment = 1
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="HUDPlayer" type="CanvasLayer" parent="."]
+layer = 3
+visible = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUDPlayer"]
+offset_left = 102.0
+offset_top = 51.0
+offset_right = 302.0
+offset_bottom = 91.0
+value = 50.0
+texture_under = ExtResource("7_htvo5")
+texture_over = ExtResource("8_ovicy")
+texture_progress = ExtResource("9_6ji7v")
+texture_progress_offset = Vector2(3, 0)
+tint_under = Color(0, 0.403922, 0, 0.0784314)
+tint_over = Color(0, 0.345098, 0.0431373, 0.701961)
+tint_progress = Color(0.580392, 1, 0, 1)
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="HUDPlayer"]
+offset_left = 102.0
+offset_top = 65.0
+offset_right = 302.0
+offset_bottom = 105.0
+value = 75.0
+texture_under = ExtResource("7_htvo5")
+texture_over = ExtResource("8_ovicy")
+texture_progress = ExtResource("9_6ji7v")
+texture_progress_offset = Vector2(3, 0)
+tint_under = Color(0, 0.215686, 0.27451, 0.0784314)
+tint_over = Color(5.53504e-07, 0.281728, 0.358667, 0.713726)
+tint_progress = Color(0, 0.85098, 1, 1)
+
+[node name="HudHead3" type="Sprite2D" parent="HUDPlayer"]
+position = Vector2(69.25, 65.5)
+scale = Vector2(0.765, 0.75)
+texture = ExtResource("10_6ji7v")
+
+[node name="Head" type="Sprite2D" parent="HUDPlayer/HudHead3"]
+texture_filter = 3
+position = Vector2(0.980388, 12.6667)
+scale = Vector2(1.93854, 1.92857)
+texture = ExtResource("11_6eyr8")
+
+[node name="Label" type="Label" parent="HUDPlayer"]
+unique_name_in_owner = true
+offset_left = 143.0
+offset_top = 84.0
+offset_right = 254.0
+offset_bottom = 107.0
+pivot_offset = Vector2(56, 11)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("FontVariation_6eyr8")
+theme_override_font_sizes/font_size = 10
+text = "Lenhadora"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HUDPlayer"]
+unique_name_in_owner = true
+offset_left = 14.0
+offset_top = 89.0
+offset_right = 125.0
+offset_bottom = 122.5
+pivot_offset = Vector2(56, 11)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("FontVariation_6eyr8")
+theme_override_font_sizes/font_size = 14
+text = "25
+"
+horizontal_alignment = 1

@@ -1,7 +1,7 @@
 #*
 #* ninja_star.gd
 #* =============================================================================
-#* Copyright 2021-2024 Serhii Snitsaruk
+#* Copyright (c) 2023-present Serhii Snitsaruk and the LimboAI contributors.
 #*
 #* Use of this source code is governed by an MIT-style
 #* license that can be found in the LICENSE file or at
@@ -39,6 +39,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _die() -> void:
+	if _is_dead:
+		return
 	_is_dead = true
 	root.hide()
 	collision_shape_2d.set_deferred(&"disabled", true)

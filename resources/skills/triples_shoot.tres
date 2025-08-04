@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://caxg1teeawlse"]
 
-[ext_resource type="Script" path="res://core/data/SkillData.cs" id="1_7w5ah"]
+[ext_resource type="Script" uid="uid://c05bwuw7ph2fx" path="res://core/data/SkillData.cs" id="1_7w5ah"]
 [ext_resource type="PackedScene" uid="uid://yaj61l6t65v1" path="res://game_scenes/skills/triple_shoot.tscn" id="2_l0kuk"]
 
 [resource]

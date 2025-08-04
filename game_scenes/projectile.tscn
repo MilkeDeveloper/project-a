@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c364u20x2uojc"]
 
-[ext_resource type="Script" path="res://assets/projectiles/Projectile.gd" id="1_emjut"]
+[ext_resource type="Script" uid="uid://kawoiqqbibwn" path="res://assets/projectiles/Projectile.gd" id="1_emjut"]
 [ext_resource type="Texture2D" uid="uid://crs4cut67td74" path="res://assets/projectiles/arrow2.png" id="2_jmjce"]
 [ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="3_eiai5"]
 [ext_resource type="AudioStream" uid="uid://diup1hfgrm6d0" path="res://SFX/shoot_arrow.wav" id="4_avvy1"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://ckb82lnqnsxv"]
 
 [ext_resource type="Texture2D" uid="uid://dinhbanhcgaj6" path="res://VFX/effects/9.png" id="1_n3ykp"]
-[ext_resource type="Script" path="res://scripts/others/magic_hit.gd" id="2_m71j0"]
+[ext_resource type="Script" uid="uid://5eer5mx341ex" path="res://scripts/others/magic_hit.gd" id="2_m71j0"]
 [ext_resource type="Texture2D" uid="uid://ddbe4g52amggs" path="res://VFX/Color/burst/color_burst_4.png" id="3_mjmww"]
 [ext_resource type="AudioStream" uid="uid://dws507t7cmfla" path="res://SFX/hit_arrow2.wav" id="4_jm7v4"]
 [ext_resource type="AudioStream" uid="uid://ba2bver8sc0ll" path="res://SFX/hit_arrow.wav" id="4_kf10p"]
@@ -144,8 +144,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_motvg"]
 _data = {
-"RESET": SubResource("Animation_c7w6h"),
-"magic_hit": SubResource("Animation_gcvk4")
+&"RESET": SubResource("Animation_c7w6h"),
+&"magic_hit": SubResource("Animation_gcvk4")
 }
 
 [node name="magic_hit" type="GPUParticles2D"]
@@ -155,18 +155,18 @@ material = SubResource("CanvasItemMaterial_clbon")
 position = Vector2(0, 1.45322e-06)
 scale = Vector2(1.64103, 1.52381)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_meg2b")
 texture = ExtResource("1_n3ykp")
 lifetime = 0.5
 preprocess = 10.0
 speed_scale = 2.8
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_meg2b")
 script = ExtResource("2_m71j0")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_motvg")
+&"": SubResource("AnimationLibrary_motvg")
 }
 
 [node name="burst" type="Sprite2D" parent="."]

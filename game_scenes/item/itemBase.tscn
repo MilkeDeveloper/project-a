@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://4t7eil3yoxnl"]
 
 [ext_resource type="Texture2D" uid="uid://uvdkb3oartgf" path="res://assets/items/HP_potion.png" id="1_75hrr"]
-[ext_resource type="Script" path="res://scripts/items/item_base.gd" id="1_i8j5u"]
+[ext_resource type="Script" uid="uid://7e1cq0gcaidg" path="res://scripts/items/item_base.gd" id="1_i8j5u"]
 [ext_resource type="Resource" uid="uid://boe343ajkcfyk" path="res://resources/items/fire_ball_grimoire.tres" id="2_roely"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="3_07oey"]
 

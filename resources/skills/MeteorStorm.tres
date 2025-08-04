@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=7 format=3 uid="uid://bi2urwoeonsh8"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://bi2urwoeonsh8"]
 
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_03g2q"]
-[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_vdh3u"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="1_03g2q"]
 [ext_resource type="PackedScene" uid="uid://bt31cehb0lijh" path="res://game_scenes/skills/meteor_storm.tscn" id="2_1x6uy"]
-[ext_resource type="Resource" uid="uid://b5ri14d68le2e" path="res://resources/cards/IgniterCard.tres" id="2_y0j6k"]
 [ext_resource type="Texture2D" uid="uid://nyvppxcsc3i0" path="res://assets/misc/skill_icon_meteor_storm.png" id="3_fxu6k"]
-[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="6_a0edx"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="6_a0edx"]
 
 [resource]
 script = ExtResource("1_03g2q")
@@ -17,7 +15,7 @@ skill_type = null
 buff_type = null
 mana_cost = 25
 cooldown = 10.0
-dmg_amount = 2500
+dmg_amount = 3500
 charge_time = 2.0
 effect_type = "(250 + 50% de dano) x (skill level hits). Aplica o status de [color=red][b]\"queimadura\"[/b][/color] ao alvo atingido."
 amount = null
@@ -25,14 +23,13 @@ percentage = null
 skill_effect = ExtResource("2_1x6uy")
 skill_level = 1
 skill_max_level = 15
-is_passive = null
-weapon_required = "Staff"
-cast_time = null
-is_charging_skill = true
+essence_required = Array[int]([0, 10, 20, 30, 50])
+skill_essences = 0
+cast_time = 3.0
+is_charging_skill = false
 is_aim_skill = true
 is_target_skill = null
-insta_cast_skill = null
-is_cast_skill = null
+insta_cast_skill = false
+is_cast_skill = true
 max_skill_charges = 0
-grimoire_Slots = Array[ExtResource("1_vdh3u")]([ExtResource("2_y0j6k"), ExtResource("2_y0j6k"), null, null, null])
 skill_interaction_effects = Array[ExtResource("6_a0edx")]([])

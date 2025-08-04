@@ -8,6 +8,8 @@ var direction: Vector2
 var angle: float
 var new_position: Vector2
 
+var destination: Vector2
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +17,7 @@ func _ready() -> void:
 
 # Define um uma posição aleatória para trajetória da entidade
 func random_movement():
+	
 	angle = deg_to_rad(randf_range(0, 360))
 	direction = Vector2(cos(angle), sin(angle))
 	new_position = global_position + direction.normalized() * randf_range(50, 350)
@@ -22,6 +25,7 @@ func random_movement():
 	
 	# Inicia o timer com um tempo aleatório
 	time_to_move.start(randf_range(1.5, 5.0))
+	destination = new_position
 	
 func _on_time_to_move_timeout() -> void:
 	# Se o cooldown de movimento zerou, então chama novamente a função de movimento
@@ -32,4 +36,5 @@ func _on_time_to_move_timeout() -> void:
 func _on_destination_reached() -> void:
 	# Se a entidade chegou ao destino, define a velocidade como 0 e o movimento para idle
 	get_parent().velocity = Vector2.ZERO
+	
 	

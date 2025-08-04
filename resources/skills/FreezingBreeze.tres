@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="GDSkillData" load_steps=6 format=3 uid="uid://djwg77h8hhd13"]
 
-[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="1_6kh5j"]
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="1_doxox"]
+[ext_resource type="Script" uid="uid://cu7n40cfmou4d" path="res://core/data/SkillCardData.gd" id="1_6kh5j"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="1_doxox"]
 [ext_resource type="Texture2D" uid="uid://dhfgxmf6cj2pl" path="res://assets/misc/skill_icon_ice_breath.png" id="2_2qk12"]
 [ext_resource type="Resource" uid="uid://6wkrnws25rlk" path="res://resources/cards/IceGolemCard.tres" id="2_wi0oi"]
-[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="5_wwyx4"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="5_wwyx4"]
 
 [resource]
 script = ExtResource("1_doxox")

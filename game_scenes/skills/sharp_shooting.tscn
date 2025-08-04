@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://gcs7ypobfwur"]
 
-[ext_resource type="Script" path="res://scripts/skills/sharp_shooting.gd" id="1_wy61n"]
+[ext_resource type="Script" uid="uid://5qwwecu7lh85" path="res://scripts/skills/sharp_shooting.gd" id="1_wy61n"]
 [ext_resource type="PackedScene" uid="uid://erm7hk8t0e5x" path="res://game_scenes/Projectiles/special_arrow.tscn" id="2_bx102"]
-[ext_resource type="Script" path="res://assets/projectiles/Projectile.gd" id="3_4drs7"]
-[ext_resource type="Script" path="res://core/data/ProjectileData.gd" id="4_r1owx"]
+[ext_resource type="Script" uid="uid://kawoiqqbibwn" path="res://assets/projectiles/Projectile.gd" id="3_4drs7"]
+[ext_resource type="Script" uid="uid://bfa8utff15l6d" path="res://core/data/ProjectileData.gd" id="4_r1owx"]
 [ext_resource type="Texture2D" uid="uid://crs4cut67td74" path="res://assets/projectiles/arrow2.png" id="5_2j0fb"]
 [ext_resource type="PackedScene" uid="uid://b76ox03l1ew21" path="res://game_scenes/UI/ui_charge.tscn" id="6_rbvkw"]
 

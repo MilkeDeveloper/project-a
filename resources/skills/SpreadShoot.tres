@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=8 format=3 uid="uid://balr7abbigcvf"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=7 format=3 uid="uid://balr7abbigcvf"]
 
-[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_pp2hj"]
-[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="2_tsu2w"]
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="3_qpdl5"]
+[ext_resource type="Script" uid="uid://iulg0lcy1bom" path="res://core/data/BuffTypeData.gd" id="1_pp2hj"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="3_qpdl5"]
 [ext_resource type="PackedScene" uid="uid://ltjdh404tmpc" path="res://game_scenes/skills/disparo_espalhado.tscn" id="4_t5kyy"]
 [ext_resource type="Texture2D" uid="uid://cyxykjuoi3nvw" path="res://assets/misc/skill_icon.png" id="5_tit5l"]
-[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="6_4mduw"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="6_4mduw"]
 
 [sub_resource type="Resource" id="Resource_3r3lb"]
 script = ExtResource("6_4mduw")
@@ -31,8 +30,8 @@ percentage = 0
 skill_effect = ExtResource("4_t5kyy")
 skill_level = 1
 skill_max_level = 10
-is_passive = false
-weapon_required = "Crossbow"
+essence_required = Array[int]([0, 10, 20, 30, 50])
+skill_essences = 0
 cast_time = 0.2
 is_charging_skill = false
 is_aim_skill = false
@@ -40,5 +39,4 @@ is_target_skill = false
 insta_cast_skill = false
 is_cast_skill = true
 max_skill_charges = 0
-grimoire_Slots = Array[ExtResource("2_tsu2w")]([null, null, null, null, null])
 skill_interaction_effects = Array[ExtResource("6_4mduw")]([SubResource("Resource_3r3lb")])

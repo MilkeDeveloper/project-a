@@ -1,14 +1,14 @@
 [gd_scene load_steps=36 format=3 uid="uid://ooigbfhfy4wa"]
 
 [ext_resource type="Texture2D" uid="uid://dlo1ine6p5di4" path="res://demo/assets/agent_bobby.png" id="1_1u51b"]
-[ext_resource type="Script" path="res://demo/agents/scripts/agent_base.gd" id="1_n8vy2"]
+[ext_resource type="Script" uid="uid://68wbhtvlbkqm" path="res://demo/agents/scripts/agent_base.gd" id="1_n8vy2"]
 [ext_resource type="Texture2D" uid="uid://dj4oayt5ttvh8" path="res://demo/assets/fx.png" id="2_lv102"]
 [ext_resource type="Texture2D" uid="uid://dwhhxj5557qrb" path="res://demo/assets/shadow.png" id="2_vr0jo"]
 [ext_resource type="Texture2D" uid="uid://2uyxh7sy8qny" path="res://demo/assets/weapon_ninja_star.png" id="4_1c5xq"]
 [ext_resource type="Texture2D" uid="uid://bdusy0qqtw0th" path="res://demo/assets/smoke.png" id="4_mnb6v"]
-[ext_resource type="Script" path="res://demo/agents/scripts/health.gd" id="4_qwtrf"]
-[ext_resource type="Script" path="res://demo/agents/scripts/hitbox.gd" id="5_taq6b"]
-[ext_resource type="Script" path="res://demo/agents/scripts/hurtbox.gd" id="6_jnvxm"]
+[ext_resource type="Script" uid="uid://5byn62y1oa76" path="res://demo/agents/scripts/health.gd" id="4_qwtrf"]
+[ext_resource type="Script" uid="uid://dntc3c582m5w8" path="res://demo/agents/scripts/hitbox.gd" id="5_taq6b"]
+[ext_resource type="Script" uid="uid://dq5h6yydckjc1" path="res://demo/agents/scripts/hurtbox.gd" id="6_jnvxm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2k81i"]
 size = Vector2(140, 40)
@@ -2334,6 +2334,7 @@ tracks/24/keys = {
 [sub_resource type="Animation" id="Animation_msfb2"]
 resource_name = "dodge"
 length = 0.4
+capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4374,22 +4375,22 @@ tracks/20/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ws2ti"]
 _data = {
-"RESET": SubResource("Animation_nvm4d"),
-"attack_1": SubResource("Animation_8wj70"),
-"attack_2": SubResource("Animation_s1dey"),
-"attack_3": SubResource("Animation_g7a0r"),
-"charge": SubResource("Animation_jcwlt"),
-"charge_prepare": SubResource("Animation_sva81"),
-"dance": SubResource("Animation_5k1rd"),
-"death": SubResource("Animation_wei72"),
-"dodge": SubResource("Animation_msfb2"),
-"hurt": SubResource("Animation_gowr5"),
-"idle": SubResource("Animation_gnqgt"),
-"spit": SubResource("Animation_uow76"),
-"summon": SubResource("Animation_5mxvi"),
-"throw": SubResource("Animation_yn0t6"),
-"throw_prepare": SubResource("Animation_kb56n"),
-"walk": SubResource("Animation_fh06e")
+&"RESET": SubResource("Animation_nvm4d"),
+&"attack_1": SubResource("Animation_8wj70"),
+&"attack_2": SubResource("Animation_s1dey"),
+&"attack_3": SubResource("Animation_g7a0r"),
+&"charge": SubResource("Animation_jcwlt"),
+&"charge_prepare": SubResource("Animation_sva81"),
+&"dance": SubResource("Animation_5k1rd"),
+&"death": SubResource("Animation_wei72"),
+&"dodge": SubResource("Animation_msfb2"),
+&"hurt": SubResource("Animation_gowr5"),
+&"idle": SubResource("Animation_gnqgt"),
+&"spit": SubResource("Animation_uow76"),
+&"summon": SubResource("Animation_5mxvi"),
+&"throw": SubResource("Animation_yn0t6"),
+&"throw_prepare": SubResource("Animation_kb56n"),
+&"walk": SubResource("Animation_fh06e")
 }
 
 [node name="AgentBase" type="CharacterBody2D"]
@@ -4493,23 +4494,23 @@ region_rect = Rect2(300, 0, 100, 70)
 position = Vector2(0, 52)
 emitting = false
 amount = 16
-process_material = SubResource("ParticleProcessMaterial_f5i1x")
 texture = ExtResource("4_mnb6v")
 lifetime = 0.7
 one_shot = true
 explosiveness = 0.7
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_f5i1x")
 
 [node name="Summoned" type="GPUParticles2D" parent="FX"]
 position = Vector2(0, 83)
 emitting = false
 amount = 16
-process_material = SubResource("ParticleProcessMaterial_gmal1")
 texture = ExtResource("4_mnb6v")
 lifetime = 1.4
 one_shot = true
 explosiveness = 0.5
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_gmal1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -4523,6 +4524,6 @@ script = ExtResource("4_qwtrf")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_method = 1
 libraries = {
-"": SubResource("AnimationLibrary_ws2ti")
+&"": SubResource("AnimationLibrary_ws2ti")
 }
 autoplay = "idle"

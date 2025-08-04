@@ -24,7 +24,7 @@ func _on_Projectile_body_entered(body):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("entity"):
-		GLobals.emit_signal("cam_shake", 55.5, 0.5)
+		GLobals.emit_signal("cam_shake", 5.5, 0.5)
 		if body.has_method("take_damage"):
 			body.take_damage(damage, attacker, body, "magic_hit")
 			print(attacker, body)

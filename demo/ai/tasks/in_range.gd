@@ -1,7 +1,7 @@
 #*
 #* in_range.gd
 #* =============================================================================
-#* Copyright 2021-2024 Serhii Snitsaruk
+#* Copyright (c) 2023-present Serhii Snitsaruk and the LimboAI contributors.
 #*
 #* Use of this source code is governed by an MIT-style
 #* license that can be found in the LICENSE file or at
@@ -36,7 +36,7 @@ func _generate_name() -> String:
 
 # Called to initialize the task.
 func _setup() -> void:
-	## Small performace optimization
+	## Small performance optimization
 	_min_distance_squared = distance_min * distance_min
 	_max_distance_squared = distance_max * distance_max
 

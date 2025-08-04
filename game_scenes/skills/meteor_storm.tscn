@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bt31cehb0lijh"]
 
-[ext_resource type="Script" path="res://scripts/skills/meteor_storm.gd" id="1_26s5l"]
+[ext_resource type="Script" uid="uid://d3nqn6jhbak83" path="res://scripts/skills/meteor_storm.gd" id="1_26s5l"]
 [ext_resource type="PackedScene" uid="uid://4pyua5w52b1r" path="res://game_scenes/Projectiles/meteor.tscn" id="2_glt6v"]
 [ext_resource type="Texture2D" uid="uid://bco220wncvrxm" path="res://VFX/effects/46.png" id="3_6rcjq"]
 
@@ -16,15 +16,14 @@ length = 0.66667
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hbvo7"]
 _data = {
-"RESET": SubResource("Animation_utyb8"),
-"meteor_storm": SubResource("Animation_3ke4e")
+&"RESET": SubResource("Animation_utyb8"),
+&"meteor_storm": SubResource("Animation_3ke4e")
 }
 
 [node name="MeteorStorm" type="Node2D" node_paths=PackedStringArray("animation", "selector")]
 script = ExtResource("1_26s5l")
-projectile_num = 15
-time_between_projectiles = 0.2
-random_area = 100
+projectile_num = 3
+time_between_projectiles = 1.0
 Projectile = ExtResource("2_glt6v")
 animation = NodePath("anim")
 selector = NodePath("selector")
@@ -37,5 +36,5 @@ texture = ExtResource("3_6rcjq")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hbvo7")
+&"": SubResource("AnimationLibrary_hbvo7")
 }

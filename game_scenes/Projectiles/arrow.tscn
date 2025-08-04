@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://klgctucux3ww"]
+[gd_scene load_steps=12 format=3 uid="uid://klgctucux3ww"]
 
-[ext_resource type="Script" path="res://game_scenes/Projectiles/arrow.gd" id="1_dbtlp"]
+[ext_resource type="Script" uid="uid://co55rqp7be1d4" path="res://game_scenes/Projectiles/arrow.gd" id="1_dbtlp"]
 [ext_resource type="Resource" uid="uid://dqhtmnciedbe8" path="res://resources/projectiles/projectile_template.tres" id="2_7fw8i"]
-[ext_resource type="Texture2D" uid="uid://78npsm5xl6y3" path="res://addons/kenney_particle_pack/star_01.png" id="3_xsfv3"]
+[ext_resource type="Texture2D" uid="uid://cxdcq6hyb23lw" path="res://addons/kenney_particle_pack/star_01.png" id="3_xsfv3"]
+[ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="4_lp4rg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vn8ul"]
 radius = 2.9999
@@ -25,16 +26,20 @@ point_count = 2
 curve = SubResource("Curve_t5v74")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qht8s"]
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+particle_flag_rotate_y = true
 particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(1, 15, 1)
-direction = Vector3(-1, 0, 0)
-spread = 2.244
+particle_flag_damping_as_friction = true
+emission_shape = 2
+emission_sphere_radius = 3.13
+direction = Vector3(0, 0, 0)
+spread = 7.0
 flatness = 1.0
-initial_velocity_max = 59.08
+initial_velocity_max = 39.79
 gravity = Vector3(0, 0, 0)
 scale_min = 0.02
-scale_max = 0.05
+scale_max = 0.02
 scale_curve = SubResource("CurveTexture_mpwia")
 color_ramp = SubResource("GradientTexture1D_ccwhq")
 
@@ -54,13 +59,21 @@ rotation = -1.56272
 shape = SubResource("CapsuleShape2D_vn8ul")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
 material = SubResource("CanvasItemMaterial_bympn")
+position = Vector2(0, 1)
+rotation = 3.16003
 amount = 400
-process_material = SubResource("ParticleProcessMaterial_qht8s")
 texture = ExtResource("3_xsfv3")
-lifetime = 2.0
+lifetime = 1.02
+randomness = 1.0
 fixed_fps = 60
-trail_enabled = true
+trail_lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_qht8s")
+
+[node name="PointLight2D" type="PointLight2D" parent="GPUParticles2D"]
+color = Color(0.509804, 1, 1, 1)
+energy = 2.17
+texture = ExtResource("4_lp4rg")
+texture_scale = 0.1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

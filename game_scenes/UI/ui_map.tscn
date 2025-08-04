@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://b7lbwsekejpe1"]
 
-[ext_resource type="Script" path="res://ui/ui_scripts/mini_map.gd" id="1_ecxlq"]
+[ext_resource type="Script" uid="uid://ckueni4skpxjd" path="res://ui/ui_scripts/mini_map.gd" id="1_ecxlq"]
 [ext_resource type="Texture2D" uid="uid://doqpxjyiyd6cq" path="res://assets/ui/UI map/bg_minimap2.png" id="2_avcdc"]
 [ext_resource type="Texture2D" uid="uid://dq3itn4fgfqxr" path="res://assets/ui/UI map/bg_minimap.png" id="2_e7sr8"]
 [ext_resource type="Texture2D" uid="uid://du5mg7noakupd" path="res://assets/ui/UI map/replace_color.png" id="3_pu8bq"]
 [ext_resource type="Texture2D" uid="uid://cwmje0owq51h2" path="res://assets/ui/UI map/cover_minimap2.png" id="4_bkxhe"]
 [ext_resource type="Texture2D" uid="uid://0ys64pohx7vh" path="res://assets/misc/minimap_player1.png" id="4_h5k26"]
-[ext_resource type="Script" path="res://ui/ui_scripts/point_direction.gd" id="6_gj8ma"]
+[ext_resource type="Script" uid="uid://cjo2qntwwpupj" path="res://ui/ui_scripts/point_direction.gd" id="6_gj8ma"]
 
 [node name="UI map" type="CanvasLayer"]
 

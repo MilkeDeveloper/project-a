@@ -1,19 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://biiqhpu4a8iqn"]
 
-[ext_resource type="Shader" path="res://shaders/ghost.gdshader" id="1_q5fab"]
+[ext_resource type="Shader" uid="uid://4e66ctp27mxi" path="res://shaders/ghost.gdshader" id="1_q5fab"]
 [ext_resource type="Texture2D" uid="uid://2o56tprdnb0j" path="res://icon.svg" id="2_s75sl"]
-[ext_resource type="Script" path="res://game_scenes/ghost_sprite.gd" id="3_4in5s"]
+[ext_resource type="Script" uid="uid://doqyo81ywn2i4" path="res://game_scenes/ghost_sprite.gd" id="3_4in5s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nyq5w"]
 shader = ExtResource("1_q5fab")
-shader_parameter/shading = true
-shader_parameter/texture_color = Color(0, 0.87451, 0.847059, 1)
-shader_parameter/alpha = 0.7
+shader_parameter/shading = false
+shader_parameter/texture_color = Color(0.678763, 0.708055, 0.739598, 1)
+shader_parameter/alpha = 0.5
 
 [node name="ghost_effect" type="Node2D"]
+scale = Vector2(0.8, 0.8)
 
 [node name="ghost_sprite" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.551)
 material = SubResource("ShaderMaterial_nyq5w")
+scale = Vector2(0.7, 0.8)
 texture = ExtResource("2_s75sl")
 script = ExtResource("3_4in5s")

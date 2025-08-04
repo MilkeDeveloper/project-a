@@ -19,9 +19,13 @@ func exit() -> void:
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		is_jumping = true
+	if event.is_action_pressed("basic_attack") and attack_timer.time_left <= 0:
+		manager.change_state("AttackState")
 
 func handle_anim():
-	animation.play("idle_" + direction_tracker.get_direction())
+		entity.get_node("sprite").flip_h = false
+		animation.play("idle_" + direction_tracker.get_direction())
+	
 
 func transit_state():
 	if entity.velocity != Vector2.ZERO:

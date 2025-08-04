@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://t1slqsevmadj"]
 
-[ext_resource type="Script" path="res://scripts/systems/Inventory/inventory.gd" id="1_86htq"]
+[ext_resource type="Script" uid="uid://5bsbmxwp287l" path="res://scripts/systems/Inventory/inventory.gd" id="1_86htq"]
 [ext_resource type="Resource" uid="uid://0u5glavfj3oo" path="res://resources/inv/Inventory.tres" id="2_a74jh"]
 [ext_resource type="Texture2D" uid="uid://c4aykgc1v66v" path="res://assets/misc/inv_style_box.png" id="3_fh8my"]
 [ext_resource type="PackedScene" uid="uid://bd8xhujhk3po6" path="res://game_scenes/systems/Inventory/slot.tscn" id="4_pyrsv"]
@@ -251,13 +251,13 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_whcq1"]
 _data = {
-"RESET": SubResource("Animation_tb3dv"),
-"confirm_dialog_close": SubResource("Animation_vho16"),
-"confirm_dialog_open": SubResource("Animation_36ijp"),
-"dialog_close": SubResource("Animation_ubw8w"),
-"dialog_open": SubResource("Animation_irddj"),
-"inventory_close": SubResource("Animation_axofg"),
-"inventory_open": SubResource("Animation_5ly84")
+&"RESET": SubResource("Animation_tb3dv"),
+&"confirm_dialog_close": SubResource("Animation_vho16"),
+&"confirm_dialog_open": SubResource("Animation_36ijp"),
+&"dialog_close": SubResource("Animation_ubw8w"),
+&"dialog_open": SubResource("Animation_irddj"),
+&"inventory_close": SubResource("Animation_axofg"),
+&"inventory_open": SubResource("Animation_5ly84")
 }
 
 [sub_resource type="SystemFont" id="SystemFont_qxthk"]

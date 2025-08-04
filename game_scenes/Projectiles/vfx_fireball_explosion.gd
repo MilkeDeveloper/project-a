@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 	
 func start_shake():
-	GLobals.emit_signal("cam_shake", 70.5, 0.5)
+	GLobals.emit_signal("cam_shake", 7.5, 0.5)
 
 
 

@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ProjectileData" load_steps=4 format=3 uid="uid://bw1qjnrr6qiy5"]
 
-[ext_resource type="Script" path="res://core/data/ProjectileData.gd" id="1_4f6g5"]
-[ext_resource type="Script" path="res://scripts/Projectiles/piglet_projectile.gd" id="1_68mg2"]
+[ext_resource type="Script" uid="uid://bfa8utff15l6d" path="res://core/data/ProjectileData.gd" id="1_4f6g5"]
+[ext_resource type="Script" uid="uid://bmf6vol0nsbnb" path="res://scripts/Projectiles/piglet_projectile.gd" id="1_68mg2"]
 [ext_resource type="Texture2D" uid="uid://ccj2kdtbwp7da" path="res://assets/projectiles/magic_bullet.png" id="3_6vfdh"]
 
 [resource]
 script = ExtResource("1_4f6g5")
-max_distance = 420.0
-projectile_speed = 800.0
+max_distance = 320.0
+projectile_speed = 500.0
 texture = ExtResource("3_6vfdh")
 Projectile_logic = ExtResource("1_68mg2")

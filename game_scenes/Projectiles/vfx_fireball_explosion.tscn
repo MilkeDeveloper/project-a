@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://c74rasfa8qw8u"]
 
 [ext_resource type="Texture2D" uid="uid://d3c7ku1q5ox28" path="res://VFX/Complex/smoke/smoke2_2.png" id="1_f0adc"]
-[ext_resource type="Script" path="res://game_scenes/Projectiles/vfx_fireball_explosion.gd" id="1_iew7p"]
+[ext_resource type="Script" uid="uid://c1xe80bos0qjn" path="res://game_scenes/Projectiles/vfx_fireball_explosion.gd" id="1_iew7p"]
 [ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="3_a0pd3"]
 [ext_resource type="AudioStream" uid="uid://1i5j0mx67hon" path="res://SFX/explosion-1-SBA-300286280-preview (2).mp3" id="4_uggvg"]
 
@@ -235,8 +235,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1r0a8"]
 _data = {
-"Explosion": SubResource("Animation_x6yxw"),
-"RESET": SubResource("Animation_hry1c")
+&"Explosion": SubResource("Animation_x6yxw"),
+&"RESET": SubResource("Animation_hry1c")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0esyf"]
@@ -252,12 +252,12 @@ material = SubResource("CanvasItemMaterial_tr3pa")
 scale = Vector2(1, 0.86)
 emitting = false
 amount = 25
-process_material = SubResource("ParticleProcessMaterial_kxujv")
 texture = ExtResource("1_f0adc")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_kxujv")
 
 [node name="PointLight2D" type="PointLight2D" parent="explosion"]
 color = Color(1, 0.556863, 0.0352941, 0.458824)
@@ -269,26 +269,26 @@ texture_scale = 2.02
 scale = Vector2(1, 0.86)
 emitting = false
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_dt62i")
 texture = ExtResource("1_f0adc")
 lifetime = 0.5
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_dt62i")
 
 [node name="explosion2" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_5qc7u")
 scale = Vector2(1, 0.86)
 emitting = false
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_kxujv")
 texture = ExtResource("1_f0adc")
 lifetime = 0.5
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_kxujv")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1r0a8")
+&"": SubResource("AnimationLibrary_1r0a8")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

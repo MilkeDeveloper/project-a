@@ -17,6 +17,8 @@ var nullable: Node
 var inventory_open: bool
 var anim: AnimationPlayer
 
+var destination_pos: Vector2
+
 var action_keys = {
 	"attack": "basic_attack",
 	"block": "block",
@@ -29,19 +31,21 @@ var action_keys = {
 
 func _ready() -> void:
 	anim = ui_inventory.get_node("anim")
-
+	
 # Checa os inputs do player
 func get_input(event):
 	if event.is_action_pressed("mouse_right") and not dash_component.is_dashing:
 		# Chama a função do NavigationComponent2D para definir o destino
 		navigation_component.set_destination(get_global_mouse_position())
+		destination_pos = get_global_mouse_position()
 
 	if event.is_action_just_pressed("dash"):
 		dash_component.dash()
 	
-	if event.is_action_pressed("basic_attack"):
-		if GLobals.target != null:
-			get_parent().find_child("basic_attack").ranged_basic_attack(GLobals.target)
+	#if event.is_action_pressed("basic_attack"):
+		#pass#if GLobals.target != null:
+			#get_parent().find_child("basic_attack").ranged_basic_attack(GLobals.target)
+		
 			
 	if event.is_action_pressed("jump"):
 		get_parent().get_node("State").is_jumping = true
@@ -84,3 +88,15 @@ func get_input(event):
 	
 	if event.is_action_just_pressed("ui_skills"):
 		ui_skills.visible = not ui_skills.visible
+
+func handle_anim():
+	node.get_node("navigation").set_process(false)
+	get_parent().get_node("anim").play("swordAttack1_" + get_parent().get_node("DirectionTracker").get_direction())
+	await get_tree().create_timer(0.2).timeout
+	node.get_node("navigation").set_process(true)
+	await get_parent().get_node("anim").animation_finished
+	get_parent().get_node("anim").play("idle_" + get_parent().get_node("DirectionTracker").get_direction())
+	
+	node.is_in_combat = false
+	
+	#

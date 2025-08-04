@@ -8,12 +8,13 @@ var direction: Vector2
 var damage: int
 
 func fire_projectile(_attacker: CharacterBody2D):
+	Combat.enemy = entity
 	damage = entity.damage
-	direction = entity.global_position.direction_to(_attacker.global_position)
+	direction = entity.get_node("sprite").global_position.direction_to(_attacker.global_position)
 	
 	var projectile = Projectile.instantiate()
 	
-	projectile.position = entity.global_position
+	projectile.position = entity.get_node("sprite").global_position
 	projectile.projectile_data.texture = projectile_config.texture
 	projectile.projectile_data.Projectile_logic = projectile_config.Projectile_logic
 	projectile.var_direction =  direction

@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="GDSkillData" load_steps=9 format=3 uid="uid://b0s17epyyhqh4"]
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=8 format=3 uid="uid://b0s17epyyhqh4"]
 
-[ext_resource type="Script" path="res://core/data/BuffTypeData.gd" id="1_elqbq"]
-[ext_resource type="Script" path="res://core/data/SkillCardData.gd" id="2_3kfup"]
-[ext_resource type="Script" path="res://core/data/GDSkillData.gd" id="3_30mek"]
+[ext_resource type="Script" uid="uid://iulg0lcy1bom" path="res://core/data/BuffTypeData.gd" id="1_elqbq"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="3_30mek"]
 [ext_resource type="PackedScene" uid="uid://rl3dbv7twsvi" path="res://game_scenes/skills/quick_step.tscn" id="4_5l0dl"]
 [ext_resource type="Texture2D" uid="uid://c7vnaaokigpie" path="res://assets/icons/skills/quick_step.png" id="4_rtoob"]
-[ext_resource type="Script" path="res://core/data/SkillInteractionsData.gd" id="4_st0ad"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="4_st0ad"]
 
 [sub_resource type="Resource" id="Resource_8jppe"]
 script = ExtResource("4_st0ad")
@@ -37,8 +36,8 @@ percentage = 0
 skill_effect = ExtResource("4_5l0dl")
 skill_level = 1
 skill_max_level = 1
-is_passive = false
-weapon_required = "All"
+essence_required = Array[int]([0, 10, 20, 30, 50])
+skill_essences = 0
 cast_time = 0.0
 is_charging_skill = false
 is_aim_skill = false
@@ -46,5 +45,4 @@ is_target_skill = false
 insta_cast_skill = true
 is_cast_skill = false
 max_skill_charges = 3
-grimoire_Slots = Array[ExtResource("2_3kfup")]([])
 skill_interaction_effects = Array[ExtResource("4_st0ad")]([SubResource("Resource_8jppe"), SubResource("Resource_atlo7")])

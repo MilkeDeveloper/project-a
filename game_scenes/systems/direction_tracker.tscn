@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpnhg15unapxy"]
 
-[ext_resource type="Script" path="res://scripts/systems/direction_tracker.gd" id="1_kdaup"]
+[ext_resource type="Script" uid="uid://cpkpgtmlro1r0" path="res://scripts/systems/direction_tracker.gd" id="1_kdaup"]
 
 [node name="DirectionTracker" type="Node2D" node_paths=PackedStringArray("entity")]
 script = ExtResource("1_kdaup")

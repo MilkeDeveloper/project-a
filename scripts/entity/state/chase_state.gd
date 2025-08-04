@@ -28,7 +28,7 @@ func handle_anim():
 
 # Função para transitar para outros estados
 func transit_state():
-	if distance_to_player() < entity.attack_range and distance_to_player() > 0:
+	if distance_to_player(_attacker) < entity.attack_range and distance_to_player(_attacker) > 0:
 		if entity.hp > 0:
 			manager.change_state("AttackState", {"target": _attacker})
 		else:
@@ -40,10 +40,10 @@ func transit_state():
 		chase_attacker(_attacker)
 
 func chase_attacker(attaker: CharacterBody2D):
-	if distance_to_player() > entity.attack_range:
+	if distance_to_player(attaker) > entity.attack_range:
 		navigation.set_destination(attaker.global_position)
 	else:
 		navigation.set_destination(entity.global_position)
 		
-func distance_to_player() -> float:
-	return entity.global_position.distance_to(_attacker.global_position)
+func distance_to_player(attacker: CharacterBody2D) -> float:
+	return entity.global_position.distance_to(attacker.global_position)

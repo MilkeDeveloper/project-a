@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4w1mreo76kwe"]
 
 [ext_resource type="Resource" uid="uid://br8a3qgwe0nab" path="res://resources/skills/soul_chain.tres" id="1_0i31u"]
-[ext_resource type="Script" path="res://core/data/GrimoireData.cs" id="2_4gcas"]
+[ext_resource type="Script" uid="uid://cop85l32wdg6v" path="res://core/data/GrimoireData.cs" id="2_4gcas"]
 
 [resource]
 script = ExtResource("2_4gcas")
