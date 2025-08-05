@@ -7,8 +7,7 @@ func enter(args: Dictionary = {}) -> void:
 		if GLobals.target.hp > 0:
 			entity.find_child("basic_attack").ranged_basic_attack(GLobals.target)
 			
-	navigation.set_process(false)
-	
+	entity.can_move = false
 	
 	if not GLobals.target:
 		animation.play("swordAttack1_" + direction_tracker.get_direction())
@@ -19,7 +18,8 @@ func enter(args: Dictionary = {}) -> void:
 		animation.play("swordAttack1_" + direction_tracker.get_direction())
 		
 	await get_tree().create_timer(0.3).timeout
-	navigation.set_process(true)
+	entity.can_move = true
+	#navigation.set_process(true)
 	attack_timer.start()
 	transit_state()
 

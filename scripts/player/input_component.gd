@@ -34,10 +34,11 @@ func _ready() -> void:
 	
 # Checa os inputs do player
 func get_input(event):
-	if event.is_action_pressed("mouse_right") and not dash_component.is_dashing:
+	if event.is_action_pressed("mouse_right") and not node.is_dashing:
 		# Chama a função do NavigationComponent2D para definir o destino
-		navigation_component.set_destination(get_global_mouse_position())
-		destination_pos = get_global_mouse_position()
+		if node.can_move:
+			navigation_component.set_destination(get_global_mouse_position(), node.SPEED)
+			destination_pos = get_global_mouse_position()
 
 	if event.is_action_just_pressed("dash"):
 		dash_component.dash()

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://pw1dn4otaf1f"]
+
+[ext_resource type="Script" uid="uid://iulg0lcy1bom" path="res://core/data/BuffTypeData.gd" id="1_hlgdb"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="2_ggehx"]
+[ext_resource type="Texture2D" uid="uid://b268emuauss6o" path="res://assets/icons/skills/swordskills/ascendant_cut.png" id="3_ggehx"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="3_wyaw3"]
+
+[resource]
+script = ExtResource("2_ggehx")
+id = 3
+skill_name = "Corte Ascentente"
+skill_description = "Desfere um golpe vertical com a espada de baixo para cima, lançando os inimigos ao ar."
+skill_icon = ExtResource("3_ggehx")
+skill_type = Array[int]([0])
+buff_type = Array[ExtResource("1_hlgdb")]([])
+mana_cost = 45
+cooldown = 12.0
+dmg_amount = 125
+charge_time = 0.0
+effect_type = "Aplica \"knockup\" aos inimigos atingidos."
+amount = 0
+percentage = 0
+skill_level = 1
+skill_max_level = 5
+essence_required = Array[int]([0, 10, 20, 30, 50])
+skill_essences = 0
+cast_time = 2.0
+is_charging_skill = false
+is_aim_skill = false
+is_target_skill = false
+insta_cast_skill = false
+is_cast_skill = true
+max_skill_charges = 0
+skill_interaction_effects = Array[ExtResource("3_wyaw3")]([])
+metadata/_custom_type_script = "uid://bbunn68wmpx67"

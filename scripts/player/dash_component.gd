@@ -26,7 +26,7 @@ func dash():
 	target_position = node.global_position + (target_position * dash_distance)
 	set_dash_speed()
 	_dash_effect()
-	navigation_component.set_destination(target_position)
+	navigation_component.set_destination(target_position, node.SPEED)
 
 func set_dash_speed():
 	final_dash_speed = dash_speed * dash_modifier
@@ -36,7 +36,6 @@ func set_dash_anim():
 	
 	
 func end_dash():
-	node.SPEED = 650
 	is_dashing = false
 	ghost_timer.stop()
 

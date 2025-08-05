@@ -81,6 +81,8 @@ func activate_skill(skill_id: int, player: CharacterBody2D, target: Node = null)
 							else:
 								skill_data.cooldown_left = 1.0
 								skill_data.skill_charges += 1
+						else:
+							skill_data.cooldown_left = skill_data.cooldown
 							
 						if last_used_skill_ID != null:
 							verify_skill_interactions(last_used_skill_ID, skill_data)

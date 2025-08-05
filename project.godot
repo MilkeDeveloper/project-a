@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ProjectA - Dev"
-run/main_scene="res://game_scenes/world.tscn"
+run/main_scene="uid://dgbnt4xuo543x"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -37,6 +37,10 @@ project/assembly_name="Project A"
 [editor]
 
 import/use_multiple_threads=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/YATI/plugin.cfg")
 
 [global_group]
 

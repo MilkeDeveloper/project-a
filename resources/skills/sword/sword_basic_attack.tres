@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=5 format=3 uid="uid://ceujwdaljf35d"]
+
+[ext_resource type="Script" uid="uid://iulg0lcy1bom" path="res://core/data/BuffTypeData.gd" id="1_6jo2a"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="2_k88ob"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="3_atinj"]
+[ext_resource type="Texture2D" uid="uid://j2lhy48yy7s3" path="res://assets/icons/skills/swordskills/basic_attack.png" id="3_k88ob"]
+
+[resource]
+script = ExtResource("2_k88ob")
+id = 0
+skill_name = "Ataque Básico"
+skill_description = "Attack basico da espada"
+skill_icon = ExtResource("3_k88ob")
+skill_type = Array[int]([0])
+buff_type = Array[ExtResource("1_6jo2a")]([])
+mana_cost = 0
+cooldown = 0.8
+dmg_amount = 25
+charge_time = 0.0
+effect_type = "A cada 4 ataques adiciona 1 stack de sangramento no alvo"
+amount = 0
+percentage = 0
+skill_level = 1
+skill_max_level = 3
+essence_required = Array[int]([0, 10, 20, 30, 50])
+skill_essences = 0
+cast_time = 0.0
+is_charging_skill = false
+is_aim_skill = false
+is_target_skill = false
+insta_cast_skill = false
+is_cast_skill = false
+max_skill_charges = 0
+skill_interaction_effects = Array[ExtResource("3_atinj")]([])
+metadata/_custom_type_script = "uid://bbunn68wmpx67"

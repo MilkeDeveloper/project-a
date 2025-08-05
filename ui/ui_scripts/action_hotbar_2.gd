@@ -89,7 +89,7 @@ func get_skills_in_hotbar():
 		if skill_hotbar1[i] != null:
 			hotbar_slot.texture_normal = skill_hotbar1[i].skill_icon
 		else:
-			hotbar_slot.texture_normal = load("res://assets/misc/hotbar_slot_remake.png")
+			hotbar_slot.texture_normal = hotbar_slot.texture_normal
 
 func get_skills_on_cooldown():
 	for i in range(ui_hotbar_slots.size()):

@@ -21,7 +21,7 @@ func random_movement():
 	angle = deg_to_rad(randf_range(0, 360))
 	direction = Vector2(cos(angle), sin(angle))
 	new_position = global_position + direction.normalized() * randf_range(50, 350)
-	navigation_component.set_destination(new_position)
+	navigation_component.set_destination(new_position, get_parent().SPEED)
 	
 	# Inicia o timer com um tempo aleatório
 	time_to_move.start(randf_range(1.5, 5.0))

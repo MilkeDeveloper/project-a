@@ -28,7 +28,7 @@ func activate_dash():
 	var target_position = (get_global_mouse_position() - node.global_position).normalized()
 	target_position = node.global_position + (target_position * dash_distance)
 	set_dash_speed()
-	node.get_node("navigation").set_destination(target_position)
+	node.get_node("navigation").set_destination(target_position, node.get_node("dash_component").final_dash_speed)
 	
 	node.get_node("dash_component").dash()
 

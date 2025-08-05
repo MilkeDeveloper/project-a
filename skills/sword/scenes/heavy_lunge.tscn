@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5ol3br1de1o8"]
+
+[ext_resource type="Script" uid="uid://b2fu5v5drh3c7" path="res://skills/sword/scripts/heavy_lunge.gd" id="1_dq5y2"]
+[ext_resource type="PackedScene" uid="uid://biiqhpu4a8iqn" path="res://game_scenes/ghotst_effect.tscn" id="2_sof8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nekb7"]
+size = Vector2(27, 27)
+
+[node name="HeavyLunge" type="Area2D"]
+collision_mask = 9
+script = ExtResource("1_dq5y2")
+speed = 200
+lunge_speed = 200.0
+dash_modifier = 1.2
+ghost_effect = ExtResource("2_sof8u")
+
+[node name="colisor" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nekb7")
+
+[node name="duration" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -26,6 +26,9 @@ var is_skill_charging: bool
 
 var _attacker = null
 var mouse_position
+var can_move: bool = true
+
+var is_dashing: bool = false
 
 
 var action_keys = {
@@ -62,6 +65,8 @@ func _on_destination_reached() -> void:
 	# Se o node cehgou ao destino, define a velocidade para 0 e define o estado para "idle"
 	if dash_component.is_dashing:
 		dash_component.end_dash()
+	
+	is_dashing = false
 
 	velocity = Vector2.ZERO
 	#animation_component.state_machine.dispatch(&"to_idle")

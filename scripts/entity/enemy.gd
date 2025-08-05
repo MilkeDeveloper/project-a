@@ -36,6 +36,9 @@ var delayed_hp = 100
 
 @export var delay_speed: float
 
+var current_posX: float
+var current_posY: float
+
 func _ready() -> void:
 	# inicia a função que define o movimento aleatório
 	hp = max_hp
@@ -45,8 +48,8 @@ func _ready() -> void:
 	hud_entity.update_bars(hp)
 	hud_entity.hide()
 	
-	
-	
+
+
 	#hud_entity.get_node("HUD_HP").find_child("bar").get_child(0).text = str(hp) + "/" + str(max_hp)
 func _process(delta: float) -> void:
 	if hp < max_hp:
@@ -54,22 +57,25 @@ func _process(delta: float) -> void:
 	
 	if hp <= 0:
 		died = true
-		limbo_tree.behavior_tree.reset_state()
+		limbo_tree.change_active_state(limbo_tree.states["death"])
 		die()
 		
 	if delayed_hp > current_hp:
 		delayed_hp = max(delayed_hp - delay_speed * delta, current_hp)
 		var percent = float(delayed_hp) / max_hp
 		delayed_bar.value = percent * 100
-
+	
+	current_posX = global_position.x
+	current_posY = global_position.y
+	
 func take_damage(damage, attacker, target_attacker, effect_anim_name):
 	_attacker = attacker
 	apply_hurt_effect(effect_anim_name)
 	var anim_name = "new_default_dmg_2"
 	var dmg_popup = popup_instance.instantiate()
 	randomize()
-	dmg_popup.position.x = global_position.x + randi_range(-8, 8)
-	dmg_popup.position.y = global_position.y + randi_range(-8, 8)
+	dmg_popup.position.x = current_posX + randi_range(-8, 8)
+	dmg_popup.position.y = current_posY + randi_range(-8, 8)
 	get_parent().get_node("take_dmg").add_child(dmg_popup)
 	dmg_popup.start_popup2(damage, anim_name, attacker, target_attacker)
 	apply_damage(damage)
@@ -81,7 +87,7 @@ func take_damage(damage, attacker, target_attacker, effect_anim_name):
 		GLobals.target = target_attacker
 		$target_area.set_hud_target()
 		attacker.get_node("TargetManager").lock_target()
-	attacker.find_child("basic_attack").ranged_basic_attack(GLobals.target)
+	#attacker.find_child("basic_attack").ranged_basic_attack(GLobals.target)
 	hurted = true
 	
 	if hp <= 0:
@@ -95,8 +101,8 @@ func take_basic_damage(damage, attacker, target_attacker, effect_anim_name):
 	var anim_name = "new_default_dmg_2"
 	var dmg_popup = popup_instance.instantiate()
 	randomize()
-	dmg_popup.position.x = global_position.x + randi_range(-8, 8)
-	dmg_popup.position.y = global_position.y + randi_range(-10, 10)
+	dmg_popup.position.x = current_posX + randi_range(-8, 8)
+	dmg_popup.position.y = current_posY + randi_range(-10, 10)
 	get_parent().get_node("take_dmg").add_child(dmg_popup)
 	dmg_popup.start_popup2(damage, anim_name, attacker, target_attacker)
 	apply_damage(damage)
@@ -105,7 +111,7 @@ func take_basic_damage(damage, attacker, target_attacker, effect_anim_name):
 	await get_tree().create_timer(0.1).timeout
 	get_node("navigation").set_process(true)
 	attacker.get_node("TargetManager").lock_target()
-	attacker.find_child("basic_attack").ranged_basic_attack(GLobals.target)
+	#attacker.find_child("basic_attack").ranged_basic_attack(GLobals.target)
 	hurted = true
 	
 	if hp <= 0:

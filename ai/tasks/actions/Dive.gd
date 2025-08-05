@@ -39,7 +39,7 @@ func _tick(delta: float) -> Status:
 		anim.seek(current_frame, true)
 		
 	# Espera atingir o tempo da animação
-	navigation.set_destination(agent.global_position)
+	navigation.set_destination(agent.global_position, agent.SPEED)
 	if anim.get_current_animation_position() >= trigger_time:
 		if not dash_started:
 			var dir = (target_pos - agent.global_position)

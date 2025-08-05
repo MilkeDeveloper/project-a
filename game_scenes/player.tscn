@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://drffed2tq2jus"]
+[gd_scene load_steps=84 format=3 uid="uid://drffed2tq2jus"]
 
 [ext_resource type="Script" uid="uid://b0mdyn73pf508" path="res://scripts/player/player.gd" id="1_35xu0"]
 [ext_resource type="Texture2D" uid="uid://c0ks8cfh46x00" path="res://assets/misc/shadow.png" id="2_vej8t"]
@@ -36,13 +36,8 @@
 [ext_resource type="AudioStream" uid="uid://ss0h10ani1mh" path="res://addons/kenney rpg audio/footstep_4.ogg" id="24_p24wi"]
 [ext_resource type="Script" uid="uid://yu2onpjjscdi" path="res://game_scenes/dash_state.gd" id="24_yj4fb"]
 [ext_resource type="AudioStream" uid="uid://baan1thojivid" path="res://addons/kenney rpg audio/footstep_5.ogg" id="25_8nfcn"]
-[ext_resource type="Resource" uid="uid://f1027vhegein" path="res://resources/skills/MultiShoot.tres" id="25_hdnk7"]
-[ext_resource type="Resource" uid="uid://b0s17epyyhqh4" path="res://resources/skills/QuickSteps.tres" id="26_sjni1"]
-[ext_resource type="Resource" uid="uid://balr7abbigcvf" path="res://resources/skills/SpreadShoot.tres" id="27_cgtax"]
 [ext_resource type="Texture2D" uid="uid://7fiwyhmgi8gx" path="res://addons/kenney_particle_pack/smoke_06.png" id="27_os5nk"]
 [ext_resource type="Script" uid="uid://uupjljgywpj5" path="res://scripts/player/StateMachine/jump_state.gd" id="27_wvltd"]
-[ext_resource type="Resource" uid="uid://q4pk2i0s2eoh" path="res://resources/skills/IceBolt.tres" id="28_baff3"]
-[ext_resource type="Resource" uid="uid://csg6xy3xm2pi6" path="res://resources/skills/SharpSooting.tres" id="28_vb02d"]
 [ext_resource type="Script" uid="uid://bxlnbsqjs3r1g" path="res://scripts/player/StateMachine/spining_state.gd" id="29_ypm5c"]
 [ext_resource type="PackedScene" uid="uid://bow2jfwlefmfj" path="res://game_scenes/UI/ui_hotbar.tscn" id="30_bp7b4"]
 [ext_resource type="PackedScene" uid="uid://dk8musy26dkll" path="res://game_scenes/systems/skills/ui_skill_menu.tscn" id="33_uguah"]
@@ -52,6 +47,7 @@
 [ext_resource type="Script" uid="uid://c5edo4mee5gvu" path="res://scripts/player/StateMachine/attack_state.gd" id="43_vb02d"]
 [ext_resource type="Texture2D" uid="uid://daqjc0gujv646" path="res://assets/misc/hotbar_relic_slot.png" id="45_hdnk7"]
 [ext_resource type="PackedScene" uid="uid://c3e427a6qj8vf" path="res://ui_config.tscn" id="49_nbt1q"]
+[ext_resource type="Texture2D" uid="uid://b5jaod56frf0k" path="res://assets/misc/hotbar_slot.png" id="50_5ose6"]
 [ext_resource type="PackedScene" uid="uid://t1slqsevmadj" path="res://game_scenes/UI/inventory.tscn" id="50_ym2mu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yqhx"]
@@ -2763,8 +2759,8 @@ spread = 1.364
 radial_velocity_min = 22.9
 radial_velocity_max = 22.9
 gravity = Vector3(0, 0, 0)
-scale_min = 0.06
-scale_max = 0.08
+scale_min = 0.01
+scale_max = 0.03
 color_ramp = SubResource("GradientTexture1D_0n7ug")
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_component", "take_dmg", "input_component", "dash_component") groups=["player"]]
@@ -2882,6 +2878,9 @@ offset_bottom = -87.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="HUDPlayer" parent="sprite/hud_player" index="5"]
+visible = true
+
 [node name="TextureProgressBar" parent="sprite/hud_player/HUDPlayer" index="0"]
 tint_under = Color(0, 0.403922, 0, 0.52549)
 tint_over = Color(0, 0.345098, 0.0431373, 0.705882)
@@ -2908,13 +2907,13 @@ trail_lifetime = 1.33
 process_material = SubResource("ParticleProcessMaterial_l26yn")
 
 [node name="sprite2" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, -1)
 scale = Vector2(0.7, 0.8)
 texture = ExtResource("3_j7xta")
 hframes = 4
 
 [node name="hud_player2" parent="sprite2" node_paths=PackedStringArray("node") instance=ExtResource("9_5hble")]
+visible = false
 z_index = 1
 offset_left = -1.34286
 offset_top = 44.15
@@ -2980,9 +2979,6 @@ offset_right = -30.8571
 offset_bottom = -87.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="HUDPlayer" parent="sprite2/hud_player2" index="5"]
-visible = true
 
 [node name="TextureProgressBar" parent="sprite2/hud_player2/HUDPlayer" index="0"]
 offset_left = 607.0
@@ -3055,7 +3051,7 @@ player = NodePath("..")
 navigation_component = NodePath("../navigation")
 
 [node name="SkillManager" parent="." instance=ExtResource("17_nxdyt")]
-hotbar_skills = Array[ExtResource("23_5pk6x")]([ExtResource("25_hdnk7"), ExtResource("27_cgtax"), ExtResource("26_sjni1"), ExtResource("28_vb02d"), ExtResource("28_baff3")])
+hotbar_skills = Array[ExtResource("23_5pk6x")]([null, null, null, null, null])
 
 [node name="basic_attack" type="Node2D" parent="."]
 script = ExtResource("17_wwwbr")
@@ -3190,7 +3186,9 @@ skill_manager = NodePath("../../../SkillManager")
 player = NodePath("../../..")
 
 [node name="TextureButton" parent="Ui hotbar/Hotbars/hotbar2" index="0"]
+texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
+texture_normal = ExtResource("50_5ose6")
 
 [node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton" index="0"]
 custom_minimum_size = Vector2(60, 60)
@@ -3213,7 +3211,9 @@ custom_minimum_size = Vector2(60, 60)
 text = "Q"
 
 [node name="TextureButton2" parent="Ui hotbar/Hotbars/hotbar2" index="1"]
+texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
+texture_normal = ExtResource("50_5ose6")
 
 [node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton2" index="0"]
 custom_minimum_size = Vector2(60, 60)
@@ -3233,7 +3233,9 @@ custom_minimum_size = Vector2(60, 60)
 text = "W"
 
 [node name="TextureButton3" parent="Ui hotbar/Hotbars/hotbar2" index="2"]
+texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
+texture_normal = ExtResource("50_5ose6")
 
 [node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton3" index="0"]
 custom_minimum_size = Vector2(60, 60)
@@ -3253,7 +3255,9 @@ custom_minimum_size = Vector2(60, 60)
 text = "E"
 
 [node name="TextureButton4" parent="Ui hotbar/Hotbars/hotbar2" index="3"]
+texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
+texture_normal = ExtResource("50_5ose6")
 
 [node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton4" index="0"]
 custom_minimum_size = Vector2(60, 60)
@@ -3273,7 +3277,9 @@ custom_minimum_size = Vector2(60, 60)
 text = "R"
 
 [node name="TextureButton5" parent="Ui hotbar/Hotbars/hotbar2" index="4"]
+texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
+texture_normal = ExtResource("50_5ose6")
 
 [node name="TextureProgressBar" parent="Ui hotbar/Hotbars/hotbar2/TextureButton5" index="0"]
 custom_minimum_size = Vector2(60, 60)

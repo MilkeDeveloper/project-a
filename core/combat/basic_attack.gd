@@ -62,7 +62,7 @@ func ranged_basic_attack(target = null):
 		
 
 	else :
-		get_parent().SPEED = 650
+		get_parent().SPEED = 200
 		
 		
 

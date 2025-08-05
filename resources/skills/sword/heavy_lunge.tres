@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="GDSkillData" load_steps=6 format=3 uid="uid://cw875k4c8m2gh"]
+
+[ext_resource type="Script" uid="uid://iulg0lcy1bom" path="res://core/data/BuffTypeData.gd" id="1_yu4cj"]
+[ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="2_46nuh"]
+[ext_resource type="PackedScene" uid="uid://c5ol3br1de1o8" path="res://skills/sword/scenes/heavy_lunge.tscn" id="3_1wo2a"]
+[ext_resource type="Script" uid="uid://dkj6mykiosjc" path="res://core/data/SkillInteractionsData.gd" id="3_2hk5d"]
+[ext_resource type="Texture2D" uid="uid://bo1jy66vqpc4a" path="res://assets/icons/skills/swordskills/heavy_lunge.png" id="3_46nuh"]
+
+[resource]
+script = ExtResource("2_46nuh")
+id = 1
+skill_name = "Investida Pesada"
+skill_description = "Avança em em linha reta à uma distancia de 10m a investida se encerra ao atingir o primeiro inimigo causando dano e stun"
+skill_icon = ExtResource("3_46nuh")
+skill_type = Array[int]([0])
+buff_type = Array[ExtResource("1_yu4cj")]([])
+mana_cost = 25
+cooldown = 5.0
+dmg_amount = 100
+charge_time = 0.0
+effect_type = "A investida se encerra ao atingir o primeiro inimigo causando dano e stun"
+amount = 0
+percentage = 0
+skill_effect = ExtResource("3_1wo2a")
+skill_level = 1
+skill_max_level = 5
+essence_required = Array[int]([0, 10, 20, 30, 50])
+skill_essences = 0
+cast_time = 0.0
+is_charging_skill = false
+is_aim_skill = false
+is_target_skill = false
+insta_cast_skill = true
+is_cast_skill = false
+max_skill_charges = 0
+skill_interaction_effects = Array[ExtResource("3_2hk5d")]([])
+metadata/_custom_type_script = "uid://bbunn68wmpx67"

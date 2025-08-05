@@ -26,7 +26,7 @@ func start_patrol():
 	
 	
 func start_chase(attaker: CharacterBody2D):
-	navigation.set_destination(attaker.global_position)
+	navigation.set_destination(attaker.global_position, entity.SPEED)
 	
 
 func start_hurt(attacker: CharacterBody2D):
