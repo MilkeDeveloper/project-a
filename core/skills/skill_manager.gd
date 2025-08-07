@@ -52,11 +52,14 @@ func cast_process(delta: float):
 				print(skill_data.cast_left)
 
 func activate_skill(skill_id: int, player: CharacterBody2D, target: Node = null):
+	if player.is_attacking:
+		return
+		
 	for skill in hotbar_skills:
 		if skill != null and skill.id == skill_id:
 			var skill_data = skill
 			
-			if skill_data != null:
+			if skill_data:
 				if skill_data.cooldown_left > 0:
 					print("A skill estará disponível para uso novamente em: " + str(skill_data.cooldown_left) + "sec")
 					return

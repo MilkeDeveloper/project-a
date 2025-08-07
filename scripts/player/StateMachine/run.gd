@@ -24,7 +24,7 @@ func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		is_jumping = true
 	
-	if event.is_action_pressed("basic_attack") and attack_timer.time_left <= 0:
+	if not entity.is_dashing and event.is_action_pressed("basic_attack") and attack_timer.time_left <= 0:
 		manager.change_state("AttackState")
 
 func handle_anim():

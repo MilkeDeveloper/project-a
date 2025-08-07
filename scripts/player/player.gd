@@ -11,13 +11,15 @@ class_name Player
 @export var navigation_component: NavigationAgent2D
 @export var take_dmg: Node2D
 @export var input_component: Node2D
-@export var animation_component: Node2D
+@export var animation_component: AnimationPlayer
 @export var dash_component: Node2D
 @export var SPEED = 300.0
 @export var max_hp: int
 @export var jumping: bool
 @export var is_in_combat: bool
 @export var delay_speed: float
+
+var use_skill = false
 
 var current_hp = 100
 var delayed_hp = 100
@@ -27,6 +29,7 @@ var is_skill_charging: bool
 var _attacker = null
 var mouse_position
 var can_move: bool = true
+var is_attacking: bool = false
 
 var is_dashing: bool = false
 
@@ -60,7 +63,7 @@ func _physics_process(delta):
 		get_node("basic_attack").is_attacking = false
 		#SPEED = 650
 		return
-	
+
 func _on_destination_reached() -> void:
 	# Se o node cehgou ao destino, define a velocidade para 0 e define o estado para "idle"
 	if dash_component.is_dashing:
@@ -103,6 +106,7 @@ func update_bars():
 
 
 func _process(delta):
+	$hit_box.look_at(get_global_mouse_position())
 	if delayed_hp > current_hp:
 		delayed_hp = max(delayed_hp - delay_speed * delta, current_hp)
 		var percent = float(delayed_hp) / max_hp
@@ -140,3 +144,11 @@ func _on_combat_timer_timeout() -> void:
 	is_in_combat = false
 	regen_timer.start()
 	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("entity"):
+		#GLobals.emit_signal("cam_shake", 5.5, 0.5)
+		if body.has_method("take_damage"):
+			var dmg = get_node("basic_attack").basic_dmg
+			body.take_damage(dmg, self, body, "magic_hit")

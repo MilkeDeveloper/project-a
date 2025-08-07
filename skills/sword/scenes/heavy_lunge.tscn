@@ -3,19 +3,24 @@
 [ext_resource type="Script" uid="uid://b2fu5v5drh3c7" path="res://skills/sword/scripts/heavy_lunge.gd" id="1_dq5y2"]
 [ext_resource type="PackedScene" uid="uid://biiqhpu4a8iqn" path="res://game_scenes/ghotst_effect.tscn" id="2_sof8u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nekb7"]
-size = Vector2(27, 27)
+[sub_resource type="CircleShape2D" id="CircleShape2D_sof8u"]
+radius = 17.2627
 
 [node name="HeavyLunge" type="Area2D"]
 collision_mask = 9
 script = ExtResource("1_dq5y2")
 speed = 200
+max_duration = 0.3
+status_vars = {
+"knockback_force": 70.0,
+"status": "knockback"
+}
 lunge_speed = 200.0
 dash_modifier = 1.2
 ghost_effect = ExtResource("2_sof8u")
 
 [node name="colisor" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nekb7")
+shape = SubResource("CircleShape2D_sof8u")
 
 [node name="duration" type="Timer" parent="."]
 wait_time = 0.5

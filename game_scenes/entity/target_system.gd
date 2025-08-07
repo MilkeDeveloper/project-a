@@ -42,7 +42,7 @@ func set_hud_target():
 	if GLobals.target != null: 
 		for enemy in get_tree().get_nodes_in_group("entity"):
 			# Se o inimigo no grupo não for o alvo atual, chama a função para limpar os inimigos
-			if  enemy != GLobals.target:
+			if  enemy != GLobals.target and not enemy.has_node("dummy"):
 				_clear_targets(enemy)
 		await get_tree().create_timer(0.1).timeout
 		if GLobals.target != null: # Se o alvo não for nulo, mostre a hud dele

@@ -2,6 +2,7 @@ extends NavigationAgent2D
 
 @export var node: CharacterBody2D
 @export var anim_component: Node2D
+
 # Called when the node enters the scene tree for the first time.
 var direction: Vector2
 var speed: float
@@ -15,9 +16,10 @@ func set_destination(target_position: Vector2, _speed: float):
 	
 		
 func _process(delta):
-	if not node.can_move:
-		set_destination(node.global_position, node.SPEED)
-		return
+	if node.is_in_group("player"):
+		if not node.can_move:
+			set_destination(node.global_position, node.SPEED)
+			return
 	
 	if is_navigation_finished():
 		# Emite um sinal para o nó pai informando que a navegação terminou

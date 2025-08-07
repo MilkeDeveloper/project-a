@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://pg8aeuovcx0j"]
+
+[ext_resource type="Script" uid="uid://b2k41mpxw4ovo" path="res://skills/sword/scripts/ascendant_cut.gd" id="1_0vneu"]
+[ext_resource type="PackedScene" uid="uid://cdtryvwwqrpt" path="res://skills/sword/scenes/vfx_energy_eruption.tscn" id="2_tqiwt"]
+
+[sub_resource type="Animation" id="Animation_5pmhi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tqiwt"]
+resource_name = "slash_cut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4hw1m"]
+_data = {
+&"RESET": SubResource("Animation_5pmhi"),
+&"slash_cut": SubResource("Animation_tqiwt")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqiwt"]
+
+[node name="Corte Ascendente" type="Node2D"]
+script = ExtResource("1_0vneu")
+max_distance = 100.0
+step = 5.0
+speed = 5.0
+VFX = ExtResource("2_tqiwt")
+status_vars = {
+"air_duration": 0.4,
+"fall_duration": 0.5,
+"height": -25.0,
+"status": "knockup"
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4hw1m")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tqiwt")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

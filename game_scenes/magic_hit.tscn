@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckb82lnqnsxv"]
+[gd_scene load_steps=18 format=3 uid="uid://ckb82lnqnsxv"]
 
 [ext_resource type="Texture2D" uid="uid://dinhbanhcgaj6" path="res://VFX/effects/9.png" id="1_n3ykp"]
 [ext_resource type="Script" uid="uid://5eer5mx341ex" path="res://scripts/others/magic_hit.gd" id="2_m71j0"]
 [ext_resource type="Texture2D" uid="uid://ddbe4g52amggs" path="res://VFX/Color/burst/color_burst_4.png" id="3_mjmww"]
-[ext_resource type="AudioStream" uid="uid://dws507t7cmfla" path="res://SFX/hit_arrow2.wav" id="4_jm7v4"]
-[ext_resource type="AudioStream" uid="uid://ba2bver8sc0ll" path="res://SFX/hit_arrow.wav" id="4_kf10p"]
+[ext_resource type="AudioStream" uid="uid://cwb1aab3ihval" path="res://SFX/SWORD/sword-effect002.mp3" id="3_y1nkq"]
 [ext_resource type="AudioStream" uid="uid://cmmx34y87bcay" path="res://SFX/hit_arrow3.wav" id="5_dr3cb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_clbon"]
@@ -81,9 +80,8 @@ tracks/1/keys = {
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ywvkm"]
 random_pitch = 1.21
 random_volume_offset_db = 5.31
-streams_count = 2
-stream_0/stream = ExtResource("4_kf10p")
-stream_1/stream = ExtResource("4_jm7v4")
+streams_count = 1
+stream_0/stream = ExtResource("3_y1nkq")
 
 [sub_resource type="Animation" id="Animation_gcvk4"]
 resource_name = "magic_hit"
@@ -115,7 +113,7 @@ tracks/1/keys = {
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("hit_arrow")
+tracks/2/path = NodePath("hit_sword")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -175,7 +173,7 @@ position = Vector2(0, -3.28125)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("3_mjmww")
 
-[node name="hit_arrow" type="AudioStreamPlayer2D" parent="."]
+[node name="hit_sword" type="AudioStreamPlayer2D" parent="."]
 volume_db = -0.731
 max_distance = 500.0
 max_polyphony = 5

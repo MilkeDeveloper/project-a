@@ -1,23 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgbnt4xuo543x"]
+[gd_scene load_steps=11 format=3 uid="uid://dgbnt4xuo543x"]
 
 [ext_resource type="PackedScene" uid="uid://cydhhe8mcqj11" path="res://game_scenes/NewMap/Undead_land.tmx" id="1_towf4"]
 [ext_resource type="PackedScene" uid="uid://drffed2tq2jus" path="res://game_scenes/player.tscn" id="2_pkweq"]
-[ext_resource type="Texture2D" uid="uid://bntkv2df6j5wh" path="res://assets/sprites/character/weapon/sword/sword_run.png" id="3_pkweq"]
-[ext_resource type="PackedScene" uid="uid://cdvbhhh52rcly" path="res://game_scenes/entity/enemy.tscn" id="4_4ebbj"]
+[ext_resource type="PackedScene" uid="uid://djxprb57thaw2" path="res://game_scenes/entity/training_dummy.tscn" id="4_p1gax"]
 [ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="4_tadwt"]
-[ext_resource type="Shader" uid="uid://4e66ctp27mxi" path="res://shaders/ghost.gdshader" id="5_8josi"]
 [ext_resource type="Resource" uid="uid://cw875k4c8m2gh" path="res://resources/skills/sword/heavy_lunge.tres" id="5_8yrfi"]
 [ext_resource type="Resource" uid="uid://ceujwdaljf35d" path="res://resources/skills/sword/sword_basic_attack.tres" id="6_8yrfi"]
 [ext_resource type="Resource" uid="uid://sbq8o164coij" path="res://resources/skills/sword/iron_chain.tres" id="6_lnf4s"]
 [ext_resource type="Resource" uid="uid://pw1dn4otaf1f" path="res://resources/skills/sword/ascendant_cut.tres" id="7_p1gax"]
 [ext_resource type="Resource" uid="uid://dr0ob48i7nqmf" path="res://resources/skills/sword/ground_impact.tres" id="8_s4wb8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdos7"]
-resource_local_to_scene = true
-shader = ExtResource("5_8josi")
-shader_parameter/shading = true
-shader_parameter/texture_color = Color(1, 1, 1, 1)
-shader_parameter/alpha = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_towf4"]
 vertices = PackedVector2Array(441, 876.75, 441, 893.141, 437.5, 890.773, 398, 994.148, 383.148, 997.859, 406.359, 895.328, 457.688, 705.273, 437.43, 439.242, 374.422, 337.523, 481.609, 320.5, 527.281, 352.063, 513.023, 398.422, 449.453, 497.117, 512.031, 465.773, 493.453, 506.641, 417.102, 599.07, 423.383, 555.758, 375.938, 603.203, 402.703, 642.273, 345.773, 1037.66, 398, 1022.33, 352.813, 1070.55, 431.813, 1033.01, 418.352, 1059.94, 318.43, 1098.04, 253.172, 1098.89, 245.469, 1060.37, 281.633, 1014.22, 215.008, 1008.9, 191.867, 984.938, 209.758, 959.008, 271.547, 911.141, 277.047, 965.023, 473.039, 799.148, 472.102, 870.719, 308.594, 642.43, 301.633, 630.063, 333.633, 601.18, 231.344, 707.461, 246.133, 660.633, 258.758, 661.68, 271.344, 673.211, 241.383, 753.102, 199.047, 914.063, 200.813, 878.07, 215.977, 861.383, 276, 852.648, 298.719, 885.258, 276, 807.07, 302.109, 671.594, 364.344, 880.891, 501.469, 709.602, 496.273, 760.727, 492.922, 703.188)
@@ -27,21 +18,23 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(266, 844, 266, 810, 232
 [node name="Undead_land" instance=ExtResource("1_towf4")]
 y_sort_enabled = true
 
-[node name="Player" parent="." index="0" instance=ExtResource("2_pkweq")]
+[node name="Player" parent="." index="0" node_paths=PackedStringArray("animation_component") instance=ExtResource("2_pkweq")]
 position = Vector2(347, 693)
+animation_component = NodePath("anim")
 SPEED = 200.0
 
 [node name="shadow" parent="Player" index="0"]
-position = Vector2(-0.62499, 7.49999)
-scale = Vector2(0.146485, 0.195313)
+position = Vector2(-1.87755e-05, 6.25001)
+
+[node name="colision" parent="Player" index="1"]
+position = Vector2(0, 11.25)
 
 [node name="sprite" parent="Player" index="2"]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_pkweq")
-frame = 0
 
 [node name="cam" parent="Player/sprite" index="0"]
 zoom = Vector2(4, 4)
+position_smoothing_enabled = true
 
 [node name="TextureProgressBar" parent="Player/sprite/hud_player/HUDPlayer" index="0"]
 tint_under = Color(0, 0.404, 0, 0.901)
@@ -54,7 +47,6 @@ hotbar_skills = Array[ExtResource("4_tadwt")]([ExtResource("5_8yrfi"), ExtResour
 
 [node name="smoke_step" parent="Player" index="18"]
 position = Vector2(0, 10)
-emitting = true
 one_shot = false
 
 [node name="TextureButton" parent="Player/Ui hotbar/Hotbars/hotbar1" index="0"]
@@ -93,60 +85,43 @@ offset_top = 53.0
 offset_right = 91.0
 offset_bottom = 123.0
 
+[node name="hit_box" parent="Player" index="30"]
+position = Vector2(0, 3.75)
+
 [node name="elevated_space2" parent="." index="8"]
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 
-[node name="enemy" parent="." index="24" instance=ExtResource("4_4ebbj")]
-position = Vector2(311, 699)
-scale = Vector2(0.56, 0.56)
-
-[node name="sprite" parent="enemy" index="2"]
-material = SubResource("ShaderMaterial_wdos7")
-
-[node name="StateMachine" parent="enemy" index="17" node_paths=PackedStringArray("states")]
-states = {
-&"attack": NodePath("AttackState"),
-&"chase": NodePath("ChaseState"),
-&"death": NodePath("DeathState"),
-&"hurt": NodePath("HurtState"),
-&"idle": NodePath("IdleState"),
-&"patrol": NodePath("PatrolState")
-}
-
-[node name="HurtState" parent="enemy/StateMachine" index="4" node_paths=PackedStringArray("actor", "action", "entity_action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
-actor = NodePath("../..")
-action = NodePath("../../Actions")
-entity_action = NodePath("../../action_node")
-animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
-movement_node = NodePath("../../movement")
-navigation = NodePath("../../navigation")
-hurt_timer = NodePath("../../hurt_timer")
-
-[node name="DeathState" parent="enemy/StateMachine" index="5" node_paths=PackedStringArray("actor", "action", "entity_action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
-actor = NodePath("../..")
-action = NodePath("../../Actions")
-entity_action = NodePath("../../action_node")
-animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
-movement_node = NodePath("../../movement")
-navigation = NodePath("../../navigation")
-hurt_timer = NodePath("../../hurt_timer")
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="25"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="24"]
 visible = false
 position = Vector2(1, 0)
 navigation_polygon = SubResource("NavigationPolygon_towf4")
 
-[node name="take_dmg" type="Node2D" parent="." index="26"]
+[node name="take_dmg" type="Node2D" parent="." index="25"]
+
+[node name="Dummy" parent="." index="26" instance=ExtResource("4_p1gax")]
+position = Vector2(325, 785)
+scale = Vector2(0.3, 0.3)
+
+[node name="Dummy2" parent="." index="27" instance=ExtResource("4_p1gax")]
+position = Vector2(275, 806)
+scale = Vector2(0.3, 0.3)
+
+[node name="sprite" parent="Dummy2" index="2"]
+flip_h = true
+
+[node name="dummy" parent="Dummy2" index="3"]
+z_index = -1
+
+[node name="Dummy3" parent="." index="28" instance=ExtResource("4_p1gax")]
+position = Vector2(367, 809)
+scale = Vector2(0.3, 0.3)
 
 [editable path="Player"]
 [editable path="Player/sprite/hud_player"]
 [editable path="Player/sprite2/hud_player2"]
 [editable path="Player/Ui hotbar"]
 [editable path="Player/Ui hotbar/ui_SKillMenu"]
-[editable path="enemy"]
-[editable path="enemy/sprite/hud_entity"]
-[editable path="enemy/StateMachine"]
+[editable path="Dummy2"]
+[editable path="Dummy3"]

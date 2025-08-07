@@ -49,6 +49,6 @@ visible = false
 modulate = Color(1, 1, 1, 0.541)
 material = SubResource("CanvasItemMaterial_k86w8")
 amount = 25
-process_material = SubResource("ParticleProcessMaterial_ge8oc")
 texture = ExtResource("3_mqwco")
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ge8oc")

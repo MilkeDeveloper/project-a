@@ -3,6 +3,9 @@ extends SkillBase
 @export var speed := 800
 @export var max_duration := 0.2
 
+@export_category("Knockup Effect")
+@export var status_vars: Dictionary
+
 @export var stun_duration := 1.5
 @export var lunge_speed: float
 @export var dash_distance: float = 100
@@ -25,6 +28,8 @@ var is_dashing: bool = false
 var ghost_instance
 var ghost
 var final_dash_speed: float = 0.0
+
+
 
 func _ready():
 	set_physics_process(false)
@@ -49,6 +54,10 @@ func use_skill(_player, _damage, _cooldown, anim_component, _target = null):
 	node_texture = node.get_node("sprite")
 	node.is_dashing = true
 	activate_dash()
+	
+	status_vars["player"] = _player
+	
+	
 
 func _on_body_entered(body):
 	if has_hit:
@@ -57,19 +66,29 @@ func _on_body_entered(body):
 	if body.is_in_group("entity"):
 		has_hit = true
 		#node.can_move = false
-		_apply_damage_and_stun(body)
+		
+		_apply_damage_and_knockback(body)
 		queue_free()
 
-func _apply_damage_and_stun(enemy):
+func _apply_damage_and_knockback(enemy):
+	if enemy.is_in_group("entity"):
+		if enemy.has_method("apply_status"):
+			node.get_node("StateMachineManager").change_state("SkillState", {"skill": SkillState.Skills.E2})
+			enemy.apply_status(enemy, status_vars)
+	
+	
 	if enemy.is_in_group("entity"):
 		GLobals.emit_signal("cam_shake", 5.5, 0.5)
 		if enemy.has_method("take_damage"):
 			enemy.take_damage(damage, node, enemy, "magic_hit")
-			node.get_node("navigation").set_destination(node.global_position, node.SPEED)
+			
 			node.is_dashing = false
 			#node.can_move = true
 			node.SPEED = original_speed
 			#print(attacker, body)
+		#if enemy.has_method("apply_status"):
+			#enemy.apply_status(enemy,  knockup_vars)
+				
 	
 
 func activate_dash():
@@ -78,7 +97,11 @@ func activate_dash():
 	final_pos = target_position
 	$colisor.rotation = $colisor.get_angle_to(final_pos)
 	final_dash_speed = set_dash_speed()
-	node.get_node("navigation").set_destination(target_position, final_dash_speed)
+	#node.get_node("StateMachineManager").change_state("SkillState", {"skill": SkillState.Skills.E2})
+	node.get_node("navigation").set_destination(final_pos, final_dash_speed)
+	
+	
+	
 	
 	#node.get_node("dash_component").dash()
 
