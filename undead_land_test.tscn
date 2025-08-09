@@ -24,7 +24,8 @@ animation_component = NodePath("anim")
 SPEED = 200.0
 
 [node name="shadow" parent="Player" index="0"]
-position = Vector2(-1.87755e-05, 6.25001)
+position = Vector2(8.10623e-06, 4.99998)
+scale = Vector2(0.214844, 0.332031)
 
 [node name="colision" parent="Player" index="1"]
 position = Vector2(0, 11.25)
@@ -121,6 +122,7 @@ scale = Vector2(0.3, 0.3)
 [editable path="Player"]
 [editable path="Player/sprite/hud_player"]
 [editable path="Player/sprite2/hud_player2"]
+[editable path="Player/SkillManager"]
 [editable path="Player/Ui hotbar"]
 [editable path="Player/Ui hotbar/ui_SKillMenu"]
 [editable path="Dummy2"]

@@ -3,7 +3,7 @@ extends Node2D
 @export var navigation_component:  NavigationAgent2D
 @export var dash_component: Node2D
 @export var projectile_component: Node2D
-@export var skill_component: Node2D
+@export var skill_component: SkillState
 @export var anim_component: Node2D
 @export var cam: Camera2D
 @export var node: CharacterBody2D
@@ -36,7 +36,7 @@ func _ready() -> void:
 func get_input(event):
 	if event.is_action_pressed("mouse_right") and not node.is_dashing:
 		# Chama a função do NavigationComponent2D para definir o destino
-		if node.can_move:
+		if node.can_move and not skill_component.is_locked:
 			navigation_component.set_destination(get_global_mouse_position(), node.SPEED)
 			destination_pos = get_global_mouse_position()
 

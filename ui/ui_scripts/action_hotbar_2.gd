@@ -5,6 +5,7 @@ extends HBoxContainer
 @export var skill_manager: SkillManager
 @export var player: CharacterBody2D
 @export var skill_detail: PackedScene
+@export var skill_state: SkillState
 
 var skill_hotbar1: Array[GDSkillData]
 var ui_hotbar_slots = []
@@ -165,6 +166,7 @@ func _on_slot_pressed(index: int):
 	if skill_hotbar1[index] != null:
 		slot_index = index
 		skill_manager.activate_skill(skill_hotbar1[index].id, player)
+		
 	else:
 		print("Não há skill no slot pressionado")
 

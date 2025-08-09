@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4igtmvdmdtyf"]
+[gd_scene load_steps=13 format=3 uid="uid://4igtmvdmdtyf"]
 
 [ext_resource type="Script" uid="uid://cki3jbxhayps6" path="res://core/skills/skill_manager.gd" id="1_g4pl2"]
 [ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="2_jav7p"]
@@ -7,7 +7,34 @@
 [ext_resource type="Resource" uid="uid://b0s17epyyhqh4" path="res://resources/skills/QuickSteps.tres" id="5_ex5gj"]
 [ext_resource type="Resource" uid="uid://balr7abbigcvf" path="res://resources/skills/SpreadShoot.tres" id="6_28j6v"]
 [ext_resource type="Resource" uid="uid://csg6xy3xm2pi6" path="res://resources/skills/SharpSooting.tres" id="7_yh1i3"]
+[ext_resource type="Script" uid="uid://b37g7gxbisod6" path="res://core/skills/cooldown_manager.gd" id="8_26hfd"]
+[ext_resource type="Script" uid="uid://pdda23k0nhxf" path="res://core/skills/validator_manager.gd" id="9_e03b4"]
+[ext_resource type="Script" uid="uid://dod3mr0e1m3h7" path="res://core/skills/activator_manager.gd" id="10_utv51"]
+[ext_resource type="Script" uid="uid://bbs8r1s0xpmgf" path="res://core/skills/interactions_manager.gd" id="11_qedsc"]
+[ext_resource type="Script" uid="uid://dxfob2fhoh5fa" path="res://core/skills/cast_manager.gd" id="11_qsv7r"]
 
-[node name="SkillManager" type="Node"]
+[node name="SkillManager" type="Node" node_paths=PackedStringArray("validator", "cooldowns", "activator", "interactions", "cast")]
 script = ExtResource("1_g4pl2")
 hotbar_skills = Array[ExtResource("2_jav7p")]([ExtResource("3_vw4px"), ExtResource("4_m0cvw"), ExtResource("5_ex5gj"), ExtResource("6_28j6v"), ExtResource("7_yh1i3"), null])
+validator = NodePath("validator_manager")
+cooldowns = NodePath("cooldown_manager")
+activator = NodePath("activator_manager")
+interactions = NodePath("interactions_manager")
+cast = NodePath("cast_manager")
+
+[node name="cooldown_manager" type="Node2D" parent="."]
+script = ExtResource("8_26hfd")
+
+[node name="validator_manager" type="Node2D" parent="." node_paths=PackedStringArray("cast")]
+script = ExtResource("9_e03b4")
+cast = NodePath("../cast_manager")
+
+[node name="activator_manager" type="Node2D" parent="." node_paths=PackedStringArray("cooldowns")]
+script = ExtResource("10_utv51")
+cooldowns = NodePath("../cooldown_manager")
+
+[node name="cast_manager" type="Node2D" parent="."]
+script = ExtResource("11_qsv7r")
+
+[node name="interactions_manager" type="Node2D" parent="."]
+script = ExtResource("11_qedsc")

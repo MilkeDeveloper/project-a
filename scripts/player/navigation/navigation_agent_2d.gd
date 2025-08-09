@@ -39,7 +39,7 @@ func _process(delta):
 		#elif get_parent().is_in_group("player") and get_parent().is_in_combat:
 			#node.velocity = Vector2.ZERO
 		else:
-			node.velocity = direction.normalized() * node.SPEED * 15 * delta
+			node.velocity = direction.normalized() * speed * 15 * delta
 		
 		
 		node.move_and_slide()

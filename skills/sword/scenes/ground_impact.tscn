@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://egf7ckjvnd14"]
+
+[ext_resource type="Script" uid="uid://kae5byyegwbw" path="res://skills/sword/scripts/ground_impact.gd" id="1_66a8b"]
+[ext_resource type="Texture2D" uid="uid://bco220wncvrxm" path="res://VFX/effects/46.png" id="2_eqnhu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1h4j1"]
+radius = 40.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77xtc"]
+blend_mode = 1
+
+[node name="Ground Impact" type="Node2D" node_paths=PackedStringArray("selector")]
+script = ExtResource("1_66a8b")
+height = 50.0
+air_time = 0.4
+fall_time = 0.3
+travel_time = 2.0
+range = 100.0
+selector = NodePath("target_indicator")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="area"]
+visible = false
+shape = SubResource("CircleShape2D_1h4j1")
+
+[node name="target_indicator" type="Sprite2D" parent="."]
+modulate = Color(0.2808, 0.78, 0.6968, 0.890196)
+material = SubResource("CanvasItemMaterial_77xtc")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_eqnhu")

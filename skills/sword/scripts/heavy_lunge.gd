@@ -1,5 +1,7 @@
 extends SkillBase
 
+class_name HeavyLunge
+
 @export var speed := 800
 @export var max_duration := 0.2
 
@@ -73,7 +75,7 @@ func _on_body_entered(body):
 func _apply_damage_and_knockback(enemy):
 	if enemy.is_in_group("entity"):
 		if enemy.has_method("apply_status"):
-			node.get_node("StateMachineManager").change_state("SkillState", {"skill": SkillState.Skills.E2})
+			node.get_node("StateMachineManager").change_state("SkillState", {"skill": SkillState.Skills.Q})
 			enemy.apply_status(enemy, status_vars)
 	
 	

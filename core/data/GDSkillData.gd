@@ -4,6 +4,7 @@ class_name GDSkillData
 
 enum SkillType {DAMAGE, HEAL, BUFF, DEBUFF}
 enum SkillStates {USED, IN_COOLDOWN, AVAILABLE}
+enum SpellType {CAST, AIM, CHARGE, INSTACAST}
 
 
 @export var id: int
@@ -25,11 +26,7 @@ enum SkillStates {USED, IN_COOLDOWN, AVAILABLE}
 @export var essence_required: Array[int] = [0, 10, 20, 30, 50]
 @export var skill_essences: int
 @export var cast_time: float = 0
-@export var is_charging_skill: bool
-@export var is_aim_skill: bool
-@export var is_target_skill: bool
-@export var insta_cast_skill: bool
-@export var is_cast_skill: bool
+@export var spell_type: SpellType
 @export var max_skill_charges: int
 @export var skill_interaction_effects: Array[SkillINteractionsData]
 

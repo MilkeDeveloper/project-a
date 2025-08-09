@@ -1,5 +1,7 @@
 extends SkillBase
 
+class_name AscendantCut
+
 @export var max_distance: float = 300.0
 @export var step: float = 16.0  # espaço entre cada ponto (ajustável)
 @export var speed: float
@@ -22,7 +24,8 @@ func use_skill(_player, _damage, _cooldown, anim_component, _target = null):
 	
 	direction = (get_global_mouse_position() - global_position).normalized()
 	_player.use_skill = true
-	_player.get_node("StateMachineManager").change_state("SkillState", {"skill": SkillState.Skills.E1})
+	
+	_player.get_node("StateMachineManager").change_state("SkillState", {"skill": SkillState.Skills.E})
 	await get_tree().create_timer(0.5)
 	spawn_crack_effect(direction)
 	
@@ -60,7 +63,7 @@ func spawn_crack_effect(direction: Vector2):
 		energy.emitting = false
 
 	area.queue_free()
-	await get_tree().create_timer(7.5).timeout
+	await get_tree().create_timer(5.0).timeout
 	clear_effect()
 	
 	

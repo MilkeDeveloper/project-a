@@ -1,5 +1,7 @@
 extends SkillBase
 
+class_name IronChain
+
 @export var max_distance := 300.0
 @export var speed := 600.0
 @export var slow_duration := 1.5

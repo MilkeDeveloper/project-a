@@ -27,7 +27,7 @@ func apply_knockback(enemy: Node2D, args: Dictionary):
 	var knockback_pos = enemy.global_position + knockback_dir * knockback_force
 	
 	
-	navigation.set_destination(knockback_pos, knockback_force)
+	navigation.set_destination(knockback_pos, knockback_force * 10)
 	
 	
 

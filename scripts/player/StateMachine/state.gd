@@ -8,6 +8,7 @@ class_name State
 @export var animation: AnimationPlayer
 @export var attack_timer: Timer
 @export var navigation: NavigationAgent2D
+@export var hit_box: Area2D
 
 # Referência ao State Machine Manager
 @export var manager: StateMachineManager
@@ -16,6 +17,7 @@ class_name State
 var is_jumping: bool = false
 var original_speed: float
 var can_attack: bool = true
+var is_locked: bool = false
 
 # Função que é chamada ao entrar no estado
 func enter(args: Dictionary = {}) -> void:

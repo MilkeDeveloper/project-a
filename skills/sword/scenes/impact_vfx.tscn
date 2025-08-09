@@ -1,0 +1,413 @@
+[gd_scene load_steps=26 format=3 uid="uid://twmugnjmw73e"]
+
+[ext_resource type="Script" uid="uid://bq4bgqd33kf5m" path="res://skills/sword/scripts/impact_vfx.gd" id="1_c3vlf"]
+[ext_resource type="Texture2D" uid="uid://lbps3q0gxqun" path="res://assets/textures/T_Groundmark19.png" id="1_xl7wn"]
+[ext_resource type="Texture2D" uid="uid://dxy55821uckiw" path="res://VFX/Complex/lines/lines_6.png" id="2_c3vlf"]
+[ext_resource type="Texture2D" uid="uid://dyct7mtctx5k5" path="res://assets/particles/small_rock.png" id="3_lrevu"]
+[ext_resource type="Texture2D" uid="uid://7fiwyhmgi8gx" path="res://addons/kenney_particle_pack/smoke_06.png" id="4_n45uo"]
+[ext_resource type="AudioStream" uid="uid://djio77cx2xq7k" path="res://SFX/impact_effect1.wav" id="6_lrevu"]
+[ext_resource type="AudioStream" uid="uid://cwb1aab3ihval" path="res://SFX/SWORD/sword-effect002.mp3" id="7_n45uo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qvfph"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_1ut62"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_73r76"]
+curve = SubResource("Curve_1ut62")
+
+[sub_resource type="Gradient" id="Gradient_q6bck"]
+offsets = PackedFloat32Array(0.09319, 0.387097, 1)
+colors = PackedColorArray(0.536202, 0.000688823, 0.230306, 1, 0.734635, 0.0757168, 0.258893, 1, 0.570079, 0, 0.0819509, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4mxw8"]
+gradient = SubResource("Gradient_q6bck")
+
+[sub_resource type="Curve" id="Curve_kr625"]
+_data = [Vector2(0.00327869, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_isxqv"]
+curve = SubResource("Curve_kr625")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8iuw7"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.5
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 25.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, -50, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 20.99
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = -2.23517e-06
+scale_min = 0.05
+scale_max = 0.1
+color = Color(1, 0.993, 1, 0.597)
+color_ramp = SubResource("GradientTexture1D_4mxw8")
+alpha_curve = SubResource("CurveTexture_73r76")
+emission_curve = SubResource("CurveTexture_isxqv")
+
+[sub_resource type="Curve" id="Curve_aks85"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mgvxc"]
+curve = SubResource("Curve_aks85")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ll2ux"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 20.19
+direction = Vector3(0, -50, 0)
+spread = 2.59
+initial_velocity_max = 65.09
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 15.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.05
+scale_max = 0.15
+emission_curve = SubResource("CurveTexture_mgvxc")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gonx6"]
+load_path = "res://.godot/imported/smoke_06.png-64729bfce5735a4ed901411640367330.ctex"
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3d87l"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 30.26
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, 0, 0)
+spread = 0.0
+radial_velocity_min = -8.00002
+radial_velocity_max = 72.0
+gravity = Vector3(0, -20, 0)
+radial_accel_min = 13.46
+radial_accel_max = 13.46
+scale_min = 0.05
+scale_max = 0.1
+color = Color(0.88, 0.761, 0.686, 0.099)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1sbtb"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 30.26
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, -20, 0)
+radial_accel_min = 13.46
+radial_accel_max = 13.46
+scale_min = 0.05
+scale_max = 0.1
+color = Color(0.88, 0.761, 0.686, 0.298)
+
+[sub_resource type="Animation" id="Animation_0h5v5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crater:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("energy:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("energy:one_shot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("detritos:one_shot")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("detritos:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("smoke:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("smoke:one_shot")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("smoke_inner:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("smoke_inner:one_shot")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jrxc3"]
+resource_name = "ground_impact_vfx"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crater:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("energy:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("energy:one_shot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("detritos:one_shot")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("detritos:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("smoke:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("smoke:one_shot")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("smoke_inner:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("smoke_inner:one_shot")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_axlqv"]
+_data = {
+&"RESET": SubResource("Animation_0h5v5"),
+&"ground_impact_vfx": SubResource("Animation_jrxc3")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n45uo"]
+radius = 38.9048
+
+[node name="ImpactVFX" type="Node2D" node_paths=PackedStringArray("crack", "area", "effect")]
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_c3vlf")
+crack = NodePath("crater")
+area = NodePath("area")
+effect = NodePath("animeffect")
+
+[node name="crater" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.263281)
+texture = ExtResource("1_xl7wn")
+
+[node name="energy" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_qvfph")
+position = Vector2(0, -12)
+scale = Vector2(1, 0.840001)
+amount = 250
+texture = ExtResource("2_c3vlf")
+lifetime = 1.45
+speed_scale = 10.09
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8iuw7")
+
+[node name="detritos" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(0, -12)
+scale = Vector2(1, 0.72)
+emitting = false
+amount = 250
+texture = ExtResource("3_lrevu")
+lifetime = 2.19
+speed_scale = 2.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ll2ux")
+
+[node name="smoke" type="GPUParticles2D" parent="."]
+position = Vector2(0, -7.77778)
+amount = 150
+texture = SubResource("CompressedTexture2D_gonx6")
+speed_scale = 4.89
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_3d87l")
+
+[node name="smoke_inner" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -3.33333)
+amount = 20
+texture = ExtResource("4_n45uo")
+speed_scale = 2.83
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_1sbtb")
+
+[node name="animeffect" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_axlqv")
+}
+
+[node name="impactSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_lrevu")
+autoplay = true
+
+[node name="impactSFX2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_n45uo")
+autoplay = true
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="colision" type="CollisionShape2D" parent="area"]
+shape = SubResource("CircleShape2D_n45uo")
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
