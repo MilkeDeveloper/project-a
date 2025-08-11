@@ -2,7 +2,7 @@ extends BTState
 
 class_name StateData
 
-@export var actor: CharacterBody2D
+@export var actor: NPCBase
 @export var action: Node
 @export var entity_action: Node2D
 @export var animation: AnimationPlayer
@@ -13,6 +13,10 @@ class_name StateData
 
 @export var min_distance: float
 @export var max_distance: float
+
+@export_category("Debug")
+@export var state_label: Label
+
 
 var target
 

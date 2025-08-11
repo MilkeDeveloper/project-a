@@ -8,6 +8,7 @@ func apply_juggle(enemy: Node2D, args: Dictionary):
 
 	# Desativa IA, animação ou movimento, se necessário
 	enemy.set_physics_process(false)  # ou qualquer flag de controle do seu sistema
+	enemy.set_process(false)
 	
 	var tween := get_tree().create_tween()
 	var original_pos := sprite.global_position
@@ -33,3 +34,4 @@ func apply_knockback(enemy: Node2D, args: Dictionary):
 
 func _on_juggle_finished(enemy):
 	enemy.set_physics_process(true)
+	enemy.set_process(true)

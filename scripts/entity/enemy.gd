@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends NPCBase
 
 class_name Entity
 
@@ -9,26 +9,23 @@ class_name Entity
 @export var damage: int
 @export var detection_range: float
 @export var attack_range: float
-@export var can_move: bool = true
 @export var limbo_tree: LimboHSM
 @export var action: Node
 
 @onready var hud_entity: Control = $sprite/hud_entity
 @onready var delayed_bar: TextureProgressBar = get_node("sprite/hud_entity/daleyed_hpbar")
 
-@export var popup_instance: PackedScene
-@export var dmg_effect: PackedScene
+
 @export var state_manager: StateMachineManager
 
 var mouse_over: bool = false
 var targeted: bool = false
 
 var hp: int = max_hp
-var died: bool
 var hited_enemies: Array = []
 var hurted: bool = false
 var supressed: bool = false
-var _attacker: CharacterBody2D
+
 var hited: bool = false
 
 var current_hp = 100

@@ -1,24 +1,50 @@
-[gd_scene load_steps=35 format=3 uid="uid://cci2v6hlukcyu"]
+[gd_scene load_steps=44 format=3 uid="uid://cci2v6hlukcyu"]
 
 [ext_resource type="Script" uid="uid://citcfu6w5tvvq" path="res://ai/manager/state_machine.gd" id="1_hutwe"]
 [ext_resource type="Script" uid="uid://qgixuc2fdeo6" path="res://ai/states/generic/idle.gd" id="2_3bqyt"]
 [ext_resource type="Script" uid="uid://cjxnraay3q3t4" path="res://ai/states/generic/patrol.gd" id="3_ee2pk"]
 [ext_resource type="Script" uid="uid://jxt0hsre057n" path="res://ai/states/generic/chase.gd" id="4_kpvx4"]
+[ext_resource type="Script" uid="uid://b6okdeso6o4xk" path="res://ai/tasks/actions/GetNode.gd" id="4_vb00r"]
+[ext_resource type="Script" uid="uid://biyq0yvhphfrg" path="res://ai/tasks/actions/GetTarget.gd" id="5_4kmin"]
 [ext_resource type="BehaviorTree" uid="uid://csfgcxmsd127s" path="res://gameAI/Panther.tres" id="5_vb00r"]
 [ext_resource type="Script" uid="uid://hgwmpdvlvody" path="res://ai/states/generic/attack.gd" id="6_4kmin"]
+[ext_resource type="Script" uid="uid://cxk537sr3fckh" path="res://ai/tasks/conditions/is_in_range.gd" id="6_bt2pr"]
 [ext_resource type="Script" uid="uid://d1bxap88tig4r" path="res://ai/states/generic/hurt.gd" id="7_bt2pr"]
+[ext_resource type="Script" uid="uid://dibheimod8rrg" path="res://ai/tasks/actions/hide.gd" id="7_c4fav"]
 [ext_resource type="Script" uid="uid://b61yfepkhak74" path="res://ai/states/generic/death.gd" id="8_c4fav"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_krwcr"]
 
-[sub_resource type="BTWait" id="BTWait_f3ppg"]
+[sub_resource type="BTWait" id="BTWait_vb00r"]
 
-[sub_resource type="BTSequence" id="BTSequence_krwcr"]
-children = [SubResource("BTWait_f3ppg")]
+[sub_resource type="BTAction" id="BTAction_4kmin"]
+script = ExtResource("4_vb00r")
+entity = &"node"
+
+[sub_resource type="BTAction" id="BTAction_bt2pr"]
+script = ExtResource("5_4kmin")
+group = &"player"
+target_var = &"target"
+
+[sub_resource type="BTCondition" id="BTCondition_c4fav"]
+script = ExtResource("6_bt2pr")
+distance_min = 0.0
+distance_max = 75.0
+target_var = &"target"
+
+[sub_resource type="BTInvert" id="BTInvert_8w8g3"]
+children = [SubResource("BTCondition_c4fav")]
+
+[sub_resource type="BTAction" id="BTAction_qlwxn"]
+script = ExtResource("7_c4fav")
+actor_var = &"node"
+
+[sub_resource type="BTSequence" id="BTSequence_ycsth"]
+children = [SubResource("BTWait_vb00r"), SubResource("BTAction_4kmin"), SubResource("BTAction_bt2pr"), SubResource("BTInvert_8w8g3"), SubResource("BTAction_qlwxn")]
 
 [sub_resource type="BehaviorTree" id="BehaviorTree_r4muw"]
 blackboard_plan = SubResource("BlackboardPlan_krwcr")
-root_task = SubResource("BTSequence_krwcr")
+root_task = SubResource("BTSequence_ycsth")
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_8w8g3"]
 

@@ -1,17 +1,12 @@
-extends Node2D
+extends NPCBase
 
-@export var popup_instance: PackedScene
-@export var anim: AnimationPlayer
-@export var dmg_effect: PackedScene
-@export var dummy: Node2D
-@export var SPEED: float
-
-var _attacker: Node2D
+class_name DevilCat
 
 func _ready() -> void:
-	anim.play("idle")
-
-
+	hp = data.max_hp
+	
+func _process(delta: float) -> void:
+	$state_label.text = str(state.get_active_state())
 func take_damage(damage, attacker, target_attacker, effect_anim_name):
 	_attacker = attacker
 	apply_anim()
@@ -23,6 +18,8 @@ func take_damage(damage, attacker, target_attacker, effect_anim_name):
 	dmg_popup.position.y = global_position.y + randi_range(-8, 8)
 	get_parent().get_node("take_dmg").add_child(dmg_popup)
 	dmg_popup.start_popup2(damage, anim_name, attacker, target_attacker)
+	state.dispatch(&"hurted")
+	
 	
 	#apply_damage(damage)
 
@@ -39,9 +36,10 @@ func take_basic_damage(damage, attacker, target_attacker, effect_anim_name):
 	dmg_popup.start_popup2(damage, anim_name, attacker, target_attacker)
 
 func apply_anim():
-	anim.play("hurt")
-	await anim.animation_finished
-	anim.play("idle")
+	#anim.play("hurt")
+	#await anim.animation_finished
+	#anim.play("idle")
+	pass
 
 func apply_hurt_effect(hit_anim_name):
 	var effect = dmg_effect.instantiate()
@@ -49,8 +47,27 @@ func apply_hurt_effect(hit_anim_name):
 	effect.start_animation(hit_anim_name)
 	
 func apply_status(target: Node2D, args: Dictionary):
-	var status = args["status"]
-	if status == "knockup":
-		dummy.apply_juggle(target, args)
-	if status == "knockback":
-		dummy.apply_knockback(target, args)
+	var _status = args["status"]
+	if _status == "knockup":
+		status.apply_juggle(target, args)
+	if _status == "knockback":
+		status.apply_knockback(target, args)
+
+func set_as_target():
+	is_targeted = true
+	show_target_marker()
+
+func clear_target():
+	is_targeted = false
+	hide_target_marker()
+
+func show_target_marker():
+	# Exemplo: ativa um nó Sprite ou AnimationPlayer que indica seleção
+	if has_node("TargetMarker"):
+		get_node("TargetMarker").visible = true
+		get_node("TargetMarker").get_node("target_anim").play("target_motion")
+
+func hide_target_marker():
+	if has_node("TargetMarker"):
+		get_node("TargetMarker").visible = false
+		get_node("TargetMarker").get_node("target_anim").stop()

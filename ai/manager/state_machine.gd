@@ -9,8 +9,8 @@ class_name StateMachine
 func _ready() -> void:
 	_setup_states()
 	initialize(entity)
+	set_initial_state(states["idle"])
 	set_active(true)
-
 
 func _setup_states():
 	add_transition(states["idle"], states["patrol"], &"patrolling")
@@ -21,3 +21,4 @@ func _setup_states():
 	add_transition(states["hurt"], states["idle"], &"back_to_idle")
 	add_transition(ANYSTATE, states["hurt"], &"hurted")
 	add_transition(ANYSTATE, states["death"], &"die")
+	add_transition(states["hiden"], states["attack"], &"ambush")

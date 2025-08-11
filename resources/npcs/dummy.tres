@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="NpcData" load_steps=3 format=3 uid="uid://pempoudvethe"]
+
+[ext_resource type="PackedScene" uid="uid://djxprb57thaw2" path="res://game_scenes/entity/training_dummy.tscn" id="1_401ls"]
+[ext_resource type="Script" uid="uid://dnnreklwb62w4" path="res://core/data/NpcData.gd" id="1_cwlbo"]
+
+[resource]
+script = ExtResource("1_cwlbo")
+id = 0
+npc_name = "Dummy"
+lvl = 50
+max_hp = 999999
+speed = 100.0
+damage = 0
+attack_range = 50.0
+seek_range = 200.0
+type = 3
+def = 0
+exp_drop = 0
+instance = ExtResource("1_401ls")
+metadata/_custom_type_script = "uid://dnnreklwb62w4"

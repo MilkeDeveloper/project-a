@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dxiasrjikt47l" path="res://ui/components/hp_bars.tscn" id="6_ah2fn"]
 [ext_resource type="PackedScene" uid="uid://dv7xd2bi0m2th" path="res://game_scenes/entity/movement.tscn" id="7_ylgb4"]
 [ext_resource type="Texture2D" uid="uid://cbjtie3uetjqr" path="res://assets/textures/distortion_texture.png" id="9_2ocw4"]
-[ext_resource type="Script" uid="uid://cpkpgtmlro1r0" path="res://scripts/systems/direction_tracker.gd" id="11_vkqyd"]
 [ext_resource type="Script" uid="uid://bl73bj65afbas" path="res://scripts/player/StateMachine/state_machine_manager.gd" id="12_hy6ts"]
 [ext_resource type="Script" uid="uid://gonsreur7k7o" path="res://scripts/player/StateMachine/state.gd" id="13_vlepn"]
+[ext_resource type="PackedScene" uid="uid://btjxkc002qb6y" path="res://game_scenes/systems/Entity/direction_tracker.tscn" id="17_0lsvm"]
 [ext_resource type="Script" uid="uid://c8bn3u66ffjq8" path="res://scripts/entity/action_node.gd" id="21_86y62"]
 [ext_resource type="Texture2D" uid="uid://bqwe381i8xmx" path="res://assets/misc/hpbar_under.png" id="21_lqmvi"]
 [ext_resource type="Resource" uid="uid://bw1qjnrr6qiy5" path="res://resources/projectiles/piglet_projectile.tres" id="22_83e3t"]
@@ -23,9 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://cgbn32e7ojfou" path="res://assets/misc/HUDhpbar_under.png" id="24_f3ppg"]
 [ext_resource type="Script" uid="uid://dlm0umo71bvgd" path="res://scripts/systems/targetable.gd" id="24_oxuvv"]
 [ext_resource type="Texture2D" uid="uid://7k0vk78eyjin" path="res://assets/misc/HUDhpbar_cover.png" id="25_leg7g"]
+[ext_resource type="PackedScene" uid="uid://cs8ed3k33oln2" path="res://game_scenes/systems/Entity/actions.tscn" id="25_lqmvi"]
 [ext_resource type="PackedScene" uid="uid://cci2v6hlukcyu" path="res://game_scenes/systems/Entity/state_machine.tscn" id="26_0lsvm"]
 [ext_resource type="Texture2D" uid="uid://ft4uqju6n50g" path="res://assets/misc/HudBar_fill.png" id="26_6rxso"]
-[ext_resource type="Script" uid="uid://dss3wbtbr7j3m" path="res://scripts/entity/actions.gd" id="32_krwcr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mca3"]
 radius = 31.251
@@ -1288,7 +1288,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogj41"]
 radius = 16.25
 
-[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("limbo_tree", "action", "state_manager") groups=["entity"]]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("limbo_tree", "state_manager") groups=["entity"]]
 z_index = 1
 scale = Vector2(0.7, 0.7)
 collision_layer = 569
@@ -1303,11 +1303,10 @@ damage = 79
 detection_range = 360.0
 attack_range = 320.0
 limbo_tree = NodePath("StateMachine")
-action = NodePath("Actions")
-popup_instance = ExtResource("2_ve010")
-dmg_effect = ExtResource("3_iqlnw")
 state_manager = NodePath("StateMachineManager")
 delay_speed = 750.0
+popup_instance = ExtResource("2_ve010")
+dmg_effect = ExtResource("3_iqlnw")
 
 [node name="target_area" parent="." node_paths=PackedStringArray("node") instance=ExtResource("2_4m157")]
 collision_layer = 513
@@ -1444,12 +1443,11 @@ debug_enabled = false
 debug_path_custom_color = Color(1, 0, 0.356863, 1)
 node = NodePath("..")
 
-[node name="movement" parent="." node_paths=PackedStringArray("navigation_component") instance=ExtResource("7_ylgb4")]
+[node name="movement" parent="." node_paths=PackedStringArray("navigation_component", "entity") instance=ExtResource("7_ylgb4")]
 navigation_component = NodePath("../navigation")
-
-[node name="DirectionTracker" type="Node2D" parent="." node_paths=PackedStringArray("entity")]
-script = ExtResource("11_vkqyd")
 entity = NodePath("..")
+
+[node name="DirectionTracker" parent="." instance=ExtResource("17_0lsvm")]
 
 [node name="StateMachineManager" type="Node" parent="."]
 script = ExtResource("12_hy6ts")
@@ -1490,15 +1488,7 @@ one_shot = true
 [node name="Targetable" type="Node2D" parent="." groups=["targetables"]]
 script = ExtResource("24_oxuvv")
 
-[node name="Actions" type="Node" parent="." node_paths=PackedStringArray("entity", "animation", "direction", "navigation", "movement_node", "action", "attacktimer")]
-script = ExtResource("32_krwcr")
-entity = NodePath("..")
-animation = NodePath("../anim")
-direction = NodePath("../DirectionTracker")
-navigation = NodePath("../navigation")
-movement_node = NodePath("../movement")
-action = NodePath("../action_node")
-attacktimer = NodePath("../attack_timer")
+[node name="Actions" parent="." instance=ExtResource("25_lqmvi")]
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("states", "entity") instance=ExtResource("26_0lsvm")]
 states = {
@@ -1511,39 +1501,31 @@ states = {
 }
 entity = NodePath("..")
 
-[node name="IdleState" parent="StateMachine" index="0" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
+[node name="IdleState" parent="StateMachine" index="0" node_paths=PackedStringArray("actor", "animation", "movement_node", "navigation", "hurt_timer")]
 actor = NodePath("../..")
-action = NodePath("../../Actions")
 animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
 movement_node = NodePath("../../movement")
 navigation = NodePath("../../navigation")
 hurt_timer = NodePath("../../hurt_timer")
 
-[node name="PatrolState" parent="StateMachine" index="1" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
+[node name="PatrolState" parent="StateMachine" index="1" node_paths=PackedStringArray("actor", "animation", "movement_node", "navigation", "hurt_timer")]
 actor = NodePath("../..")
-action = NodePath("../../Actions")
 animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
 movement_node = NodePath("../../movement")
 navigation = NodePath("../../navigation")
 hurt_timer = NodePath("../../hurt_timer")
 
-[node name="ChaseState" parent="StateMachine" index="2" node_paths=PackedStringArray("actor", "action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
+[node name="ChaseState" parent="StateMachine" index="2" node_paths=PackedStringArray("actor", "animation", "movement_node", "navigation", "hurt_timer")]
 actor = NodePath("../..")
-action = NodePath("../../Actions")
 animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
 movement_node = NodePath("../../movement")
 navigation = NodePath("../../navigation")
 hurt_timer = NodePath("../../hurt_timer")
 
-[node name="AttackState" parent="StateMachine" index="3" node_paths=PackedStringArray("actor", "action", "entity_action", "animation", "direction", "movement_node", "navigation", "hurt_timer")]
+[node name="AttackState" parent="StateMachine" index="3" node_paths=PackedStringArray("actor", "entity_action", "animation", "movement_node", "navigation", "hurt_timer")]
 actor = NodePath("../..")
-action = NodePath("../../Actions")
 entity_action = NodePath("../../action_node")
 animation = NodePath("../../anim")
-direction = NodePath("../../DirectionTracker")
 movement_node = NodePath("../../movement")
 navigation = NodePath("../../navigation")
 hurt_timer = NodePath("../../hurt_timer")

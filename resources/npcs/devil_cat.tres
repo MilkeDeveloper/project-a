@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="NpcData" load_steps=2 format=3 uid="uid://b5v8ebwhkim4"]
+
+[ext_resource type="Script" uid="uid://dnnreklwb62w4" path="res://core/data/NpcData.gd" id="1_2xm8k"]
+
+[resource]
+script = ExtResource("1_2xm8k")
+id = 1
+npc_name = "Devil Cat"
+lvl = 15
+max_hp = 4520
+speed = 80.0
+damage = 45
+attack_range = 20.0
+seek_range = 75.0
+type = 0
+def = 25
+exp_drop = 2869
+metadata/_custom_type_script = "uid://dnnreklwb62w4"

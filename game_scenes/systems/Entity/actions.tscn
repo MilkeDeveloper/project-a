@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs8ed3k33oln2"]
+
+[ext_resource type="Script" uid="uid://dss3wbtbr7j3m" path="res://scripts/entity/actions.gd" id="1_5ujbm"]
+
+[node name="Actions" type="Node" node_paths=PackedStringArray("entity", "animation", "direction", "navigation", "movement_node", "action", "attacktimer")]
+script = ExtResource("1_5ujbm")
+entity = NodePath("")
+animation = NodePath("")
+direction = NodePath("")
+navigation = NodePath("")
+movement_node = NodePath("")
+action = NodePath("")
+attacktimer = NodePath("")

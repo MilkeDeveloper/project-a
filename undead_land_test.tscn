@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgbnt4xuo543x"]
+[gd_scene load_steps=12 format=3 uid="uid://dgbnt4xuo543x"]
 
 [ext_resource type="PackedScene" uid="uid://cydhhe8mcqj11" path="res://game_scenes/NewMap/Undead_land.tmx" id="1_towf4"]
 [ext_resource type="PackedScene" uid="uid://drffed2tq2jus" path="res://game_scenes/player.tscn" id="2_pkweq"]
-[ext_resource type="PackedScene" uid="uid://djxprb57thaw2" path="res://game_scenes/entity/training_dummy.tscn" id="4_p1gax"]
 [ext_resource type="Script" uid="uid://bbunn68wmpx67" path="res://core/data/GDSkillData.gd" id="4_tadwt"]
 [ext_resource type="Resource" uid="uid://cw875k4c8m2gh" path="res://resources/skills/sword/heavy_lunge.tres" id="5_8yrfi"]
 [ext_resource type="Resource" uid="uid://ceujwdaljf35d" path="res://resources/skills/sword/sword_basic_attack.tres" id="6_8yrfi"]
 [ext_resource type="Resource" uid="uid://sbq8o164coij" path="res://resources/skills/sword/iron_chain.tres" id="6_lnf4s"]
 [ext_resource type="Resource" uid="uid://pw1dn4otaf1f" path="res://resources/skills/sword/ascendant_cut.tres" id="7_p1gax"]
 [ext_resource type="Resource" uid="uid://dr0ob48i7nqmf" path="res://resources/skills/sword/ground_impact.tres" id="8_s4wb8"]
+[ext_resource type="Script" uid="uid://bx00eadmqoquq" path="res://scripts/systems/spawnner/spawnner.gd" id="9_ccgel"]
+[ext_resource type="Resource" uid="uid://cmhvrsfcecs56" path="res://resources/spawn/spawn_devil_cat.tres" id="10_41qts"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_towf4"]
 vertices = PackedVector2Array(441, 876.75, 441, 893.141, 437.5, 890.773, 398, 994.148, 383.148, 997.859, 406.359, 895.328, 457.688, 705.273, 437.43, 439.242, 374.422, 337.523, 481.609, 320.5, 527.281, 352.063, 513.023, 398.422, 449.453, 497.117, 512.031, 465.773, 493.453, 506.641, 417.102, 599.07, 423.383, 555.758, 375.938, 603.203, 402.703, 642.273, 345.773, 1037.66, 398, 1022.33, 352.813, 1070.55, 431.813, 1033.01, 418.352, 1059.94, 318.43, 1098.04, 253.172, 1098.89, 245.469, 1060.37, 281.633, 1014.22, 215.008, 1008.9, 191.867, 984.938, 209.758, 959.008, 271.547, 911.141, 277.047, 965.023, 473.039, 799.148, 472.102, 870.719, 308.594, 642.43, 301.633, 630.063, 333.633, 601.18, 231.344, 707.461, 246.133, 660.633, 258.758, 661.68, 271.344, 673.211, 241.383, 753.102, 199.047, 914.063, 200.813, 878.07, 215.977, 861.383, 276, 852.648, 298.719, 885.258, 276, 807.07, 302.109, 671.594, 364.344, 880.891, 501.469, 709.602, 496.273, 760.727, 492.922, 703.188)
@@ -19,7 +20,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(266, 844, 266, 810, 232
 y_sort_enabled = true
 
 [node name="Player" parent="." index="0" node_paths=PackedStringArray("animation_component") instance=ExtResource("2_pkweq")]
-position = Vector2(347, 693)
+position = Vector2(314, 1069)
 animation_component = NodePath("anim")
 SPEED = 200.0
 
@@ -101,23 +102,11 @@ navigation_polygon = SubResource("NavigationPolygon_towf4")
 
 [node name="take_dmg" type="Node2D" parent="." index="25"]
 
-[node name="Dummy" parent="." index="26" instance=ExtResource("4_p1gax")]
-position = Vector2(325, 785)
-scale = Vector2(0.3, 0.3)
-
-[node name="Dummy2" parent="." index="27" instance=ExtResource("4_p1gax")]
-position = Vector2(275, 806)
-scale = Vector2(0.3, 0.3)
-
-[node name="sprite" parent="Dummy2" index="2"]
-flip_h = true
-
-[node name="dummy" parent="Dummy2" index="3"]
-z_index = -1
-
-[node name="Dummy3" parent="." index="28" instance=ExtResource("4_p1gax")]
-position = Vector2(367, 809)
-scale = Vector2(0.3, 0.3)
+[node name="Marker2D" type="Marker2D" parent="." index="26"]
+position = Vector2(339, 784)
+script = ExtResource("9_ccgel")
+npc_info = ExtResource("10_41qts")
+npc_quantity = 3
 
 [editable path="Player"]
 [editable path="Player/sprite/hud_player"]
@@ -125,5 +114,3 @@ scale = Vector2(0.3, 0.3)
 [editable path="Player/SkillManager"]
 [editable path="Player/Ui hotbar"]
 [editable path="Player/Ui hotbar/ui_SKillMenu"]
-[editable path="Dummy2"]
-[editable path="Dummy3"]

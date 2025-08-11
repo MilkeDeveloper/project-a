@@ -14,7 +14,7 @@ func _enter() -> void:
 	var actor: Node = blackboard.get_var(actor_var)
 	var navigation: Node = actor.get_node("navigation")
 	var deviation_trashhold = Vector2(randf_range(-offset, offset), randf_range(-offset, offset))
-	navigation.set_destination(actor.global_position + deviation_trashhold, actor.SPEED)
+	navigation.set_destination(actor.global_position + deviation_trashhold, actor.data.speed)
 
 func _tick(delta: float) -> Status:
 	var actor: Node = blackboard.get_var(actor_var)

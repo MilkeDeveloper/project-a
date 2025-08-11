@@ -50,11 +50,11 @@ func handle_anim():
 		Skills.E:
 			is_locked = true
 			animation.play("sword_skill1_" + direction_tracker.get_action_direction(entity.get_global_mouse_position()))
-			$"../../sword_skillSFX".play(0.0)
 			
-			await get_tree().create_timer(0.3).timeout
-			$"../../impact_SFX".play(0.0)
+			skill_anim_finished = false
+			get_tree().create_timer(0.3).timeout
 			
+			skill_anim_finished = true
 		Skills.Q:
 			is_locked = true
 			skill_anim_finished = false

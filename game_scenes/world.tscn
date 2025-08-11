@@ -7253,6 +7253,7 @@ item_data = ExtResource("22_ca167")
 [editable path="Player"]
 [editable path="Player/sprite/hud_player"]
 [editable path="Player/sprite2/hud_player2"]
+[editable path="Player/SkillManager"]
 [editable path="Player/Ui hotbar"]
 [editable path="Player/Ui hotbar/ui_SKillMenu"]
 [editable path="Player/UI map"]

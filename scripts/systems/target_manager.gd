@@ -1,6 +1,6 @@
 extends Node
 
-class_name TargetManager
+class_name OldTargetManager
 
 @export var max_target_distance: float
 

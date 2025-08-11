@@ -152,3 +152,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.has_method("take_damage"):
 			var dmg = get_node("basic_attack").basic_dmg
 			body.take_damage(dmg, self, body, "magic_hit")
+			TargetManager.set_target(body.map_npc_id)
