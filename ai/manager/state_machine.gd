@@ -22,3 +22,4 @@ func _setup_states():
 	add_transition(ANYSTATE, states["hurt"], &"hurted")
 	add_transition(ANYSTATE, states["death"], &"die")
 	add_transition(states["hiden"], states["attack"], &"ambush")
+	add_transition(states["attack"], states["jump_back"], &"special_attack1")

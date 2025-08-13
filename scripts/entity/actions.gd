@@ -73,6 +73,36 @@ func handle_ambush_anim(attacker: Node):
 			
 			await animation.animation_finished
 
+func handle_reposition_anim(attacker: Node):
+	if attacker != null:
+		if attacker.global_position.x < entity.global_position.x and attacker.global_position.y < entity.global_position.y:
+			animation.play("reposition_up")
+			await animation.animation_finished
+		elif attacker.global_position.x > entity.global_position.x and attacker.global_position.y < entity.global_position.y:
+			animation.play("reposition_up_2")
+			await animation.animation_finished
+		elif attacker.global_position.x < entity.global_position.x and attacker.global_position.y > entity.global_position.y:
+			animation.play("reposition_down")
+			await animation.animation_finished
+		elif attacker.global_position.x > entity.global_position.x and attacker.global_position.y > entity.global_position.y:
+			animation.play("reposition_down_2")
+			
+			await animation.animation_finished
+
+func handle_roll_anim(position: Vector2):
+	if position != null:
+		if position.x < entity.global_position.x and position.y < entity.global_position.y:
+			animation.play("roll_up")
+			await animation.animation_finished
+		elif position.x > entity.global_position.x and position.y < entity.global_position.y:
+			animation.play("roll_up_2")
+			await animation.animation_finished
+		elif position.x < entity.global_position.x and position.y > entity.global_position.y:
+			animation.play("roll_down")
+			await animation.animation_finished
+		elif position.x > entity.global_position.x and position.y > entity.global_position.y:
+			animation.play("roll_down_2")
+
 func distance_to_player(attacker: CharacterBody2D) -> float:
 	return entity.global_position.distance_to(attacker.global_position)
 

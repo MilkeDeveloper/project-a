@@ -2,6 +2,7 @@ extends StateData
 
 class_name Attack
 
+@export var hit_box: Area2D
 var attack_range: float
 
 func _enter() -> void:
@@ -30,6 +31,7 @@ func start_attack():
 
 func handle_attack_anim(attacker: Node):
 	if attacker != null:
+		hit_box.look_at(attacker.global_position)
 		if attacker.global_position.x < actor.global_position.x and attacker.global_position.y < actor.global_position.y:
 			animation.play("attack_up")
 			await animation.animation_finished
@@ -46,3 +48,15 @@ func handle_attack_anim(attacker: Node):
 			
 		animation.play("idle_" + direction.get_action_direction(attacker.global_position))
 		actor.can_move = true
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		if body.has_node("take_damage"):
+			body.get_node("take_damage").apply_dmg_popup(actor.data.damage, actor, body, "new_default_dmg_3")
+
+
+func _on_ambush_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		if body.has_node("take_damage"):
+			body.get_node("take_damage").apply_dmg_popup(actor.data.damage * 2, actor, body, "new_default_dmg_3")

@@ -21,6 +21,8 @@ func _tick(delta: float) -> Status:
 	var action = actor.get_node("Actions")
 	var anim = actor.get_node("anim")
 	var jump = actor.get_node("status")
+	var jump_sfx = actor.get_node("jump_back")
+	var ambush_sfx = actor.get_node("ambush")
 	var navigation: NavigationAgent2D = actor.get_node("navigation")
 	
 	
@@ -39,8 +41,11 @@ func _tick(delta: float) -> Status:
 		sight_position_locked = true
 		is_attacking = true
 		navigation.set_destination(ambush_target_pos, float(speed))
+		
+		jump_sfx.play(0.0)
 		#jump.apply_juggle(actor, {"height": -50, "air_duration": 0.3, "fall_duration": 0.2})
 		await action.handle_ambush_anim(_target)
+		ambush_sfx.play(0.0)
 		is_attacking = false
 		
 		# dispara a função assíncrona sem bloquear o _tick

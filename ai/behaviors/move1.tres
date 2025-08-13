@@ -1,0 +1,66 @@
+[gd_resource type="BehaviorTree" load_steps=21 format=3 uid="uid://dl7okh7mp0yb1"]
+
+[ext_resource type="Script" uid="uid://b6okdeso6o4xk" path="res://ai/tasks/actions/GetNode.gd" id="1_aofc3"]
+[ext_resource type="Script" uid="uid://biyq0yvhphfrg" path="res://ai/tasks/actions/GetTarget.gd" id="2_r2yrb"]
+[ext_resource type="Script" uid="uid://cxk537sr3fckh" path="res://ai/tasks/conditions/is_in_range.gd" id="3_rkqtx"]
+[ext_resource type="Script" uid="uid://notyx6m5cyj5" path="res://ai/tasks/actions/JumpBack.gd" id="4_er4a5"]
+[ext_resource type="Script" uid="uid://bnfnkj5o5l6ac" path="res://ai/tasks/actions/PrepareToMarkTarget.gd" id="5_e7ovt"]
+[ext_resource type="Script" uid="uid://bvf2q3v3as3ts" path="res://ai/tasks/actions/DashAtMarkedTarget.gd" id="6_dk5rp"]
+[ext_resource type="Script" uid="uid://bynkdir88vkgf" path="res://ai/tasks/actions/initiate_attack.gd" id="7_r2yrb"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_yt2eu"]
+
+[sub_resource type="BTAction" id="BTAction_d3yqp"]
+script = ExtResource("1_aofc3")
+entity = &"node"
+
+[sub_resource type="BTAction" id="BTAction_gv21m"]
+script = ExtResource("2_r2yrb")
+group = &"player"
+target_var = &"target"
+
+[sub_resource type="BTCondition" id="BTCondition_rfp2f"]
+script = ExtResource("3_rkqtx")
+distance_min = 0.0
+distance_max = 45.0
+target_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_slqrn"]
+script = ExtResource("4_er4a5")
+actor = &"node"
+jump_force = 300.0
+jump_distance = 80
+
+[sub_resource type="BTWait" id="BTWait_p4xc1"]
+duration = 1.5
+
+[sub_resource type="BTAction" id="BTAction_gh1ft"]
+script = ExtResource("5_e7ovt")
+max_dash_distance = 80.0
+
+[sub_resource type="BTWait" id="BTWait_r2yrb"]
+duration = 0.5
+
+[sub_resource type="BTAction" id="BTAction_vxo08"]
+script = ExtResource("6_dk5rp")
+actor = &"node"
+dash_speed = 200.0
+distance = 80
+
+[sub_resource type="BTWait" id="BTWait_rkqtx"]
+duration = 0.1
+
+[sub_resource type="BTAction" id="BTAction_er4a5"]
+script = ExtResource("7_r2yrb")
+actor = &"node"
+
+[sub_resource type="BTSequence" id="BTSequence_kcy7v"]
+children = [SubResource("BTCondition_rfp2f"), SubResource("BTAction_slqrn"), SubResource("BTWait_p4xc1"), SubResource("BTAction_gh1ft"), SubResource("BTWait_r2yrb"), SubResource("BTAction_vxo08"), SubResource("BTWait_rkqtx"), SubResource("BTAction_er4a5")]
+metadata/_weight_ = 33.0
+
+[sub_resource type="BTSequence" id="BTSequence_2bnxa"]
+children = [SubResource("BTAction_d3yqp"), SubResource("BTAction_gv21m"), SubResource("BTSequence_kcy7v")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_yt2eu")
+root_task = SubResource("BTSequence_2bnxa")

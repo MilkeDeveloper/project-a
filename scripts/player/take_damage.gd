@@ -15,7 +15,7 @@ func apply_dmg_popup(damage: int, attacker: Node, target: Node, popup_anim: Stri
 	var dmg_popup = dmgPop.instantiate()
 	dmg_popup.global_position = entity.global_position
 	randomize()
-	dmg_popup.position.x = global_position.x + randi_range(-16, 16)
+	dmg_popup.position.x = global_position.x + randi_range(-5, 5)
 	dmg_popup.position.y = global_position.y + randi_range(12, 12)
 	entity.get_parent().add_child(dmg_popup)
 	

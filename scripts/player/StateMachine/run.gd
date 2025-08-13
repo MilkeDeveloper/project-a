@@ -17,7 +17,7 @@ func update(delta: float) -> void:
 	
 # Função chamada quando saímos do estado
 func exit() -> void:
-	animation.stop()
+	pass
 
 # Método opcional para transições rápidas entre estados
 func handle_input(event: InputEvent) -> void:

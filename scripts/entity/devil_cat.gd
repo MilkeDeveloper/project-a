@@ -7,7 +7,9 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	$state_label.text = str(state.get_active_state())
+	
 func take_damage(damage, attacker, target_attacker, effect_anim_name):
+	get_node("ambush_hitbox").monitoring = false
 	_attacker = attacker
 	apply_anim()
 	apply_hurt_effect(effect_anim_name)

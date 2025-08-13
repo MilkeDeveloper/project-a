@@ -1,6 +1,10 @@
-[gd_resource type="BehaviorTree" load_steps=5 format=3 uid="uid://ff4ajf5f8gwl"]
+[gd_resource type="BehaviorTree" load_steps=18 format=3 uid="uid://ff4ajf5f8gwl"]
 
 [ext_resource type="Script" uid="uid://b6okdeso6o4xk" path="res://ai/tasks/actions/GetNode.gd" id="1_xi1yc"]
+[ext_resource type="Script" uid="uid://biyq0yvhphfrg" path="res://ai/tasks/actions/GetTarget.gd" id="2_lmm54"]
+[ext_resource type="Script" uid="uid://bynkdir88vkgf" path="res://ai/tasks/actions/initiate_attack.gd" id="3_pyerm"]
+[ext_resource type="Script" uid="uid://cxk537sr3fckh" path="res://ai/tasks/conditions/is_in_range.gd" id="4_7dghl"]
+[ext_resource type="Script" uid="uid://608sjruk20s5" path="res://ai/tasks/actions/SpecialAttack1.gd" id="5_pyerm"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_u3pch"]
 var/action_active/name = &"action_active"
@@ -13,8 +17,49 @@ var/action_active/hint_string = ""
 script = ExtResource("1_xi1yc")
 entity = &"node"
 
+[sub_resource type="BTAction" id="BTAction_6iwta"]
+script = ExtResource("2_lmm54")
+group = &"player"
+target_var = &"target"
+
+[sub_resource type="BTCondition" id="BTCondition_ncesa"]
+script = ExtResource("4_7dghl")
+distance_min = 0.0
+distance_max = 45.0
+target_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_siet5"]
+script = ExtResource("3_pyerm")
+actor = &"node"
+
+[sub_resource type="BTCooldown" id="BTCooldown_7dghl"]
+duration = 2.0
+start_cooled = true
+trigger_on_failure = true
+children = [SubResource("BTAction_siet5")]
+
+[sub_resource type="BTSequence" id="BTSequence_ncesa"]
+children = [SubResource("BTCondition_ncesa"), SubResource("BTCooldown_7dghl")]
+metadata/_weight_ = 99.0
+
+[sub_resource type="BTAction" id="BTAction_pyerm"]
+script = ExtResource("5_pyerm")
+actor = &"node"
+
+[sub_resource type="BTCooldown" id="BTCooldown_6iwta"]
+start_cooled = true
+trigger_on_failure = true
+children = [SubResource("BTAction_pyerm")]
+
+[sub_resource type="BTSequence" id="BTSequence_siet5"]
+children = [SubResource("BTCooldown_6iwta")]
+metadata/_weight_ = 33.0
+
+[sub_resource type="BTProbabilitySelector" id="BTProbabilitySelector_ue1br"]
+children = [SubResource("BTSequence_ncesa"), SubResource("BTSequence_siet5")]
+
 [sub_resource type="BTSequence" id="BTSequence_4meqx"]
-children = [SubResource("BTAction_8tdri")]
+children = [SubResource("BTAction_8tdri"), SubResource("BTAction_6iwta"), SubResource("BTProbabilitySelector_ue1br")]
 
 [resource]
 description = "Comportamento padrão de attack"
