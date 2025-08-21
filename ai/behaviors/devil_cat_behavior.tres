@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=18 format=3 uid="uid://ff4ajf5f8gwl"]
+[gd_resource type="BehaviorTree" load_steps=19 format=3 uid="uid://ff4ajf5f8gwl"]
 
 [ext_resource type="Script" uid="uid://b6okdeso6o4xk" path="res://ai/tasks/actions/GetNode.gd" id="1_xi1yc"]
 [ext_resource type="Script" uid="uid://biyq0yvhphfrg" path="res://ai/tasks/actions/GetTarget.gd" id="2_lmm54"]
@@ -25,8 +25,10 @@ target_var = &"target"
 [sub_resource type="BTCondition" id="BTCondition_ncesa"]
 script = ExtResource("4_7dghl")
 distance_min = 0.0
-distance_max = 45.0
+distance_max = 75.0
 target_var = &"target"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_pyerm"]
 
 [sub_resource type="BTAction" id="BTAction_siet5"]
 script = ExtResource("3_pyerm")
@@ -39,7 +41,7 @@ trigger_on_failure = true
 children = [SubResource("BTAction_siet5")]
 
 [sub_resource type="BTSequence" id="BTSequence_ncesa"]
-children = [SubResource("BTCondition_ncesa"), SubResource("BTCooldown_7dghl")]
+children = [SubResource("BTCondition_ncesa"), SubResource("BTRandomWait_pyerm"), SubResource("BTCooldown_7dghl")]
 metadata/_weight_ = 99.0
 
 [sub_resource type="BTAction" id="BTAction_pyerm"]

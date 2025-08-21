@@ -21,7 +21,6 @@ class_name Entity
 var mouse_over: bool = false
 var targeted: bool = false
 
-var hp: int = max_hp
 var hited_enemies: Array = []
 var hurted: bool = false
 var supressed: bool = false
