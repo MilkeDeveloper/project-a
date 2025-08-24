@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddph1v4ipgtms"]
+
+[ext_resource type="PackedScene" uid="uid://dxhn8lg5ejyuf" path="res://game_scenes/player3d.tscn" id="1_k8w0o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8p41"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_8uhly"]
+
+[node name="World" type="Node3D"]
+
+[node name="player" parent="." instance=ExtResource("1_k8w0o")]
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_h8p41")
+multimesh = SubResource("MultiMesh_8uhly")

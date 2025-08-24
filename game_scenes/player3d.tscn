@@ -1,0 +1,368 @@
+[gd_scene load_steps=14 format=3 uid="uid://dxhn8lg5ejyuf"]
+
+[ext_resource type="PackedScene" uid="uid://bdm61lpb3f3uk" path="res://3D_models/char_animated.glb" id="1_vd3ue"]
+[ext_resource type="Texture2D" uid="uid://6xtjlvep60e6" path="res://assets/main_ui/deafult_bar2.png" id="2_xo48u"]
+[ext_resource type="Texture2D" uid="uid://dpm122urwit43" path="res://assets/main_ui/over_bar _entity.png" id="3_wjrjv"]
+[ext_resource type="Texture2D" uid="uid://d0udln14uhnp3" path="res://assets/main_ui/deafult_bar.png" id="4_npvcy"]
+[ext_resource type="Texture2D" uid="uid://bel063xv36q7b" path="res://assets/main_ui/tier_hotbar.png" id="5_xo48u"]
+[ext_resource type="Texture2D" uid="uid://cm20d53qwg3aq" path="res://assets/main_ui/under_bar.png" id="6_bhta7"]
+[ext_resource type="Texture2D" uid="uid://ccnm3ra2fyr8l" path="res://assets/main_ui/over_bar.png" id="7_gk5jl"]
+[ext_resource type="Texture2D" uid="uid://bgqyyvdshx3b4" path="res://assets/main_ui/health_bar.png" id="8_w5wgn"]
+[ext_resource type="Texture2D" uid="uid://dt8n7o71f1os0" path="res://assets/main_ui/badge_warrior.png" id="9_gk5jl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_87fvy"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vd3ue"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="SystemFont" id="SystemFont_xo48u"]
+font_names = PackedStringArray("Serif")
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[sub_resource type="FontVariation" id="FontVariation_wjrjv"]
+base_font = SubResource("SystemFont_xo48u")
+
+[node name="player" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_87fvy")
+
+[node name="char_animated" parent="." instance=ExtResource("1_vd3ue")]
+
+[node name="Skeleton3D" parent="char_animated/Skinned Mesh5" index="0"]
+bones/1/position = Vector3(0.00790255, 0.0566262, 0.722523)
+bones/1/rotation = Quaternion(0.819709, -0.0131709, 0.0153592, 0.572422)
+bones/3/rotation = Quaternion(-0.003538, 0.0194006, -0.0140698, 0.999707)
+bones/4/rotation = Quaternion(0.218204, 0.0624835, 0.00290644, 0.973897)
+bones/5/rotation = Quaternion(-0.035143, -0.0430492, -0.000435415, 0.998455)
+bones/7/rotation = Quaternion(-0.0938001, -0.0425453, 0.00658133, 0.99466)
+bones/9/rotation = Quaternion(-0.607709, -0.338566, -0.349969, 0.627364)
+bones/10/rotation = Quaternion(-0.0204967, 0.720752, -0.309266, 0.620041)
+bones/11/rotation = Quaternion(0.653663, 0.0540841, 0.0141138, 0.754719)
+bones/12/rotation = Quaternion(0.116709, -0.00291665, -0.0447789, 0.992152)
+bones/13/rotation = Quaternion(0.445191, 0.549369, -0.445194, 0.549364)
+bones/14/rotation = Quaternion(0.623341, -5.16494e-07, 1.75011e-07, 0.78195)
+bones/15/rotation = Quaternion(0.623341, 4.76416e-09, -2.47734e-07, 0.78195)
+bones/17/rotation = Quaternion(0.43209, 0.5387, -0.458046, 0.559727)
+bones/18/rotation = Quaternion(0.623342, 0.000943299, 0.0011837, 0.781948)
+bones/19/rotation = Quaternion(0.623341, -0.000704223, -0.000883458, 0.781949)
+bones/21/rotation = Quaternion(0.504057, 0.511541, -0.435152, 0.543042)
+bones/22/rotation = Quaternion(0.623164, -0.0200616, 0.0149257, 0.781692)
+bones/23/rotation = Quaternion(0.623342, 0.000380042, 0.0004765, 0.781949)
+bones/25/rotation = Quaternion(0.43534, 0.541356, -0.454904, 0.557203)
+bones/26/rotation = Quaternion(0.623342, 7.36133e-06, 9.49928e-06, 0.781949)
+bones/27/rotation = Quaternion(0.623341, -0.000665211, -0.000834268, 0.781949)
+bones/29/rotation = Quaternion(0.290839, 0.949649, 0.114584, 0.021217)
+bones/30/rotation = Quaternion(0.21939, 0.0238025, -0.00530519, 0.975332)
+bones/31/rotation = Quaternion(0.687388, -0.00030976, -0.000445522, 0.72629)
+bones/33/rotation = Quaternion(-0.609972, 0.334472, 0.345743, 0.629702)
+bones/34/rotation = Quaternion(0.0651731, -0.687655, 0.36088, 0.626616)
+bones/35/rotation = Quaternion(0.7184, 0.186048, -0.133847, 0.656789)
+bones/36/rotation = Quaternion(0.190622, -0.0391293, 0.0456103, 0.979822)
+bones/37/rotation = Quaternion(0.445191, -0.549369, 0.445194, 0.549365)
+bones/38/rotation = Quaternion(0.623342, 8.97562e-07, -7.39732e-07, 0.781949)
+bones/39/rotation = Quaternion(0.623342, 1.24239e-07, 1.07431e-06, 0.78195)
+bones/41/rotation = Quaternion(0.43209, -0.5387, 0.458047, 0.559727)
+bones/42/rotation = Quaternion(0.623341, -0.000943232, -0.00118395, 0.781949)
+bones/43/rotation = Quaternion(0.623342, 0.000704403, 0.00088351, 0.781949)
+bones/45/rotation = Quaternion(0.504057, -0.511542, 0.435151, 0.543042)
+bones/46/rotation = Quaternion(0.623163, 0.0200619, -0.0149257, 0.781692)
+bones/47/rotation = Quaternion(0.623342, -0.000379378, -0.000476795, 0.781949)
+bones/49/rotation = Quaternion(0.43534, -0.541356, 0.454904, 0.557204)
+bones/50/rotation = Quaternion(0.623342, -6.82753e-06, -9.98448e-06, 0.781949)
+bones/51/rotation = Quaternion(0.623341, 0.00066565, 0.00083476, 0.781949)
+bones/53/rotation = Quaternion(-0.290838, 0.949649, 0.114584, -0.0212175)
+bones/54/rotation = Quaternion(0.219391, -0.0238025, 0.0053051, 0.975332)
+bones/55/rotation = Quaternion(0.687388, 0.000308461, 0.000444704, 0.72629)
+bones/57/rotation = Quaternion(0.894434, -0.0188242, 0.00232112, 0.446797)
+bones/58/rotation = Quaternion(0.682356, -0.00859901, 0.00856699, 0.730919)
+bones/59/rotation = Quaternion(-0.666127, 0.00320703, -0.00544353, 0.745812)
+bones/60/rotation = Quaternion(-0.000257364, 0.867756, -0.496991, -0.000449634)
+bones/62/rotation = Quaternion(0.900447, -0.0181548, 0.00223853, 0.434582)
+bones/63/rotation = Quaternion(0.844057, -0.00734407, 0.0112883, 0.536085)
+bones/64/rotation = Quaternion(-0.467101, 0.00687734, -0.0535113, 0.882557)
+bones/65/rotation = Quaternion(-0.00013713, 0.964307, -0.264788, -0.000499546)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.917775, 0.3971, 0, -0.3971, 0.917775, 0, 3.4035, 5.09017)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18724, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_vd3ue")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(136, 50)
+render_target_update_mode = 4
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport"]
+offset_left = 34.0
+offset_top = 17.0
+offset_right = 134.0
+offset_bottom = 26.0
+value = 75.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_xo48u")
+texture_over = ExtResource("3_wjrjv")
+texture_progress = ExtResource("4_npvcy")
+tint_under = Color(0.330187, 0.274211, 0.147453, 1)
+tint_progress = Color(0.660483, 0.915374, 1.15514e-06, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+texture_filter = 1
+position = Vector2(21, 21)
+rotation = -2.35625
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_xo48u")
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 54.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.860369, 0.860369, 0.860369, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = SubResource("FontVariation_wjrjv")
+theme_override_font_sizes/font_size = 12
+text = "IV"
+
+[node name="actionbar_ui" type="CanvasLayer" parent="."]
+
+[node name="HP_SP_bars" type="HBoxContainer" parent="actionbar_ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -287.0
+offset_top = -97.0
+offset_right = 288.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="actionbar_ui/HP_SP_bars"]
+layout_mode = 2
+size_flags_horizontal = 4
+value = 100.0
+texture_under = ExtResource("6_bhta7")
+texture_over = ExtResource("7_gk5jl")
+texture_progress = ExtResource("8_w5wgn")
+tint_progress = Color(2.5, 0.5, 1, 1)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="actionbar_ui/HP_SP_bars"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("6_bhta7")
+texture_over = ExtResource("7_gk5jl")
+texture_progress = ExtResource("8_w5wgn")
+tint_progress = Color(0, 1.6, 2.5, 1)
+
+[node name="skill_hotbar" type="HBoxContainer" parent="actionbar_ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -68.0
+offset_right = -82.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureButton" type="TextureButton" parent="actionbar_ui/skill_hotbar"]
+layout_mode = 2
+texture_normal = ExtResource("5_xo48u")
+
+[node name="Label" type="Label" parent="actionbar_ui/skill_hotbar/TextureButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 45.0
+offset_bottom = 23.0
+text = "Q"
+
+[node name="TextureButton2" type="TextureButton" parent="actionbar_ui/skill_hotbar"]
+layout_mode = 2
+texture_normal = ExtResource("5_xo48u")
+
+[node name="Label" type="Label" parent="actionbar_ui/skill_hotbar/TextureButton2"]
+offset_left = 5.0
+offset_right = 45.0
+offset_bottom = 23.0
+text = "W"
+
+[node name="TextureButton3" type="TextureButton" parent="actionbar_ui/skill_hotbar"]
+layout_mode = 2
+texture_normal = ExtResource("5_xo48u")
+
+[node name="Label" type="Label" parent="actionbar_ui/skill_hotbar/TextureButton3"]
+offset_left = 5.0
+offset_right = 45.0
+offset_bottom = 23.0
+text = "E"
+
+[node name="TextureButton4" type="TextureButton" parent="actionbar_ui/skill_hotbar"]
+layout_mode = 2
+texture_normal = ExtResource("5_xo48u")
+
+[node name="Label" type="Label" parent="actionbar_ui/skill_hotbar/TextureButton4"]
+offset_left = 5.0
+offset_right = 45.0
+offset_bottom = 23.0
+text = "R"
+
+[node name="skill_hotbar2" type="HBoxContainer" parent="actionbar_ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -67.0
+offset_right = 292.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureButton" type="TextureButton" parent="actionbar_ui/skill_hotbar2"]
+layout_mode = 2
+texture_normal = ExtResource("5_xo48u")
+
+[node name="Label" type="Label" parent="actionbar_ui/skill_hotbar2/TextureButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 45.0
+offset_bottom = 23.0
+text = "1"
+
+[node name="TextureButton2" type="TextureButton" parent="actionbar_ui/skill_hotbar2"]
+layout_mode = 2
+texture_normal = ExtResource("5_xo48u")
+
+[node name="Label" type="Label" parent="actionbar_ui/skill_hotbar2/TextureButton2"]
+offset_left = 5.0
+offset_right = 45.0
+offset_bottom = 23.0
+text = "2"
+
+[node name="TextureButton3" type="TextureButton" parent="actionbar_ui/skill_hotbar2"]
+layout_mode = 2
+texture_normal = ExtResource("5_xo48u")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="actionbar_ui/skill_hotbar2/TextureButton3"]
+offset_left = 5.0
+offset_right = 45.0
+offset_bottom = 23.0
+text = "3"
+
+[node name="TextureButton4" type="TextureButton" parent="actionbar_ui/skill_hotbar2"]
+layout_mode = 2
+texture_normal = ExtResource("5_xo48u")
+
+[node name="Label" type="Label" parent="actionbar_ui/skill_hotbar2/TextureButton4"]
+offset_left = 5.0
+offset_right = 45.0
+offset_bottom = 23.0
+text = "4"
+
+[node name="Relics" type="HBoxContainer" parent="actionbar_ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -68.0
+offset_right = 85.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 75
+alignment = 1
+
+[node name="Control" type="Control" parent="actionbar_ui"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 3.0
+offset_right = 20.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BadgeWarrior" type="Sprite2D" parent="actionbar_ui/Control"]
+position = Vector2(19, -94)
+texture = ExtResource("9_gk5jl")
+
+[node name="TierHotbar" type="Sprite2D" parent="actionbar_ui/Control"]
+position = Vector2(20, -45.0001)
+rotation = -2.33149
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_xo48u")
+
+[node name="Label" type="Label" parent="actionbar_ui/Control/TierHotbar"]
+offset_left = 2.90471
+offset_top = -5.12414
+offset_right = 42.9047
+offset_bottom = 17.8759
+rotation = 2.32844
+text = "X"
+
+[node name="TierHotbar2" type="Sprite2D" parent="actionbar_ui/Control"]
+position = Vector2(20, -123)
+rotation = -2.36502
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_xo48u")
+
+[node name="TextureButton" type="TextureButton" parent="actionbar_ui/Control"]
+offset_left = -28.0
+offset_top = -25.0
+offset_right = 22.0
+offset_bottom = 25.0
+rotation = -2.35883
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("5_xo48u")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="actionbar_ui/Control/TextureButton"]
+layout_mode = 0
+offset_left = 25.5883
+offset_top = 16.8613
+offset_right = 65.5883
+offset_bottom = 39.8613
+rotation = 2.35324
+text = "D"
+
+[node name="TextureButton2" type="TextureButton" parent="actionbar_ui/Control"]
+offset_left = 67.0001
+offset_top = -24.9999
+offset_right = 117.0
+offset_bottom = 25.0001
+rotation = -2.35382
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("5_xo48u")
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="actionbar_ui/Control/TextureButton2"]
+layout_mode = 0
+offset_left = 22.137
+offset_top = 16.7412
+offset_right = 62.137
+offset_bottom = 39.7412
+rotation = 2.35324
+text = "F"
+
+[editable path="char_animated"]
